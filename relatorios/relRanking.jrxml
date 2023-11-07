@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relRanking" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="de037cb2-2f37-4fff-8c6f-074c4646338f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="razao_social" class="java.lang.String"/>
+	<parameter name="cnpjemitente" class="java.lang.String"/>
+	<parameter name="dtini" class="java.lang.String"/>
+	<parameter name="dtfim" class="java.lang.String"/>
+	<parameter name="tgastos" class="java.lang.String"/>
+	<parameter name="TQtde" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select
+a.data,
+b.razao_social,
+cast ((a.total) as numeric(5,2))as Total
+from tmovimento a
+join tparceiros b on a.id_parceiro=b.idparceiro
+where a.id_tipo='5' and a.estado='2'
+order by 1]]>
+	</queryString>
+	<field name="DATA" class="java.sql.Date"/>
+	<field name="RAZAO_SOCIAL" class="java.lang.String"/>
+	<field name="TOTAL" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="86" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="0" y="2" width="555" height="84" uuid="55902399-d926-4c87-b3cf-fc7e2ff9363a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="15" y="55" width="172" height="24" uuid="98c07efe-bf60-4258-b962-ac9aab7067d2"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório de Ranking]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="378" y="2" width="22" height="17" uuid="741ebe4d-3a40-47c8-a7f7-3a8c8ea907a8"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="10"/>
+				</textElement>
+				<text><![CDATA[Data :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="15" y="6" width="347" height="31" uuid="fa7153e4-229d-475a-97e5-0fcc51f4049b"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{razao_social}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="15" y="33" width="100" height="20" uuid="d950ffab-c645-45be-8c0a-70517e57cd1b"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cnpjemitente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="2" width="46" height="20" uuid="b6f1decb-869f-4ca0-ae45-d6c4285c6f98"/>
+				<textElement>
+					<font fontName="Arial Narrow"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dtini}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="446" y="3" width="17" height="17" uuid="a82d9647-d306-4f6b-83f5-0f0ad3154431"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="10"/>
+				</textElement>
+				<text><![CDATA[até]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="463" y="3" width="80" height="20" uuid="ecdcc54f-2990-4507-a7f7-3a9e4d874f3d"/>
+				<textElement>
+					<font fontName="Arial Narrow"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dtfim}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="0" y="0" width="555" height="22" uuid="f545287b-92de-48ab-acea-fa707a4ffc34"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="115" y="0" width="52" height="20" uuid="9bbf70f3-6117-47d2-84a2-1edf9d3c8173"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Atirador]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="471" y="3" width="72" height="20" uuid="cd53a075-c971-48bd-a475-bb0028b3fcc2"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Gasto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="0" width="38" height="20" uuid="07dfd58b-b012-4713-a656-439145e8242d"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="115" y="1" width="200" height="20" uuid="5d34b6f6-5d29-4527-a773-3f3319992eb1"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RAZAO_SOCIAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="471" y="3" width="72" height="20" uuid="44d94a54-3a29-488e-9f65-860d70aeffed"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTAL}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="20" width="555" height="1" uuid="e5123d2c-3ad1-4f6c-bf59-a67691aaf1c3"/>
+			</line>
+			<textField>
+				<reportElement x="15" y="1" width="52" height="17" uuid="32b77edc-5100-4346-b44a-2e088fc6e01f"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DATA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="15" y="34" width="281" height="20" uuid="599d9f16-247c-4592-8ad2-0cccb2a2ca00"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<text><![CDATA[Esfhera Desenvolvimento de Software- (42)0000-0000]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="15" y="0" width="39" height="22" uuid="6b08da8e-4672-4cd3-9d38-9a5f630b51e0"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Totais]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="471" y="0" width="72" height="20" uuid="c734f467-e49b-4bb8-bf22-f623ae4e7331"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Narrow" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tgastos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="2" width="66" height="20" uuid="fb59e34d-e1d9-4ba8-9856-725ec1d3b67e"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TQtde}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relCadastro" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0ed7d39b-5222-4a26-8956-64cf06a341b3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="razao_social" class="java.lang.String"/>
+	<parameter name="cnpjemitente" class="java.lang.String"/>
+	<parameter name="plano" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select * from tparceiros a
+join tenderecos b on a.idparceiro = b.id_parceiro
+join tcontrato c on a.idparceiro=c.id_parceiro
+order by razao_social]]>
+	</queryString>
+	<field name="IDPARCEIRO" class="java.lang.Integer"/>
+	<field name="CNPJ" class="java.lang.String"/>
+	<field name="RAZAO_SOCIAL" class="java.lang.String"/>
+	<field name="FANTASIA" class="java.lang.String"/>
+	<field name="INSCRICAO_ESTADUAL" class="java.lang.String"/>
+	<field name="FONE" class="java.lang.String"/>
+	<field name="CELULAR" class="java.lang.String"/>
+	<field name="FONE_REFERENCIA" class="java.lang.String"/>
+	<field name="NOME_REFERENCIA" class="java.lang.String"/>
+	<field name="CODI_CARTAO" class="java.lang.Integer"/>
+	<field name="TIPO_PARCEIRO" class="java.lang.String"/>
+	<field name="TIPO_PESSOA" class="java.lang.String"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<field name="INS_MUNICIPAL" class="java.lang.String"/>
+	<field name="DATA_NASCIMENTO" class="java.lang.String"/>
+	<field name="SEXO" class="java.lang.String"/>
+	<field name="CR" class="java.lang.String"/>
+	<field name="DATA_FILIACAO" class="java.sql.Date"/>
+	<field name="FIM_FILIACAO" class="java.sql.Date"/>
+	<field name="ESTADO_CIVIL" class="java.lang.String"/>
+	<field name="PROFISSAO" class="java.lang.String"/>
+	<field name="NACIONALIDADE" class="java.lang.String"/>
+	<field name="ORG_EXP_RG" class="java.lang.String"/>
+	<field name="NUM_FILIACAO" class="java.lang.String"/>
+	<field name="EXCLUIDO" class="java.lang.String"/>
+	<field name="ID" class="java.lang.Integer"/>
+	<field name="ID_PARCEIRO" class="java.lang.Integer"/>
+	<field name="RUA" class="java.lang.String"/>
+	<field name="BAIRRO" class="java.lang.String"/>
+	<field name="NUMERO" class="java.lang.String"/>
+	<field name="ESTADO" class="java.lang.String"/>
+	<field name="CIDADE" class="java.lang.String"/>
+	<field name="PAIS" class="java.lang.String"/>
+	<field name="CEP" class="java.lang.String"/>
+	<field name="TIPO_ENDERECO" class="java.lang.String"/>
+	<field name="COMPLEMENTO" class="java.lang.String"/>
+	<field name="ID_CONTRATO" class="java.lang.Integer"/>
+	<field name="DATA" class="java.sql.Date"/>
+	<field name="HORA" class="java.sql.Time"/>
+	<field name="VALOR" class="java.math.BigDecimal"/>
+	<field name="DIA_VENCIMENTO" class="java.lang.Integer"/>
+	<field name="QUANTIDADE_MESSES_FILIACAO" class="java.lang.Integer"/>
+	<field name="PRIMEIRA_PARCELA" class="java.sql.Date"/>
+	<field name="INICIO_FILIACAO" class="java.sql.Date"/>
+	<field name="VALOR_PLANO" class="java.math.BigDecimal"/>
+	<field name="TIPO_PLANO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="85" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="0" y="-2" width="555" height="86" uuid="41bafa7a-e6e2-46b8-ac33-143107c27ce3"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="12" y="61" width="311" height="23" uuid="2058eb0e-5054-4116-aae4-40726c533090"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cadastro de Atiradores]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="12" y="0" width="311" height="26" uuid="b61e2180-8769-4ef4-93ac-74af8f55c344"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{razao_social}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="17" y="26" width="100" height="20" uuid="7c7c4a1b-1e95-4816-a570-25cda2a9c170"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cnpjemitente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="452" y="0" width="33" height="20" uuid="6981ec31-a00d-4915-b87a-9814318bbe99"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<text><![CDATA[Plano :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="485" y="0" width="68" height="20" uuid="e4b0b97e-0387-4016-b80b-31bc4a8c26b0"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{plano}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<detail>
+		<band height="84" splitType="Stretch">
+			<staticText>
+				<reportElement x="12" y="0" width="20" height="20" uuid="ffc87731-e07d-42ce-9cb4-7bfb63436f6d"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Id]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="12" y="17" width="24" height="20" uuid="23a5711f-57ee-4de1-a572-8b6b8915fabb"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{IDPARCEIRO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="39" y="0" width="100" height="20" uuid="f98f6a1d-3f23-4354-865e-112d97d5ffa9"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="39" y="17" width="246" height="20" uuid="b4bd07a2-9508-47bd-87e3-c2d04c7c6d72"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RAZAO_SOCIAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="285" y="0" width="100" height="20" uuid="2ba24cfc-6bd8-4605-a5ca-253a16c3af4c"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CPF]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="285" y="20" width="100" height="20" uuid="281c2032-8da9-4f1b-b67b-ebe486353384"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CNPJ}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="385" y="0" width="79" height="20" uuid="e2748b6f-e662-45eb-a50f-620c5bc52e3b"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RG]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="385" y="20" width="79" height="20" uuid="1f8c9aee-d4c0-4fd7-90a8-adbd79a1403d"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{INSCRICAO_ESTADUAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="464" y="0" width="91" height="20" uuid="297541c7-11e7-46cf-bb75-7c95753de3a9"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fone]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="464" y="20" width="91" height="20" uuid="78e90e2d-da8e-4595-a110-d15d1c727949"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FONE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="464" y="42" width="91" height="20" uuid="8eef39db-47aa-47f7-b089-4c4f8fbad166"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Celular]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="464" y="60" width="91" height="20" uuid="02760ce0-70f9-4015-8c2b-009fdd8f3f3b"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CELULAR}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="286" y="43" width="39" height="20" uuid="f37a87bb-81fa-4a2f-9c4a-36ebe737b1ef"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CR]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="286" y="59" width="78" height="20" uuid="cf79ec1f-dc1d-456d-a430-0b2793a1ca13"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CR}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="385" y="43" width="44" height="20" uuid="10d012ec-4e8f-4c4a-b1ec-e8542cbfb682"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Afiliação]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="385" y="60" width="100" height="20" uuid="a323e3db-a9d7-47a1-af19-3720873dd41c"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NUM_FILIACAO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="47" width="37" height="16" uuid="8e1a3fa3-090b-4c82-8e1b-bffb245ae41f"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Plano :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="49" y="47" width="100" height="20" uuid="d2d0e65d-cde1-4c97-a996-6073e1268d82"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TIPO_PLANO}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="80" width="555" height="1" uuid="650c872f-4aea-43b8-8cb7-26985e9c7d3f"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="34" width="281" height="20" uuid="4ac88d36-0e4b-432f-a8ee-40793bb6014d"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<text><![CDATA[Esfhera Desenvolvimento de Software- (42)0000-0000]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

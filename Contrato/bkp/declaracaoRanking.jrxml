@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="declaracaoRanking" language="groovy" pageWidth="595" pageHeight="842" columnWidth="441" leftMargin="67" rightMargin="87" topMargin="20" bottomMargin="20" uuid="935150d1-a099-4fc1-80fe-c458f564c4b4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="11"/>
+	<field name="fNome" class="java.lang.String"/>
+	<field name="fCr" class="java.lang.String"/>
+	<field name="fFiliacao" class="java.lang.String"/>
+	<field name="fData" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="125" y="33" width="175" height="20" uuid="72ad8674-d712-4ace-92a5-8d974d637f8a"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DECLARAÇÃO DE RANKING]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="426" splitType="Stretch">
+			<staticText>
+				<reportElement x="27" y="12" width="11" height="13" uuid="98e670fe-dd03-4ebb-ae68-c3f25674c1f1"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[O]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="38" y="12" width="228" height="13" uuid="aacbfa99-3f8f-4358-92a6-c98bc52b14af"/>
+				<box leftPadding="1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ SANTO HUBERTO ATIVIDADES DE TIRO LTDA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="266" y="12" width="119" height="13" uuid="9494f435-d488-4e4b-b3c9-1e2feaf1518a"/>
+				<text><![CDATA[, inscrito no CNPJ ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="25" width="373" height="67" uuid="53dd30b1-7918-46d3-9fb7-aa79a998ff3a"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[sob o nº 26.574.663/0001-03 e Certificado de Registro nº 135975, com sede na Est. Para pedreira Trombini, s/n, CEP 85.100-000 Guarapuava Paraná DECLARA, conforme os Art 79 e 92 da Portaria nº 051-COLOG/2015, junto ao Exército Brasileiro, para fins de revalidação de CR, aquisição de arma de fogo e/ou munição ou insumos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="111" width="26" height="14" uuid="387db885-01f9-466c-a809-23264c12824e"/>
+				<textElement>
+					<font fontName="Arial" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Que]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="54" y="111" width="117" height="14" uuid="bb5f3ad9-34ae-4030-88e7-07624b2a7d2e"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fNome}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="181" y="111" width="34" height="14" uuid="45e151e4-c16e-4979-8cad-e20dffda107a"/>
+				<text><![CDATA[, CR nº]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="217" y="111" width="49" height="14" uuid="8b84f197-08e4-48e4-b17b-fb862d4accfc"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fCr}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="313" y="111" width="85" height="14" uuid="a9a28430-a370-4ab9-9bc4-b315bdccfe0c"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[, regularmente ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="125" width="143" height="13" uuid="9fa54aed-e6ac-40a7-882e-ffb338b462f0"/>
+				<text><![CDATA[inscrito nesta entidade sob nº ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="173" y="125" width="36" height="13" uuid="a1630d0c-432b-4daf-8123-01def4a173a7"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fFiliacao}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="211" y="125" width="55" height="13" uuid="24d22ff6-08bb-4e1f-b3b0-4344de188703"/>
+				<text><![CDATA[, datado de ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="266" y="125" width="47" height="13" uuid="ed4cd68d-0050-4c88-8905-558b13f77ee9"/>
+				<textFieldExpression><![CDATA[$F{fData}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="313" y="125" width="85" height="13" uuid="48bfcf47-dada-407a-9a38-a024b21fb3e2"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[; e que participou ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="138" width="370" height="34" uuid="7520aea9-6cf6-403f-80f7-8491867bc1ae"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[dos eventos previstos para ser considerado atirador desportivo do nível I (um), conforme previsto no Art 79 da Portaria nº 051-COLOG/2015.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="194" width="370" height="34" uuid="bb1ad3f5-426c-429d-a875-6ef3b206c4ed"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[O SANTO HUBERTO ATIVIDADES DE TIRO LTDA dispõe dos registros que comprovam o nível do referido atirador desportivo.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="27" y="259" width="370" height="20" uuid="eaf430ca-10c0-4e44-a55d-74375e5c7634"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Esta declaração tem validade de 90 noventa dias.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="375" width="441" height="51" uuid="3e52ce7b-ec7b-4964-bd74-a0c967321df1"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[______________________________________
+FELIPE JOSE PEREIRA
+PRESIDENTE
+]]></text>
+			</staticText>
+		</band>
+		<band height="50"/>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

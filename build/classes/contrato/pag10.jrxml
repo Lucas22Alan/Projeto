@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pag10" language="groovy" pageWidth="611" pageHeight="791" columnWidth="611" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="fcbad07d-3c04-4f53-9c77-2992f4febd32">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="176"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Esfhera\\adm\\Contrato\\contrato\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[select * from tparceiros a
+join tenderecos b on a.idparceiro=b.id_parceiro
+join tcontrato c on a.idparceiro=c.id_parceIRO]]>
+	</queryString>
+	<field name="IDPARCEIRO" class="java.lang.Integer"/>
+	<field name="CNPJ" class="java.lang.String"/>
+	<field name="RAZAO_SOCIAL" class="java.lang.String"/>
+	<field name="FANTASIA" class="java.lang.String"/>
+	<field name="INSCRICAO_ESTADUAL" class="java.lang.String"/>
+	<field name="FONE" class="java.lang.String"/>
+	<field name="CELULAR" class="java.lang.String"/>
+	<field name="FONE_REFERENCIA" class="java.lang.String"/>
+	<field name="NOME_REFERENCIA" class="java.lang.String"/>
+	<field name="CODI_CARTAO" class="java.lang.Integer"/>
+	<field name="TIPO_PARCEIRO" class="java.lang.String"/>
+	<field name="TIPO_PESSOA" class="java.lang.String"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<field name="INS_MUNICIPAL" class="java.lang.String"/>
+	<field name="DATA_NASCIMENTO" class="java.lang.String"/>
+	<field name="SEXO" class="java.lang.String"/>
+	<field name="CR" class="java.lang.String"/>
+	<field name="DATA_FILIACAO" class="java.sql.Date"/>
+	<field name="FIM_FILIACAO" class="java.sql.Date"/>
+	<field name="ESTADO_CIVIL" class="java.lang.String"/>
+	<field name="PROFISSAO" class="java.lang.String"/>
+	<field name="NACIONALIDADE" class="java.lang.String"/>
+	<field name="NUM_FILIACAO" class="java.lang.String"/>
+	<field name="ORG_EXP_RG" class="java.lang.String"/>
+	<field name="ID" class="java.lang.Integer"/>
+	<field name="ID_PARCEIRO" class="java.lang.Integer"/>
+	<field name="RUA" class="java.lang.String"/>
+	<field name="BAIRRO" class="java.lang.String"/>
+	<field name="NUMERO" class="java.lang.String"/>
+	<field name="ESTADO" class="java.lang.String"/>
+	<field name="CIDADE" class="java.lang.String"/>
+	<field name="PAIS" class="java.lang.String"/>
+	<field name="CEP" class="java.lang.String"/>
+	<field name="TIPO_ENDERECO" class="java.lang.String"/>
+	<field name="COMPLEMENTO" class="java.lang.String"/>
+	<field name="ID_CONTRATO" class="java.lang.Integer"/>
+	<field name="DATA" class="java.sql.Date"/>
+	<field name="HORA" class="java.sql.Time"/>
+	<field name="VALOR" class="java.math.BigDecimal"/>
+	<field name="DIA_VENCIMENTO" class="java.lang.Integer"/>
+	<field name="QUANTIDADE_MESSES_FILIACAO" class="java.lang.Integer"/>
+	<field name="PRIMEIRA_PARCELA" class="java.sql.Date"/>
+	<field name="INICIO_FILIACAO" class="java.sql.Date"/>
+	<field name="VALOR_PLANO" class="java.math.BigDecimal"/>
+	<field name="TIPO_PLANO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="650" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="397" height="20" uuid="5e689d92-eec0-47bb-9fee-8ca6178639e5"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA SÉTIMA – DA MULTA PELO INADIMPLEMENTO.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="44" width="34" height="20" uuid="531e4330-bec0-4d30-b706-f65b6ffa0634"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[7.1. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="44" width="470" height="62" uuid="f3218cdb-f434-4573-8bf9-f80e34f2c485"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[        A parte que incorrer no descumprimento de quaisquer cláusulas contratuais sofrerá penalização da multa aqui estipulada em 02 (dois) salários mínimos, em favor da outra parte.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="135" width="470" height="20" uuid="23637101-46a1-450b-a6a9-8a1b3927cff9"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA OITAVA – DISPOSIÇÕES FINAIS.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="176" width="34" height="20" uuid="d5af86c7-bfb5-456a-b3ed-a43dd41153e6"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[8.1. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="176" width="470" height="35" uuid="e7346017-3efe-4b66-b577-d396e2c8b9c0"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[         O presente Instrumento obriga as partes, seus herdeiros e sucessores ao seu fiel cumprimento.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="226" width="34" height="20" uuid="cac3cf6b-c37b-4649-b10f-dd5cf8bb7d46"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[8.2. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="226" width="470" height="84" uuid="5dd11759-8f1d-47cc-b592-ea4f0ec8f8ba"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[         A demora de qualquer das partes em exigir o cumprimento de qualquer Cláusula deste Instrumento não significará renúncia aos termos aqui expressos ou aos efeitos deste, podendo a exigência ser formulada em qualquer tempo, respeitados os prazos prescricionais impostos pela Lei e os prazos previstos neste Instrumento.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="325" width="33" height="20" uuid="587b7515-5e49-4f50-aa35-65664894b37f"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[8.3. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="325" width="469" height="67" uuid="a4eb9d32-5571-4b77-9aa1-8258ac88586a"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[        Os impostos e/ou taxas arbitrados pelos poderes públicos, que recaiam ou venham a recair sobre a atividade a explorada pela                           , serão de exclusiva responsabilidade desta.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="278" y="345" width="100" height="20" uuid="a6e521df-d822-41c8-903b-025641454db3"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="403" width="33" height="20" uuid="ca5f575d-244c-4b6a-bdaf-3c335b3e2798"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[8.4. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="403" width="469" height="66" uuid="3265cc67-9aa2-4796-bbbf-6e4e73a1fafd"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[         O(a)                            não guarda qualquer responsabilidade quanto ao pagamento dos encargos e impostos relativos ao imóvel aonde se encontra instalada a sede da ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="83" y="403" width="95" height="20" uuid="97f8c256-4600-43e2-bede-06ad3aace754"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="54" y="441" width="100" height="20" uuid="8bd88b04-4e7c-4dae-a86e-3eb69695f888"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="479" width="33" height="20" uuid="a3cf32aa-79d3-42b9-9570-3ad95e957162"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[8.5. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="479" width="469" height="70" uuid="0560e746-9d45-4e12-9dcb-e7220adf7388"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[         A                           não guarda qualquer responsabilidade quanto aos exames, certificações, validações, revalidações, deferimentos, indeferimentos, etc., do armamento, munições e apetrechos do(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="479" width="100" height="20" uuid="fc55ac1a-f053-4918-a35f-83a10b634bff"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="231" y="518" width="95" height="20" uuid="9c1c6fbb-5c5d-4e2d-b80f-acfae7aea593"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATANTE.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="423" y="628" width="47" height="20" uuid="6288370d-fe98-4992-b92c-0f483f3dfd81"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[11]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<subreport>
+				<reportElement x="1" y="6" width="377" height="36" uuid="1667dfb3-b75e-445a-ac2c-fc8cd2dc9562"/>
+				<subreportParameter name="SUBREPORT_DIR"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pag11.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="etiqueta" columnCount="2" printOrder="Horizontal" columnDirection="RTL" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="410" columnSpacing="8" leftMargin="4" rightMargin="4" topMargin="5" bottomMargin="0" uuid="42750794-287b-4e74-93dc-388a787f7707">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="net.sf.jasperreports.print.create.bookmarks" value="false"/>
+	<property name="net.sf.jasperreports.export.pdf.split.type" value="Prevent"/>
+	<property name="net.sf.jasperreports.print.keep.full.text" value="true"/>
+	<property name="net.sf.jasperreports.export.pdf.force.linebreak.policy" value="true"/>
+	<property name="net.sf.jasperreports.export.pdf.force.linebreak.policy.whitespace" value="true"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="descricao" class="java.lang.String"/>
+	<field name="preco" class="java.lang.Double"/>
+	<field name="codigo" class="java.lang.String"/>
+	<field name="rodape" class="java.lang.String"/>
+	<field name="mensagem" class="java.lang.String"/>
+	<field name="vlpromocional" class="java.lang.String"/>
+	<field name="prec" class="java.lang.String"/>
+	<detail>
+		<band height="285" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="mm"/>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="3" y="3" width="400" height="180" uuid="8af7bbae-4f6d-4e6f-87b1-c655434f38b0"/>
+				<textElement>
+					<font fontName="Tahoma" size="60"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="140" y="200" width="253" height="79" uuid="a735178c-3c11-4508-9bed-6aecba96141b"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="48" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{prec}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="200" width="139" height="80" uuid="5a359d8f-f051-480c-b6b6-528ab930539f"/>
+				<textElement>
+					<font fontName="Tahoma" size="60" isBold="true"/>
+				</textElement>
+				<text><![CDATA[R$]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

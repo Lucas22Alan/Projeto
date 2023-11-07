@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelOsMovimentoItens" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ec8cf73d-8b63-4301-8247-2a515e598bd0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="RazaoSocial" class="java.lang.String"/>
+	<parameter name="Cnpj" class="java.lang.String"/>
+	<parameter name="dtini" class="java.lang.String"/>
+	<parameter name="dtfim" class="java.lang.String"/>
+	<field name="nomelongo" class="java.lang.String"/>
+	<field name="qnt" class="java.math.BigDecimal"/>
+	<field name="total" class="java.math.BigDecimal"/>
+	<field name="unid" class="java.lang.String"/>
+	<variable name="somaqnt" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{qnt}]]></variableExpression>
+	</variable>
+	<variable name="somatotal" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{total}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="86" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="0" y="1" width="555" height="84" uuid="e93dbcde-0050-4486-aa6f-9fd3c62cc1f5"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="400" y="1" width="55" height="17" uuid="ca40ba12-3bb9-4cb8-83d7-7bd8b20867ef"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="10"/>
+				</textElement>
+				<text><![CDATA[Gerado em:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="58" width="329" height="24" uuid="3d9ea363-3b91-450e-a31a-62d884082439"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="20" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Totalizador de Serviços]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="455" y="0" width="86" height="20" uuid="25100adf-9736-47a7-8f9c-e988e57301b9"/>
+				<textElement>
+					<font fontName="Arial Narrow"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="96" y="4" width="236" height="20" uuid="8bec0f13-9ea1-40e9-80bd-e686bd80c383"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{RazaoSocial}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="11" y="6" width="68" height="50" uuid="c3e6ce75-bdef-42fc-988e-277ec79a4791"/>
+				<imageExpression><![CDATA["C:\\Esfhera\\adm\\imagens\\Logo.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="390" y="69" width="50" height="14" uuid="b29bbe31-b869-4f82-b507-4fbd156c39a9"/>
+				<text><![CDATA[Periodo :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="436" y="69" width="43" height="14" uuid="e62c4462-87bd-4a25-a2c0-6cd5cd543d15"/>
+				<textFieldExpression><![CDATA[$P{dtini}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="481" y="69" width="17" height="14" uuid="b46e0a65-0782-45cc-9325-a8e9e8e118cf"/>
+				<text><![CDATA[Ate]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="503" y="68" width="48" height="14" uuid="13302ef7-af43-4e8f-b743-a863075fef7c"/>
+				<textFieldExpression><![CDATA[$P{dtfim}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="0" y="0" width="555" height="23" uuid="0cb8608b-24f6-4660-823f-1c6e0c7e8f72"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="11" y="0" width="51" height="22" uuid="9ae1d7da-8a27-4378-9f04-33070d957c69"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Serviço]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="340" y="0" width="40" height="23" uuid="0086716e-e8ac-46cb-9c95-cdaa7bafc854"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Qtde]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="481" y="0" width="40" height="22" uuid="a993ddf3-1725-4f62-8bbc-0757504b2c0b"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Totais]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="401" y="0" width="54" height="23" uuid="57525223-ae57-4790-8437-6d2cc341be8c"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Unidade]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="11" y="0" width="280" height="20" uuid="baa8c94f-d3fe-49fd-8919-f30722243854"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomelongo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="335" y="0" width="40" height="20" uuid="ce2996ad-958a-4490-92c7-992324740025"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qnt}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="481" y="0" width="40" height="20" uuid="2d69ecb9-03b6-47d1-b5a4-c6e113238242"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="11" y="20" width="555" height="1" uuid="b4fe274d-d7a4-4999-b56c-d691f5a6758a"/>
+			</line>
+			<textField>
+				<reportElement x="402" y="0" width="38" height="20" uuid="2e6af07e-d4ef-45f0-9e29-fc8b48d3615b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{unid}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="24" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="31" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="223" y="2" width="32" height="22" uuid="6adec5f1-6e39-45da-a1d1-f911f4855563"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Totais]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement x="333" y="1" width="40" height="20" uuid="922043d9-3b1f-44a2-8645-2fbbd7fb24a8"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{somaqnt}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="481" y="2" width="54" height="20" uuid="c3fee596-edd1-4673-804f-27da1b3154ce"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{somatotal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

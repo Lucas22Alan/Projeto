@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relMovOsUsuario_sub" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="1d91a671-2af5-485f-aa56-f261ffed5af1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fun" class="java.lang.String"/>
+	<parameter name="inicio" class="java.util.Date"/>
+	<parameter name="final" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[select  tp.nomelongo ,
+        ti.cod_item,
+        sum(ti.qnt) as qnt,
+        sum(ti.total) as total
+ from tos_item ti
+ join tordem_servico ts on ti.id_os=ts.id_ordem
+ join tbarras tb on ti.cod_item=tb.codigo_barras
+ join tprodutos tp on tb.id_produto=tp.id
+ where ti.funcionario=$P{fun} and ts.data_entrada between $P{inicio} and $P{final}
+group by 1,2]]>
+	</queryString>
+	<field name="NOMELONGO" class="java.lang.String"/>
+	<field name="COD_ITEM" class="java.lang.String"/>
+	<field name="QNT" class="java.math.BigDecimal"/>
+	<field name="TOTAL" class="java.math.BigDecimal"/>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="17" y="19" width="56" height="20" uuid="0c556472-0f53-4bc5-8a19-f51e52cbce82"/>
+				<text><![CDATA[Codigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="287" y="19" width="63" height="20" uuid="0362e8b6-7a4c-4d70-b1b9-5293c0578d73"/>
+				<text><![CDATA[Quantidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="19" width="100" height="20" uuid="a1ad5680-6857-4aca-85d9-b511c13f731e"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="107" y="19" width="80" height="20" uuid="ce5fcb87-614d-43b2-9c48-0db2e5c3ee1a"/>
+				<text><![CDATA[Descricao]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="17" y="0" width="56" height="20" uuid="0885b248-b7c5-482c-8de6-b1243d73dfcd"/>
+				<textFieldExpression><![CDATA[$F{COD_ITEM}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="287" y="0" width="52" height="20" uuid="325e9a6d-56fb-4a03-8c35-6336cb841d1a"/>
+				<textFieldExpression><![CDATA[$F{QNT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="350" y="0" width="100" height="20" uuid="85950d73-0d09-40af-b11f-dbfa80af6a56"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{TOTAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="107" y="0" width="166" height="20" uuid="552e55cb-0620-4bea-bcca-f3e4ff3dfaf5"/>
+				<textFieldExpression><![CDATA[$F{NOMELONGO}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="17" y="21" width="433" height="2" uuid="eb51c898-c3a7-4630-8c09-5c8890605f38"/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

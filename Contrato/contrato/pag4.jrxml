@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pag4" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="7ae06b77-373e-41a9-88c5-1c6ae1ccf1e7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="134"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Esfhera\\adm\\Contrato\\contrato\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<field name="IDPARCEIRO" class="java.lang.Integer"/>
+	<field name="CNPJ" class="java.lang.String"/>
+	<field name="RAZAO_SOCIAL" class="java.lang.String"/>
+	<field name="FANTASIA" class="java.lang.String"/>
+	<field name="INSCRICAO_ESTADUAL" class="java.lang.String"/>
+	<field name="FONE" class="java.lang.String"/>
+	<field name="CELULAR" class="java.lang.String"/>
+	<field name="FONE_REFERENCIA" class="java.lang.String"/>
+	<field name="NOME_REFERENCIA" class="java.lang.String"/>
+	<field name="CODI_CARTAO" class="java.lang.Integer"/>
+	<field name="TIPO_PARCEIRO" class="java.lang.String"/>
+	<field name="TIPO_PESSOA" class="java.lang.String"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<field name="INS_MUNICIPAL" class="java.lang.String"/>
+	<field name="DATA_NASCIMENTO" class="java.lang.String"/>
+	<field name="SEXO" class="java.lang.String"/>
+	<field name="CR" class="java.lang.String"/>
+	<field name="DATA_FILIACAO" class="java.sql.Date"/>
+	<field name="FIM_FILIACAO" class="java.sql.Date"/>
+	<field name="ESTADO_CIVIL" class="java.lang.String"/>
+	<field name="PROFISSAO" class="java.lang.String"/>
+	<field name="NACIONALIDADE" class="java.lang.String"/>
+	<field name="NUM_FILIACAO" class="java.lang.String"/>
+	<field name="ORG_EXP_RG" class="java.lang.String"/>
+	<field name="ID" class="java.lang.Integer"/>
+	<field name="ID_PARCEIRO" class="java.lang.Integer"/>
+	<field name="RUA" class="java.lang.String"/>
+	<field name="BAIRRO" class="java.lang.String"/>
+	<field name="NUMERO" class="java.lang.String"/>
+	<field name="ESTADO" class="java.lang.String"/>
+	<field name="CIDADE" class="java.lang.String"/>
+	<field name="PAIS" class="java.lang.String"/>
+	<field name="CEP" class="java.lang.String"/>
+	<field name="TIPO_ENDERECO" class="java.lang.String"/>
+	<field name="COMPLEMENTO" class="java.lang.String"/>
+	<field name="ID_CONTRATO" class="java.lang.Integer"/>
+	<field name="DATA" class="java.sql.Date"/>
+	<field name="HORA" class="java.sql.Time"/>
+	<field name="VALOR" class="java.math.BigDecimal"/>
+	<field name="DIA_VENCIMENTO" class="java.lang.Integer"/>
+	<field name="QUANTIDADE_MESSES_FILIACAO" class="java.lang.Integer"/>
+	<field name="PRIMEIRA_PARCELA" class="java.sql.Date"/>
+	<field name="INICIO_FILIACAO" class="java.sql.Date"/>
+	<field name="VALOR_PLANO" class="java.math.BigDecimal"/>
+	<field name="TIPO_PLANO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="649" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="49" height="20" uuid="b911c580-ae1f-49cb-a2b6-105cde45996d"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[3.2.4. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="414" height="76" uuid="143bebb9-6d92-449e-800b-46bb57fdd932"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[                 Zelar pela limpeza da                               , depositando sempre o “lixo” nos seus devidos receptores, assim como orientar seus familiares e eventuais convidados para que assim também o façam, a fim de manter o local sempre limpo e agradável.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="136" y="499" width="89" height="20" uuid="ff02b8ee-e0fe-45c2-aaa7-c86c8bae1136"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="191" y="0" width="87" height="20" uuid="6493075b-881e-45c4-9068-dfe50c233f2a"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="87" width="49" height="20" uuid="437d643d-afee-46a6-bfb2-db569251a9fa"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[3.2.4. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="87" width="414" height="77" uuid="73650adc-f890-4d2c-87d8-0b64ef0ca97d"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[         No que concerne à prática do tiro, se adequar e/ou atender às exigências dos órgãos públicos competentes quanto aos exames, certificações, validações, revalidações, etc., de seu armamento, munições e apetrechos, sempre que necessário.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="187" width="140" height="20" uuid="557fa29f-e481-49d6-9242-8320478219d7"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Zelar pelo bom nome da ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="187" width="87" height="20" uuid="ebeba584-f522-470b-a300-88f82189c46a"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="225" width="40" height="20" uuid="5b44c802-5e7c-4acb-97ad-bf042abfedd2"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[3.3. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="225" width="100" height="20" uuid="1f9aec90-1e35-4f1c-a6d8-a9e2c7c465c9"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[São direitos da ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="134" y="225" width="97" height="20" uuid="8686fdf5-674c-4f07-a041-70a2b2f5e180"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="259" width="55" height="20" uuid="f9d9cd91-130e-427b-8ced-f535fc80d65a"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[3.3.1. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="259" width="414" height="44" uuid="6f439b9d-4b4d-4dfa-98f3-8a4f186aba8a"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[                 Receber em dia as mensalidades e o valor relativo à aquisição do pacote de serviços objeto do presente Instrumento.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="316" width="55" height="20" uuid="3886a1aa-da1b-47cb-9e55-7f34e9856197"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[3.3.2. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="316" width="414" height="63" uuid="f36fcbb7-6f11-4098-af2f-43f920d09053"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[                 Deliberar sobre a forma de uso e funcionamento de seu espaço físico e instalações, inclusive editando alterações e afixando-as em local visível para que todos possam ter acesso.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="399" width="55" height="20" uuid="9f9b1b9a-e2c6-45a4-9516-5dd99e00eb56"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[3.3.3. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="399" width="414" height="78" uuid="c1e5e06f-06ef-47f0-a3a0-378c79092e2a"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[            Designar e presidir reuniões, com a finalidade de orientar seus contratantes quanto a eventuais alterações na forma de uso de seu espaço físico e instalações, ou ainda, orientá-los individualmente quando tal providência se mostrar mais viável e favorável as partes.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="499" width="40" height="20" uuid="b14406ea-56af-4078-97f8-4ad32e2e6e8f"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[3.4. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="499" width="96" height="20" uuid="1d1efc7c-0cf4-4062-bb0e-87df102dac07"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[São deveres da ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="541" width="54" height="20" uuid="c78b5011-d8d1-4f8a-9178-6e11d4df9498"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[3.4.1. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="541" width="414" height="39" uuid="fff7346d-f531-4ecc-9166-c956fd79c8e6"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[             Manter o seu espaço físico e as suas instalações em perfeito estado de uso e funcionamento.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="598" width="51" height="20" uuid="49c081ad-ce8c-4227-aae3-de8f819625f2"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[3.4.2. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="53" y="598" width="361" height="20" uuid="a06a7ab0-1deb-4a96-a944-608fbedc3ff6"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Manter atualizada a lista dos                                     adimplentes. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="215" y="598" width="100" height="20" uuid="798fce4c-9d23-4177-aa2a-fe6d8d1ba645"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATANTES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="382" y="609" width="32" height="20" uuid="8938ca0a-894e-4a46-9f82-156649ee52b6"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[4]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="2" y="609" width="350" height="20" uuid="6e9b44c2-2971-41b6-a817-30883240c3d5"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pag5.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<summary>
+		<band height="20" splitType="Stretch"/>
+	</summary>
+</jasperReport>

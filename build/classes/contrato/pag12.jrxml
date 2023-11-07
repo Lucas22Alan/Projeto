@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pag12" language="groovy" pageWidth="611" pageHeight="791" columnWidth="611" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="4ce40e7e-e18c-4c62-bebb-07e46e187d63">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="177"/>
+	<queryString language="SQL">
+		<![CDATA[select * from tparceiros a
+join tenderecos b on a.idparceiro=b.id_parceiro
+join tcontrato c on a.idparceiro=c.id_parceIRO]]>
+	</queryString>
+	<field name="IDPARCEIRO" class="java.lang.Integer"/>
+	<field name="CNPJ" class="java.lang.String"/>
+	<field name="RAZAO_SOCIAL" class="java.lang.String"/>
+	<field name="FANTASIA" class="java.lang.String"/>
+	<field name="INSCRICAO_ESTADUAL" class="java.lang.String"/>
+	<field name="FONE" class="java.lang.String"/>
+	<field name="CELULAR" class="java.lang.String"/>
+	<field name="FONE_REFERENCIA" class="java.lang.String"/>
+	<field name="NOME_REFERENCIA" class="java.lang.String"/>
+	<field name="CODI_CARTAO" class="java.lang.Integer"/>
+	<field name="TIPO_PARCEIRO" class="java.lang.String"/>
+	<field name="TIPO_PESSOA" class="java.lang.String"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<field name="INS_MUNICIPAL" class="java.lang.String"/>
+	<field name="DATA_NASCIMENTO" class="java.lang.String"/>
+	<field name="SEXO" class="java.lang.String"/>
+	<field name="CR" class="java.lang.String"/>
+	<field name="DATA_FILIACAO" class="java.sql.Date"/>
+	<field name="FIM_FILIACAO" class="java.sql.Date"/>
+	<field name="ESTADO_CIVIL" class="java.lang.String"/>
+	<field name="PROFISSAO" class="java.lang.String"/>
+	<field name="NACIONALIDADE" class="java.lang.String"/>
+	<field name="NUM_FILIACAO" class="java.lang.String"/>
+	<field name="ORG_EXP_RG" class="java.lang.String"/>
+	<field name="ID" class="java.lang.Integer"/>
+	<field name="ID_PARCEIRO" class="java.lang.Integer"/>
+	<field name="RUA" class="java.lang.String"/>
+	<field name="BAIRRO" class="java.lang.String"/>
+	<field name="NUMERO" class="java.lang.String"/>
+	<field name="ESTADO" class="java.lang.String"/>
+	<field name="CIDADE" class="java.lang.String"/>
+	<field name="PAIS" class="java.lang.String"/>
+	<field name="CEP" class="java.lang.String"/>
+	<field name="TIPO_ENDERECO" class="java.lang.String"/>
+	<field name="COMPLEMENTO" class="java.lang.String"/>
+	<field name="ID_CONTRATO" class="java.lang.Integer"/>
+	<field name="DATA" class="java.sql.Date"/>
+	<field name="HORA" class="java.sql.Time"/>
+	<field name="VALOR" class="java.math.BigDecimal"/>
+	<field name="DIA_VENCIMENTO" class="java.lang.Integer"/>
+	<field name="QUANTIDADE_MESSES_FILIACAO" class="java.lang.Integer"/>
+	<field name="PRIMEIRA_PARCELA" class="java.sql.Date"/>
+	<field name="INICIO_FILIACAO" class="java.sql.Date"/>
+	<field name="VALOR_PLANO" class="java.math.BigDecimal"/>
+	<field name="TIPO_PLANO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="650" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="470" height="84" uuid="9fadf4e0-e965-4373-8a33-3829caa661ff"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[E, por estarem assim justas e contratadas, as Partes aceitam e assinam o presente instrumento em 02 (duas) vias, de igual teor e forma, para um só fim, na presença das testemunhas abaixo identificadas, que a tudo presenciaram.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="106" y="158" width="262" height="20" uuid="9fefb03a-c68c-4025-a93e-768194196466"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Guarapuava – PR, 27 de Agosto de 2018.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="264" width="470" height="51" uuid="4c3420df-83ee-4f1a-85e1-be17a1d2c11b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[_________________________________________________
+SANTO HUBERTO ATIVIDADES DE TIRO LTDA – ME
+CONTRATADA
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="384" width="470" height="67" uuid="6d298222-0133-4c72-a207-70f6deca7041"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[_________________________________________________
+
+Davi De Aguiar Andrade
+CPF 578.053.429-20
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="466" width="100" height="20" uuid="a78e34d2-40cf-4047-b911-9ea112289007"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Testemunhas:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="545" width="234" height="105" uuid="0eb1f2ad-2e07-4cc7-a98a-bba20f1d932a"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[1)._________________________
+Nome :
+CPF :
+RG:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="545" width="220" height="105" uuid="57c7e3f8-35e0-465f-aec0-a3fef0d47a14"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[2)._________________________
+Nome :
+CPF :
+RG:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

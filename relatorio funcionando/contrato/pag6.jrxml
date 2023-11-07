@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pag6" language="groovy" pageWidth="611" pageHeight="791" columnWidth="611" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="07fa0516-5d83-4d58-ac95-efecf4e7ac08">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="176"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Esfhera\\adm\\Contrato\\contrato\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[select * from tparceiros a
+join tenderecos b on a.idparceiro=b.id_parceiro
+join tcontrato c on a.idparceiro=c.id_parceIRO]]>
+	</queryString>
+	<field name="IDPARCEIRO" class="java.lang.Integer"/>
+	<field name="CNPJ" class="java.lang.String"/>
+	<field name="RAZAO_SOCIAL" class="java.lang.String"/>
+	<field name="FANTASIA" class="java.lang.String"/>
+	<field name="INSCRICAO_ESTADUAL" class="java.lang.String"/>
+	<field name="FONE" class="java.lang.String"/>
+	<field name="CELULAR" class="java.lang.String"/>
+	<field name="FONE_REFERENCIA" class="java.lang.String"/>
+	<field name="NOME_REFERENCIA" class="java.lang.String"/>
+	<field name="CODI_CARTAO" class="java.lang.Integer"/>
+	<field name="TIPO_PARCEIRO" class="java.lang.String"/>
+	<field name="TIPO_PESSOA" class="java.lang.String"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<field name="INS_MUNICIPAL" class="java.lang.String"/>
+	<field name="DATA_NASCIMENTO" class="java.lang.String"/>
+	<field name="SEXO" class="java.lang.String"/>
+	<field name="CR" class="java.lang.String"/>
+	<field name="DATA_FILIACAO" class="java.sql.Date"/>
+	<field name="FIM_FILIACAO" class="java.sql.Date"/>
+	<field name="ESTADO_CIVIL" class="java.lang.String"/>
+	<field name="PROFISSAO" class="java.lang.String"/>
+	<field name="NACIONALIDADE" class="java.lang.String"/>
+	<field name="NUM_FILIACAO" class="java.lang.String"/>
+	<field name="ORG_EXP_RG" class="java.lang.String"/>
+	<field name="ID" class="java.lang.Integer"/>
+	<field name="ID_PARCEIRO" class="java.lang.Integer"/>
+	<field name="RUA" class="java.lang.String"/>
+	<field name="BAIRRO" class="java.lang.String"/>
+	<field name="NUMERO" class="java.lang.String"/>
+	<field name="ESTADO" class="java.lang.String"/>
+	<field name="CIDADE" class="java.lang.String"/>
+	<field name="PAIS" class="java.lang.String"/>
+	<field name="CEP" class="java.lang.String"/>
+	<field name="TIPO_ENDERECO" class="java.lang.String"/>
+	<field name="COMPLEMENTO" class="java.lang.String"/>
+	<field name="ID_CONTRATO" class="java.lang.Integer"/>
+	<field name="DATA" class="java.sql.Date"/>
+	<field name="HORA" class="java.sql.Time"/>
+	<field name="VALOR" class="java.math.BigDecimal"/>
+	<field name="DIA_VENCIMENTO" class="java.lang.Integer"/>
+	<field name="QUANTIDADE_MESSES_FILIACAO" class="java.lang.Integer"/>
+	<field name="PRIMEIRA_PARCELA" class="java.sql.Date"/>
+	<field name="INICIO_FILIACAO" class="java.sql.Date"/>
+	<field name="VALOR_PLANO" class="java.math.BigDecimal"/>
+	<field name="TIPO_PLANO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="649" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="470" height="84" uuid="ac93b025-d435-4425-804e-71d84003b179"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[salão de encontros, espaço gourmet, banheiros, enfim, toda a área destinada ao lazer recreativo, sendo, no entanto, vedada expressamente a utilização das áreas destinadas à prática do tiro esportivo e recreativo, sujeitando-se o infrator a retirar-se do local imediatamente após solicitado.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="100" width="35" height="20" uuid="f1dd703b-ac68-4f57-8409-c71bdf64aa39"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[4.3. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="100" width="470" height="87" uuid="01ebb7fb-2b69-448d-803e-18274d8f4ead"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[         Este Instrumento não obriga a                            a realizar curso e/ou ensino de manuseio de arma de fogo, sendo que havendo interesse na realização de tais, deverá ser realizado contrato próprio, com obrigações e direitos específicos, observando-se, em especial, a legislação que regula a matéria.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="204" y="100" width="85" height="20" uuid="24989c88-c556-4c98-94ca-3bfe8e4b4a6c"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="187" width="35" height="20" uuid="85978869-d2db-41e8-83ce-04e22a5a44e9"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[4.4. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="187" width="470" height="80" uuid="6b8fbe56-b2a2-42f6-8b5e-734d8f187e4f"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[        Fica terminantemente proibido o uso de qualquer tipo de bebida alcoólica nas áreas destinadas à prática do tiro esportivo e recreativo, da mesma forma que, fica proibido ao                                 que tiver ingerido bebida alcoólica realizar atividades de tiro e/ou manuseio de armamento e munição nas dependências da ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="373" y="245" width="97" height="20" uuid="643337b4-80c0-474f-a018-50a8712eb07b"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA .]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="226" width="101" height="20" uuid="68ad0446-c2f4-47a1-983a-710496d647cc"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="280" width="33" height="20" uuid="a7cadd45-c55d-4670-8689-cf1eb391d703"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[4.5. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="280" width="470" height="148" uuid="5c4dcba9-2a0d-40d6-91b7-3e6155f5a981"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[        Quando as áreas destinadas à prática do tiro esportivo e recreativo estiverem sendo utilizadas para a finalidade a que se destinam – prática de tiro –, fica terminantemente proibida a entrada e/ou permanência de menor de idade em tais locais, respondendo os seus tutores e representantes legais pela inobservância de tal obrigação, podendo, em caso de reiteração de tal conduta inadequada ser rescindido o Contrato daquele que era responsável pela presença do menor nas dependências da ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="397" width="86" height="20" uuid="68d7bce5-f720-43bf-a135-4bf70a8195d4"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="397" width="156" height="20" uuid="cf272276-4836-4ca3-89f7-3dcd35e2cc58"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[naquele momento.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="442" width="38" height="20" uuid="c6d1108f-2003-4149-9904-04b7f17d5ae9"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[4.6. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="442" width="470" height="64" isRemoveLineWhenBlank="true" uuid="a5dafb6c-6b83-4a7f-bf95-69e152d64727"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[         A                      não se responsabiliza pela demora dos órgãos públicos competentes na emissão da documentação necessária para aquisição e utilização de armamento, munição e/ou apetrechos destinados à prática do tiro.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="56" y="442" width="86" height="20" uuid="0d04b903-13a5-423e-84a0-71ca4931634c"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="520" width="43" height="20" uuid="5fae9687-9518-4bc4-9321-3b26d7f9cd4e"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[4.7. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="520" width="469" height="92" uuid="da79b459-a65d-4243-9396-eefe724281d1"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[           A demora na emissão da documentação necessária para aquisição e utilização de armamento, munição e/ou apetrechos destinados à prática do tiro não dará, em hipótese alguma, direito a suspensão do pagamento do valor relativo à aderência a tal contrato ou as suas mensalidades.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="444" y="629" width="26" height="20" uuid="96c5ab92-c061-4b02-b8a6-eb692f1cdf06"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[6]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="2" y="622" width="329" height="27" uuid="4c6276a0-fe40-4f87-aee0-57edf4a104e6"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pag7.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

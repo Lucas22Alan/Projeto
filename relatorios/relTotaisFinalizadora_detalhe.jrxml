@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LocacoesPorClientes_Locacoes" pageWidth="468" pageHeight="802" columnWidth="468" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="d63513f4-f67c-4984-813f-d7c2e705d445">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="datainicio" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[select  tf.descricao as nomeFinalizadora,
+sum(iif(ta.valor_troco is null, 0.00,ta.valor_recebido-ta.valor_troco) + iif(tp.valor is null,0.00,tp.valor-tp.troco)) as valorFinalizadora,
+        tf.taxa_adm as taxa,
+        sum(iif(ta.valor_troco is null, 0.00,ta.valor_recebido-ta.valor_troco) + iif(tp.valor is null,0.00,tp.valor-tp.troco))-sum(iif(ta.valor_troco is null, 0.00,ta.valor_recebido-ta.valor_troco) + iif(tp.valor is null,0.00,tp.valor-tp.troco))*tf.taxa_adm/100 as saldo
+                         from tmovimento tm
+                        left join tpagamentos_adm ta on ta.id_mov=tm.id_mov
+                        left join tpagamentos_pdv tp on tp.id_movimento=tm.id_mov
+                        join tfinalizadora tf on ta.id_finalizadora=tf.id_finalizdora or tp.id_finalizadora=tf.id_finalizdora
+                        where (tm.id_tipo=1 or tm.id_tipo=2 or tm.id_tipo=5) and tm.estado=2 and (ta.estado=2 or tp.estado=2) and tm.dat_finalizacao between
+                        $P{datainicio} and $P{datainicio}
+                        group by 1,3]]>
+	</queryString>
+	<field name="NOMEFINALIZADORA" class="java.lang.String"/>
+	<field name="VALORFINALIZADORA" class="java.math.BigDecimal"/>
+	<field name="TAXA" class="java.math.BigDecimal"/>
+	<field name="SALDO" class="java.math.BigDecimal"/>
+	<columnHeader>
+		<band height="19">
+			<line>
+				<reportElement x="10" y="18" width="450" height="1" uuid="8d546583-3fc9-4cc5-8f90-d6b824030a27"/>
+			</line>
+			<staticText>
+				<reportElement x="21" y="3" width="100" height="12" uuid="9cf4f956-f288-4d7a-a7ef-079690fdac76"/>
+				<textElement>
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Finalizadora]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="137" y="3" width="100" height="13" uuid="eb61d448-14d1-46ba-a1a0-ee29dc575685"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VALOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="3" width="72" height="15" uuid="15a97852-bc2e-433a-a53c-452b10c46d9d"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Taxa Cartão %]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="389" y="3" width="54" height="12" uuid="16e174e1-e760-4b35-8aec-b65e3205400d"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SALDO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<textField pattern="#,##0.00">
+				<reportElement x="137" y="0" width="100" height="15" uuid="87f80ab2-d07f-4e7f-a27d-5456d077f4fc"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VALORFINALIZADORA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="21" y="1" width="100" height="15" uuid="1eef84d1-a01b-434f-9bfc-76961aeae429"/>
+				<textElement>
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOMEFINALIZADORA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="390" y="0" width="53" height="15" uuid="4ecd0a38-b64f-4039-a2d1-1324f0f747d1"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SALDO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="276" y="1" width="72" height="15" uuid="bff4a3b2-ad6f-4c9f-8cb7-3805906e60f1"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TAXA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

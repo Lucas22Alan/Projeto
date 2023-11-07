@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reltTitulos" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3e99cf7a-bff9-4ec6-aebe-4bd691319e19">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="dat_inicio" class="java.lang.String"/>
+	<parameter name="dat_fim" class="java.lang.String"/>
+	<parameter name="totalgeral" class="java.lang.String"/>
+	<parameter name="RAZAO_SOCIAL" class="java.lang.String"/>
+	<parameter name="RUA" class="java.lang.String"/>
+	<parameter name="NUMERO" class="java.lang.String"/>
+	<parameter name="BAIRRO" class="java.lang.String"/>
+	<parameter name="CEP" class="java.lang.String"/>
+	<parameter name="CIDADE" class="java.lang.String"/>
+	<parameter name="UF" class="java.lang.String"/>
+	<parameter name="FONE" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select b.razao_social, a.* from tcontas_a_receber_pagar a
+join tparceiros b on a.id_parceiro=b.idparceiro]]>
+	</queryString>
+	<field name="RAZAO_SOCIAL" class="java.lang.String"/>
+	<field name="VALOR" class="java.math.BigDecimal"/>
+	<field name="SITDOC" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="122" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="0" y="0" width="555" height="117" uuid="711bb78d-b89a-437b-acf0-4f6dd88969b8"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="6" y="93" width="273" height="24" uuid="5b0ea83c-0728-4987-8c42-677557543895"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório de Contas a Receber]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="346" y="98" width="39" height="17" uuid="a459da0c-7b4a-4af8-b4f1-d668b03cf438"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Data :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="463" y="97" width="10" height="20" uuid="81f4a72c-e6b9-4bfc-91d6-07397ba0647d"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="389" y="97" width="74" height="20" uuid="a2180670-faec-4311-91d2-97ddc39680f5"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dat_inicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="473" y="97" width="80" height="20" uuid="95878552-e07c-41fe-8748-67c8787dae11"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dat_fim}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="7" y="4" width="88" height="88" uuid="f10ceb1f-4f5b-4ed7-a3f1-1ac587eb3192"/>
+				<imageExpression><![CDATA["C:\\Esfhera\\adm\\imagens\\logo.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="180" y="2" width="275" height="20" uuid="34651ba8-649b-4376-9a00-ed6c1c27e594"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{RAZAO_SOCIAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="223" y="22" width="139" height="20" uuid="af215bd9-a65f-4fd2-b22b-33f083497d6b"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{RUA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="395" y="22" width="30" height="20" uuid="dc34773d-70a1-49ba-be82-5f86ce261cb9"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{NUMERO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="223" y="42" width="121" height="20" uuid="cb6a5f49-a3da-4024-a29c-94c795eda6dc"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{BAIRRO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="389" y="42" width="70" height="20" uuid="5a462116-33a3-4dd3-8b76-393d4b50cb02"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CEP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="194" y="62" width="93" height="20" uuid="3d37300b-ff7e-456f-9f48-51a622889ad4"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CIDADE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="305" y="62" width="31" height="20" uuid="fe86b703-e85b-474f-ab2d-3cf0363029f0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{UF}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="62" width="101" height="20" uuid="dd6cb158-7e16-4848-a1b0-f1ee28674df7"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FONE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="375" y="22" width="30" height="20" uuid="8ce986a4-9133-438b-ac3b-253e298b377c"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nº :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="42" width="61" height="20" uuid="3874d352-5ac7-4654-ad10-dd4c39740786"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BAIRRO :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="363" y="42" width="43" height="20" uuid="bbf04290-13a4-434a-b7d2-858cc22ab934"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CEP :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="62" width="30" height="20" uuid="be2981b1-5f65-4e34-8b06-4747166c87ca"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UF :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="134" y="62" width="61" height="20" uuid="4df8af29-6d5f-42e5-9d24-97bc28a937dc"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CIDADE :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="354" y="62" width="43" height="20" uuid="15351075-fe05-4bc5-8c49-910f92b39627"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FONE :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="22" width="43" height="20" uuid="c9e3dcb6-ca60-49be-9f66-5ddad75fe2ac"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RUA :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="134" y="92" width="367" height="1" uuid="404ff723-97f9-4373-9ab4-ae831d3b5b0a"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="29" splitType="Stretch">
+			<staticText>
+				<reportElement x="12" y="8" width="57" height="20" uuid="d03c0e6d-6893-45a4-86aa-5983ae43c079"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="9" width="47" height="20" uuid="d3989805-8ea6-4a2c-bf7c-e6cc364309ac"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Valor R$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="459" y="9" width="48" height="20" uuid="389aea3e-dca0-45d8-9cff-999ca4bb8e30"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Situação]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="12" y="0" width="223" height="20" uuid="2a365b04-1694-4ed6-a72d-c33dafdb343f"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RAZAO_SOCIAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="298" y="2" width="67" height="20" uuid="e8785827-013a-4ef6-b8ce-7aa8f86fd873"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VALOR}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="22" width="555" height="1" uuid="d80af368-c025-4804-996b-a9d8abc8a207"/>
+			</line>
+			<textField>
+				<reportElement x="459" y="3" width="48" height="20" uuid="e6591c8f-2c5b-4259-8a54-8986eaad3631"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SITDOC}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="6" y="33" width="281" height="20" uuid="faf5bfb3-4a51-40fc-992d-c7ec207e321d"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Esfhera Desenvolvimento de Software- (42)98885-0711]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="33" splitType="Stretch">
+			<line>
+				<reportElement x="3" y="0" width="552" height="1" uuid="deed1b0f-5dd5-46a0-a74e-e5cc62bbcfbf"/>
+			</line>
+			<staticText>
+				<reportElement x="12" y="5" width="57" height="20" uuid="748d9886-0d9d-444f-af98-69bab4523748"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[Totais]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="213" y="5" width="17" height="20" uuid="f0c6f50f-a6f1-48a5-8aab-a1ab31b0aa59"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[R$]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="251" y="5" width="100" height="20" uuid="88a31454-8ac8-4408-b857-73a81fb0617c"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalgeral}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="321fdf35-02f7-4b7e-af87-2c0ee25bd772">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="cnpj" class="java.lang.String"/>
+	<field name="razao" class="java.lang.String"/>
+	<pageHeader>
+		<band height="213" splitType="Stretch">
+			<staticText>
+				<reportElement x="94" y="127" width="328" height="76" uuid="95c5880c-2d1f-45d0-a131-102dbb49b7f7"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[O SANTO HUBERTO ATIVIDADES DE TIRO LTDA, inscrito no CNPJ sob o nº 26.574.663/0001-03 e Certificado de Registro nº 135975, com sede na Est. Para pedreira Trombini, s/n, CEP 85.100-000 Guarapuava Paraná DECLARA, conforme os Art 79 e 92 da Portaria nº 051-COLOG/2015, junto ao Exército Brasileiro, para fins de revalidação de CR, aquisição de arma de fogo e/ou munição ou insumos.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="189" y="69" width="161" height="20" uuid="62944a56-6af3-4e78-ae93-aa139defe5b3"/>
+				<textElement>
+					<font isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[DECLARAÇÃO DE RANKING]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="160" splitType="Stretch">
+			<staticText>
+				<reportElement x="94" y="10" width="20" height="16" uuid="ec050f43-9d28-4c23-8ee4-6d2074fa5265"/>
+				<text><![CDATA[Que]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="94" y="86" width="328" height="56" uuid="c256f5d6-5ce0-45af-afd1-d42e10ea26a3"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[O SANTO HUBERTO ATIVIDADES DE TIRO LTDA dispõe dos registros que comprovam o nível do referido atirador desportivo.
+
+Esta declaração tem validade de 90 noventa dias.
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="257" y="10" width="63" height="16" uuid="58112c88-e0c0-4d3e-9f57-451a0e8c4dea"/>
+				<textFieldExpression><![CDATA[$F{cnpj}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="10" width="100" height="16" uuid="d7469c71-4513-4ce7-99f4-375953c0a9af"/>
+				<textFieldExpression><![CDATA[$F{razao}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="220" y="10" width="37" height="16" uuid="a0f0aad8-387d-47b9-9415-5828f7e6402e"/>
+				<text><![CDATA[, CR nº]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="322" y="10" width="100" height="16" uuid="b551c634-f840-4338-bf98-24c915840b5b"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[,            regularmente ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="94" y="26" width="328" height="38" uuid="e3310c4b-118e-46c1-98ec-fc1b654e030f"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[inscrito nesta entidade sob nº 004, datado de 10/02/2016; e que participou dos eventos previstos para ser considerado atirador desportivo do nível I (um), conforme previsto no Art 79 da Portaria nº 051-COLOG/2015.]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="151" splitType="Stretch">
+			<staticText>
+				<reportElement x="214" y="116" width="135" height="14" uuid="48998737-b06c-48f1-a19f-15cf219ef946"/>
+				<text><![CDATA[FELIPE JOSE PEREIRA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="156" y="101" width="229" height="15" uuid="afb04144-9974-45f4-a2bf-3dd5abbb2cd8"/>
+				<text><![CDATA[______________________________________
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="241" y="136" width="68" height="13" uuid="4ebb6af1-88af-4127-8fa2-6a4216d4370b"/>
+				<text><![CDATA[PRESIDENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="189" y="15" width="186" height="20" uuid="d5657522-5ae4-42df-b7e7-c98406a76ffd"/>
+				<text><![CDATA[Guarapuava, 01 de Fevereiro de 2018.]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

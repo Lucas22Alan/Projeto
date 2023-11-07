@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relVendasParceiro_sub" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="1aa98b1a-e85f-4ae0-a189-d195ae3d27c8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="parceiro" class="java.lang.String"/>
+	<parameter name="datainicio" class="java.util.Date"/>
+	<parameter name="datafinal" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[select tt.nomelongo,sum(ti.quantidade) as qnt, sum(ti.desconto) as desconto,
+sum(ti.total) as total from  titens ti
+join tmovimento tm on tm.id_mov=ti.id_mov
+join tbarras tb on ti.codi_barra=tb.baixa_barra
+join tprodutos tt on tt.id=tb.id_produto
+left join tparceiros tp on tm.id_parceiro=tp.idparceiro
+where tm.id_parceiro=$P{parceiro} and tm.dat_finalizacao between $P{datainicio}
+and $P{datafinal} and ti.estado=2 and (tm.id_tipo=1 or tm.id_tipo=2 or tm.id_tipo=5 or tm.id_tipo=6) and tm.estado=2
+group by 1]]>
+	</queryString>
+	<field name="NOMELONGO" class="java.lang.String"/>
+	<field name="QNT" class="java.lang.Double"/>
+	<field name="DESCONTO" class="java.math.BigDecimal"/>
+	<field name="TOTAL" class="java.math.BigDecimal"/>
+	<columnHeader>
+		<band height="28" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="18" y="5" width="489" height="20" uuid="a32a632b-d72b-4a81-92d0-5d3aff52f79f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="404" y="5" width="100" height="20" uuid="9cf67edd-dcea-4d36-bbf2-6ee00dfda967"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="278" y="8" width="100" height="20" uuid="358cfbf4-2b50-450a-8f74-58fb37315c61"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[DESCONTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="163" y="8" width="100" height="20" uuid="be3bcde0-548d-4fa8-9537-59d95a93d124"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Quantidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="27" y="8" width="100" height="20" uuid="8ea7bada-70a0-426e-8bff-c61b53b79fd1"/>
+				<text><![CDATA[Descricao Produto]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="27" y="5" width="169" height="20" uuid="aab4c0e1-da55-4078-a3e8-751cd39859fd"/>
+				<textFieldExpression><![CDATA[$F{NOMELONGO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="196" y="5" width="67" height="20" uuid="225c3ffc-9193-4394-b0d1-2fec736fea81"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{QNT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="278" y="5" width="100" height="20" uuid="8e7498cb-325e-4f2c-b203-f69fa4ae3cab"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{DESCONTO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="405" y="5" width="100" height="20" uuid="7b3da474-c6e6-4bb6-8dc6-b470561927c5"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{TOTAL}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="18" y="23" width="487" height="1" uuid="fa527274-f7c5-4c99-a25c-1588d2430f30"/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

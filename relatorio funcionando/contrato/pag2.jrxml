@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pag2" pageWidth="611" pageHeight="791" columnWidth="611" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="17e5938d-a0c1-4c0f-8ebf-a9929f9e42fe">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="127"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Esfhera\\adm\\Contrato\\contrato\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from tparceiros a
+join tenderecos b on a.idparceiro=b.id_parceiro
+join tcontrato c on a.idparceiro=c.id_parceiro]]>
+	</queryString>
+	<field name="IDPARCEIRO" class="java.lang.Integer"/>
+	<field name="CNPJ" class="java.lang.String"/>
+	<field name="RAZAO_SOCIAL" class="java.lang.String"/>
+	<field name="FANTASIA" class="java.lang.String"/>
+	<field name="INSCRICAO_ESTADUAL" class="java.lang.String"/>
+	<field name="FONE" class="java.lang.String"/>
+	<field name="CELULAR" class="java.lang.String"/>
+	<field name="FONE_REFERENCIA" class="java.lang.String"/>
+	<field name="NOME_REFERENCIA" class="java.lang.String"/>
+	<field name="CODI_CARTAO" class="java.lang.Integer"/>
+	<field name="TIPO_PARCEIRO" class="java.lang.String"/>
+	<field name="TIPO_PESSOA" class="java.lang.String"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<field name="INS_MUNICIPAL" class="java.lang.String"/>
+	<field name="DATA_NASCIMENTO" class="java.lang.String"/>
+	<field name="SEXO" class="java.lang.String"/>
+	<field name="CR" class="java.lang.String"/>
+	<field name="DATA_FILIACAO" class="java.sql.Date"/>
+	<field name="FIM_FILIACAO" class="java.sql.Date"/>
+	<field name="ESTADO_CIVIL" class="java.lang.String"/>
+	<field name="PROFISSAO" class="java.lang.String"/>
+	<field name="NACIONALIDADE" class="java.lang.String"/>
+	<field name="NUM_FILIACAO" class="java.lang.String"/>
+	<field name="ORG_EXP_RG" class="java.lang.String"/>
+	<field name="ID" class="java.lang.Integer"/>
+	<field name="ID_PARCEIRO" class="java.lang.Integer"/>
+	<field name="RUA" class="java.lang.String"/>
+	<field name="BAIRRO" class="java.lang.String"/>
+	<field name="NUMERO" class="java.lang.String"/>
+	<field name="ESTADO" class="java.lang.String"/>
+	<field name="CIDADE" class="java.lang.String"/>
+	<field name="PAIS" class="java.lang.String"/>
+	<field name="CEP" class="java.lang.String"/>
+	<field name="TIPO_ENDERECO" class="java.lang.String"/>
+	<field name="COMPLEMENTO" class="java.lang.String"/>
+	<field name="ID_CONTRATO" class="java.lang.Integer"/>
+	<field name="DATA" class="java.sql.Date"/>
+	<field name="HORA" class="java.sql.Time"/>
+	<field name="VALOR" class="java.math.BigDecimal"/>
+	<field name="DIA_VENCIMENTO" class="java.lang.Integer"/>
+	<field name="QUANTIDADE_MESSES_FILIACAO" class="java.lang.Integer"/>
+	<field name="PRIMEIRA_PARCELA" class="java.sql.Date"/>
+	<field name="INICIO_FILIACAO" class="java.sql.Date"/>
+	<field name="VALOR_PLANO" class="java.math.BigDecimal"/>
+	<field name="TIPO_PLANO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="600" splitType="Stretch">
+			<staticText>
+				<reportElement x="35" y="0" width="38" height="20" uuid="55fc8880-8b1d-4ac7-a9f6-70be06737e60"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="0" width="109" height="20" uuid="040597ff-ea15-419d-914a-451f9ea4e2b7"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Arial" size="12" isBold="true" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="134" y="0" width="136" height="20" uuid="a9750f1b-0ff0-4406-91de-9cd742faebbb"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[disponibilizará a(o) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="246" y="1" width="124" height="20" uuid="b6e04701-942d-4713-86d9-61927b16ffde"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[CONTRATANTE,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="346" y="0" width="124" height="20" uuid="0004c260-d080-4580-a018-37c4c03d2b11"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[ por tempo ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="470" height="99" uuid="5cbb6d27-71ee-44b3-82f2-169a6f542406"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[indeterminado, o uso de seu espaço físico com todas as suas instalações, o que corresponde a salão de encontros, banheiros, cabines de tiro e alvos fixos, para fins de atividades de recreação e lazer ligadas ao esporte de tiro prático, mediante o pagamento da aquisição do pacote de serviços e mensalidade, conforme ajustado adiante. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="143" width="469" height="40" uuid="ccad5229-b8c7-40a1-9d6d-8719e4e15dae"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA SEGUNDA – DO VALOR DE AQUISIÇÃO DO PACOTE DE SERVIÇOS E DA MENSALIDADE. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="219" width="34" height="20" uuid="ad4b2f3b-3125-41f7-9fb5-95bb7ef515c4"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[2.1. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="35" y="219" width="311" height="20" uuid="bd1effbe-be8c-4a7f-841e-b56b98e8871d"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Pela aquisição do pacote de serviços fornecidos pela ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="346" y="219" width="124" height="20" uuid="a1975d2c-5ef7-43bf-9b89-7033aa789522"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="239" width="469" height="20" uuid="937ccec0-1b10-4dfe-a92c-b19f37754e4b"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[correspondente à cessão do seu espaço físico e suas instalações, outrora ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="259" width="111" height="20" uuid="39c3bbf4-2d95-4349-99fd-5caa522453e0"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[especificadas, a(o) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="112" y="259" width="100" height="20" uuid="d022cd3d-bee8-4fab-b01f-f4799a0cbe34"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="212" y="259" width="58" height="20" uuid="b6651c12-c7bd-4911-b181-69bc27c4a861"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[pagará a ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="259" width="89" height="20" uuid="9517dcbb-99c8-4c2f-93e2-5a8115faec1a"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="359" y="259" width="100" height="20" uuid="bf287069-107d-4e5a-879c-a19327ada3fd"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[a quantia de R$ ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="279" width="157" height="20" uuid="46887407-e65d-4889-a516-69c287ee08c3"/>
+				<textFieldExpression><![CDATA[$F{VALOR_PLANO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="324" width="34" height="20" uuid="39b2b6cd-8850-46db-ae8a-054ea14023e3"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[2.2. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="35" y="324" width="32" height="20" uuid="4e49a121-f5c0-4fde-a10f-3a90ecb66d30"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[O(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="64" y="324" width="100" height="20" uuid="3f877c64-22dd-4a9b-a089-a589b03f13eb"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[CONTRATANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="156" y="324" width="150" height="20" uuid="848431e0-0b07-4696-b392-34fb0d8c5981"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[se compromete a pagar a ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="302" y="324" width="89" height="20" uuid="c2078473-4399-4075-b635-b46f31d67cb5"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="385" y="324" width="100" height="20" uuid="31acd372-eb90-4215-ab0a-a636c858ddf1"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[mensalidade no]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="344" width="112" height="20" uuid="81985dd9-affc-4a98-b761-7df2799498ca"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[valor equivalente a ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="112" y="344" width="52" height="20" uuid="39cbadd9-05fb-4247-b06a-fd945217e47b"/>
+				<textElement>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VALOR}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="164" y="344" width="306" height="20" uuid="0683cda2-5429-4667-ac51-26b781589d99"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[, devendo a mensalidade do corrente mês ser paga de ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="364" width="469" height="51" uuid="ce5c3811-b82e-40c7-9c2d-1007dc2ab15f"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[forma proporcional, e as mensalidades dos meses subsequentes deverão ser adimplidas até o quinto dia útil de cada mês.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="432" width="34" height="20" uuid="2743982b-1eef-4309-ba9b-92b64415db08"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[2.1. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="432" width="32" height="20" uuid="05e98960-1f0d-4a91-b9a4-aeebf7724a30"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[O(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="59" y="432" width="100" height="20" uuid="ce3546bc-ee20-4a16-8216-6404c8226270"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[CONTRATANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="159" y="432" width="311" height="20" uuid="916e7277-ff10-416c-9acc-68ef85e32e12"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[está ciente de que os valores (tanto da aquisição dos ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="452" width="469" height="56" uuid="04038de8-8026-4a86-a84f-53145708e57f"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[serviços ora contratados quanto da mensalidade), deverão ser adimplidos mediante transação bancária                         , na Conta Corrente nº. 13.142-3, da agência nº. 4368, do Banco do Sicoob, de titularidade da ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="112" y="471" width="100" height="20" uuid="f0d7302b-9470-411f-b0c8-f313f07e2a1f"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[identificada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="254" y="491" width="89" height="17" uuid="c44dd5e3-d5e9-439e-b9e2-7a9d67d2dc3a"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="540" width="306" height="20" uuid="d1ddf997-2397-4bb5-b30f-de42ee886e7b"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA TERCEIRA – DOS DIREITOS E DEVERES.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="560" width="34" height="20" uuid="d493ff4e-8be2-4603-b650-7c76644c179b"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[3.1. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="35" y="560" width="109" height="20" uuid="b747ad15-c8b1-49e1-a686-f930842408cf"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[São direitos do(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="146" y="560" width="100" height="20" uuid="18e8ca76-3627-4913-91e1-024f9595d531"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[CONTRATANTE :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="448" y="580" width="11" height="20" uuid="2afca726-623c-4e7c-89d2-afffd0cfaa8b"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="1" width="34" height="20" uuid="4204fc46-45e7-498f-8028-57bbade1c2a4"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[1.3. – ]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="458" height="24" uuid="452d9b2d-a0f9-49af-9d4f-9cd27ba705a3"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pag3.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

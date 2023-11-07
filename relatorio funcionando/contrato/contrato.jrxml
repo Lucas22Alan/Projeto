@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contrato" language="groovy" pageWidth="611" pageHeight="791" columnWidth="470" leftMargin="85" rightMargin="56" topMargin="85" bottomMargin="56" isFloatColumnFooter="true" uuid="987256e6-f79e-44bb-94e0-68c7ff2e096e">
+	<property name="ireport.zoom" value="1.1000000000000005"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="389"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Esfhera\\adm\\Contrato\\contrato\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from tparceiros a
+join tenderecos b on a.idparceiro=b.id_parceiro]]>
+	</queryString>
+	<field name="IDPARCEIRO" class="java.lang.Integer"/>
+	<field name="CNPJ" class="java.lang.String"/>
+	<field name="RAZAO_SOCIAL" class="java.lang.String"/>
+	<field name="FANTASIA" class="java.lang.String"/>
+	<field name="INSCRICAO_ESTADUAL" class="java.lang.String"/>
+	<field name="FONE" class="java.lang.String"/>
+	<field name="CELULAR" class="java.lang.String"/>
+	<field name="FONE_REFERENCIA" class="java.lang.String"/>
+	<field name="NOME_REFERENCIA" class="java.lang.String"/>
+	<field name="CODI_CARTAO" class="java.lang.Integer"/>
+	<field name="TIPO_PARCEIRO" class="java.lang.String"/>
+	<field name="TIPO_PESSOA" class="java.lang.String"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<field name="INS_MUNICIPAL" class="java.lang.String"/>
+	<field name="DATA_NASCIMENTO" class="java.lang.String"/>
+	<field name="SEXO" class="java.lang.String"/>
+	<field name="CR" class="java.lang.String"/>
+	<field name="DATA_FILIACAO" class="java.sql.Date"/>
+	<field name="FIM_FILIACAO" class="java.sql.Date"/>
+	<field name="ESTADO_CIVIL" class="java.lang.String"/>
+	<field name="PROFISSAO" class="java.lang.String"/>
+	<field name="NACIONALIDADE" class="java.lang.String"/>
+	<field name="NUM_FILIACAO" class="java.lang.String"/>
+	<field name="ORG_EXP_RG" class="java.lang.String"/>
+	<field name="ID" class="java.lang.Integer"/>
+	<field name="ID_PARCEIRO" class="java.lang.Integer"/>
+	<field name="RUA" class="java.lang.String"/>
+	<field name="BAIRRO" class="java.lang.String"/>
+	<field name="NUMERO" class="java.lang.String"/>
+	<field name="ESTADO" class="java.lang.String"/>
+	<field name="CIDADE" class="java.lang.String"/>
+	<field name="PAIS" class="java.lang.String"/>
+	<field name="CEP" class="java.lang.String"/>
+	<field name="TIPO_ENDERECO" class="java.lang.String"/>
+	<field name="COMPLEMENTO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="49" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="470" height="49" uuid="24d89efd-cd92-4e5c-9812-e5c001097c01"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATO PARTICULAR DE ADESÃO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="116" splitType="Stretch">
+			<staticText>
+				<reportElement x="129" y="0" width="341" height="105" isRemoveLineWhenBlank="true" uuid="ca0e4bc5-d65f-4f8c-b81f-d0136d9cd537"/>
+				<box leftPadding="4"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="true" isItalic="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Pelo presente instrumento particular, as partes, a seguir qualificadas, firmam o presente Contrato de Adesão, obedecidas as cláusulas, condições, obrigações e declarações adiante estabelecidas, que reciprocamente aceitam, a saber:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="472" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="17" width="470" height="80" isRemoveLineWhenBlank="true" uuid="3800af92-ddf1-4de6-b4be-7d6885ec880d"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2" lineSpacingSize="1.5"/>
+				</textElement>
+				<text><![CDATA[                                                         pessoa jurídica de direito privado, devidamente inscrita no CNPJ sob o n°. 26.574.663/0001-03, localizada na Estrada Pedreira Trombini, Anexo à Estância Made Col, Zona Rural, neste Município de Guarapuava – PR, doravante denominada simplesmente de                               , e, de outro lado, o(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="96" width="34" height="19" isRemoveLineWhenBlank="true" uuid="a8b09906-251e-4bdb-aefe-fec1aa2ed350"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Sr(a). ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement positionType="FixRelativeToBottom" x="35" y="96" width="281" height="15" uuid="45893bf3-d65e-48b5-8dd8-78f80982cc95"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="true" isStrikeThrough="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RAZAO_SOCIAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="316" y="96" width="7" height="19" isRemoveLineWhenBlank="true" uuid="fd09d802-23fe-4391-8e78-91c35e04daa0"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[,]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="322" y="96" width="52" height="19" isRemoveLineWhenBlank="true" uuid="0fb231b2-b5c0-49e6-a619-b9c638b5f997"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NACIONALIDADE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="375" y="97" width="3" height="19" isRemoveLineWhenBlank="true" uuid="c51ae213-69cb-4e17-850b-f1fae31bf17a"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[,]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="384" y="96" width="70" height="19" isRemoveLineWhenBlank="true" uuid="5da3deba-5e6c-447d-af1b-9952699f1380"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ESTADO_CIVIL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="454" y="97" width="10" height="19" isRemoveLineWhenBlank="true" uuid="df7a0b75-9b1e-433d-8f3a-6a3662e83b32"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[,]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="115" width="151" height="19" isRemoveLineWhenBlank="true" uuid="a47a20b5-712d-4182-ba31-b8ba10e21d70"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PROFISSAO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="161" y="115" width="226" height="19" isRemoveLineWhenBlank="true" uuid="b3cf810f-a4c4-44be-86a1-23b1860235d5"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[devidamente inscrito(a) no CPF sob o nº ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="115" width="10" height="19" isRemoveLineWhenBlank="true" uuid="04e2b95b-42aa-4c99-a343-c1cc06766fa0"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[,]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="387" y="115" width="83" height="19" isRemoveLineWhenBlank="true" uuid="e800fb60-a106-4f9c-bff1-c03a33851c21"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CNPJ}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="137" width="129" height="16" isRemoveLineWhenBlank="true" uuid="10866fd9-7516-4e42-8212-3b52c88a2632"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[e portador(a) do RG nº]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="129" y="137" width="62" height="16" isRemoveLineWhenBlank="true" uuid="77123945-e976-45b9-830a-5742bb04630a"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{INSCRICAO_ESTADUAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="197" y="137" width="60" height="16" isRemoveLineWhenBlank="true" uuid="ccf7c280-985c-445e-aaf9-8fd9ef7be0a1"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ORG_EXP_RG}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="267" y="137" width="203" height="16" isRemoveLineWhenBlank="true" uuid="d5bd0f41-a55a-4cb3-961a-ff7ed0c08fb1"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[residente e domiciliado(a) na ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="155" width="191" height="16" isRemoveLineWhenBlank="true" uuid="c93879a5-926e-4b15-ba1d-901c66a3cd74"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RUA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="195" y="155" width="0" height="16" uuid="73911b72-d7ff-41bf-87b7-0d1986f12ce5"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[,]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="200" y="155" width="45" height="16" isRemoveLineWhenBlank="true" uuid="1c806d24-fe26-499f-9395-cd20f1ed3b21"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NUMERO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="245" y="155" width="105" height="16" isRemoveLineWhenBlank="true" uuid="e98979f0-5eef-4b70-a4c0-25dc5f4ca30e"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BAIRRO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="374" y="155" width="10" height="16" isRemoveLineWhenBlank="true" uuid="6df10e75-0b8e-4c22-b0ee-a8c01f39a02a"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[,]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="417" y="155" width="47" height="16" isRemoveLineWhenBlank="true" uuid="fed07481-d4cc-46c6-af8b-bb8d7ec52230"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CEP}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="387" y="155" width="36" height="16" isRemoveLineWhenBlank="true" uuid="9fc171d5-e601-47ca-a1cb-64741f106573"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[CEP:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="174" width="110" height="20" isRemoveLineWhenBlank="true" uuid="ea68782f-59f0-4369-821a-292dc305e5f0"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CIDADE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="121" y="174" width="20" height="20" isRemoveLineWhenBlank="true" uuid="534be06d-10f3-4827-bdfb-e89e0f2a7164"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ESTADO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="110" y="174" width="10" height="19" isRemoveLineWhenBlank="true" uuid="49e2db50-3096-428f-b7a4-81d636457a04"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="174" width="10" height="19" uuid="2b71d5e8-ccb6-4acf-bb44-b484f692454d"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="147" y="174" width="237" height="20" isRemoveLineWhenBlank="true" uuid="d2479bd5-8d80-4875-9999-4f4d2937b682"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[doravante denominado(a) simplesmente de ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="195" width="92" height="19" isRemoveLineWhenBlank="true" uuid="c4b571c8-747b-46f6-9daf-37114cb39bc1"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="true" isUnderline="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[CONTRATANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="96" y="196" width="6" height="20" isRemoveLineWhenBlank="true" uuid="ecf399e0-1d67-452a-ab82-07abcc8a4bf3"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="102" y="196" width="432" height="19" isRemoveLineWhenBlank="true" uuid="83b4e9d6-b302-45c4-a9ed-452fc2bad785"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[têm, entre si, justos e contratados o presente Instrumento Particular ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="216" width="470" height="20" isRemoveLineWhenBlank="true" uuid="364f12d2-9dd9-4811-8a6b-2e1908b3b740"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[de Adesão, conforme as cláusulas e condições que seguem:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="255" width="240" height="20" isRemoveLineWhenBlank="true" uuid="63040347-3369-4f43-b5ef-02a667a5737a"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA PRIMEIRA – DO OBJETO.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="294" width="34" height="20" isRemoveLineWhenBlank="true" uuid="34a5f750-d3b8-45b8-9f59-fd3eca135861"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[1.1. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="294" width="62" height="20" isRemoveLineWhenBlank="true" uuid="cb5e7b47-bf1e-4087-b4ea-70023c9b2455"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[A empresa ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="94" y="295" width="85" height="20" isRemoveLineWhenBlank="true" uuid="e6b39e22-a3b1-4e01-b700-5fbee53c382b"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="179" y="295" width="313" height="20" isRemoveLineWhenBlank="true" uuid="c893154f-8bf8-4ad4-aa0d-587e604788d5"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[trata-se de pessoa jurídica de direito privado, constituída ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="314" width="476" height="45" isRemoveLineWhenBlank="true" uuid="41b34dbe-7376-47f3-ad39-bf0ae3c4fcda"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[em 21 de novembro de 2016, que tem por objetivos comercializar serviços relativos à prática de atividades esportivas, recreativas, sociais de tiro esportivo e tiro prático, bem como ministrar cursos de ensino de esporte de tiro.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="359" width="34" height="16" isRemoveLineWhenBlank="true" uuid="669aba0b-5321-4f8e-9916-73a18b4ced44"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[1.2. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="360" width="87" height="16" isRemoveLineWhenBlank="true" uuid="db360cd3-92f3-4c8c-8046-671124079f76"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="360" width="6" height="16" isRemoveLineWhenBlank="true" uuid="1fe4afb4-212f-475a-9662-7afa49ec9919"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="135" y="359" width="341" height="15" isRemoveLineWhenBlank="true" uuid="2dd685b6-a992-40c6-8072-2413072c94d0"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[tem sede e foro jurídico nesta Cidade de Guarapuava, Estado ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="377" width="470" height="77" isRemoveLineWhenBlank="true" uuid="e2027893-929d-4e4e-bc27-bb5f4dae2d9d"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[do Paraná, estando localizada na Estrada Pedreira Trombini, Anexo à Estância Made Col, Zona Rural, a 15 Km de distância do perímetro urbano do mencionado Município.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="0" width="223" height="15" isRemoveLineWhenBlank="true" uuid="5e0b2bfa-5228-4427-b81e-b4bf43b41bb8"/>
+				<textElement textAlignment="Justified" markup="none">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2" lineSpacingSize="4.0"/>
+				</textElement>
+				<text><![CDATA[De um lado, a sociedade empresarial ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="364" y="0" width="109" height="15" isRemoveLineWhenBlank="true" uuid="6b82ebb8-19c5-4add-b0bc-ada0d419a6db"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph lineSpacing="1_1_2" lineSpacingSize="1.5"/>
+				</textElement>
+				<text><![CDATA[SANTO HUBERTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="17" width="201" height="20" uuid="6630a1c6-88da-42f1-9b1a-a41ef068614c"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ATIVIDADES DE TIRO LTDA – ME, ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="74" width="93" height="20" uuid="d1b30a4a-ae81-435c-99ee-21e063276c81"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="257" y="137" width="7" height="16" isRemoveLineWhenBlank="true" uuid="247c4421-d6d2-4493-8ce3-f3c744b64f73"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="448" y="434" width="6" height="20" uuid="0b77868e-c88a-415e-a4a1-74477ce4f537"/>
+				<text><![CDATA[1]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="10" width="423" height="20" uuid="7a94a642-239f-4738-9443-6496e203e048"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pag2.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

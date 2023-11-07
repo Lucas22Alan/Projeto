@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DeclaracaoHabitualidade" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b8d9fdff-c39f-417f-bb8e-92ce3c357f21">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="185"/>
+	<field name="fNome" class="java.lang.String"/>
+	<field name="fCr" class="java.lang.String"/>
+	<field name="fData" class="java.lang.String"/>
+	<field name="fFiliacao" class="java.lang.String"/>
+	<field name="fDia" class="java.lang.String"/>
+	<field name="fAno" class="java.lang.String"/>
+	<field name="fMes" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="251" splitType="Stretch">
+			<staticText>
+				<reportElement x="319" y="160" width="34" height="14" uuid="21c0602e-6a96-4701-acd7-3931eb9a5626"/>
+				<text><![CDATA[, CR nº]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="109" width="431" height="51" uuid="42da54d5-e35f-4aa8-b919-6095682ff084"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[O SANTO HUBERTO ATIVIDADES DE TIRO LTDA, inscrito no CNPJ sob o nº 26.574.663/0001-03 e Certificado de Registro nº 135975, com sede na Est. Para pedreira Trombini, s/n, CEP 85.100-000 Guarapuava Paraná, DECLARA, para fim de comprovação para solicitação de Guia de Tráfego junto ao Exército Brasileiro, que ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="49" y="160" width="270" height="14" uuid="f145af74-e5a5-4ab7-ad81-d20d0d6d9692"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fNome}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="399" y="160" width="80" height="14" uuid="8c9362b3-96cd-4439-b6a5-2d3052228025"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[  , regularmente ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="353" y="160" width="41" height="14" uuid="c984118b-9de0-4b09-8e18-509214c6a7df"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fCr}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="49" y="187" width="431" height="21" uuid="cde47fad-7527-454f-a525-119a4312611f"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[de treinamentos/competições que justificam a solicitação de Guia  de Tráfego pleiteada.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="395" y="174" width="85" height="13" uuid="031454b5-2a80-44cf-84b4-ef91174595c5"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[; e que participou ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="174" width="143" height="13" uuid="e100f34c-08be-49c3-9b93-8e545926e46f"/>
+				<text><![CDATA[inscrito nesta entidade sob nº ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="332" y="174" width="52" height="13" uuid="a0e30023-b33d-4d0d-a4fe-913c620b4696"/>
+				<textFieldExpression><![CDATA[$F{fData}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="248" y="174" width="55" height="13" uuid="1d362c1a-f75a-41c5-bfbe-33c130711314"/>
+				<text><![CDATA[, datado de ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="192" y="174" width="26" height="13" uuid="8fe0977d-eb85-410a-bde5-075fa4470d1d"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fFiliacao}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="110" y="41" width="313" height="20" uuid="d176babd-de3e-4db7-80ff-0a06a7503c39"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[DECLARAÇÃO DE HABITUALIDADE]]></text>
+			</staticText>
+			<image>
+				<reportElement x="1" y="0" width="75" height="88" uuid="64a55237-1363-403e-9236-0727fabbcd25"/>
+				<imageExpression><![CDATA["C:\\Projeto\\Contrato\\Logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="153" splitType="Stretch">
+			<staticText>
+				<reportElement x="50" y="0" width="431" height="56" uuid="88046469-562b-4d5f-9293-f84d7b09e8d7"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Esta entidade dispõe dos registros que comprovam a habitualidade do referido atirador desportivo, no que diz respeito ao consumo de munição/insumos compatível com a atual solicitação.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="136" y="105" width="259" height="20" uuid="7e247751-9699-41af-8710-4cce965d44c0"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Esta declaração tem validade de 90 noventa dias.]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="186" splitType="Stretch">
+			<textField>
+				<reportElement x="221" y="26" width="18" height="20" uuid="77deff80-4d34-47a4-a529-52a86aec88b9"/>
+				<textFieldExpression><![CDATA[$F{fDia}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="160" y="26" width="58" height="20" uuid="2b7cd1ae-389b-489b-acf4-d12f927fbafa"/>
+				<text><![CDATA[Guarapuava, ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="331" y="26" width="52" height="20" uuid="3a052c83-9a3f-4ffe-9982-7e48e9c8ab38"/>
+				<textFieldExpression><![CDATA[$F{fAno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="264" y="26" width="48" height="20" uuid="0335b593-38e1-4909-a0d8-e2ed7d599cc9"/>
+				<textFieldExpression><![CDATA[$F{fMes}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="239" y="26" width="25" height="20" uuid="94727eda-82d5-43ec-99eb-2775f7db83dc"/>
+				<text><![CDATA[, de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="312" y="26" width="18" height="20" uuid="d54693f1-b797-4d70-b9d6-db8d524fdf94"/>
+				<text><![CDATA[, de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="213" y="146" width="135" height="14" uuid="39eb4573-d102-4d95-8258-bf888ad33500"/>
+				<text><![CDATA[FELIPE JOSE PEREIRA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="166" width="68" height="13" uuid="cc97f2f0-cc93-4b58-9e37-6b1de605ec32"/>
+				<text><![CDATA[PRESIDENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="131" width="229" height="15" uuid="3cb19d0d-8781-42f4-b835-86b3dd854f1e"/>
+				<text><![CDATA[______________________________________
+
+]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

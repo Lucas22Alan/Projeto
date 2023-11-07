@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="modalidadeProva" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="20dd2372-e07b-4bba-91ec-f863897da0de">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="273"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="f02f8a8a-ee0e-4c6e-ae6a-c98b121c8234">
+		<parameter name="fProva" class="java.lang.String"/>
+	</subDataset>
+	<field name="fCr" class="java.lang.String"/>
+	<field name="fFiliacao" class="java.lang.String"/>
+	<field name="fData" class="java.lang.String"/>
+	<field name="fDia" class="java.lang.String"/>
+	<field name="fMes" class="java.lang.String"/>
+	<field name="fAno" class="java.lang.String"/>
+	<field name="fNome" class="java.lang.String"/>
+	<title>
+		<band height="71" splitType="Stretch">
+			<staticText>
+				<reportElement x="135" y="28" width="265" height="20" uuid="9278759d-4947-4657-a45f-b3f7bd199f8a"/>
+				<textElement>
+					<font fontName="Times New Roman" size="13"/>
+				</textElement>
+				<text><![CDATA[DECLARAÇÃO DE MODALIDADE E PROVA]]></text>
+			</staticText>
+			<image>
+				<reportElement x="5" y="3" width="66" height="68" uuid="3877468a-a0e3-4258-b870-af61ca7b3fc1"/>
+				<imageExpression><![CDATA["C:\\Projeto\\Contrato\\Logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="612" splitType="Stretch">
+			<staticText>
+				<reportElement x="60" y="18" width="11" height="14" uuid="10f8c395-d79a-4b35-9774-816a8d25e506"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[O]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="18" width="271" height="14" uuid="572e8588-4d94-47bf-b726-93061de6fcd6"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SANTO HUBERTO ATIVIDADES DE TIRO LTDA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="346" y="18" width="154" height="14" uuid="eef00a9c-6d94-4666-be64-8db3835563d8"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[, inscrito no CNPJ sob o nº ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="32" width="440" height="42" uuid="fcd9f77f-af3d-4913-b917-7c8b053b6f42"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[26.574.663/0001-03 e Certificado de Registro nº 135975, com sede na Est. Para pedreira Trombini, s/n, CEP 85.100-000 Guarapuava Paraná, DECLARA, para fim de comprovação de habitualidade de prática de tiro desportivo junto ao ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="74" width="115" height="16" uuid="673fd6f1-1708-447a-9365-e171ae676269"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Exército Brasileiro, que ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="344" y="74" width="33" height="16" uuid="1d8131d9-2665-4e42-8817-20be0d6debfe"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[, CR nº ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="379" y="74" width="44" height="16" uuid="6b62ed87-5e3f-42bb-aab1-d000c8277409"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fCr}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="425" y="74" width="75" height="16" uuid="3bb18589-68aa-4cbe-b48c-ed3115df131a"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[, regularmente ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="90" width="149" height="16" uuid="168fa60a-c248-4303-8493-d9f3f18a0952"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[inscrito nesta entidade sob nº ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="207" y="90" width="39" height="16" uuid="0176e742-94b8-4f25-bf12-acb9f91c45e1"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fFiliacao}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="245" y="90" width="67" height="16" uuid="c8271adc-9b1d-46d0-9d6b-f7d5945702f6"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[, datado de ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="302" y="90" width="73" height="16" uuid="4ef8ec1e-4bb5-4d8c-9087-b735487c93f1"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fData}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="362" y="90" width="139" height="16" uuid="c6fe8d0c-bbfd-4fb4-b04b-0c503f9afbf3"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[e para fim de comprovação ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="106" width="440" height="31" uuid="f9325108-da85-43e7-aada-42131fe3dfcc"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[junto ao Exército Brasileiro, que promove, realiza ou sedia competições e provas de tiro desportivo, conforme quadro abaixo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="156" width="225" height="20" uuid="2444bb1d-11fc-49ac-a3c1-e72a1d7e963c"/>
+				<textElement>
+					<font fontName="Times New Roman" size="13"/>
+				</textElement>
+				<text><![CDATA[PROVA MODALIDADE ARMAMENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="109" y="282" width="291" height="20" uuid="8ccc6ed6-1e4d-45df-a620-6774c05b9405"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Esta declaração tem validade de 90 noventa dias.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="279" y="345" width="18" height="20" uuid="b07e6141-3c92-4ad6-a51f-7c2ac74a7792"/>
+				<text><![CDATA[, de]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="228" y="345" width="51" height="20" uuid="6717ed86-824d-41a1-8181-832e7b491055"/>
+				<textFieldExpression><![CDATA[$F{fMes}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="124" y="345" width="58" height="20" uuid="983607d9-3e0d-498e-b9cb-97ee421bac59"/>
+				<text><![CDATA[Guarapuava, ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="203" y="345" width="25" height="20" uuid="867be582-5198-48eb-8931-ab840ebf37c3"/>
+				<text><![CDATA[, de]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="299" y="345" width="52" height="20" uuid="03bbf531-f3a6-49cf-acb0-049317957830"/>
+				<textFieldExpression><![CDATA[$F{fAno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="185" y="345" width="18" height="20" uuid="0caaca60-cb43-45ce-b677-a253b526efdd"/>
+				<textFieldExpression><![CDATA[$F{fDia}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="205" y="518" width="135" height="14" uuid="87f230df-6b69-4369-8a28-928d291176b0"/>
+				<text><![CDATA[FELIPE JOSE PEREIRA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="232" y="538" width="68" height="13" uuid="2ed2f585-a034-4421-964d-b3abf7e04898"/>
+				<text><![CDATA[PRESIDENTE]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table 3" style="table 3" x="60" y="190" width="270" height="58" uuid="5a970771-5d74-4359-8e17-c8c9b137eeca"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Table Dataset 1" uuid="68bac2df-9ad8-465b-850f-45a4b92988a7">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="564cb2b1-c2cf-4263-8e76-edd0dd6bef9d">
+						<jr:tableHeader style="table 3_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="5c89ab8e-5d06-471b-9246-52d77a2d51c8"/>
+								<textElement>
+									<font fontName="Times New Roman" size="13"/>
+								</textElement>
+								<text><![CDATA[PROVA]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="0608543a-833c-4e5c-8d8a-c42082a8af5a"/>
+								<textElement>
+									<font fontName="Times New Roman" size="13"/>
+								</textElement>
+								<text><![CDATA[Treino]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="252b76b1-908a-4eca-a42f-61889d18f6d9"/>
+								<textElement>
+									<font fontName="Times New Roman" size="13"/>
+								</textElement>
+								<text><![CDATA[Treino]]></text>
+							</staticText>
+						</jr:columnFooter>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="20" uuid="77807472-14b2-4ce8-aaf6-69a928a1485a"/>
+								<textElement>
+									<font fontName="Times New Roman" size="13"/>
+								</textElement>
+								<text><![CDATA[Treino]]></text>
+							</staticText>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="102" uuid="4a2ed9f7-f9a2-4ffb-bba8-950c8c591b22">
+						<jr:tableHeader style="table 3_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="d3b37f35-f3c6-4aff-834b-d740ac1fecf3"/>
+								<textElement>
+									<font fontName="Times New Roman" size="13"/>
+								</textElement>
+								<text><![CDATA[MODALIDADE]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="cd956c44-d030-4c92-a68c-0729b2f05480"/>
+								<textElement>
+									<font fontName="Times New Roman" size="13"/>
+								</textElement>
+								<text><![CDATA[IPSC]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="102" height="30" uuid="494027bd-b395-4b2f-b9de-a7eeb1efb5c1"/>
+								<textElement>
+									<font fontName="Times New Roman" size="13"/>
+								</textElement>
+								<text><![CDATA[Tiro ao prato]]></text>
+							</staticText>
+						</jr:columnFooter>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="102" height="20" uuid="ba7c1b12-aac1-4461-b2a1-ef474a4544bb"/>
+								<textElement>
+									<font fontName="Times New Roman" size="13"/>
+								</textElement>
+								<text><![CDATA[Silhueta Metálica]]></text>
+							</staticText>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="146" uuid="b2b4ad8f-8725-4d5d-b4ba-7320fab31a63">
+						<jr:tableHeader style="table 3_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="40f621d6-4b5a-4073-b0fc-35e94c09000d"/>
+								<textElement>
+									<font size="13"/>
+								</textElement>
+								<text><![CDATA[ARMAMENTO]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="146" height="30" uuid="0ceac25f-1f39-44b3-ac00-cc7582fba6f4"/>
+								<textElement>
+									<font fontName="Times New Roman" size="13"/>
+								</textElement>
+								<text><![CDATA[Pistola, Rifle e Revolver]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="146" height="30" uuid="4ba192f4-2140-433a-bd73-75d4fe6fab79"/>
+								<textElement>
+									<font fontName="Times New Roman" size="13"/>
+								</textElement>
+								<text><![CDATA[Espingarda]]></text>
+							</staticText>
+						</jr:columnFooter>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="146" height="20" uuid="6e9a5310-a838-4b9e-a37f-0e2e626e8e7f"/>
+								<textElement>
+									<font fontName="Times New Roman" size="13"/>
+								</textElement>
+								<text><![CDATA[Rifle e Carabina]]></text>
+							</staticText>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="147" y="503" width="229" height="15" uuid="c2a403d8-a23e-47fd-9ee3-a0eaa2dd4580"/>
+				<text><![CDATA[______________________________________
+
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="177" y="74" width="167" height="16" uuid="bc65c375-b2e8-47c0-a3dd-9e1b1da4bbca"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fNome}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

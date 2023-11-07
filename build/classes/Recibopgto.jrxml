@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Recibopgto" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4e3ed6bf-f930-4a81-bce2-c91b729a0c21">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="pNome" class="java.lang.String"/>
+	<parameter name="pValorExtenso" class="java.lang.String"/>
+	<parameter name="pReferencia" class="java.lang.String"/>
+	<parameter name="pData" class="java.lang.String"/>
+	<parameter name="pValor" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="282" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="0" y="0" width="555" height="36" uuid="dcc4a427-f0f8-4710-8829-1854a9d52f15"/>
+			</rectangle>
+			<textField>
+				<reportElement x="434" y="5" width="108" height="21" uuid="dd5af987-25bc-4ee4-8e38-f5e4800b0473"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pValor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="3" width="100" height="30" uuid="63c02840-f6da-4657-90d3-95ad93fe9faa"/>
+				<textElement>
+					<font fontName="Arial" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RECIBO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="383" y="4" width="42" height="20" uuid="e154539d-d2fc-4363-bc07-53d7cd9072e1"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[Valor]]></text>
+			</staticText>
+			<rectangle radius="10">
+				<reportElement x="0" y="42" width="555" height="199" uuid="f74eb99b-751d-4a2a-a8e1-02d491e21754"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="17" y="55" width="95" height="18" uuid="13eb2435-c234-4a8f-b0c1-020190cdb04b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[Recebemos de]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="114" y="55" width="425" height="18" uuid="b99a1831-1031-4386-be70-c94c2e833867">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pNome}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="16" y="77" width="88" height="18" uuid="2a4fb1d5-fdc3-4679-bc0e-86bdf44e5be2">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[O valor de R$]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="111" y="79" width="430" height="18" uuid="8109a069-67b4-4eec-b88a-90ef188c2812">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pValorExtenso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="91" y="98" width="451" height="19" uuid="71b41a33-8c43-49de-a181-ab0f560e161c"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pReferencia}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="17" y="96" width="68" height="18" uuid="7a657df5-a1e6-40c1-8238-aad31f8a76c8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[referente a]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="191" width="63" height="19" uuid="8430712e-f3e0-449d-a47b-7629f7506dfc">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[Emissão:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="192" width="100" height="19" uuid="82549c13-c4de-47a0-919d-aa3d744af796"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pData}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="399" y="212" width="58" height="20" uuid="c6e2ee18-6027-43c1-b145-4a0ba0b61bf8"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="14"/>
+				</textElement>
+				<text><![CDATA[Assinatura]]></text>
+			</staticText>
+			<line>
+				<reportElement x="336" y="211" width="189" height="1" uuid="e775fa7c-6c31-4998-839c-6cc8fd203714"/>
+			</line>
+		</band>
+	</columnHeader>
+	<columnFooter>
+		<band height="440" splitType="Stretch"/>
+	</columnFooter>
+</jasperReport>

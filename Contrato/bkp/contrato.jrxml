@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contrato" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="00a6859a-6bd0-43f0-a079-d20a9f03e615">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="290"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Esfhera\\adm\\Contrato\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="razao" class="java.lang.String"/>
+	<field name="cnpj" class="java.lang.String"/>
+	<detail>
+		<band height="795" splitType="Stretch">
+			<staticText>
+				<reportElement x="107" y="46" width="263" height="21" uuid="ccf837fb-83e5-4b6e-9fe4-6217e320a92b"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATO PARTICULAR DE ADESÃO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="103" width="316" height="81" uuid="60021962-77a9-4972-b9ed-7591b3147129"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Pelo presente instrumento particular, as partes, a seguir qualificadas, firmam o presente Contrato de Adesão, obedecidas as cláusulas, condições, obrigações e declarações adiante estabelecidas, que reciprocamente aceitam, a saber:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="63" y="308" width="463" height="325" uuid="d975aab5-7a65-40c5-bc48-92a17c04e01d"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[		De um lado, a sociedade empresarial SANTO HUBERTO ATIVIDADES DE TIRO LTDA – ME, pessoa jurídica de direito privado, devidamente inscrita no CNPJ sob o n°. 26.574.663/0001-03, localizada na Estrada Pedreira Trombini, Anexo à Estância Made Col, Zona Rural, neste Município de Guarapuava – PR, doravante denominada simplesmente de CONTRATADA, e, de outro lado, o(a) Sr(a). Jonh Francisco De Abreu, brasileiro(s), Solteiro, Eng. Agrônomo, devidamente inscrito(a) no CPF sob o nº 060.807.189-79, e portador(a) do RG nº 11015790-8 SESP/PR, residente e domiciliado(a) na Linha Janjao, SN Bairro Zona Rural, CEP 85160-000, Cantagalo PR, doravante denominado(a) simplesmente de CONTRATANTE, têm, entre si, justos e contratados o presente Instrumento Particular de Adesão, conforme as cláusulas e condições que seguem:
+
+CLÁUSULA PRIMEIRA – DO OBJETO.
+
+1.1. – A empresa CONTRATADA trata-se de pessoa jurídica de direito privado, constituída em 21 de novembro de 2016, que tem por objetivos comercializar serviços relativos à prática de atividades esportivas, recreativas, sociais de tiro esportivo e tiro prático, bem como ministrar cursos de ensino de esporte de tiro.
+
+1.2. – A CONTRATADA tem sede e foro jurídico nesta Cidade de Guarapuava, Estado do Paraná, estando localizada na Estrada Pedreira Trombini, Anexo à Estância Made Col, Zona Rural, a 15 Km de distância do perímetro urbano do mencionado Município.
+]]></text>
+			</staticText>
+			<break>
+				<reportElement x="0" y="638" width="536" height="1" uuid="40266979-f5a8-4dd8-a2fe-e1c03ea48f37"/>
+			</break>
+			<subreport>
+				<reportElement x="63" y="661" width="200" height="34" uuid="6fd666d5-efc1-4b83-8ca5-66be321baa2a"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["C:\\Esfhera\\adm\\Contrato\\bkp\\pag2.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<summary>
+		<band height="87"/>
+	</summary>
+</jasperReport>

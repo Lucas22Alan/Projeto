@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="etiqueta" pageWidth="226" pageHeight="141" whenNoDataType="AllSectionsNoDetail" columnWidth="186" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="20" uuid="42750794-287b-4e74-93dc-388a787f7707">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="descricao" class="java.lang.String"/>
+	<parameter name="preco" class="java.lang.String"/>
+	<parameter name="rodape" class="java.lang.String"/>
+	<parameter name="codigo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="30" uuid="8af7bbae-4f6d-4e6f-87b1-c655434f38b0"/>
+				<textFieldExpression><![CDATA[$P{descricao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="10" width="100" height="30" uuid="a735178c-3c11-4508-9bed-6aecba96141b"/>
+				<textFieldExpression><![CDATA[$P{preco}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="50" width="110" height="20" uuid="7a03ad9e-ffac-4351-b1ef-6d670149c536"/>
+				<textFieldExpression><![CDATA[$P{rodape}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="0" y="36" width="84" height="34" uuid="b58c5e51-3d00-4e99-808f-4c7de0494fb3"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA["1234"]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<textField>
+				<reportElement x="1" y="48" width="82" height="14" uuid="d2891aa6-e299-4d2c-9675-8a6c857ea355"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{codigo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+</jasperReport>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pag7" language="groovy" pageWidth="611" pageHeight="791" columnWidth="611" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="1b748681-9d3e-4309-aace-cad2346c1ca8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="177"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Esfhera\\adm\\Contrato\\contrato\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[select * from tparceiros a
+join tenderecos b on a.idparceiro=b.id_parceiro
+join tcontrato c on a.idparceiro=c.id_parceIRO]]>
+	</queryString>
+	<field name="IDPARCEIRO" class="java.lang.Integer"/>
+	<field name="CNPJ" class="java.lang.String"/>
+	<field name="RAZAO_SOCIAL" class="java.lang.String"/>
+	<field name="FANTASIA" class="java.lang.String"/>
+	<field name="INSCRICAO_ESTADUAL" class="java.lang.String"/>
+	<field name="FONE" class="java.lang.String"/>
+	<field name="CELULAR" class="java.lang.String"/>
+	<field name="FONE_REFERENCIA" class="java.lang.String"/>
+	<field name="NOME_REFERENCIA" class="java.lang.String"/>
+	<field name="CODI_CARTAO" class="java.lang.Integer"/>
+	<field name="TIPO_PARCEIRO" class="java.lang.String"/>
+	<field name="TIPO_PESSOA" class="java.lang.String"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<field name="INS_MUNICIPAL" class="java.lang.String"/>
+	<field name="DATA_NASCIMENTO" class="java.lang.String"/>
+	<field name="SEXO" class="java.lang.String"/>
+	<field name="CR" class="java.lang.String"/>
+	<field name="DATA_FILIACAO" class="java.sql.Date"/>
+	<field name="FIM_FILIACAO" class="java.sql.Date"/>
+	<field name="ESTADO_CIVIL" class="java.lang.String"/>
+	<field name="PROFISSAO" class="java.lang.String"/>
+	<field name="NACIONALIDADE" class="java.lang.String"/>
+	<field name="NUM_FILIACAO" class="java.lang.String"/>
+	<field name="ORG_EXP_RG" class="java.lang.String"/>
+	<field name="ID" class="java.lang.Integer"/>
+	<field name="ID_PARCEIRO" class="java.lang.Integer"/>
+	<field name="RUA" class="java.lang.String"/>
+	<field name="BAIRRO" class="java.lang.String"/>
+	<field name="NUMERO" class="java.lang.String"/>
+	<field name="ESTADO" class="java.lang.String"/>
+	<field name="CIDADE" class="java.lang.String"/>
+	<field name="PAIS" class="java.lang.String"/>
+	<field name="CEP" class="java.lang.String"/>
+	<field name="TIPO_ENDERECO" class="java.lang.String"/>
+	<field name="COMPLEMENTO" class="java.lang.String"/>
+	<field name="ID_CONTRATO" class="java.lang.Integer"/>
+	<field name="DATA" class="java.sql.Date"/>
+	<field name="HORA" class="java.sql.Time"/>
+	<field name="VALOR" class="java.math.BigDecimal"/>
+	<field name="DIA_VENCIMENTO" class="java.lang.Integer"/>
+	<field name="QUANTIDADE_MESSES_FILIACAO" class="java.lang.Integer"/>
+	<field name="PRIMEIRA_PARCELA" class="java.sql.Date"/>
+	<field name="INICIO_FILIACAO" class="java.sql.Date"/>
+	<field name="VALOR_PLANO" class="java.math.BigDecimal"/>
+	<field name="TIPO_PLANO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="650" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="37" height="20" uuid="c97f3944-fb2f-40ce-89d2-ec2e9a22c59d"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[4.8. –]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="470" height="103" isPrintInFirstWholeBand="true" uuid="829e8940-abc6-4847-b555-4d88fed6a3f8"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[         A                         poderá celebrar outros contrato com o mesmo objeto, envolvendo a mesma área e instalações objeto do presente Instrumento, sem distinção de cor, nacionalidade, profissão, credo ou preferência política, em seu espaço físico e instalações comportam a utilização por maior número de pessoas, competindo exclusivamente a                              limitar o número de contratantes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="61" y="0" width="85" height="20" uuid="f6000175-63b7-4e1b-ae48-d54c1e2a5c6e"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="118" width="34" height="20" uuid="f0d53300-1b1f-48bc-8ee0-c09b1c418990"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[4.9. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="118" width="469" height="156" uuid="407788ea-4776-4f1e-934b-327aa47f1564"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[           Considerando que o imóvel aonde a                                       se encontra localizada não lhe pertence, eis que trata-se de arrendatária, na hipótese de não ser renovado o contrato de arrendamento na data prevista para seu término, qual seja 01/10/2020, a                                  se compromete a abrir novo espaço para atender a finalidade principal deste Instrumento – prática do tiro esportivo e recreativo –, o que deverá ser realizado no perímetro territorial deste Município de Guarapuava-PR, pouco importando se a distância da nova área venha a ser mais distante que a da área atualmente disponibilizada.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="283" y="117" width="85" height="21" uuid="69e478fe-bdef-4adf-bcec-1f65501869c4"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="77" width="85" height="20" uuid="23f8551f-fff3-4d75-b187-bfea42ab1e4b"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="91" y="175" width="85" height="20" uuid="fb1b1fc5-1e6e-411b-9002-006989800643"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="296" width="44" height="20" uuid="f74d0177-b8a0-448c-90a6-04af9e2ee00a"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[4.10. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="296" width="469" height="120" uuid="8ac13b98-a0b8-4f75-bfcc-0e87dbbd8870"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[               Na hipótese prevista acima (subcláusula 4.9), isto é, havendo alteração na localidade da sede da                            , a escolha do novo espaço (nova sede) competirá exclusivamente à                           , permanecendo inalteradas as demais disposições relativas ao valor e forma de pagamento das mensalidades, podendo, no entanto, haver a suspensão do pagamento das mensalidades enquanto o novo espaço não estiver em pleno funcionamento.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="146" y="316" width="85" height="20" uuid="8a2cda4b-e893-48cf-8f94-80edfc5f9e33"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="166" y="335" width="85" height="20" uuid="ecfdf1e2-2fde-44b8-9518-02df8f57d9a2"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="431" width="357" height="20" uuid="acb09d25-6a94-4566-91b8-8783879276f3"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA QUINTA – DAS PENALIDADES E RECURSOS.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="475" width="37" height="20" uuid="fcb30838-f921-4dc7-9618-4d5317f58ce5"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[5.1. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="475" width="469" height="81" uuid="a8474dfa-e6fe-46a4-8eda-727514a038cc"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[            Ao                                 que infringir as disposições deste Instrumento, ou as deliberações sociais ou esportivas baixadas pela                          , ou a legislação que regula a matéria relativa ao tiro esportivo, ou ainda as convenções sociais de boa educação ou ética, serão passíveis das seguintes penalidades:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="69" y="475" width="100" height="20" uuid="052669d4-7e7d-41e0-b856-234ac9f8c74d"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="495" width="85" height="20" uuid="c92a5f28-bd4b-4b39-9b58-5eb52aa6d2cf"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="91" y="577" width="192" height="20" uuid="36700656-9cef-4854-8c39-fb49dd096f26"/>
+				<textElement>
+					<font fontName="Arial" size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[a) Advertência privada;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="446" y="629" width="24" height="20" uuid="9cf947a2-291f-4d30-aca0-8822e2eec177"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[7]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="0" y="633" width="200" height="16" uuid="04634e23-f7b7-48fe-860e-4f99240631f2"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pag8.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

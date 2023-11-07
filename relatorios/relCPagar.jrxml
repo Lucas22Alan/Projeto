@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relCPagar" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0e15b3da-48f9-4e9d-8dc1-a51d5acc485a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select b.razao_social, a.* from tcontas_a_receber_pagar a
+join tparceiros b on a.id_parceiro=b.idparceiro]]>
+	</queryString>
+	<field name="RAZAO_SOCIAL" class="java.lang.String"/>
+	<field name="ID" class="java.lang.Integer"/>
+	<field name="ID_MOVIMENTO" class="java.lang.String"/>
+	<field name="ID_PARCEIRO" class="java.lang.Integer"/>
+	<field name="DATA" class="java.sql.Date"/>
+	<field name="VALOR" class="java.math.BigDecimal"/>
+	<field name="NUMERO_DOCUMENTO" class="java.lang.String"/>
+	<field name="VALOR_PAGO" class="java.math.BigDecimal"/>
+	<field name="DATA_EMISSAO" class="java.sql.Date"/>
+	<field name="DATA_VENCIMENTO" class="java.sql.Date"/>
+	<field name="ESTADO" class="java.lang.Integer"/>
+	<field name="TIPO_TITULO" class="java.lang.Integer"/>
+	<field name="ID_CONTA" class="java.lang.Integer"/>
+	<field name="ID_HISTORICO" class="java.lang.Integer"/>
+	<field name="PAGAR_RECEBER" class="java.lang.Integer"/>
+	<field name="DATA_PAGAMENTO" class="java.sql.Date"/>
+	<field name="ID_CONTRATO" class="java.lang.String"/>
+	<field name="TIPO_PAGAMENTO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="108" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="0" y="-2" width="555" height="110" uuid="65e2a32f-b6c5-4d5b-9086-7c954130ad38"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="369" y="88" width="32" height="17" uuid="5fa1bc9b-d303-4512-84de-04ee2fda06ff"/>
+				<textElement>
+					<font fontName="Segoe UI Semilight" size="12"/>
+				</textElement>
+				<text><![CDATA[Data :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="80" width="249" height="24" uuid="2189def8-a5df-461e-a37c-b2ba86f575ff"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI Semilight" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório de Contas a Pagar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="473" y="85" width="10" height="20" uuid="2a154e3c-f328-437f-9251-bd169f057604"/>
+				<textElement>
+					<font fontName="Segoe UI Semibold" size="14"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="401" y="85" width="68" height="20" uuid="0b6553f7-05d1-4cab-acaa-ff026101b5b9"/>
+				<textElement>
+					<font fontName="Segoe UI Semilight" size="14"/>
+				</textElement>
+				<text><![CDATA[01/08/2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="36" width="100" height="20" uuid="6b5f291a-f121-4f49-bf89-45a3de6abdfb"/>
+				<textElement>
+					<font fontName="Segoe UI Light" size="12"/>
+				</textElement>
+				<text><![CDATA[78.048.044/0001-42]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="10" width="307" height="26" uuid="0b5d0536-8d46-4979-b821-a94f4e993200"/>
+				<textElement>
+					<font fontName="Segoe UI Black" size="16"/>
+				</textElement>
+				<text><![CDATA[Santo Huberto - Clube de Caça e Tiro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="485" y="85" width="70" height="20" uuid="331914a9-1102-4e26-90b5-9889bbab1f4e"/>
+				<textElement>
+					<font fontName="Segoe UI Semilight" size="14"/>
+				</textElement>
+				<text><![CDATA[31/08/2019]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="39" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="0" y="0" width="557" height="39" uuid="192b997a-d434-4637-a14d-1a519d5d4970"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="326" y="18" width="49" height="20" uuid="9e687993-7516-4880-9588-d5300b716e4d"/>
+				<textElement>
+					<font fontName="Segoe UI Semilight" size="10"/>
+				</textElement>
+				<text><![CDATA[Dt Emissão]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="463" y="18" width="48" height="20" uuid="8a5a23b0-137d-49d0-880b-4ae29f232d86"/>
+				<textElement>
+					<font fontName="Segoe UI Semilight"/>
+				</textElement>
+				<text><![CDATA[Situação]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="384" y="17" width="72" height="20" uuid="70a8f1d1-7c9d-4674-b8e3-cc128ede09ec"/>
+				<textElement>
+					<font fontName="Segoe UI Semilight" size="10"/>
+				</textElement>
+				<text><![CDATA[Dt Vencimento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="19" width="33" height="20" uuid="559abb16-6b83-457d-9e3f-b92fe250f6d1"/>
+				<textElement>
+					<font fontName="Segoe UI Semilight" size="10"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="516" y="18" width="39" height="20" uuid="5fa8388e-71d6-4822-aa65-641d0ae687ca"/>
+				<textElement>
+					<font fontName="Segoe UI Semilight"/>
+				</textElement>
+				<text><![CDATA[Parcelas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="269" y="18" width="38" height="20" uuid="a3df84cf-c285-4f98-b878-4d464d146054"/>
+				<textElement>
+					<font fontName="Segoe UI Semilight" size="10"/>
+				</textElement>
+				<text><![CDATA[Valor R$]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="398" y="2" width="56" height="19" uuid="8dd6b71f-ca4b-436a-812f-799f269ccc06"/>
+				<textElement>
+					<font fontName="Segoe UI Semilight" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DATA_VENCIMENTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="329" y="2" width="54" height="20" uuid="83789353-9d26-49c6-b608-8f82df4ec57f"/>
+				<textElement>
+					<font fontName="Segoe UI Semilight" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DATA_EMISSAO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="18" y="0" width="223" height="20" uuid="bbbac9dc-0aef-43f8-89fb-77a283bd0588"/>
+				<textElement>
+					<font fontName="Segoe UI Semibold" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RAZAO_SOCIAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="237" y="2" width="67" height="20" uuid="25e66115-56b7-41eb-8834-e50f6228b550"/>
+				<textElement textAlignment="Right">
+					<font fontName="Segoe UI Semilight" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VALOR}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="22" width="555" height="1" uuid="5a52c46a-1964-4339-bf40-26ee97454e0e"/>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="5" y="34" width="281" height="20" uuid="871a79fa-5e49-4377-9b24-418ed106933e"/>
+				<textElement>
+					<font fontName="Segoe UI Semilight"/>
+				</textElement>
+				<text><![CDATA[Esfhera - Soluções em Software- (42)9984-8899]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="233" y="22" width="79" height="20" uuid="c8c3fe3a-a867-4945-b03c-f7cbe3b251f4"/>
+				<textElement textAlignment="Right">
+					<font fontName="Segoe UI Semibold" size="14"/>
+				</textElement>
+				<text><![CDATA[2.450,00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="211" y="22" width="17" height="20" uuid="29ad7d4f-bea0-4de0-a4e5-7dbda4b9857a"/>
+				<textElement>
+					<font fontName="Segoe UI Semibold" size="14"/>
+				</textElement>
+				<text><![CDATA[R$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="22" width="57" height="20" uuid="0bedeffd-4eca-4153-b380-a044a5a329b3"/>
+				<textElement>
+					<font fontName="Segoe UI Semibold" size="14"/>
+				</textElement>
+				<text><![CDATA[Totais]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="41" width="555" height="1" uuid="78f380e4-c781-496e-9a63-8b64d8ad376d"/>
+			</line>
+			<line>
+				<reportElement x="0" y="22" width="555" height="1" uuid="703196a5-9cb8-4d93-8843-d6debeda617d"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="etq_produtos" columnCount="3" printOrder="Horizontal" pageWidth="603" pageHeight="785" columnWidth="186" columnSpacing="8" leftMargin="14" rightMargin="14" topMargin="39" bottomMargin="0" uuid="8d4f6aa8-fc97-4c66-9d6a-6c5451ee8d22">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="xPath">
+		<![CDATA[]]>
+	</queryString>
+	<detail>
+		<band height="74" splitType="Stretch">
+			<textField>
+				<reportElement x="10" y="56" width="166" height="11" uuid="e78b0afc-7468-42b1-a17d-a01ddff62cd2"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["teste novo"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="45" width="101" height="11" uuid="4d856124-5f43-4231-b4a8-7a049692f72a"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["teste"]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="147" y="6" width="29" height="50" uuid="9144e554-b7fa-41d4-987d-964a2a4f83ed"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom" rotation="Left">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["10,00"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

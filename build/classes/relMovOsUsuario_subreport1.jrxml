@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relMovOsUsuario_subreport1" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e28200b6-cc28-44b2-a03e-0f989195188a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select
+ c.nomelongo,
+ cast (sum(a.qnt)as numeric (8,2))as Qtde,
+ cast (sum(a.total)as numeric (8,2))as Total
+ from tos_item a
+ join tbarras b on a.cod_item=b.codigo_barras
+ join tprodutos c on b.id_produto=c.id
+ group by 1]]>
+	</queryString>
+	<field name="NOMELONGO" class="java.lang.String"/>
+	<field name="QTDE" class="java.lang.Integer"/>
+	<field name="TOTAL" class="java.lang.Integer"/>
+	<group name="NOMELONGO">
+		<groupExpression><![CDATA[$F{NOMELONGO}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="33" splitType="Stretch">
+			<textField>
+				<reportElement x="62" y="0" width="100" height="14" uuid="b0f30cf6-c031-49e6-a03a-143a06617710"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Narrow"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOMELONGO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="100" height="14" uuid="d658bc91-1bc3-4f89-94c5-27b655933e0b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Narrow"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{QTDE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="412" y="0" width="100" height="14" uuid="aaf3a0f2-e854-4059-bdd5-1d25ec24b826"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Narrow"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTAL}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

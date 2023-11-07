@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pag9" pageWidth="611" pageHeight="791" columnWidth="611" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="ade59082-afa9-4700-967c-ef2cf064238e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="176"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Esfhera\\adm\\Contrato\\contrato\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[select * from tparceiros a
+join tenderecos b on a.idparceiro=b.id_parceiro
+join tcontrato c on a.idparceiro=c.id_parceIRO]]>
+	</queryString>
+	<field name="IDPARCEIRO" class="java.lang.Integer"/>
+	<field name="CNPJ" class="java.lang.String"/>
+	<field name="RAZAO_SOCIAL" class="java.lang.String"/>
+	<field name="FANTASIA" class="java.lang.String"/>
+	<field name="INSCRICAO_ESTADUAL" class="java.lang.String"/>
+	<field name="FONE" class="java.lang.String"/>
+	<field name="CELULAR" class="java.lang.String"/>
+	<field name="FONE_REFERENCIA" class="java.lang.String"/>
+	<field name="NOME_REFERENCIA" class="java.lang.String"/>
+	<field name="CODI_CARTAO" class="java.lang.Integer"/>
+	<field name="TIPO_PARCEIRO" class="java.lang.String"/>
+	<field name="TIPO_PESSOA" class="java.lang.String"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<field name="INS_MUNICIPAL" class="java.lang.String"/>
+	<field name="DATA_NASCIMENTO" class="java.lang.String"/>
+	<field name="SEXO" class="java.lang.String"/>
+	<field name="CR" class="java.lang.String"/>
+	<field name="DATA_FILIACAO" class="java.sql.Date"/>
+	<field name="FIM_FILIACAO" class="java.sql.Date"/>
+	<field name="ESTADO_CIVIL" class="java.lang.String"/>
+	<field name="PROFISSAO" class="java.lang.String"/>
+	<field name="NACIONALIDADE" class="java.lang.String"/>
+	<field name="NUM_FILIACAO" class="java.lang.String"/>
+	<field name="ORG_EXP_RG" class="java.lang.String"/>
+	<field name="ID" class="java.lang.Integer"/>
+	<field name="ID_PARCEIRO" class="java.lang.Integer"/>
+	<field name="RUA" class="java.lang.String"/>
+	<field name="BAIRRO" class="java.lang.String"/>
+	<field name="NUMERO" class="java.lang.String"/>
+	<field name="ESTADO" class="java.lang.String"/>
+	<field name="CIDADE" class="java.lang.String"/>
+	<field name="PAIS" class="java.lang.String"/>
+	<field name="CEP" class="java.lang.String"/>
+	<field name="TIPO_ENDERECO" class="java.lang.String"/>
+	<field name="COMPLEMENTO" class="java.lang.String"/>
+	<field name="ID_CONTRATO" class="java.lang.Integer"/>
+	<field name="DATA" class="java.sql.Date"/>
+	<field name="HORA" class="java.sql.Time"/>
+	<field name="VALOR" class="java.math.BigDecimal"/>
+	<field name="DIA_VENCIMENTO" class="java.lang.Integer"/>
+	<field name="QUANTIDADE_MESSES_FILIACAO" class="java.lang.Integer"/>
+	<field name="PRIMEIRA_PARCELA" class="java.sql.Date"/>
+	<field name="INICIO_FILIACAO" class="java.sql.Date"/>
+	<field name="VALOR_PLANO" class="java.math.BigDecimal"/>
+	<field name="TIPO_PLANO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="650" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="32" height="20" uuid="49fdd6e5-b1f2-4b44-9e9b-3ebcb42b19c0"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[6.1. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="456" height="42" uuid="d7f7ac6a-35a0-47be-888d-3eddf204d524"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[      O presente Instrumento será rescindido automaticamente, nas seguintes hipóteses:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="59" y="59" width="411" height="57" uuid="892f2b55-5032-4e89-9720-7949607bb3e8"/>
+				<textElement>
+					<font fontName="Arial" size="12" isItalic="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[a) Atrasar o(a)                               , por 3 (três) meses, o pagamento das mensalidades;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="144" y="59" width="100" height="20" uuid="654bac81-ddc0-453c-94b0-e7a64ba38dcf"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="59" y="116" width="411" height="18" uuid="2d88df1e-72b2-437d-a0cb-469f9d70d383"/>
+				<textElement>
+					<font fontName="Arial" size="12" isItalic="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[b) Deixar de saldar débitos de qualquer natureza contraídos com a  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="59" y="134" width="100" height="20" uuid="9f6adb1c-1940-4a41-8342-3112917b9fd7"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="134" width="311" height="20" uuid="8b4e065b-4dc7-4091-abd1-9bae25010326"/>
+				<textElement>
+					<font fontName="Arial" size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[ depois de esgotado o prazo estabelecido para que ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="59" y="154" width="175" height="20" uuid="dea8acd6-041e-4b4e-a90f-7f0112d6568d"/>
+				<textElement>
+					<font fontName="Arial" size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[ocorra a sua quitação;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="59" y="189" width="368" height="50" uuid="0e4ae147-8b88-4284-a6c7-295dba388197"/>
+				<textElement>
+					<font fontName="Arial" size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[c) Tornar-se o(a)                               inconveniente a                               por sua conduta, após ser cientificado quanto a(s) conduta(s) inadequada(s);]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="154" y="189" width="100" height="20" uuid="95a2a3bb-d986-4fde-ac2e-4229b39b9db0"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="338" y="189" width="100" height="20" uuid="9c9f5c2c-c3d9-4856-968a-ae5afa66b962"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="59" y="256" width="158" height="20" uuid="fbaf99ab-924e-473f-b1f2-aac1bc851eb6"/>
+				<textElement>
+					<font fontName="Arial" size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[d) Com o falecimento do(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="212" y="256" width="100" height="20" uuid="4e9249aa-7e77-4996-b92b-95342e368c07"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATANTE;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="295" width="32" height="20" uuid="aadaa0ad-0b41-4010-83fe-141d37a637f5"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[6.2. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="295" width="470" height="60" uuid="8c66c00c-fca8-40f6-99f4-d8683865b728"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[         A rescisão, nas hipóteses acima, não exime o(a)                              quanto ao pagamento dos valores devidos à                        , a qual poderá ajuizar a competente ação para receber o que lhe for de direito, caso não haja o pagamento voluntário.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="312" y="295" width="93" height="20" uuid="c162f4bf-df68-4bd9-a986-fd8c02ddbe49"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[CONTRATANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="315" width="100" height="20" uuid="8947b555-0020-478c-8785-29350638625f"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="368" width="33" height="20" uuid="e80344a3-6e7a-4be7-8d1e-c8f33fc98d6d"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[6.3. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="368" width="470" height="97" uuid="cf9e849a-7dc5-4f15-814c-7c22961575ee"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[          O(a)                      poderá, a qualquer tempo e sem a incidência de multa, requerer mediante à apresentação de documento escrito, assinado e com firma reconhecida, a rescisão do presente Instrumento, devendo, no entanto, quitar os seus débitos financeiros perante a                               até a data da entrega do requerimento, se houver.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="71" y="368" width="93" height="20" uuid="8766201c-61fe-4e8f-9df8-46ba498e2f78"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[CONTRATANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="167" y="426" width="91" height="20" uuid="373385fe-434a-4a4a-b77e-68e2c56a9107"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="428" y="630" width="42" height="20" uuid="3bed7b8e-a433-46ba-9376-dbd8552835cd"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[9]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="482" width="32" height="20" uuid="1391a987-555d-4083-9237-cce51d64140d"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[6.4. – ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="482" width="469" height="121" uuid="6e4111cc-14ac-4bae-9844-7209c071c8c4"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[    Em qualquer das hipóteses de rescisão não será devida qualquer                      restituição ao                                    quanto aos valores porventura adimplidos em favor da                                 , ainda que o pedido de rescisão seja formulado no mesmo mês em que aceito e firmado o presente Instrumento, compreendendo os valores adimplidos como pagamento pelas despesas suportadas pela                           e a disponibilização da área e suas instalações em perfeitas condições de uso.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="89" y="502" width="93" height="15" uuid="e645c374-ee8f-4b9c-ab6e-f51e83dd9929"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[CONTRATANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="29" y="521" width="91" height="16" uuid="cd9e6988-5ed2-44ec-9a22-c5bfafe04a12"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="274" y="559" width="91" height="16" uuid="c1ec47a5-82d8-45c5-bc40-7bbb0b27febc"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<subreport>
+				<reportElement x="1" y="0" width="404" height="42" uuid="a5f19685-ee06-49b9-bcec-9038c113a818"/>
+				<subreportParameter name="SUBREPORT_DIR"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pag10.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>
