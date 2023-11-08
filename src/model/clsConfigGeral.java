@@ -21,7 +21,17 @@ public class clsConfigGeral {
         Date ultima_consulta=null,ultima_verificacao=null;
         String impressaoCondicionalPadrao="";
         String chavePix,clientid,clientsecret="",iptef,codlojatef;
-        String usaLocacao="N";
+        String usaLocacao="N",ambinetepix="H";
+
+    public String getAmbinetepix() {
+        return ambinetepix;
+    }
+
+    public void setAmbinetepix(String ambinetepix) {
+        this.ambinetepix = ambinetepix;
+    }
+        
+        
 
     public String getUsaLocacao() {
         return usaLocacao;

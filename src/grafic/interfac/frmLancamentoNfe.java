@@ -2145,7 +2145,7 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
             Logger.getLogger(frmLancamentoNfe.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Erro ao buscar dados do parceiro... \n"+ex.getMessage());
         }
-       if(nf.getIdentificado().equals("S")){
+       if(clsaux.trataCampoNuloConfig(nf.getIdentificado()).equals("S")){
            txtCnpj.setText(nf.getCfp());
            txtRazaoSocial.setText(nf.getRazao_social());
            txtCnpj.setEditable(true);
@@ -2202,6 +2202,8 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
        if(clsaux.trataCampoNuloConfig(nf.getIdentificado()).equals("S")){
            nf.setCfp(txtCnpj.getText());
            nf.setRazao_social(txtRazaoSocial.getText());
+       }else{
+           nf.setIdentificado("N");
        }
        nfeDAO nfdao= new nfeDAO();
        nfdao.inserirMovimentoNfe(nf);

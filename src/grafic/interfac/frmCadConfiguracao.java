@@ -104,6 +104,8 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
         jLabel30 = new javax.swing.JLabel();
         txtCaminhoServidor = new javax.swing.JTextField();
         jButton9 = new javax.swing.JButton();
+        jLabel52 = new javax.swing.JLabel();
+        cbAmbientePix = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         cbPdv = new javax.swing.JComboBox<>();
@@ -371,6 +373,10 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
             }
         });
 
+        jLabel52.setText("Ambiente Pix:");
+
+        cbAmbientePix.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "H- Homologação", "P- Produção" }));
+
         javax.swing.GroupLayout pnGeralLayout = new javax.swing.GroupLayout(pnGeral);
         pnGeral.setLayout(pnGeralLayout);
         pnGeralLayout.setHorizontalGroup(
@@ -488,28 +494,33 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                                         .addGap(0, 0, Short.MAX_VALUE)
                                         .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(pnGeralLayout.createSequentialGroup()
-                                                .addComponent(jLabel24)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtClientid, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(pnGeralLayout.createSequentialGroup()
-                                                .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel50)
-                                                    .addComponent(jLabel25))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addGroup(pnGeralLayout.createSequentialGroup()
-                                                        .addComponent(txtIpTef, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(jLabel51)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(txtCodLojaTef, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addComponent(txtClientSecret, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(pnGeralLayout.createSequentialGroup()
-                                                .addComponent(jLabel30)
+                                                .addComponent(jLabel50)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(txtCaminhoServidor, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jButton9)))))
+                                                .addComponent(txtIpTef, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(80, 80, 80)
+                                                .addComponent(jLabel51)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(txtCodLojaTef, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(pnGeralLayout.createSequentialGroup()
+                                                    .addComponent(jLabel52)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(cbAmbientePix, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addGroup(pnGeralLayout.createSequentialGroup()
+                                                        .addComponent(jLabel24)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(txtClientid, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(pnGeralLayout.createSequentialGroup()
+                                                        .addComponent(jLabel25)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(txtClientSecret, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(pnGeralLayout.createSequentialGroup()
+                                                        .addComponent(jLabel30)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addComponent(txtCaminhoServidor, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(jButton9)))))))
                                 .addGap(33, 33, 33))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnGeralLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -605,6 +616,10 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                             .addComponent(jLabel25))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbAmbientePix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel52))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel50)
                             .addComponent(jLabel51)
                             .addComponent(txtIpTef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -614,7 +629,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                             .addComponent(jLabel30)
                             .addComponent(txtCaminhoServidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
                         .addComponent(btnGravaConfigGeral)
                         .addGap(25, 25, 25))))
         );
@@ -891,15 +906,13 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                     .addComponent(cbTipoLeituraBalanca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel10)
-                            .addComponent(txtImpBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtImpCoz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtImpCupom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel7)
+                        .addComponent(jLabel10)
+                        .addComponent(txtImpBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtImpCoz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtImpCupom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -950,7 +963,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                 .addComponent(ckAlertaSonoro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ckTemTef)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Configuração PDVs", jPanel3);
@@ -1100,7 +1113,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton7))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Permissões Grupo Usuarios", jPanel4);
@@ -1458,6 +1471,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
         clsaux.carregaComboBox(cbAmbiente, conf.getHamb());
         clsaux.carregaComboBox(cbImpressoraCondicional, conf.getImpressaoCondicionalPadrao());
         clsaux.carregaComboBox(cbAssociacao, conf.getAssociacaoCompra());
+        clsaux.carregaComboBox(cbAmbientePix, conf.getAmbinetepix());
         txtNumeroNf.setText(dao.buscarUltimaNfe());
         conf.setUltimanfe(txtNumeroNf.getText());
      }
@@ -1631,6 +1645,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
         conf.setSenha(txtSenha.getText());
         conf.setIptef(txtIpTef.getText());
         conf.setCodlojatef(txtCodLojaTef.getText());
+        conf.setAmbinetepix(clsaux.retornaId(cbAmbientePix.getSelectedItem()));
         dao.inserirConfigGeral(conf);
         
         if(txtNumeroNf.getText().equals(conf.getUltimanfe()));else{
@@ -1770,6 +1785,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGravaConfigGeral;
     private javax.swing.JComboBox<String> cbAmbiente;
+    private javax.swing.JComboBox<String> cbAmbientePix;
     private javax.swing.JComboBox<String> cbAssociacao;
     private javax.swing.JComboBox<String> cbGrupo;
     private javax.swing.JComboBox<String> cbImpressoraCondicional;
@@ -1871,6 +1887,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

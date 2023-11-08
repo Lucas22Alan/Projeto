@@ -31,8 +31,8 @@ public class produtoDAO {
     public String Inserir(produtos produto){
         String idproduto="0";
         String sql="insert into tprodutos(id,nomelongo, nomecurto,unid_venda, excluido,id_grupo,pontos_retira, pontos_validos,tipo_produto,imp_ficha_ind,ativo,id_subgrupo,id_setor,baixa_producao_venda,imprime_etiqueta,data_cadastro,data_alterado, "
-                + "possui_atacarejo,locacao,preco_variavel,impressora_producao,tem_adicional,tem_pizza)"
-                + " values (gen_id(GEN_TPRODUTOS_ID,1),?,?,?,?,?,?,?,?,?,'S',?,?,?,?,current_date,current_date,?,?,?,?,?,?);";
+                + "possui_atacarejo,locacao,preco_variavel,impressora_producao,tem_adicional,tem_pizza,urlimagem,enviacardapio,descritivocardapio)"
+                + " values (gen_id(GEN_TPRODUTOS_ID,1),?,?,?,?,?,?,?,?,?,'S',?,?,?,?,current_date,current_date,?,?,?,?,?,?,?,?,?);";
         String sqlprecos="insert into tprecos(id, preco_venda, margem, preco_custo, ncm, sit_tributaria, cest, cfop,pis_entrada"
                 + ", pis_saida, aliq_icms,custo_atual,custo_medio,preco_oferta,inicio_oferta,fim_oferta)"
                 + "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";      
@@ -64,6 +64,9 @@ public class produtoDAO {
             pstcadpro.setString(17, produto.getImpressoraProducao());
             pstcadpro.setString(18, "N");
             pstcadpro.setString(19, "N");
+            pstcadpro.setString(20, produto.getUrlImagem());
+            pstcadpro.setString(21, produto.getEnviaCardapio());
+            pstcadpro.setString(22, produto.getDescritivoCardapio());
             pstcadpro.executeUpdate();
             pstcadpro.close();
             
@@ -123,7 +126,8 @@ public class produtoDAO {
     }
     public void Alterar (produtos produto){
         String sql="update tprodutos set nomelongo=?, nomecurto=?, unid_venda=?, id_grupo=?, pontos_retira=?, pontos_validos=?,tipo_produto=?,imp_ficha_ind=?,"
-                + "ativo=?,id_subgrupo=?,id_setor=?,baixa_producao_venda=?,imprime_etiqueta=?,data_alterado=current_date,possui_atacarejo=?,locacao=?,preco_variavel=?,impressora_producao=?   where id=?;";
+                + "ativo=?,id_subgrupo=?,id_setor=?,baixa_producao_venda=?,imprime_etiqueta=?,data_alterado=current_date,possui_atacarejo=?,locacao=?,preco_variavel=?,impressora_producao=? "
+                + ", urlimagem=?, enviacardapio=?,descritivocardapio=?  where id=?;";
         String sqlprecos="update tprecos set preco_venda=?, margem=?, preco_custo=?, ncm =?, sit_tributaria=?, cest=?, cfop=?"
                 + ",pis_entrada=?, pis_saida=?, aliq_icms=?,preco_oferta=?,inicio_oferta=?,fim_oferta=? where id=?";      
         String sqlbarras="update tbarras set baixa_barra=?, fator=?, estoque_minimo=?, referencia=?,pesavel=?,id_balanca=?,leitura_aut_pdv=?,data_validade=?,codigo_barras=? where id_produto=?";
@@ -148,7 +152,10 @@ public class produtoDAO {
             pstcadpro.setString(15, produto.getTemLocacao());
             pstcadpro.setString(16, produto.getPrecoVariado());
             pstcadpro.setString(17, produto.getImpressoraProducao());
-            pstcadpro.setInt(18, produto.getid());
+            pstcadpro.setString(18, produto.getUrlImagem());
+            pstcadpro.setString(19, produto.getEnviaCardapio());
+            pstcadpro.setString(20, produto.getDescritivoCardapio());
+            pstcadpro.setInt(21, produto.getid());
             pstcadpro.executeUpdate();
             pstcadpro.close();
             PreparedStatement pstcadprecos= conexao.getPreparedStatement(sqlprecos);
@@ -230,6 +237,9 @@ public class produtoDAO {
                    prodd.setTemLocacao(rspesqitem.getString("locacao"));
                    prodd.setPrecoVariado(rspesqitem.getString("preco_variavel"));
                    prodd.setImpressoraProducao(rspesqitem.getString("impressora_producao"));
+                   prodd.setEnviaCardapio(rspesqitem.getString("enviacardapio"));
+                   prodd.setUrlImagem(rspesqitem.getString("urlimagem"));
+                   prodd.setDescritivoCardapio(rspesqitem.getString("descritivocardapio"));
                    rspesqitem.close();
                    pspesqitem.close();
                    PreparedStatement pssql2 = conexao.getPreparedStatement(sql2);

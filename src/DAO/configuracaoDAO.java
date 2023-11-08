@@ -63,6 +63,7 @@ public class configuracaoDAO {
             conf.setIptef(rs.getString("IP_SERVIDOR_TEF"));
             conf.setCodlojatef(rs.getString("CODLOJA_TEF"));
             conf.setCaminhoxml(rs.getString("caminhoxml"));
+            conf.setAmbinetepix(rs.getString("ambientepix"));
             rs.close();
             ps.close();
         } catch (SQLException ex) {
@@ -224,8 +225,8 @@ public class configuracaoDAO {
         try {
             String sql="UPDATE OR INSERT INTO TCONFIG (FIDELIDADE, IMPRIME_CONSUMO_TIRO, DATA_INI_FIDELIDADE, UTILIZA_CREDITO_CLIENTE, DATA_INI_MOV_CONTA, USA_PREC_CAT_TIRO, MESAINICIO, MESAFIM,id,ambiente,nfe_serie,tipo_certificado"
                     + ",marca_a3,dll_a3,caminho_certificado,senha_certificado,controla_juros,perc_juros,perc_multa,carencia,imp_padrao_condi,client_id,client_secret,chave,utiliza_atacarejo,CADASTRAITEMAUTCOMPRA,tipo_associacao_compra,"
-                    + " ip_servidor_tef,codloja_tef,caminhoxml)\n" +
-                    "                       VALUES (?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)  MATCHING (ID) \n" +
+                    + " ip_servidor_tef,codloja_tef,caminhoxml,ambientepix)\n" +
+                    "                       VALUES (?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)  MATCHING (ID) \n" +
                     "                     ";
             PreparedStatement ps = conexao.getPreparedStatement(sql);
             ps.setString(1, conf.getFidelidade());
@@ -258,6 +259,7 @@ public class configuracaoDAO {
             ps.setString(28, conf.getIptef());
             ps.setString(29, conf.getCodlojatef());
             ps.setString(30, conf.getCaminhoxml());
+            ps.setString(31, conf.getAmbinetepix());
             ps.executeUpdate();
             ps.close();
             JOptionPane.showMessageDialog(null,"Registro Gravado Com Sucesso ");

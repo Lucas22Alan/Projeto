@@ -19,6 +19,33 @@ public class produtos {
     String pesagem_aut,imp_ficha,baixa_producao,temAtacarejo,temLocacao,precoVariado,impressoraProducao;
     Double preco_oferta=0.00;
     String comeco,fim,datavalidade;
+    String urlImagem="",enviaCardapio="N",descritivoCardapio="";
+
+    public String getUrlImagem() {
+        return urlImagem;
+    }
+
+    public void setUrlImagem(String urlImagem) {
+        this.urlImagem = urlImagem;
+    }
+
+    public String getEnviaCardapio() {
+        return enviaCardapio;
+    }
+
+    public void setEnviaCardapio(String enviaCardapio) {
+        this.enviaCardapio = enviaCardapio;
+    }
+
+    public String getDescritivoCardapio() {
+        return descritivoCardapio;
+    }
+
+    public void setDescritivoCardapio(String descritivoCardapio) {
+        this.descritivoCardapio = descritivoCardapio;
+    }
+    
+    
 
     public String getImpressoraProducao() {
         return impressoraProducao;
