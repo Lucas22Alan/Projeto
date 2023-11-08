@@ -1246,12 +1246,15 @@ public class CRUDNfe extends javax.swing.JDialog {
             
             clientes cli= new clientes();
             cli= clienteDAO.buscar("1", cli, cd.getIdparceiro());
+            
+            String email = JOptionPane.showInputDialog("Informe o seu e-mail:",cli.getEmail());
+
     
             String caminhoOrigem=clsConfig.configuracaogeral.getCaminhoxml()+"nfce\\xml\\"+cd.getChaveacesso()+".xml";
             String pdf=clsConfig.configuracaogeral.getCaminhoxml()+"Nfce\\pdf\\NFce"+cd.getChaveacesso()+".pdf";
             
-            if(cli.getEmail()!=null&& cli.getEmail().length()>5){
-                ClsEnvioEmail.enviarNfeXmlPdf(caminhoOrigem,pdf, cli.getEmail(), "",cd.getDocument());
+            if(email!=null&& email.length()>5){
+                ClsEnvioEmail.enviarNfeXmlPdf(caminhoOrigem,pdf, email, "",cd.getDocument());
             }else{
                 JOptionPane.showMessageDialog(null, "E-mail Do Destinatario Invalido!!!");
             }
@@ -1274,12 +1277,14 @@ public class CRUDNfe extends javax.swing.JDialog {
             
             clientes cli= new clientes();
             cli= clienteDAO.buscar("1", cli, cd.getIdparceiro());
+            
+            String email = JOptionPane.showInputDialog("Informe o seu e-mail:",cli.getEmail());
     
             String caminhoOrigem=clsConfig.configuracaogeral.getCaminhoxml()+"nfe\\xml\\"+cd.getChaveacesso()+".xml";
             String pdf=clsConfig.configuracaogeral.getCaminhoxml()+"Nfe\\pdf\\NFe"+cd.getChaveacesso()+".pdf";
             
-            if(cli.getEmail()!=null&& cli.getEmail().length()>5){
-                    ClsEnvioEmail.enviarNfeXmlPdf(caminhoOrigem,pdf, cli.getEmail(), "",cd.getDocument());
+            if(email!=null&& email.length()>5){
+                    ClsEnvioEmail.enviarNfeXmlPdf(caminhoOrigem,pdf, email, "",cd.getDocument());
             }else{
                 JOptionPane.showMessageDialog(null, "E-mail Do Destinatario Invalido!!!");
             }

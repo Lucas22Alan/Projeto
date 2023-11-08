@@ -1517,7 +1517,9 @@ public class LancamentoItemDocumento extends javax.swing.JDialog {
     }//GEN-LAST:event_txtaliqipiActionPerformed
 
     private void txtQntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQntActionPerformed
-      txtValorunitario.requestFocus();
+        Double unit=clsaux.capturaValores(txtsubtotal.getText())/clsaux.capturaValores(txtQnt.getText());
+        txtValorunitario.setText(clsaux.formato4(unit));
+        txtValorunitario.requestFocus();
     }//GEN-LAST:event_txtQntActionPerformed
 
     private void txtValorunitarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorunitarioActionPerformed
@@ -1920,6 +1922,7 @@ public class LancamentoItemDocumento extends javax.swing.JDialog {
         }else{
             txtcst.setText(item.getCst());
         }
+        this.calculaTotal();
         //this.pegaItem(validaDigitosBarras.preencheCodigo(txtCodBarras.getText()));
         
     }

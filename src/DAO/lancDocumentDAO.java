@@ -136,7 +136,8 @@ public class lancDocumentDAO {
             psi.setString(34,clsaux.trataCampoNulo( ld.getNcm()));
             psi.setString(35,clsaux.trataCampoNulo( ld.getOrigem_produto()));
             psi.setString(36, clsaux.trataCampoNulo(ld.getSubtotal()));
-            psi.setString(37, clsaux.trataCampoNulo(ld.getCusto()));
+            System.out.println(ld.getCusto());
+            psi.setString(37, clsaux.trataCampoNulo(clsaux.capturaValor(ld.getCusto())));
             psi.setString(38, ld.getImportadoNfe());
             Double totalcusto=clsaux.capturaValores(ld.getCusto())*clsaux.capturaValores(ld.getQuantidade());
             psi.setString(39,  clsaux.capturaValor(clsaux.formato(totalcusto)));

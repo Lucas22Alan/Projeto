@@ -1618,7 +1618,9 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
             }
             itens.add(ite);
             numeitem++;
+            System.out.println(ite.getCusto());
         }
+        
         populaTabelaItens();
         
         
