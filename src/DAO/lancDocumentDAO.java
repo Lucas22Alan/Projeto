@@ -613,6 +613,7 @@ public class lancDocumentDAO {
             cd.setValor_pis(clsaux.capturaValor(clsaux.formato(pis)));
             cd.setValor_cofins(clsaux.capturaValor(clsaux.formato(cofins)));
             cd.setOrigem(idLancamento);
+            cd.setValoripi("0.00");
             cd.setMvtoOrigem(ori);
             atualizaRegistroMovto(cd);
             if(clsaux.capturaValores(desconto)>0){

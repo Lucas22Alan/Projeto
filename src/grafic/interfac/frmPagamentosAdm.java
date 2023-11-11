@@ -655,6 +655,7 @@ public class frmPagamentosAdm extends javax.swing.JDialog {
        nf.setInddest("1");
        nf.setIndie("1");
        nf.setPrescomp("1");
+       nf.setConsfinal("N");
        nfeDAO.gerarNfePartirVenda(nf);
        clsNfTransporte tr= new clsNfTransporte();
        tr.setIdmovimento(mvto);

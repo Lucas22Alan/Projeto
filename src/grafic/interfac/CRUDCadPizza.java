@@ -9,6 +9,7 @@ package grafic.interfac;
 import DAO.CadPizzaDAO;
 import DAO.listaGrupDAO;
 import classes.clsaux;
+import com.sun.glass.events.KeyEvent;
 import contrato.escolheImpressao;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
@@ -28,6 +29,12 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import static grafic.interfac.CRUDCadPizza.tabTam;
+import grafic.interfac.pesquisa.formProcuraCliente;
+import grafic.interfac.pesquisa.localizaProduto;
+import javax.swing.AbstractAction;
+import javax.swing.InputMap;
+import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 import javax.swing.RowFilter;
 
 import javax.swing.table.TableColumn;
@@ -79,6 +86,7 @@ public class CRUDCadPizza extends javax.swing.JDialog {
         cbGrupo = new javax.swing.JComboBox<>();
         cbSubGrupo = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
+        btnAtt = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -319,6 +327,13 @@ public class CRUDCadPizza extends javax.swing.JDialog {
             }
         });
 
+        btnAtt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Refresh.png"))); // NOI18N
+        btnAtt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAttActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -326,29 +341,34 @@ public class CRUDCadPizza extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cbGrupo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtCodInserir)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cbSubGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelOpcProcura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(123, 123, 123))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbGrupo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbSubGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(PanelOpcProcura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(123, 123, 123))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(txtCodInserir, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAtt)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtCodInserir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAtt))
+                .addGap(10, 10, 10)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(PanelOpcProcura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(txtCodInserir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(cbGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -357,7 +377,10 @@ public class CRUDCadPizza extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cbSubGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(PanelOpcProcura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
@@ -610,7 +633,8 @@ public class CRUDCadPizza extends javax.swing.JDialog {
     }//GEN-LAST:event_tbItensRefKeyReleased
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        this.inserirPorProduto(txtCodInserir.getText());
+        txtCodInserir.setText("");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -641,6 +665,10 @@ public class CRUDCadPizza extends javax.swing.JDialog {
      rowSorter.setRowFilter(filter);
     }//GEN-LAST:event_cbFiltroSubGrupoActionPerformed
 
+    private void btnAttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttActionPerformed
+       populaTabelaAdicionais();
+    }//GEN-LAST:event_btnAttActionPerformed
+
     public void inicia(){
         tabTam.addMouseListener(new MouseAdapter(){
             public void mouseClicked(MouseEvent e ){
@@ -650,6 +678,15 @@ public class CRUDCadPizza extends javax.swing.JDialog {
             }
           
         }); 
+        InputMap imp= this.getRootPane().getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
+        imp.put(KeyStroke.getKeyStroke(KeyEvent.VK_F10,0),"busca");
+        this.getRootPane().getActionMap().put("busca", new AbstractAction(){
+            public void actionPerformed(ActionEvent ev){
+                 localizaProduto dialog = new localizaProduto(new javax.swing.JFrame(), true); 
+                localizaProduto.idchamado="15";
+                dialog.setVisible(true);
+            }
+        });
         
         DefaultComboBoxModel CbGrup = new DefaultComboBoxModel(listaGrupDAO.listagrupo().toArray());
         cbGrupo.setModel(CbGrup);
@@ -666,6 +703,12 @@ public class CRUDCadPizza extends javax.swing.JDialog {
         String adc= tabTam.getValueAt(tabTam.getSelectedRow(), 0).toString();
         Double preco=clsaux.capturaValores(tabTam.getValueAt(tabTam.getSelectedRow(), 2).toString());
         new CadPizzaDAO().InserirItensPorGrupo(idselecionada, tp,adc,preco);
+        populaTabelaProd();
+    }
+    public void inserirPorProduto(String barra){
+        String adc= tabTam.getValueAt(tabTam.getSelectedRow(), 0).toString();
+        Double preco=clsaux.capturaValores(tabTam.getValueAt(tabTam.getSelectedRow(), 2).toString());
+        new CadPizzaDAO().inserirItensRefTamanho(adc,barra,preco );
         populaTabelaProd();
     }
   
@@ -842,6 +885,7 @@ public class CRUDCadPizza extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelOpcProcura;
     private javax.swing.JButton btnAlterar;
+    private javax.swing.JButton btnAtt;
     private javax.swing.JButton btnExcluirItem;
     private javax.swing.JButton btnFechar;
     private javax.swing.JButton btnIncluir;
@@ -868,6 +912,6 @@ public class CRUDCadPizza extends javax.swing.JDialog {
     private javax.swing.JTabbedPane jTabbedPane1;
     public static javax.swing.JTable tabTam;
     public static javax.swing.JTable tbItensRef;
-    private javax.swing.JTextField txtCodInserir;
+    public static javax.swing.JTextField txtCodInserir;
     // End of variables declaration//GEN-END:variables
 }

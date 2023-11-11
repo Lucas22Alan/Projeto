@@ -181,15 +181,13 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtBarra" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtDescricao" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtBarra" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtDescricao" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="btnPesq" min="-2" pref="21" max="-2" attributes="0"/>
+                              <Component id="btnPesq" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -247,6 +245,8 @@
                   <Events>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtBarraFocusLost"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBarraActionPerformed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBarraKeyPressed"/>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBarraKeyReleased"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
@@ -455,8 +455,8 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btnGravarOs" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnCancelarOs" alignment="3" max="32767" attributes="0"/>
+                              <Component id="btnGravarOs" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnCancelarOs" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>

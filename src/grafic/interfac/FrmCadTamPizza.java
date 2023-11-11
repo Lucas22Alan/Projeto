@@ -26,6 +26,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import model.Tcad_tam_pizza;
+import util.validaDigitosBarras;
 
 /**
  *
@@ -369,7 +370,7 @@ public class FrmCadTamPizza extends javax.swing.JDialog {
 
     private void txtCodProdBaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodProdBaseActionPerformed
         if(clsaux.verificaNulo(txtCodProdBase.getText())){}else{
-            this.preencheDados(txtCodProdBase.getText());
+            this.preencheDados(validaDigitosBarras.preencheCodigo(txtCodProdBase.getText()));
         }
         txtQntSabor.requestFocus();
         

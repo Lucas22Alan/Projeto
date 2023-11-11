@@ -157,12 +157,9 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbItens = new javax.swing.JTable();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
+        btnExcluir = new javax.swing.JButton();
+        btnIncluir = new javax.swing.JButton();
+        btnAlterar = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         CbFinalizadora = new javax.swing.JComboBox();
@@ -849,63 +846,27 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
             tbItens.getColumnModel().getColumn(10).setPreferredWidth(50);
         }
 
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/IncluirFinan.png"))); // NOI18N
-        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel16MouseClicked(evt);
-            }
-        });
-        jLabel16.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jLabel16KeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jLabel16KeyReleased(evt);
+        btnExcluir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnExcluir.setText("Exluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
             }
         });
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(0, 102, 51));
-        jLabel17.setText("Incluir");
-        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel17MouseClicked(evt);
+        btnIncluir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnIncluir.setText("Incluir");
+        btnIncluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIncluirActionPerformed(evt);
             }
         });
 
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/DelFinan.png"))); // NOI18N
-        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel18MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel18MouseEntered(evt);
-            }
-        });
-
-        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel19.setText("Deletar");
-        jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel19MouseClicked(evt);
-            }
-        });
-
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/mudar2.png"))); // NOI18N
-        jLabel20.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel20MouseClicked(evt);
-            }
-        });
-
-        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(148, 148, 0));
-        jLabel21.setText("Alterar");
-        jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel21MouseClicked(evt);
+        btnAlterar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
             }
         });
 
@@ -914,34 +875,30 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jLabel16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel18)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel19)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel21)
-                .addGap(0, 1047, Short.MAX_VALUE))
-            .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1256, Short.MAX_VALUE)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(btnIncluir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAlterar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnExcluir)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
+
+        jPanel6Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAlterar, btnExcluir, btnIncluir});
+
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnIncluir)
+                    .addComponent(btnExcluir)
+                    .addComponent(btnAlterar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1814,50 +1771,6 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
-        this.informacoesNfe();
-        frmLancamentoItemNfe dialog = new frmLancamentoItemNfe(new javax.swing.JFrame(), true);
-        frmLancamentoItemNfe.item=preparaNovoItem();
-        frmLancamentoItemNfe.estadoform="O";
-         dialog.inicializa(nf, clsaux.retornaId(cbControleInterno.getSelectedItem()));
-        dialog.setVisible(true);
-    }//GEN-LAST:event_jLabel16MouseClicked
-
-    private void jLabel16KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel16KeyPressed
-        this.informacoesNfe();
-        frmLancamentoItemNfe dialog = new frmLancamentoItemNfe(new javax.swing.JFrame(), true);
-        frmLancamentoItemNfe.item=preparaNovoItem();
-        frmLancamentoItemNfe.estadoform="O";
-        dialog.inicializa(nf, clsaux.retornaId(cbControleInterno.getSelectedItem()));
-        dialog.setVisible(true);
-    }//GEN-LAST:event_jLabel16KeyPressed
-
-    private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
-        this.informacoesNfe();
-        frmLancamentoItemNfe dialog = new frmLancamentoItemNfe(new javax.swing.JFrame(), true);
-        frmLancamentoItemNfe.item=preparaNovoItem();
-        frmLancamentoItemNfe.estadoform="O";
-        dialog.inicializa(nf, clsaux.retornaId(cbControleInterno.getSelectedItem()));
-        dialog.setVisible(true);
-        
-    }//GEN-LAST:event_jLabel17MouseClicked
-
-    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
-            this.excluiItem();
-    }//GEN-LAST:event_jLabel18MouseClicked
-
-    private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
-
-    }//GEN-LAST:event_jLabel19MouseClicked
-
-    private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
-        this.alteraItem();
-    }//GEN-LAST:event_jLabel20MouseClicked
-
-    private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
-       this.alteraItem();
-    }//GEN-LAST:event_jLabel21MouseClicked
-
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
         this.calculaValoresFinanceiro();
         this.insereFinalizadora(txtMovto.getText());
@@ -2030,10 +1943,6 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
         this.adicinaChave();
     }//GEN-LAST:event_btnAdicionaChaveActionPerformed
 
-    private void jLabel18MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel18MouseEntered
-
     private void txtDescontActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescontActionPerformed
         this.rateiaDescontoTotalItens();
     }//GEN-LAST:event_txtDescontActionPerformed
@@ -2080,9 +1989,22 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
        removeChave();
     }//GEN-LAST:event_btnAdicionaChave1ActionPerformed
 
-    private void jLabel16KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel16KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel16KeyReleased
+    private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
+       this.informacoesNfe();
+        frmLancamentoItemNfe dialog = new frmLancamentoItemNfe(new javax.swing.JFrame(), true);
+        frmLancamentoItemNfe.item=preparaNovoItem();
+        frmLancamentoItemNfe.estadoform="O";
+        dialog.inicializa(nf, clsaux.retornaId(cbControleInterno.getSelectedItem()));
+        dialog.setVisible(true);
+    }//GEN-LAST:event_btnIncluirActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+       this.alteraItem();
+    }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+       this.excluiItem();
+    }//GEN-LAST:event_btnExcluirActionPerformed
     public void inicializa(){
         DefaultComboBoxModel cbtip= new DefaultComboBoxModel(listaDAO.listaTipoDocumento().toArray());
         cbControleInterno.setModel(cbtip); 
@@ -2183,7 +2105,9 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
         this.gravarTransportadora();
         this.gravarInfReferencia();
         this.limpaDados();
+        CRUDNfe.JcbEstado.setSelectedIndex(4);
         CRUDNfe.btnPesquisa.requestFocus();
+       
         this.dispose();
     }
     
@@ -2243,11 +2167,11 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
         Double vlipi=0.00;
         for (int i=0; i<lin; i++){
             valor=valor+(clsaux.capturaValores(tbItens.getValueAt(i, 5).toString())*clsaux.capturaValores(tbItens.getValueAt(i, 3).toString()));
-            desconto=desconto+Double.parseDouble(tbItens.getValueAt(i, 6).toString().replaceAll(",", "."));
-            acres=acres+Double.parseDouble(tbItens.getValueAt(i, 7).toString().replaceAll(",", "."));
-            vlpis=vlpis+Double.parseDouble(itens.get(i).getValor_pis());
-            vlcofins=vlcofins+ Double.parseDouble(itens.get(i).getValor_cofins());
-            vlipi=vlipi+Double.parseDouble(itens.get(i).getValor_ipi());
+            desconto=desconto+clsaux.capturaValores(tbItens.getValueAt(i, 6).toString().replaceAll(",", "."));
+            acres=acres+clsaux.capturaValores(tbItens.getValueAt(i, 7).toString().replaceAll(",", "."));
+            vlpis=vlpis+clsaux.capturaValores(itens.get(i).getValor_pis());
+            vlcofins=vlcofins+ clsaux.capturaValores(itens.get(i).getValor_cofins());
+            vlipi=vlipi+clsaux.capturaValores(itens.get(i).getValor_ipi());
         }
         txtTotalprod.setText(clsaux.formato(valor));
         txtDescont.setText(clsaux.formato(desconto));
@@ -2868,11 +2792,14 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> CbParcelas;
     private javax.swing.JButton btnAdicionaChave;
     private javax.swing.JButton btnAdicionaChave1;
+    private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnAnexarMarcado;
     private javax.swing.JButton btnAnexarPorMovimento;
     private javax.swing.JButton btnBuscarReg;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnExluirPag;
     private javax.swing.JButton btnImportaAnexos;
+    private javax.swing.JButton btnIncluir;
     private javax.swing.JButton btnOk;
     private javax.swing.JButton btnPesq;
     private javax.swing.JButton btnRemoveAnexos;
@@ -2897,13 +2824,7 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;

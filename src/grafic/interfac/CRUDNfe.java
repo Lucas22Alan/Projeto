@@ -16,7 +16,6 @@ import br.com.swconsultoria.nfe.exception.NfeException;
 import br.com.swconsultoria.nfe.schema_4.retConsSitNFe.TRetConsSitNFe;
 import classes.ClsEnvioEmail;
 import classes.ClsGeraXmlContabilidade;
-import model.clsDadosEmpresa;
 import model.clsLancDocCabecalho;
 import classes.clsaux;
 import conexoes.conexao;
@@ -26,20 +25,13 @@ import fiscal.clsEnviaNfce;
 import fiscal.clsInutilizarNfe;
 import java.awt.Color;
 import java.awt.Component;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -50,14 +42,6 @@ import model.clientes;
 import model.clsConfig;
 import model.clsNfe;
 import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JRResultSetDataSource;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
-import net.sf.jasperreports.view.JasperViewer;
 import org.xml.sax.SAXException;
 
 /**
@@ -269,6 +253,7 @@ public class CRUDNfe extends javax.swing.JDialog {
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setFocusable(false);
         jScrollPane1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         TbLancamentos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -289,8 +274,10 @@ public class CRUDNfe extends javax.swing.JDialog {
             }
         });
         TbLancamentos.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        TbLancamentos.setColumnSelectionAllowed(true);
+        TbLancamentos.setCellSelectionEnabled(false);
+        TbLancamentos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         TbLancamentos.setRowHeight(20);
+        TbLancamentos.setRowSelectionAllowed(true);
         TbLancamentos.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(TbLancamentos);
         TbLancamentos.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -1383,7 +1370,7 @@ public class CRUDNfe extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> JcbEstado;
+    public static javax.swing.JComboBox<String> JcbEstado;
     private javax.swing.JTable TbLancamentos;
     private javax.swing.JButton btnCancelarNfce;
     private javax.swing.JButton btnCancelarNfce1;

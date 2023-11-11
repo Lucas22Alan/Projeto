@@ -62,14 +62,10 @@ public class CRUDDocumentos extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        lbAlterar = new javax.swing.JLabel();
-        lbAlterar2 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
+        btnIncluir = new javax.swing.JButton();
+        btnAlterar = new javax.swing.JButton();
+        btnExcluirItem = new javax.swing.JButton();
+        btnFechar = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -99,89 +95,53 @@ public class CRUDDocumentos extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gerenciador de Documentos");
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(219, 227, 227));
 
-        jPanel4.setBackground(new java.awt.Color(219, 227, 227));
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 51)));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/documentosfiscaos2.png"))); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("- Arquivos / Documentos");
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(new java.awt.Font("Arial Narrow", 0, 36)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 153, 51));
+        jLabel5.setFont(new java.awt.Font("Segoe UI Semilight", 0, 36)); // NOI18N
         jLabel5.setText("Gerenciador de Documentos");
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 102, 51));
-        jLabel10.setText("Incluir");
-        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel10MouseClicked(evt);
+        btnIncluir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/mais99.png"))); // NOI18N
+        btnIncluir.setText("Incluir");
+        btnIncluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIncluirActionPerformed(evt);
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/IncluirFinan.png"))); // NOI18N
-        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel9MouseClicked(evt);
-            }
-        });
-        jLabel9.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jLabel9KeyPressed(evt);
+        btnAlterar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/alterar97.png"))); // NOI18N
+        btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
             }
         });
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/DelFinan.png"))); // NOI18N
-        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel11MouseClicked(evt);
+        btnExcluirItem.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnExcluirItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/deletar99.png"))); // NOI18N
+        btnExcluirItem.setText("Cancelar");
+        btnExcluirItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirItemActionPerformed(evt);
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel12.setText("Cancelar");
-        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel12MouseClicked(evt);
-            }
-        });
-
-        lbAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/mudar2.png"))); // NOI18N
-        lbAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbAlterarMouseClicked(evt);
-            }
-        });
-
-        lbAlterar2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbAlterar2.setForeground(new java.awt.Color(148, 148, 0));
-        lbAlterar2.setText("Alterar");
-        lbAlterar2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbAlterar2MouseClicked(evt);
-            }
-        });
-
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/close2.png"))); // NOI18N
-        jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel21MouseClicked(evt);
-            }
-        });
-
-        jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(153, 0, 0));
-        jLabel22.setText("Fechar");
-        jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel22MouseClicked(evt);
+        btnFechar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnFechar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fechar99.png"))); // NOI18N
+        btnFechar.setText("Fechar");
+        btnFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFecharActionPerformed(evt);
             }
         });
 
@@ -198,21 +158,13 @@ public class CRUDDocumentos extends javax.swing.JDialog {
                         .addGap(6, 6, 6)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel9)
+                        .addComponent(btnIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel10)
+                        .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnExcluirItem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lbAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbAlterar2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel11)
-                        .addGap(2, 2, 2)
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel21)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel22))
+                        .addComponent(btnFechar))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -228,26 +180,21 @@ public class CRUDDocumentos extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel9)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lbAlterar2)
-                                .addComponent(jLabel12))
-                            .addComponent(jLabel22)
-                            .addComponent(jLabel21)
-                            .addComponent(lbAlterar))
+                                .addComponent(btnFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnExcluirItem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
-        jPanel7.setBackground(new java.awt.Color(219, 227, 227));
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 51)));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 153, 51));
         jLabel8.setText("Filtros");
 
         jSeparator1.setForeground(new java.awt.Color(0, 102, 102));
@@ -283,13 +230,11 @@ public class CRUDDocumentos extends javax.swing.JDialog {
         }
 
         jLabel13.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 102, 102));
         jLabel13.setText("Tipo ");
 
         JcbTipFiltro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 102, 102));
         jLabel14.setText("Início");
 
         try {
@@ -307,11 +252,9 @@ public class CRUDDocumentos extends javax.swing.JDialog {
         JftDatFim.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel15.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 102, 102));
         jLabel15.setText("Término");
 
         jLabel16.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 102, 102));
         jLabel16.setText("Data");
 
         JcbCont.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -348,7 +291,6 @@ public class CRUDDocumentos extends javax.swing.JDialog {
         });
 
         jLabel18.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 102, 102));
         jLabel18.setText("Estado");
 
         JcbEstado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -366,7 +308,7 @@ public class CRUDDocumentos extends javax.swing.JDialog {
             }
         });
 
-        jLabel1.setText("Nome:");
+        jLabel1.setText("Nome / Numero");
 
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cad99.png"))); // NOI18N
@@ -515,34 +457,6 @@ public class CRUDDocumentos extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-        LancamentoDocumentos dialog = new LancamentoDocumentos(new javax.swing.JFrame(), true);
-        LancamentoDocumentos.estadoform="I";
-        LancamentoDocumentos.numeitem=1;
-        dialog.setVisible(true);
-       
-    }//GEN-LAST:event_jLabel9MouseClicked
-
-    private void jLabel9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel9KeyPressed
-      LancamentoDocumentos dialog = new LancamentoDocumentos(new javax.swing.JFrame(), true);
-        LancamentoDocumentos.estadoform="I";
-        dialog.setVisible(true);
-    }//GEN-LAST:event_jLabel9KeyPressed
-
-    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
-        LancamentoDocumentos dialog = new LancamentoDocumentos(new javax.swing.JFrame(), true);
-        LancamentoDocumentos.estadoform="I";
-        dialog.setVisible(true);
-    }//GEN-LAST:event_jLabel10MouseClicked
-
-    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
-       this.deletaMovimento();
-    }//GEN-LAST:event_jLabel11MouseClicked
-
-    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
-        this.deletaMovimento();
-    }//GEN-LAST:event_jLabel12MouseClicked
-
     private void JcbContActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JcbContActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JcbContActionPerformed
@@ -551,25 +465,9 @@ public class CRUDDocumentos extends javax.swing.JDialog {
         this.localizaDocumentos();
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void lbAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbAlterarMouseClicked
-        this.acaoBtnAlterarDoc(TbLancamentos.getValueAt(TbLancamentos.getSelectedRow(), 0).toString());
-    }//GEN-LAST:event_lbAlterarMouseClicked
-
-    private void lbAlterar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbAlterar2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lbAlterar2MouseClicked
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
-        this.dispose();
-    }//GEN-LAST:event_jLabel21MouseClicked
-
-    private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
-       this.dispose();
-    }//GEN-LAST:event_jLabel22MouseClicked
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
@@ -578,6 +476,25 @@ public class CRUDDocumentos extends javax.swing.JDialog {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         chamaJanelaLocalizarXml();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
+        LancamentoDocumentos dialog = new LancamentoDocumentos(new javax.swing.JFrame(), true);
+        LancamentoDocumentos.estadoform="I";
+        dialog.setVisible(true);
+    }//GEN-LAST:event_btnIncluirActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+       this.acaoBtnAlterarDoc(TbLancamentos.getValueAt(TbLancamentos.getSelectedRow(), 0).toString());
+
+    }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnExcluirItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirItemActionPerformed
+       this.deletaMovimento();
+    }//GEN-LAST:event_btnExcluirItemActionPerformed
+
+    private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnFecharActionPerformed
      private void chamaJanelaLocalizarXml() {
       frmLocalizaXml dialog = new frmLocalizaXml(new javax.swing.JFrame(), true);
       dialog.setLocationRelativeTo(null);
@@ -630,6 +547,10 @@ public class CRUDDocumentos extends javax.swing.JDialog {
        menu.add(gerarDev);
        CriaMenuOpcoes.listaCliqDireitoMouse(TbLancamentos, menu);
 }
+    
+    public void imprimeCupom(){
+        
+    }
     public void localizaRegistroOutraJanela(String id){
         try {
             String sql="select  td.descricao,\n" +
@@ -710,7 +631,7 @@ public class CRUDDocumentos extends javax.swing.JDialog {
                     " join ttipo_documentos td on tm.id_tipo=td.id\n" +
                     " left join tparceiros tp on tm.id_parceiro=tp.idparceiro\n" +
                     " where (tm.id_tipo="+tipodoc+" )and tm."+tipodata+" between '"+dataini+"' and '"+datafim+"' and tm.estado=? \n"
-                    +"and tp.razao_social like'%"+campo+"%' order by 9 desc";
+                    +"and (tp.razao_social like'%"+campo+"%' or tm.numero_documento like '%"+campo+"%' )order by 9 desc";
             if(tipodoc.equals("99")){
                 sql="select  td.descricao,\n" +
                     "        tp.razao_social,\n" +
@@ -727,7 +648,7 @@ public class CRUDDocumentos extends javax.swing.JDialog {
                     " join ttipo_documentos td on tm.id_tipo=td.id\n" +
                     " left join tparceiros tp on tm.id_parceiro=tp.idparceiro\n" +
                     " where tm."+tipodata+" between '"+dataini+"' and '"+datafim+"' and tm.estado=? \n"
-                    +"and tp.razao_social like'%"+campo+"%' order by 9 desc";
+                    +"and (tp.razao_social like'%"+campo+"%' or tm.numero_documento like '%"+campo+"%' ) order by 9 desc";
             }
             PreparedStatement ps = conexao.getPreparedStatementResult(sql);
             ps.setString(1, estado);
@@ -831,13 +752,14 @@ public class CRUDDocumentos extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField JftDatFim;
     private javax.swing.JFormattedTextField JftDatInicio;
     private javax.swing.JTable TbLancamentos;
+    private javax.swing.JButton btnAlterar;
+    private javax.swing.JButton btnExcluirItem;
+    private javax.swing.JButton btnFechar;
+    private javax.swing.JButton btnIncluir;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -846,20 +768,15 @@ public class CRUDDocumentos extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel lbAlterar;
-    private javax.swing.JLabel lbAlterar2;
     private javax.swing.JLabel lbTotalreg;
     private javax.swing.JLabel lbValorTotal;
     private javax.swing.JTextField txtNome;

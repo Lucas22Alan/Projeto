@@ -701,11 +701,11 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="cbUf" min="-2" pref="51" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cbUf" min="-2" pref="76" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="cbCidade" min="-2" pref="324" max="-2" attributes="0"/>
+                                      <Component id="cbCidade" min="-2" pref="285" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="ftCep" min="-2" pref="84" max="-2" attributes="0"/>

@@ -1640,16 +1640,16 @@
                               <Component id="jLabel47" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel48" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cbSbCond" alignment="0" min="-2" pref="137" max="-2" attributes="0"/>
-                              <Component id="cbSbNfe" alignment="0" min="-2" pref="137" max="-2" attributes="0"/>
-                              <Component id="cbSbTaxas" alignment="0" min="-2" pref="137" max="-2" attributes="0"/>
-                              <Component id="cbSbOrc" alignment="0" min="-2" pref="137" max="-2" attributes="0"/>
-                              <Component id="cbSbConfCx" min="-2" pref="137" max="-2" attributes="0"/>
-                              <Component id="cbSbPed" min="-2" pref="137" max="-2" attributes="0"/>
+                              <Component id="cbSbCond" alignment="0" pref="298" max="32767" attributes="0"/>
+                              <Component id="cbSbNfe" alignment="0" pref="298" max="32767" attributes="0"/>
+                              <Component id="cbSbTaxas" alignment="0" pref="298" max="32767" attributes="0"/>
+                              <Component id="cbSbOrc" alignment="0" pref="298" max="32767" attributes="0"/>
+                              <Component id="cbSbConfCx" pref="298" max="32767" attributes="0"/>
+                              <Component id="cbSbPed" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="423" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="262" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

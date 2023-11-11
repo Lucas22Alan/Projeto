@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
  * @author Mk Solucoes
  */
 public class ClsVerificaVersao {
-    public static final String versaoCompilada="1.042";
+    public static final String versaoCompilada="1.043";
     public static String versaosis="";
     
     public static Boolean verificaAtualizaVersao(){

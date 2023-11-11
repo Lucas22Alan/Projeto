@@ -5,15 +5,10 @@
  */
 package grafic.interfac;
 
-import DAO.listaDAO;
 import DAO.listaInfAdcDAO;
 import DAO.orcamentoDAO;
 import grafic.interfac.pesquisa.localizaProduto;
-import DAO.orderServicoDAO;
-import classes.ClsAutoComplete;
-import model.clsItemOs;
 import model.clsOrcamentoItem;
-import model.clsOrdem;
 import classes.clsaux;
 import com.sun.glass.events.KeyEvent;
 import conexoes.conexao;
@@ -21,7 +16,6 @@ import java.awt.event.ActionEvent;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.AbstractAction;
@@ -30,7 +24,6 @@ import javax.swing.InputMap;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
-import javax.swing.table.DefaultTableModel;
 import util.validaDigitosBarras;
 
 /**
@@ -56,6 +49,7 @@ public class frmCadOrcamentoItem extends javax.swing.JDialog {
     static String idItemBase=null;
     static int indiceitemTabela=0;
     static clsOrcamentoItem orcamentoItem;
+    String aut="N";
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -117,6 +111,14 @@ public class frmCadOrcamentoItem extends javax.swing.JDialog {
         txtBarra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBarraActionPerformed(evt);
+            }
+        });
+        txtBarra.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtBarraKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBarraKeyReleased(evt);
             }
         });
 
@@ -266,13 +268,12 @@ public class frmCadOrcamentoItem extends javax.swing.JDialog {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtBarra, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btnPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtBarra, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel10)
+                        .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPesq, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPrecUnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -338,9 +339,11 @@ public class frmCadOrcamentoItem extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGravarOs)
-                    .addComponent(btnCancelarOs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnCancelarOs))
                 .addContainerGap())
         );
+
+        jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCancelarOs, btnGravarOs});
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -450,7 +453,7 @@ public class frmCadOrcamentoItem extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowClosed
 
     private void txtBarraFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBarraFocusLost
-        if(txtBarra.getText().length()>0){
+        if(txtBarra.getText().length()>0&&aut.equals("N")){
             this.preencheDados();
         }
     }//GEN-LAST:event_txtBarraFocusLost
@@ -461,6 +464,22 @@ public class frmCadOrcamentoItem extends javax.swing.JDialog {
                 localizaProduto.tipoBusca="produto";
                 dialog.setVisible(true);
     }//GEN-LAST:event_btnPesqActionPerformed
+
+    private void txtBarraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBarraKeyReleased
+       
+    }//GEN-LAST:event_txtBarraKeyReleased
+
+    private void txtBarraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBarraKeyPressed
+       if(txtBarra.getText().length()>2){
+           if(evt.getKeyCode()==KeyEvent.VK_ENTER|| evt.getKeyCode()==KeyEvent.VK_BACKSPACE){
+              
+           }else{
+               aut="S";
+               abrirBuscaAutomatica();
+           }
+           
+       }
+    }//GEN-LAST:event_txtBarraKeyPressed
 
     /**
      * @param args the command line arguments
@@ -581,6 +600,14 @@ public class frmCadOrcamentoItem extends javax.swing.JDialog {
         txtTotalProd.setText(clsaux.formato(total));
     
     }
+    
+    public void abrirBuscaAutomatica(){
+        localizaProduto dialog = new localizaProduto(new javax.swing.JFrame(), true); 
+                localizaProduto.idchamado="6";
+                localizaProduto.tipoBusca="produto";
+                dialog.recebeDadosAuto(txtBarra.getText());
+                dialog.setVisible(true);
+    }
     public void acaoBtnGravar(){
         this.calculaValoritem();
         clsOrcamentoItem it= new clsOrcamentoItem();
@@ -623,7 +650,7 @@ public class frmCadOrcamentoItem extends javax.swing.JDialog {
         vlunit=Double.parseDouble(txtPrecUnit.getText().replaceAll(",", "."));
         qntunit=Double.parseDouble(txtQtde.getText().replaceAll(",", "."));
         desc=Double.parseDouble(txtDescontoVl.getText().replaceAll(",", "."));
-        total=Double.parseDouble(txtTotalProd.getText().replaceAll(",", "."));
+        total=vlunit*qntunit;
         vlperc=Double.parseDouble(txtDescPerc.getText().replaceAll(",", "."));
         if (desc>total||vlperc>100){
             JOptionPane.showMessageDialog(null, "Valor de Desconto Informado Invalido!!!", "Desconto Não permitido", HEIGHT);

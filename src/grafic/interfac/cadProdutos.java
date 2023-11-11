@@ -23,6 +23,7 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -929,7 +930,7 @@ public class cadProdutos extends javax.swing.JDialog {
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addComponent(ckCardapio)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 174, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2))
                     .addComponent(jScrollPane3))
@@ -942,21 +943,21 @@ public class cadProdutos extends javax.swing.JDialog {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addGap(28, 28, 28))
         );
 
         jTabbedPane1.addTab("Clube / Cardapio", jPanel2);
@@ -2096,14 +2097,19 @@ public class cadProdutos extends javax.swing.JDialog {
     
     public void abrirProcuraArq(){
         int retorno=flImagem.showOpenDialog(this);
+        String img="\\\\"+conexao.ip+"\\c\\esfhera\\adm\\imagem\\";
         if (retorno==flImagem.APPROVE_OPTION){
-            File arquivo=flImagem.getSelectedFile();
-            prod.setUrlImagem(arquivo.getAbsolutePath());
-            carregarImagemItem();
+            try {
+                File arquivo=flImagem.getSelectedFile();
+                prod.setUrlImagem(img+arquivo.getName());
+                Files.copy(arquivo.toPath(), new File(prod.getUrlImagem()).toPath());
+                carregarImagemItem();
+            } catch (IOException ex) {
+                Logger.getLogger(cadProdutos.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }else{
             JOptionPane.showMessageDialog(null, "Erro ao Localizar Arquivo!!!");
         }
-        
     }
     
     public void carregarImagemItem(){

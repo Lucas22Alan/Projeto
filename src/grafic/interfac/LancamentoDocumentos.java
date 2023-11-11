@@ -492,7 +492,6 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel11.setText("Outras Despesas :");
 
-        txtOutdesp.setEditable(false);
         txtOutdesp.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtOutdesp.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtOutdesp.setText("0,00");
@@ -501,17 +500,26 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
                 txtOutdespFocusLost(evt);
             }
         });
+        txtOutdesp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtOutdespActionPerformed(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel12.setText("Descontos :");
 
-        txtDescont.setEditable(false);
         txtDescont.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtDescont.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtDescont.setText("0,00");
         txtDescont.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtDescontFocusLost(evt);
+            }
+        });
+        txtDescont.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDescontActionPerformed(evt);
             }
         });
 
@@ -1065,6 +1073,14 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
                 formProcuraCliente.idform="2";
                 dialo.setVisible(true);
     }//GEN-LAST:event_btnPesqActionPerformed
+
+    private void txtOutdespActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOutdespActionPerformed
+      rateiaDescontoAcrescimoItens();
+    }//GEN-LAST:event_txtOutdespActionPerformed
+
+    private void txtDescontActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescontActionPerformed
+       rateiaDescontoAcrescimoItens();
+    }//GEN-LAST:event_txtDescontActionPerformed
     public void inicializa(){
         DefaultComboBoxModel cbtip= new DefaultComboBoxModel(listaDAO.listaTipoDocumento().toArray());
         cbTipodoc.setModel(cbtip); 
@@ -1220,6 +1236,46 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
         txtValortotaldocumento.setText(clsaux.formato(total));
         
     }
+    public static void rateiaDescontoAcrescimoItens(){
+        Double valordesconto=clsaux.capturaValores(txtDescont.getText());
+        Double valoracrescimo=clsaux.capturaValores(txtOutdesp.getText());
+        Double totalger=clsaux.capturaValores(txtTotalgeral.getText());
+        Double perc=valordesconto*100/totalger;
+        Double percoutras=valoracrescimo*100/totalger;
+        Double vlite=0.00;
+        Double vliteout=0.00;
+        Double total=0.00;
+        Double custo=0.00;
+        for(int i=0; i<itens.size();i++){
+            vlite=clsaux.capturaValores(clsaux.formato(clsaux.capturaValores(itens.get(i).getTotal())*perc/100.0));
+            vliteout=clsaux.capturaValores(clsaux.formato(clsaux.capturaValores(itens.get(i).getTotal())*percoutras/100.0));
+           if(valordesconto>=vlite){
+                 itens.get(i).setDesconto(vlite.toString());
+                 valordesconto=clsaux.capturaValores(clsaux.formato(valordesconto-vlite));
+                
+            }else{
+                itens.get(i).setDesconto(valordesconto.toString());
+            }
+           
+           if(valoracrescimo>=vliteout){
+                itens.get(i).setAcrescimo(vliteout.toString());
+                 valoracrescimo=clsaux.capturaValores(clsaux.formato(valoracrescimo-vliteout));
+           }else{
+                itens.get(i).setAcrescimo(valoracrescimo.toString());
+           }
+            total= clsaux.capturaValores(itens.get(i).getSubtotal()) +clsaux.capturaValores(itens.get(i).getAcrescimo())+clsaux.capturaValores(itens.get(i).getValor_frete())+
+                    clsaux.capturaValores(itens.get(i).getValor_ipi())+clsaux.capturaValores(itens.get(i).getValor_seguro())+clsaux.capturaValores(itens.get(i).getValor_outras())-
+                    clsaux.capturaValores(itens.get(i).getDesconto());
+            custo=total/(clsaux.capturaValores(itens.get(i).getQuantidade())*clsaux.capturaValores(itens.get(i).getFator()));
+            itens.get(i).setTotal(total.toString());
+            itens.get(i).setCusto(custo.toString());
+            
+        }
+    
+        populaTabelaItens();
+        
+    }
+    
     public void carregaDadosAlterar(String idmov){
         clsLancDocCabecalho ld = new clsLancDocCabecalho();
         lancDocumentDAO ldDAO= new lancDocumentDAO();

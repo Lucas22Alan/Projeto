@@ -558,11 +558,11 @@ public class Cadclientes extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbUf, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbUf, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cbCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(ftCep, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1020,11 +1020,11 @@ public class Cadclientes extends javax.swing.JDialog {
     public void preencheCbox(){
         DefaultComboBoxModel cbxuf= new DefaultComboBoxModel(pesqestadoDAO.pegaestado().toArray());
         cbUf.setModel(cbxuf);
-        cbUf.setSelectedItem("PR");
+        clsaux.carregaComboBox(cbUf, "PR");
         String valorestado= cbUf.getSelectedItem().toString();
         DefaultComboBoxModel cbxcida= new DefaultComboBoxModel(pesqestadoDAO.pegacidade(valorestado).toArray());
         cbCidade.setModel(cbxcida);
-        cbCidade.setSelectedItem("Guarapuava");
+        clsaux.carregaComboBox(cbCidade, "Guarapuava");
         DefaultComboBoxModel cbplan= new DefaultComboBoxModel(listaInfAdcDAO.retornaCategorias().toArray());
         cbcat.setModel(cbplan);
         if(clsDadosEmpresa.getClube().equals("N")){
@@ -1160,8 +1160,8 @@ public class Cadclientes extends javax.swing.JDialog {
         cbFisjur.setSelectedItem(cls.getTipopessoa());
         cbSexo.setSelectedItem(cls.getSexo());
         cbEstcivil.setSelectedItem(cls.getEstado_civil());
-        cbUf.setSelectedItem(cls.getEstado());
-        cbCidade.setSelectedItem(cls.getCidade());
+        clsaux.carregaComboBox(cbUf, cls.getEstado());
+        clsaux.carregaComboBox(cbCidade, cls.getCidade());
         txtCr.setText(cls.getCr());
         ftDataFiliacao.setText(clsaux.convertDataExib(cls.getDatafili()));
         cbEstadoCad.setSelectedItem(cls.getEstadocadastro());

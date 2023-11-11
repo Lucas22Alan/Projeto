@@ -7,6 +7,7 @@ package grafic.interfac.pesquisa;
 
 import classes.clsaux;
 import conexoes.conexao;
+import grafic.interfac.CRUDCadPizza;
 import grafic.interfac.FrmCadAdicional;
 import grafic.interfac.FrmCadTamPizza;
 import grafic.interfac.LancamentoItemDocumento;
@@ -30,6 +31,7 @@ import javax.swing.AbstractAction;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.KeyStroke;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import relatorios.frmRelLocacaoProduto;
 import relatorios.relVendasporProdutos;
@@ -51,6 +53,7 @@ public class localizaProduto extends javax.swing.JDialog {
     }
     public static String idchamado;
     public static String tipoBusca;
+    String buscaautomatica="N";
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -92,6 +95,11 @@ public class localizaProduto extends javax.swing.JDialog {
         txtlocaliza.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtlocalizaActionPerformed(evt);
+            }
+        });
+        txtlocaliza.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtlocalizaKeyReleased(evt);
             }
         });
 
@@ -250,6 +258,7 @@ public class localizaProduto extends javax.swing.JDialog {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.buscaProdutos(txtlocaliza.getText());
+        tbProdPesq.requestFocus();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
@@ -258,13 +267,20 @@ public class localizaProduto extends javax.swing.JDialog {
 
     private void txtlocalizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtlocalizaActionPerformed
         this.buscaProdutos(txtlocaliza.getText());
+        tbProdPesq.requestFocus();
     }//GEN-LAST:event_txtlocalizaActionPerformed
 
     private void btnConfirmFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnConfirmFocusGained
        this.acaoBtnConfirma();
     }//GEN-LAST:event_btnConfirmFocusGained
+
+    private void txtlocalizaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtlocalizaKeyReleased
+        if(buscaautomatica.equals("S")){
+            buscaProdutos(txtlocaliza.getText().trim());
+        }
+    }//GEN-LAST:event_txtlocalizaKeyReleased
     public void buscaProdutos(String campopesquisado){
-         tbProdPesq.requestFocus();
+         
         try {
             String sql="select tb.codigo_barras,\n" +
                     "       tp.nomecurto,\n" +
@@ -358,11 +374,24 @@ public class localizaProduto extends javax.swing.JDialog {
              FrmCadTamPizza.txtCodProdBase.requestFocus();
          }else if(idchamado=="14"){
              buscaTodosSelecionados();
+         }else if(idchamado=="15"){
+             CRUDCadPizza.txtCodInserir.setText(codBarra);
+             CRUDCadPizza.txtCodInserir.requestFocus();
          }
          localizaProduto.tipoBusca="normal";
          this.dispose();
      }
-    
+    public void recebeDadosAuto(String inf){
+        buscaautomatica="S";
+        txtlocaliza.setText(inf+" ");
+        buscaProdutos(inf);
+       // txtlocaliza.requestFocusInWindow();
+        
+            txtlocaliza.setSelectionStart(txtlocaliza.getText().length()-1);
+            txtlocaliza.setSelectionEnd(txtlocaliza.getText().length()-1);
+          
+        
+    }
     
     public void buscaTodosSelecionados(){
         int tamanho=tbProdPesq.getRowCount();
