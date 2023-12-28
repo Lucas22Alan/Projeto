@@ -10,11 +10,30 @@ package model;
  * @author Mk Solucoes
  */
 public class Tdados_tamanho {
-    String idtamanho,codbarras;
+    String idtamanho,codbarras,nomecampanha;
     
     String idproduto,descricao,unidade,grupo,subgrupo;
     Double venda;
+    int idcampanha;
 
+    public String getNomecampanha() {
+        return nomecampanha;
+    }
+
+    public void setNomecampanha(String nomecampanha) {
+        this.nomecampanha = nomecampanha;
+    }
+
+    public int getIdcampanha() {
+        return idcampanha;
+    }
+
+    public void setIdcampanha(int idcampanha) {
+        this.idcampanha = idcampanha;
+    }
+
+    
+    
     public String getIdtamanho() {
         return idtamanho;
     }

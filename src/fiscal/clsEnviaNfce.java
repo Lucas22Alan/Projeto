@@ -3,6 +3,7 @@ import DAO.configuracaoDAO;
 import DAO.lancDocumentDAO;
 import DAO.nfeDAO;
 import Logs.gravarLog;
+import br.com.swconsultoria.certificado.exception.CertificadoException;
 import br.com.swconsultoria.impressao.model.Impressao;
 import br.com.swconsultoria.impressao.service.ImpressaoService;
 import br.com.swconsultoria.impressao.util.ImpressaoUtil;
@@ -32,6 +33,8 @@ import br.com.swconsultoria.nfe.schema_4.enviNFe.TNFe.InfNFe.Total.ICMSTot;
 import br.com.swconsultoria.nfe.schema_4.enviNFe.TRetEnviNFe;
 import br.com.swconsultoria.nfe.schema_4.enviNFe.TUf;
 import br.com.swconsultoria.nfe.schema_4.enviNFe.TUfEmi;
+import br.com.swconsultoria.nfe.schema_4.retConsSitNFe.TRetConsSitNFe;
+import br.com.swconsultoria.nfe.util.ChaveUtil;
 import br.com.swconsultoria.nfe.util.ConstantesUtil;
 import br.com.swconsultoria.nfe.util.NFCeUtil;
 import br.com.swconsultoria.nfe.util.RetornoUtil;
@@ -45,6 +48,7 @@ import model.clsLancDocument;
 import model.clsNfe;
 import classes.clsaux;
 import conexoes.conexao;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRXmlDataSource;
@@ -62,8 +66,12 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
+import java.util.Random;
+
+
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+
 import model.clsConfig;
 import net.sf.jasperreports.view.JasperViewer;
 
@@ -90,11 +98,9 @@ public class clsEnviaNfce {
 	public clsEnviaNfce(Long idmovimento) throws Exception {
 		// inicia dados da nf
 		
-		
-		iniciaVariaveisNfe(idmovimento);
-		// iniciando as configurações do certificado
-
 		config = conexao.iniciaConfifNfe();
+                iniciaVariaveisNfe(idmovimento);
+	
                 // cria os dados da nfe
 		TEnviNFe tenvnfe = criaEnviNfe();
 		
@@ -137,6 +143,27 @@ public class clsEnviaNfce {
 		}
         }
 
+    
+   
+
+        public  clsEnviaNfce(Long mvto , TRetConsSitNFe protocolo) throws Exception{
+            
+                iniciaVariaveisNfe(mvto);
+                config = conexao.iniciaConfifNfe();
+                TEnviNFe tenvnfe = criaEnviNfe();
+                tenvnfe = Nfe.montaNfe(config, tenvnfe, true);
+                String qr=preencheQRCode(tenvnfe, config, token, csc);
+                TNFe.InfNFeSupl infNFeSupl= new TNFe.InfNFeSupl();
+                infNFeSupl.setQrCode(qr);
+                infNFeSupl.setUrlChave(WebServiceUtil.getUrl(config, DocumentoEnum.NFCE, ServicosEnum.URL_CONSULTANFCE));
+                tenvnfe.getNFe().get(0).setInfNFeSupl(infNFeSupl);
+                
+                String xmlfinal = XmlNfeUtil.criaNfeProc(tenvnfe, protocolo.getProtNFe());
+                gravarArquivoXml(xmlfinal,chave.replace("NFe", ""));
+             
+        }
+        
+        
 	private void atualizaDadosNfe(TRetEnviNFe retorno) {
 		movimentonf.setDataaut(clsaux.retornaData(clsaux.retornaDataUTC(retorno.getProtNFe().getInfProt().getDhRecbto())));
 		movimentonf.setProtocoloaut(retorno.getProtNFe().getInfProt().getNProt());
@@ -148,6 +175,7 @@ public class clsEnviaNfce {
 		String chavenfe=clsConfig.configuracaogeral.getCaminhoxml()+"nfce\\xmlenvio\\"+chaveacesso+".xml";
 		FileWriter arq = new FileWriter(chavenfe);
 		PrintWriter gravarArq = new PrintWriter(arq);
+                System.out.println(xmlfinal);
 		gravarArq.printf(xmlfinal);
 		arq.close();
 	}
@@ -157,20 +185,37 @@ public class clsEnviaNfce {
 		movimentonf=nfeDAO.retornaDadosMovNf(idmovimento);
 		movimento=moviDAO.buscaCabecalhoDoc(movimento);
 		itens=lancDocumentDAO.buscaItens(idmovimento.toString());
+               
                 cnpj = clsDadosEmpresa.cnpj;
 		modelo = "65";
 		serie = Integer.parseInt(movimento.getSerie());
 		numero = Integer.parseInt(movimento.getDocument());
 		tipoemissao = movimentonf.getTipoemissao();
-		cnf =movimento.getChaveacesso().substring(35, 43);
-                dataemissao = LocalDateTime.parse(""+movimento.getEmissao()+"T"+movimento.getHorafinalizado());
-                System.out.println(dataemissao);
+		dataemissao = LocalDateTime.parse(""+movimento.getEmissao()+"T"+movimento.getHorafinalizado());
+                if(clsaux.trataCampoNulo(movimento.getChaveacesso()).length()<40){
+                    cnf =String.format("%08d", new Random().nextInt(99999999));
+                    System.out.println(config.getEstado());
+                    System.out.println(cnpj);
+                    System.out.println(modelo);
+                    System.out.println(serie);
+                    System.out.println(numero);
+                      System.out.println(tipoemissao);
+                        System.out.println(cnf);
+                          System.out.println(dataemissao);
+                    
+                    ChaveUtil chaveutil = new ChaveUtil(config.getEstado(), cnpj, modelo, serie, numero, tipoemissao, cnf, dataemissao);
+                    chave =chaveutil.getChaveNF().replace("NFe", "");
+                    nfeDAO.atualizaChaveMovimento(idmovimento, chave);
+                    
+                }else{
+                    cnf =movimento.getChaveacesso().substring(35, 43);
+                    chave =movimento.getChaveacesso();
+                }
                 configuracaoDAO cfdao= new configuracaoDAO();
                 clsConfigPdv cfg= cfdao.buscarPdvs("0").get(0);
                 token=cfg.getToke();
                 csc=cfg.getCsc();
-		chave ="NFe"+movimento.getChaveacesso();
-                if(tipoemissao.equals("1")){
+		if(tipoemissao.equals("1")){
                     dataemissao=LocalDateTime.now();
                 }
 	}
@@ -305,7 +350,7 @@ public class clsEnviaNfce {
 	private TNFe.InfNFe getInfNfe() {
 		TNFe.InfNFe infnfe = new TNFe.InfNFe();
 
-		infnfe.setId(chave);
+		infnfe.setId("NFe"+chave);
 		infnfe.setVersao(ConstantesUtil.VERSAO.NFE);
 		infnfe.setIde(montaIde());
 
@@ -775,7 +820,7 @@ public class clsEnviaNfce {
 		ide.setCMunFG("4109401");
 		ide.setTpImp("4");
 		ide.setTpEmis(tipoemissao);
-		ide.setCDV(chave.substring(46, 47));
+		ide.setCDV(chave.substring(43, 44));
 		ide.setTpAmb(config.getAmbiente().getCodigo());
 		ide.setFinNFe("1");
 		ide.setIndFinal("1");

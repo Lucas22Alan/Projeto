@@ -152,9 +152,9 @@ public class CRUDTitulo extends javax.swing.JDialog {
             TbTitulos.getColumnModel().getColumn(0).setResizable(false);
             TbTitulos.getColumnModel().getColumn(1).setResizable(false);
             TbTitulos.getColumnModel().getColumn(2).setResizable(false);
-            TbTitulos.getColumnModel().getColumn(2).setPreferredWidth(220);
+            TbTitulos.getColumnModel().getColumn(2).setPreferredWidth(120);
             TbTitulos.getColumnModel().getColumn(3).setResizable(false);
-            TbTitulos.getColumnModel().getColumn(3).setPreferredWidth(200);
+            TbTitulos.getColumnModel().getColumn(3).setPreferredWidth(300);
             TbTitulos.getColumnModel().getColumn(4).setResizable(false);
             TbTitulos.getColumnModel().getColumn(5).setResizable(false);
             TbTitulos.getColumnModel().getColumn(6).setResizable(false);
@@ -166,7 +166,7 @@ public class CRUDTitulo extends javax.swing.JDialog {
             TbTitulos.getColumnModel().getColumn(11).setResizable(false);
             TbTitulos.getColumnModel().getColumn(12).setResizable(false);
             TbTitulos.getColumnModel().getColumn(13).setResizable(false);
-            TbTitulos.getColumnModel().getColumn(13).setPreferredWidth(50);
+            TbTitulos.getColumnModel().getColumn(13).setPreferredWidth(90);
             TbTitulos.getColumnModel().getColumn(14).setResizable(false);
             TbTitulos.getColumnModel().getColumn(14).setPreferredWidth(400);
             TbTitulos.getColumnModel().getColumn(15).setResizable(false);
@@ -863,14 +863,14 @@ public class CRUDTitulo extends javax.swing.JDialog {
 "            tc.data_pagamento,\n" +
 "            tc.valor,\n" +
 "            tc.valor_pago,\n" +
-"            tc.estado,\n" +
-"            tc.tipo_titulo,"
-          + "tp.idparceiro,tc.parcela,tc.observacao,tc.id_tipo_financeiro||'- '||tf.descricao_movimento,tc.id_subtipo_financeiro||'- '||tf1.descricao_movimento, tc.numero_documento "
-                     + " ,tc.juros,tc.multa,tc.valor_total,nosso_numero,id_vendedor,tc.numero_parcelas \n" +
+"            teo.descricao,\n" +
+"            tip.descricao,tp.idparceiro,tc.parcela,tc.observacao,tc.id_tipo_financeiro||'- '||tf.descricao_movimento,tc.id_subtipo_financeiro||'- '||tf1.descricao_movimento, tc.numero_documento  ,tc.juros,tc.multa,tc.valor_total,nosso_numero,id_vendedor,tc.numero_parcelas\n" +
 "            from tcontas_a_receber_pagar tc\n" +
 "            join tparceiros tp on tc.id_parceiro=tp.idparceiro\n" +
 "            left join ttipo_movimento tf on tc.id_tipo_financeiro=tf.id_tipo\n" +
-"            left join ttipo_movimento tf1 on tc.id_subtipo_financeiro=tf1.id_tipo \n"
+"            left join ttipo_movimento tf1 on tc.id_subtipo_financeiro=tf1.id_tipo \n" +
+"            join ttiptitulos tip on tc.tipo_titulo=tip.id\n" +
+"            join testado_operacoes teo on tc.estado=teo.id \n"
           + "where (tc.estado="+estado+" )and tc.pagar_receber='"+direcao+"' "+comtipo;
              }
              if (estado.equals("0")){
@@ -883,19 +883,19 @@ public class CRUDTitulo extends javax.swing.JDialog {
 "            tc.valor,\n" +
 "            tc.valor_pago,\n" +
 "            teo.descricao,\n" +
-"            tip.descricao,"
-          + "tp.idparceiro,tc.parcela,tc.observacao,tc.id_tipo_financeiro||'- '||tf.descricao_movimento,tc.id_subtipo_financeiro||'- '||tf1.descricao_movimento, tc.numero_documento "
-                         + " ,tc.juros,tc.multa,tc.valor_total,nosso_numero,id_vendedor,tc.numero_parcelas \n" +
+"            tip.descricao,tp.idparceiro,tc.parcela,tc.observacao,tc.id_tipo_financeiro||'- '||tf.descricao_movimento,tc.id_subtipo_financeiro||'- '||tf1.descricao_movimento, tc.numero_documento  ,tc.juros,tc.multa,tc.valor_total,nosso_numero,id_vendedor,tc.numero_parcelas\n" +
 "            from tcontas_a_receber_pagar tc\n" +
 "            join tparceiros tp on tc.id_parceiro=tp.idparceiro\n" +
 "            left join ttipo_movimento tf on tc.id_tipo_financeiro=tf.id_tipo\n" +
-"            left join ttipo_movimento tf1 on tc.id_subtipo_financeiro=tf1.id_tipo\n" +
+"            left join ttipo_movimento tf1 on tc.id_subtipo_financeiro=tf1.id_tipo \n" +
 "            join ttiptitulos tip on tc.tipo_titulo=tip.id\n" +
-"            join testado_operacoes teo on tc.estado=teo.id "
+"            join testado_operacoes teo on tc.estado=teo.id \n"
          + " where tc.data_emissao between '"+dataini+"'and'"+datafim+"' and tp.razao_social like '%"+campo+"%'"
                      + "and tc.pagar_receber='"+direcao+"' "+comtipo;
              }
             try{
+                
+                System.out.println(sql);
             PreparedStatement pscon=conexao.getPreparedStatement(sql);
             ResultSet rscon=pscon.executeQuery();
             

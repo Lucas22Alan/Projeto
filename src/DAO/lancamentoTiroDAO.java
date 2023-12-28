@@ -408,5 +408,16 @@ public class lancamentoTiroDAO {
         }
     
     }
+     public void deletarItem(String mvto, String indice,String tipo){
+        try {
+            String sql="delete from titens_prevenda ti where ti.id_prevenda='"+mvto+"' and id_item='"+indice+"' and ti.tipo_item='"+tipo+"'";
+            PreparedStatement ps = conexao.getPreparedStatement(sql);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(lancamentoTiroDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    }
+    
     
 }

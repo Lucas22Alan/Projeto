@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="etiqueta" language="javascript" columnCount="3" printOrder="Horizontal" columnDirection="RTL" pageWidth="297" pageHeight="102" whenNoDataType="NoDataSection" columnWidth="96" leftMargin="5" rightMargin="2" topMargin="4" bottomMargin="0" isIgnorePagination="true" uuid="42750794-287b-4e74-93dc-388a787f7707">
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="etiqueta" columnCount="3" printOrder="Horizontal" columnDirection="RTL" pageWidth="297" pageHeight="102" whenNoDataType="NoDataSection" columnWidth="96" columnSpacing="2" leftMargin="5" rightMargin="0" topMargin="4" bottomMargin="0" uuid="42750794-287b-4e74-93dc-388a787f7707">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.pageHeight" value="mm"/>
-	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -21,7 +15,7 @@
 	<field name="vlpromocional" class="java.lang.String"/>
 	<field name="prec" class="java.lang.String"/>
 	<detail>
-		<band height="67">
+		<band height="60">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField>
 				<reportElement x="4" y="4" width="84" height="20" uuid="8af7bbae-4f6d-4e6f-87b1-c655434f38b0"/>

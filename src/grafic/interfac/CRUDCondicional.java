@@ -415,30 +415,28 @@ public class CRUDCondicional extends javax.swing.JDialog {
                     .addComponent(txtNome)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(JcbCont, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(JcbEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel8)
                             .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JcbCont, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
                             .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel14)
-                                    .addComponent(ftDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel14)
+                                    .addComponent(ftDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel7Layout.createSequentialGroup()
                                         .addGap(1, 1, 1)
-                                        .addComponent(ftDataTermino, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(JcbEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                            .addComponent(jLabel1)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addComponent(ftDataTermino, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel15))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
@@ -692,7 +690,7 @@ public class CRUDCondicional extends javax.swing.JDialog {
             String dtini=ftDataInicio.getText();
             String dtfim=ftDataTermino.getText();
             String tipo=clsaux.retornaId(JcbEstado.getSelectedItem().toString());
-            if(tipo.equals("1")){tipo="1 or tv.estado=16";}
+           // if(tipo.equals("1")){tipo="1 or tv.estado=16";}
             String sql="select  tp.razao_social,\n" +
                     "        tv.total,\n" +
                     "        tv.data_lancamento,\n" +
@@ -906,15 +904,18 @@ public class CRUDCondicional extends javax.swing.JDialog {
        
     }
     public void cancela(){
-       
         int yn= JOptionPane.showConfirmDialog(null, "Deseja Cancelar a Operação?", "Cancelar Operação", JOptionPane.YES_NO_OPTION);
         if (yn== JOptionPane.YES_OPTION){
             ClsCancelamentos canc= new ClsCancelamentos();
-            if(TbLancamentos.getValueAt(TbLancamentos.getSelectedRow(), 5).toString().equals("Em Andamento")){
-               canc.cancelaCondicionalPeloMovimento(TbLancamentos.getValueAt(TbLancamentos.getSelectedRow(), 6).toString());
-            }else if (TbLancamentos.getValueAt(TbLancamentos.getSelectedRow(), 5).toString().equals("Finalizado")){
-             String id= orcamentoDAO.retornaIdMovimento(TbLancamentos.getValueAt(TbLancamentos.getSelectedRow(), 6).toString(), "2");
-             canc.cancelarMovimentacaoReferente(id);
+            String estado=TbLancamentos.getValueAt(TbLancamentos.getSelectedRow(), 5).toString();
+            String idcondi=TbLancamentos.getValueAt(TbLancamentos.getSelectedRow(), 6).toString();
+            if(estado.equals("Em Andamento")||estado.equals("Conferido")||estado.equals("Res. Conferencia")){
+               canc.cancelaCondicionalPeloMovimento(idcondi);
+            }else if (estado.equals("Conv. Venda")){
+             //String id= orcamentoDAO.retornaIdMovimento(idcondi, "2");
+             //canc.cancelarMovimentacaoReferente(id);
+              canc.cancelaCondicionalPeloMovimento(idcondi);
+             JOptionPane.showMessageDialog(null, "Condicional já finalizada em venda, Não pode ser cancelada a venda, realizar esse cancelamento no pdv!");
             }else if(TbLancamentos.getValueAt(TbLancamentos.getSelectedRow(), 5).toString().equals("Cancelado")){
                 JOptionPane.showMessageDialog(null, "Registro Já Cancelado!!!");
             }

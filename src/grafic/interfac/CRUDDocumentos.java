@@ -8,6 +8,7 @@ package grafic.interfac;
 import Controller.BaseDevolucaoAuto;
 import DAO.ContasReceberDAO;
 import DAO.listaDAO;
+import Impressao.ClaBaseImpressaoGerencial;
 import classes.ClsCancelamentos;
 import classes.clsaux;
 import com.sun.glass.events.KeyEvent;
@@ -466,7 +467,9 @@ public class CRUDDocumentos extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+      if(TbLancamentos.getValueAt(TbLancamentos.getSelectedRow(), 2).toString().equals("Vendas")){
+          new ClaBaseImpressaoGerencial().imprimeCupomVenda(TbLancamentos.getValueAt(TbLancamentos.getSelectedRow(), 0).toString());
+      }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed

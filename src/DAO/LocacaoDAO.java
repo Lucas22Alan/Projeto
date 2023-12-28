@@ -483,4 +483,30 @@ public class LocacaoDAO {
         return lista;
         
     }
+
+    public Boolean removeFaturaComHistorico(String id){
+        try {
+            String sqlfat="delete from tfatura_locacao where id="+id;
+            String sqlremOrigem="delete from torigem_fatura where idfatura="+id;
+            String sqlRemLink="delete from tlink_fatura where idfatura="+id;
+            System.out.println(sqlfat);
+             System.out.println(sqlremOrigem);
+              System.out.println(sqlRemLink);
+            ps=conexao.getPreparedStatement(sqlfat);
+            ps.executeUpdate();
+            ps.close();
+            ps=conexao.getPreparedStatement(sqlremOrigem);
+            ps.executeUpdate();
+            ps.close();
+            ps=conexao.getPreparedStatement(sqlRemLink);
+            ps.executeUpdate();
+            ps.close();
+            return true;        
+        } catch (SQLException ex) {
+            Logger.getLogger(LocacaoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
+
 }

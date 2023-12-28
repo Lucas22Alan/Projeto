@@ -7,7 +7,10 @@ import java.text.DecimalFormat;
 import titulos.FormContasPagarReceber;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.TextStyle;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -148,8 +151,13 @@ public class clsaux {
         return valorcerto;
     }
     public static String retornaAposId(String valorori){
+        String valorcerto="0";
         String [] valorseparar = valorori.split("-");
-        String valorcerto= valorseparar[1];
+         try{
+            valorcerto = valorseparar[1];
+        } catch (NullPointerException nu){
+            valorcerto="0";
+        }
         return valorcerto;
     }
     public static String formato (Double f){
@@ -250,6 +258,10 @@ public class clsaux {
         String diafinal=String.valueOf(dia);
         return diafinal;
     }
+    public static String retornaDiaDaSemana(){
+       LocalDate ld= LocalDate.now();
+       return ld.getDayOfWeek().getDisplayName(TextStyle.FULL, new Locale("pt", "BR"));
+    }
     public static String retornaUltimoDiaMes(){
         String data="";
         Calendar cd=Calendar.getInstance();
@@ -336,6 +348,7 @@ public class clsaux {
 		}
 		return formatado;
 	}
+      
       public static String retornaDataRemoveHr(String value) {
 		Date dt=null;
 		String formatado=null;

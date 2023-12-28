@@ -1472,7 +1472,7 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
                 clsaux.preencheData(),
                 idfinalizadora,
                 nomefinalizadora,
-                parcela,
+                parcela+"-"+parcela,
                 clsaux.formato(valor),
                 clsaux.calcularData(30, clsaux.retornaData(clsaux.preencheData()))
             });
@@ -1483,7 +1483,7 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
                     clsaux.preencheData(),
                     idfinalizadora,
                      nomefinalizadora,
-                      i+1,
+                      i+1+"-"+parcela,
                     clsaux.formato(valor),
                     clsaux.calcularData(30*(i+1), clsaux.retornaData(clsaux.preencheData()))
                 });
@@ -1513,7 +1513,7 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
             }
             String valor=tblParcelas.getValueAt(i, 4).toString().replaceAll(",", ".");
             int fin= Integer.parseInt(tblParcelas.getValueAt(i, 1).toString());
-            String parcela=clsaux.trataCampoNulo(tblParcelas.getValueAt(i, 3).toString());
+            String parcela=clsaux.retornaId(tblParcelas.getValueAt(i, 3));
             lt.insereFinalidoraVenda(String.valueOf(fin), valor, idmovimentoo,parcela,0.00,vencimento);
             if (fin<4){
                 cd.setData_lancamento(data);
@@ -1554,7 +1554,7 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
                 cr.setTipo_titulo("4");
                 cr.setTipofinanceiro(clsConfig.financeiro.getTpEntrada());
                 cr.setSubtipofinanceiro(clsConfig.financeiro.getSbEntrada());
-                cr.setQntParcelas(parcela);
+                cr.setQntParcelas(clsaux.retornaAposId(tblParcelas.getValueAt(i, 3).toString()));
                 crDAO.insereAltera(cr);
                 
             }
@@ -1659,7 +1659,8 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
             ite=validaImpostoIpiCompra(ipi, ite);
             ite=validaImpostoPisCofinsCompra(pis, cofins, ite);
             Double to=0.00;
-            to=clsaux.capturaValores(ite.getSubtotal())+clsaux.capturaValores(ite.getValor_st())+clsaux.capturaValores(ite.getValor_ipi());
+            to=clsaux.capturaValores(ite.getSubtotal())+clsaux.capturaValores(ite.getValor_st())+clsaux.capturaValores(ite.getValor_ipi())+
+                    clsaux.capturaValores(ite.getValor_outras())+clsaux.capturaValores(ite.getValor_frete())-clsaux.capturaValores(ite.getDesconto())+clsaux.capturaValores(ite.getAcrescimo());
             ite.setTotal(clsaux.formato4(to));
             ite.setValor_st(clsaux.trataCampoNulo(ite.getValor_st()));
             ite.setValor_ipi(clsaux.trataCampoNulo(ite.getValor_ipi()));

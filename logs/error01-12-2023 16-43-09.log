@@ -1,0 +1,5 @@
+Data: 01-12-2023 16-43-09 Erro: Erro na validação: 
+- O valor '41231147960092000115650020000001101485026726' do atributo 'Id' no elemento 'infNFe' não é válido em relação ao seu tipo, 'null'.
+----------------------------------------------------------------
+Data: 01-12-2023 16-43-16 Erro: 502 - Erro na Chave de Acesso - Campo Id nao corresponde a concatenacao dos campos correspondentes
+----------------------------------------------------------------

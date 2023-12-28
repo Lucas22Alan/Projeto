@@ -128,6 +128,11 @@ public class frmCadOrcamentoItem extends javax.swing.JDialog {
                 txtDescricaoActionPerformed(evt);
             }
         });
+        txtDescricao.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDescricaoKeyReleased(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel11.setText("UN");
@@ -273,7 +278,7 @@ public class frmCadOrcamentoItem extends javax.swing.JDialog {
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel10)
                         .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnPesq, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(btnPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPrecUnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -302,6 +307,8 @@ public class frmCadOrcamentoItem extends javax.swing.JDialog {
                             .addComponent(jLabel14))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
+
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtBarra, txtDescricao});
 
         jPanel4.setBackground(new java.awt.Color(219, 227, 227));
         jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 102, 102), new java.awt.Color(0, 102, 102), null));
@@ -456,6 +463,7 @@ public class frmCadOrcamentoItem extends javax.swing.JDialog {
         if(txtBarra.getText().length()>0&&aut.equals("N")){
             this.preencheDados();
         }
+        txtDescricao.requestFocus();
     }//GEN-LAST:event_txtBarraFocusLost
 
     private void btnPesqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqActionPerformed
@@ -470,16 +478,19 @@ public class frmCadOrcamentoItem extends javax.swing.JDialog {
     }//GEN-LAST:event_txtBarraKeyReleased
 
     private void txtBarraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBarraKeyPressed
-       if(txtBarra.getText().length()>2){
+       
+    }//GEN-LAST:event_txtBarraKeyPressed
+
+    private void txtDescricaoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescricaoKeyReleased
+        if(txtDescricao.getText().length()>2){
            if(evt.getKeyCode()==KeyEvent.VK_ENTER|| evt.getKeyCode()==KeyEvent.VK_BACKSPACE){
               
            }else{
                aut="S";
                abrirBuscaAutomatica();
            }
-           
        }
-    }//GEN-LAST:event_txtBarraKeyPressed
+    }//GEN-LAST:event_txtDescricaoKeyReleased
 
     /**
      * @param args the command line arguments
@@ -605,7 +616,7 @@ public class frmCadOrcamentoItem extends javax.swing.JDialog {
         localizaProduto dialog = new localizaProduto(new javax.swing.JFrame(), true); 
                 localizaProduto.idchamado="6";
                 localizaProduto.tipoBusca="produto";
-                dialog.recebeDadosAuto(txtBarra.getText());
+                dialog.recebeDadosAuto(txtDescricao.getText());
                 dialog.setVisible(true);
     }
     public void acaoBtnGravar(){

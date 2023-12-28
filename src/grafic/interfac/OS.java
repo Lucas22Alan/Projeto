@@ -5,9 +5,9 @@
  */
 package grafic.interfac;
 
-import DAO.listaplanosDAO;
+
 import DAO.orderServicoDAO;
-import classes.ClsAutoComplete;
+
 import model.clsOrdem;
 import classes.clsaux;
 import conexoes.conexao;
@@ -978,9 +978,10 @@ public class OS extends javax.swing.JDialog {
         if(txtCodcli.getText()==""||txtCodcli.getText().isEmpty()||txtCodcli.getText()==null){
             JOptionPane.showMessageDialog(null, "Falta Informar o Parceiro");
         }else{
-            infParceiro.idparceiro=txtCodcli.getText();
+            
             infParceiro dialog = new infParceiro(new javax.swing.JFrame(), true);
             dialog.setLocationRelativeTo(null);
+            dialog.inicia(txtCodcli.getText(), txtPlaca.getText());
             dialog.setVisible(true);
         }
     }//GEN-LAST:event_jlInformMouseClicked

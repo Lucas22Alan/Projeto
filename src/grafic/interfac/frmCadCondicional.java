@@ -8,6 +8,7 @@ package grafic.interfac;
 import DAO.ContasReceberDAO;
 import DAO.lancamentoTiroDAO;
 import DAO.produtoDAO;
+import classes.ClsCancelamentos;
 import model.clsLancamentoTiro;
 import classes.clsLocalizaProduto;
 import classes.clsaux;
@@ -76,6 +77,7 @@ public class frmCadCondicional extends javax.swing.JDialog {
         jLabel11 = new javax.swing.JLabel();
         txtIdMov = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
+        btnPesq = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         txtCodBarra = new javax.swing.JTextField();
@@ -98,6 +100,11 @@ public class frmCadCondicional extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Condicional");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(219, 227, 227));
 
@@ -169,6 +176,13 @@ public class frmCadCondicional extends javax.swing.JDialog {
 
         txtNome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
+        btnPesq.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/procura.png"))); // NOI18N
+        btnPesq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesqActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -180,23 +194,25 @@ public class frmCadCondicional extends javax.swing.JDialog {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel11)
                             .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtIdMov, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(txtCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnPesq))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtDataLanc, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 43, Short.MAX_VALUE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtDataRetirada, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -215,32 +231,37 @@ public class frmCadCondicional extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(txtIdMov, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtDataLanc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)
-                            .addComponent(txtDataRetirada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(cbVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 32, 32))
-                    .addComponent(jSeparator1))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel11)
+                                    .addComponent(txtIdMov, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel2)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(txtCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(btnPesq))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel5)
+                                    .addComponent(txtDataLanc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6)
+                                    .addComponent(txtDataRetirada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel7)
+                                    .addComponent(cbVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(32, 32, 32)))))
                 .addContainerGap())
         );
 
@@ -318,7 +339,7 @@ public class frmCadCondicional extends javax.swing.JDialog {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 856, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -367,6 +388,11 @@ public class frmCadCondicional extends javax.swing.JDialog {
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Cancela.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         lbValorTotal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbValorTotal.setForeground(new java.awt.Color(204, 51, 0));
@@ -439,7 +465,7 @@ public class frmCadCondicional extends javax.swing.JDialog {
                             .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lbValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(15, Short.MAX_VALUE))
+                        .addContainerGap(21, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -488,8 +514,7 @@ public class frmCadCondicional extends javax.swing.JDialog {
     }//GEN-LAST:event_btnGravarActionPerformed
 
     private void jlDelProdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlDelProdMouseClicked
-        //this.excluirProd();
-        OS.calculaTotais();
+       removerItem();
     }//GEN-LAST:event_jlDelProdMouseClicked
 
     private void txtCnpjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCnpjActionPerformed
@@ -499,6 +524,24 @@ public class frmCadCondicional extends javax.swing.JDialog {
     private void txtDataLancActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataLancActionPerformed
        txtCodBarra.requestFocus();
     }//GEN-LAST:event_txtDataLancActionPerformed
+
+    private void btnPesqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqActionPerformed
+      formProcuraCliente dialog = new formProcuraCliente(new javax.swing.JFrame(), true);
+            formProcuraCliente.idform="8";
+            dialog.setVisible(true);
+    }//GEN-LAST:event_btnPesqActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        int yn= JOptionPane.showConfirmDialog(null, "Deseja realmente cancelar o lançamento ?", "Cancelamento De Registro", JOptionPane.YES_NO_OPTION);
+        if (yn== JOptionPane.YES_OPTION){
+                cancelaLancamento();
+               this.dispose();
+         }
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        cancelaLancamento();
+    }//GEN-LAST:event_formWindowClosing
     public void inicia(){
         InputMap imp= this.getRootPane().getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
         imp.put(KeyStroke.getKeyStroke(KeyEvent.VK_F10,0),"busca");
@@ -542,6 +585,35 @@ public class frmCadCondicional extends javax.swing.JDialog {
                     localizaProduto dialog = new localizaProduto(new javax.swing.JFrame(), true);
                     localizaProduto.idchamado="4";
                     dialog.setVisible(true);
+    }
+    public void removerItem(){
+        int yn= JOptionPane.showConfirmDialog(null, "Deseja realmente excluir o registro selecionado?", "exclusão de registro", JOptionPane.YES_NO_OPTION);
+        if (yn== JOptionPane.YES_OPTION){ 
+            DefaultTableModel tb = (DefaultTableModel) tbProd.getModel();
+            int index=tbProd.getSelectedRow();
+            lancamentoTiroDAO ln = new lancamentoTiroDAO();
+             ln.deletarItem(txtIdMov.getText(),tbProd.getValueAt(index, 5).toString(),"C");
+             tb.removeRow(index);
+             calculaTotais();
+        }
+    }
+    
+    public void cancelaLancamento(){
+        if(tipoform.equals("I")){
+            ClsCancelamentos canc= new ClsCancelamentos();
+            canc.cancelaCondicionalPeloMovimento(txtIdMov.getText());
+        }
+    }
+    public void calculaTotais(){
+        quantidadetotal=0.00;
+        valortotal=0.00;
+        for(int i=0; i<tbProd.getRowCount(); i++){
+            quantidadetotal=quantidadetotal+clsaux.capturaValores(tbProd.getValueAt(i,2).toString());
+            valortotal=valortotal+clsaux.capturaValores(tbProd.getValueAt(i,4).toString());
+        }
+         lbQntTotal.setText(clsaux.formato(quantidadetotal));
+         lbValorTotal.setText(clsaux.formato(valortotal));
+        
     }
     public void insereItem(){
         try {
@@ -597,13 +669,14 @@ public class frmCadCondicional extends javax.swing.JDialog {
     }
     public void gravarRegistro(){
         try {
-            String sql="update tpre_venda tv set tv.idcliente=?,total=?,tipo='C', funcionario=?,data_entregue=? where tv.id_prevenda=?";
+            String sql="update tpre_venda tv set tv.idcliente=?,total=?,tipo='C', funcionario=?,data_entregue=?,estado=? where tv.id_prevenda=?";
             PreparedStatement ps = conexao.getPreparedStatement(sql);
             ps.setString(1, idparceiro);
             ps.setString(2, lbValorTotal.getText().replaceAll(",", "."));
             ps.setString(3, clsaux.retornaId(cbVendedor.getSelectedItem().toString()));
             ps.setDate(4, clsaux.retornaData(txtDataRetirada.getText()));
-            ps.setString(5, txtIdMov.getText());
+            ps.setString(5, clsaux.retornaId(cbEstado.getSelectedItem()));
+            ps.setString(6, txtIdMov.getText());
             ps.executeUpdate();
             ps.close();
         } catch (SQLException ex) {
@@ -624,7 +697,7 @@ public class frmCadCondicional extends javax.swing.JDialog {
                     + "      tp.razao_social,   \n" +
                     "        tf.nome,\n" +
                     "        tr.descricao, \n"
-                    + "      tv.total \n" +
+                    + "      tv.total,tv.idcliente \n" +
                     "from tpre_venda tv\n" +
                     "left join tfuncionarios tf on tv.funcionario=tf.id\n" +
                     "left join tparceiros tp on tp.idparceiro= tv.idcliente\n" +
@@ -641,6 +714,7 @@ public class frmCadCondicional extends javax.swing.JDialog {
             cbEstado.setSelectedItem(rs.getString(4)+"- "+rs.getString(9));
             cbVendedor.setSelectedItem(rs.getString(5)+"- "+rs.getString(8));
             valortotal=rs.getDouble(10);
+            idparceiro=rs.getString(11);
             lbValorTotal.setText(clsaux.formato(valortotal));
             rs.close();
             ps.close();
@@ -672,8 +746,6 @@ public class frmCadCondicional extends javax.swing.JDialog {
                     rs.getString(4),
                     clsaux.formato(rs.getDouble(5)),
                     clsaux.formato(rs.getDouble(6)),
-                    "",
-                    "",
                     rs.getString(1)
                 });
                 indice=rs.getInt(1);
@@ -733,6 +805,7 @@ public class frmCadCondicional extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGravar;
+    private javax.swing.JButton btnPesq;
     private javax.swing.JComboBox<String> cbEstado;
     private javax.swing.JComboBox<String> cbVendedor;
     private javax.swing.JComboBox<String> jComboBox1;

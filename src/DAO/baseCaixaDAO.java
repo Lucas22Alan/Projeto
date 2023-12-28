@@ -337,9 +337,9 @@ public class baseCaixaDAO {
     public List<tfechamento_cego> buscaRegistrosFechamento(String idcaixa){
         List<tfechamento_cego> lista = new ArrayList<>();
         try {
-            String sql="select tc.idcaixa,tc.idfinalizadora,tc.nomefinalizadora ,sum(tc.valorinformado) from tfechamento_cego tc\n" +
+            String sql="select tc.idcaixa,tc.idfinalizadora,tc.nomefinalizadora ,sum(tc.valorinformado),tc.obs from tfechamento_cego tc\n" +
                         "where tc.idcaixa=?\n" +
-                        "group by 1,2,3";
+                        "group by 1,2,3,5";
             PreparedStatement ps = conexao.getPreparedStatement(sql);
             ps.setString(1, idcaixa);
             ResultSet rs = ps.executeQuery();
@@ -349,6 +349,7 @@ public class baseCaixaDAO {
                 fecha.setIdfinalizadora(rs.getString(2));
                 fecha.setNomefinalizadora(rs.getString(3));
                 fecha.setValor(rs.getDouble(4));
+                fecha.setObs(rs.getString(5));
                 lista.add(fecha);
                 
             }

@@ -984,6 +984,7 @@ public class CRUDlocacoes extends javax.swing.JDialog {
                 JMenuItem imprimeFatura= new JMenuItem("Imprimir Fatura Selecionada");
                 JMenuItem ReceberFatura= new JMenuItem("Receber Fatura Selecionada");
                 JMenuItem imprimeRecibo= new JMenuItem("Imprimir Fatura Recibo");
+                 JMenuItem removerFatura= new JMenuItem("Excluir Fatura Selecionada");
                 imprimeFatura.addActionListener(new java.awt.event.ActionListener(){
                 public void actionPerformed(ActionEvent e ){
                     realizaImpressaoFatura(tbMovFatura.getValueAt(tbMovFatura.getSelectedRow(), 1).toString());
@@ -1009,10 +1010,18 @@ public class CRUDlocacoes extends javax.swing.JDialog {
                     
                 }
                 });
-                
+                removerFatura.addActionListener(new java.awt.event.ActionListener(){
+                public void actionPerformed(ActionEvent e ){
+                    int yn= JOptionPane.showConfirmDialog(null, "Deseja Remover Fatura", "Cancelamento De Fatura!!!", JOptionPane.YES_NO_OPTION);
+                            if (yn== JOptionPane.YES_OPTION){
+                                        dao.removeFaturaComHistorico(tbMovFatura.getValueAt(tbMovFatura.getSelectedRow(), 1).toString());
+                     }
+                }
+                });
                 menu.add(imprimeFatura);
                 menu.add(ReceberFatura);
                 menu.add(imprimeRecibo);
+                menu.add(removerFatura);
                 CriaMenuOpcoes.listaCliqDireitoMouse(tbMovFatura, menu);
      }
     
@@ -1221,6 +1230,8 @@ public class CRUDlocacoes extends javax.swing.JDialog {
          txtinformado.setEditable(true);
          btnConfirma.setEnabled(true);
     }
+    
+    
     
     public void realizaRetornoItemPag(){
         ite=itens.get(tbItensLocacao.getSelectedRow());

@@ -645,6 +645,7 @@ public class frmImportarItensFora extends javax.swing.JDialog {
         prod.setBaixa_producao("N");
         prod.setTemAtacarejo("N");
         prod.setTemLocacao("N");
+        prod.setObservacao(idproduto);
        prodDAO.Inserir(prod);
      }
      

@@ -133,6 +133,9 @@ public class CRUDOrcamentos extends javax.swing.JDialog {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel10MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel10MouseEntered(evt);
+            }
         });
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -584,6 +587,10 @@ public class CRUDOrcamentos extends javax.swing.JDialog {
         this.pesquisar();
         ultimoPedido="0";
     }//GEN-LAST:event_btnLocalizarFocusGained
+
+    private void jLabel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel10MouseEntered
     public void inicia(){
         //ftDataInicio.setText(clsaux.preencheData());
         //ftDataTermino.setText(clsaux.preencheData());
@@ -703,7 +710,7 @@ public class CRUDOrcamentos extends javax.swing.JDialog {
 "                                    tp.qnt,\n" +
 "                                    tp.total as total\n" +
 "                             from torcamento_itens tp\n" +
-"                             where tp.id_orcamento='"+indice+"'";
+"                             where tp.id_orcamento='"+indice+"' and tp.estado=2";
             String sqldadoscond=" select tv.total,\n" +
 "                                   tv.data_lancamento,\n" +
 "                                   tv.parceiro_cpf as cnpj,\n" +

@@ -229,8 +229,8 @@ public class FrmRelDreResumido extends javax.swing.JDialog {
                             "        sum(tc.saida) as saida \n "+
                             " from tmov_conta tc\n" +
                             "left join ttipo_movimento tm on tc.tipo_mov=tm.id_tipo\n" +
-                            "where tc.data between ? and ? and  tm.composicao_dre='S' and tc.estado='2' and tc.id_conta"+conta;
-                            
+                            "where tc.data between ? and ? and  tm.composicao_dre='S' and tc.estado='2' and tc.id_conta "+conta;
+                System.out.println(sqltotal);            
             PreparedStatement ps1= conexao.getPreparedStatementResult(sqltotal);
             ps1.setDate(1, clsaux.retornaData(ini));
             ps1.setDate(2, clsaux.retornaData(fim));
@@ -245,7 +245,7 @@ public class FrmRelDreResumido extends javax.swing.JDialog {
                     "        tm.direcao,tm.id_tipo as idtipo\n" +
                     " from tmov_conta tc\n" +
                     "left join ttipo_movimento tm on tc.tipo_mov=tm.id_tipo\n" +
-                    "where tc.data between ? and ? and tm.composicao_dre='S' and tc.estado='2' and tc.id_conta"+conta+"\n" +
+                    "where tc.data between ? and ? and tm.composicao_dre='S' and tc.estado='2' and tc.id_conta "+conta+"\n" +
                     "group by 2,3,4";
             PreparedStatement ps= conexao.getPreparedStatement(sql);
             ps.setDate(1, clsaux.retornaData(ini));

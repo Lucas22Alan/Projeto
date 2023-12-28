@@ -11,7 +11,6 @@ import classes.clsaux;
 import DAO.listaGrupDAO;
 import DAO.produtoDAO;
 import conexoes.conexao;
-import grafic.interfac.pesquisa.formProcuraCliente;
 import grafic.interfac.pesquisa.localizaProduto;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -416,7 +415,7 @@ public class relVendasporProdutos extends javax.swing.JDialog {
 "                                         join tprecos tr on ti.id_prod=tr.id\n" +
 "                                         join tmovimento tm on ti.id_mov=tm.id_mov\n" +
 "                                         join tbarras tb on tp.id=tb.id_produto\n" +
-"                                         where (tm.id_tipo='2' or tm.id_tipo='5' or tm.id_tipo='1') and tm.dat_finalizacao between '01.11.2023' and '07.11.2023'\n" +
+"                                         where (tm.id_tipo='2' or tm.id_tipo='5' or tm.id_tipo='1') and tm.dat_finalizacao between '"+dtini+"' and '"+dtfim+"'\n" +
 "                                         and tm.estado='2'\n" +
 "                                         and ti.estado='2'\n" +
 "                                         and ti.codi_barra in ("+dados+")\n" +
@@ -432,7 +431,7 @@ public class relVendasporProdutos extends javax.swing.JDialog {
 "                                         join tprecos tr on ti.id_prod=tr.id\n" +
 "                                         join tmovimento tm on ti.id_mov=tm.id_mov\n" +
 "                                         join tbarras tb on tp.id=tb.id_produto\n" +
-"                                         where (tm.id_tipo='2' or tm.id_tipo='5' or tm.id_tipo='1') and tm.dat_finalizacao between '01.11.2023' and '07.11.2023'\n" +
+"                                         where (tm.id_tipo='2' or tm.id_tipo='5' or tm.id_tipo='1') and tm.dat_finalizacao between '"+dtini+"' and '"+dtfim+"' \n" +
 "                                         and tm.estado='2'\n" +
 "                                         and ti.estado='2'\n" +
 "                                         and ti.codi_barra in ("+dados+")";
@@ -534,7 +533,6 @@ public class relVendasporProdutos extends javax.swing.JDialog {
                            "tm.dat_finalizacao between '"+dtini+"' and '"+dtfim+"'\n" +
                            "and tm.id_tipo='5' and tm.estado='2' and ti.estado='2'";
                   } 
-
                 PreparedStatement ps=conexao.getPreparedStatementResult(qtdtotal);
                 PreparedStatement pst= conexao.getPreparedStatement(sql);
                 ResultSet rs = ps.executeQuery();

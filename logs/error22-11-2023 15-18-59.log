@@ -1,0 +1,7 @@
+Data: 22-11-2023 15-18-59 Erro: Arquivo C:\esfhera\pdv\certificado\CERTIFICADO.PFX não existe
+----------------------------------------------------------------
+Data: 22-11-2023 15-19-22 Erro: Certificado Vencido/Inválido
+----------------------------------------------------------------
+Data: 22-11-2023 15-19-53 Erro: Erro na validação: 
+- O valor 'NFeNFe41231123168999000188650040000001941390372938' do atributo 'Id' no elemento 'infNFe' não é válido em relação ao seu tipo, 'null'.
+----------------------------------------------------------------

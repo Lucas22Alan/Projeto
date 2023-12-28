@@ -10,7 +10,6 @@ import DAO.listaplanosDAO;
 import classes.clsaux;
 import com.sun.glass.events.KeyEvent;
 import conexoes.conexao;
-import static grafic.interfac.OsItem.txtCodProdOs;
 import grafic.interfac.pesquisa.localizaProduto;
 import java.awt.event.ActionEvent;
 import java.sql.PreparedStatement;
@@ -509,7 +508,7 @@ public class frmSaidaLocacaoItem extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarOsActionPerformed
 
     private void btnGravarOsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarOsActionPerformed
-        this.gravarItem();
+        validacoes();
     }//GEN-LAST:event_btnGravarOsActionPerformed
 
     private void txtQntunitFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtQntunitFocusLost
@@ -572,6 +571,15 @@ public class frmSaidaLocacaoItem extends javax.swing.JDialog {
         ftDataSaida.setText(item.getRetirada());
         txtQntPecas.setText(clsaux.formato(item.getQntpecas()));
         
+    }
+    
+    public void validacoes(){
+        System.out.println(clsaux.calcularDiferencaDatas(ftDataSaida.getText(), clsaux.preencheData()));
+        if(clsaux.calcularDiferencaDatas(ftDataSaida.getText(), clsaux.preencheData())<0){
+           JOptionPane.showMessageDialog(null, "Atenção Data Invalida!!!");
+       }else{
+            this.gravarItem();
+        }
     }
     
     public void gravarItem(){

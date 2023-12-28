@@ -7,6 +7,7 @@ package grafic.interfac;
 
 
 import DAO.CadPizzaDAO;
+import DAO.CampanhaDAO;
 import DAO.listaGrupDAO;
 import classes.clsaux;
 import com.sun.glass.events.KeyEvent;
@@ -29,7 +30,6 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import static grafic.interfac.CRUDCadPizza.tabTam;
-import grafic.interfac.pesquisa.formProcuraCliente;
 import grafic.interfac.pesquisa.localizaProduto;
 import javax.swing.AbstractAction;
 import javax.swing.InputMap;
@@ -37,13 +37,14 @@ import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import javax.swing.RowFilter;
 
-import javax.swing.table.TableColumn;
+
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import model.Tcad_campanha;
 import model.Tcad_tam_pizza;
 import model.Tdados_tamanho;
 import util.CriaBtnTamanhoPizza;
-import util.criaFiltroListaSuspensa;
+
 
 /**
  *
@@ -61,6 +62,7 @@ public class CRUDCadPizza extends javax.swing.JDialog {
     }
 
     public static List<Tcad_tam_pizza> lista= new ArrayList<>();
+    public Tcad_campanha campanha= new Tcad_campanha();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -100,6 +102,10 @@ public class CRUDCadPizza extends javax.swing.JDialog {
         cbFiltroGrupo = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         cbFiltroSubGrupo = new javax.swing.JComboBox<>();
+        jPanel6 = new javax.swing.JPanel();
+        cbCampanha = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
@@ -185,14 +191,14 @@ public class CRUDCadPizza extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Id", "Codigo", "Descrição", "Unidade", "Preço Venda", "Grupo", "Sub Grupo", "", "Id. Tam"
+                "Id", "Codigo", "Descrição", "Unidade", "Preço Venda", "Preco Campanha", "Grupo", "Sub Grupo", "", "Id. Tam", "Campanha"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, true, true, true, false
+                false, false, false, false, true, false, true, true, true, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -232,13 +238,17 @@ public class CRUDCadPizza extends javax.swing.JDialog {
             tbItensRef.getColumnModel().getColumn(4).setResizable(false);
             tbItensRef.getColumnModel().getColumn(4).setPreferredWidth(120);
             tbItensRef.getColumnModel().getColumn(5).setResizable(false);
-            tbItensRef.getColumnModel().getColumn(5).setPreferredWidth(170);
+            tbItensRef.getColumnModel().getColumn(5).setPreferredWidth(120);
             tbItensRef.getColumnModel().getColumn(6).setResizable(false);
             tbItensRef.getColumnModel().getColumn(6).setPreferredWidth(170);
             tbItensRef.getColumnModel().getColumn(7).setResizable(false);
-            tbItensRef.getColumnModel().getColumn(7).setPreferredWidth(150);
+            tbItensRef.getColumnModel().getColumn(7).setPreferredWidth(170);
             tbItensRef.getColumnModel().getColumn(8).setResizable(false);
-            tbItensRef.getColumnModel().getColumn(8).setPreferredWidth(40);
+            tbItensRef.getColumnModel().getColumn(8).setPreferredWidth(150);
+            tbItensRef.getColumnModel().getColumn(9).setResizable(false);
+            tbItensRef.getColumnModel().getColumn(9).setPreferredWidth(40);
+            tbItensRef.getColumnModel().getColumn(10).setResizable(false);
+            tbItensRef.getColumnModel().getColumn(10).setPreferredWidth(300);
         }
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -261,7 +271,7 @@ public class CRUDCadPizza extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Tamanho Pizza", jPanel1);
@@ -499,18 +509,64 @@ public class CRUDCadPizza extends javax.swing.JDialog {
             }
         });
 
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Campanhas"));
+
+        jButton1.setText("Inserir Campanha Itens Grid");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("Remove Campanha Itens Grid");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(cbCampanha, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE))
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cbCampanha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel6Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton5});
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                    .addComponent(jLabel1)
-                    .addComponent(cbFiltroGrupo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cbFiltroSubGrupo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                            .addComponent(jLabel1)
+                            .addComponent(cbFiltroGrupo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbFiltroSubGrupo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -523,7 +579,9 @@ public class CRUDCadPizza extends javax.swing.JDialog {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbFiltroSubGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -655,19 +713,27 @@ public class CRUDCadPizza extends javax.swing.JDialog {
 
     private void cbFiltroGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbFiltroGrupoActionPerformed
      TableRowSorter<DefaultTableModel> rowSorter = (TableRowSorter<DefaultTableModel>) tbItensRef.getRowSorter();
-     RowFilter<DefaultTableModel, Object> filter = RowFilter.regexFilter(cbFiltroGrupo.getSelectedItem().toString(), 5); // 1 é o índice da coluna "Grupo"
+     RowFilter<DefaultTableModel, Object> filter = RowFilter.regexFilter(cbFiltroGrupo.getSelectedItem().toString(), 6); // 1 é o índice da coluna "Grupo"
      rowSorter.setRowFilter(filter);
     }//GEN-LAST:event_cbFiltroGrupoActionPerformed
 
     private void cbFiltroSubGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbFiltroSubGrupoActionPerformed
        TableRowSorter<DefaultTableModel> rowSorter = (TableRowSorter<DefaultTableModel>) tbItensRef.getRowSorter();
-     RowFilter<DefaultTableModel, Object> filter = RowFilter.regexFilter(cbFiltroSubGrupo.getSelectedItem().toString(), 6); // 1 é o índice da coluna "Grupo"
+     RowFilter<DefaultTableModel, Object> filter = RowFilter.regexFilter(cbFiltroSubGrupo.getSelectedItem().toString(), 7); // 1 é o índice da coluna "Grupo"
      rowSorter.setRowFilter(filter);
     }//GEN-LAST:event_cbFiltroSubGrupoActionPerformed
 
     private void btnAttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttActionPerformed
        populaTabelaAdicionais();
     }//GEN-LAST:event_btnAttActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        aplicaCampanhaTodos(Integer.parseInt(clsaux.retornaId(cbCampanha.getSelectedItem())));
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        aplicaCampanhaTodos(0);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     public void inicia(){
         tabTam.addMouseListener(new MouseAdapter(){
@@ -692,8 +758,10 @@ public class CRUDCadPizza extends javax.swing.JDialog {
         cbGrupo.setModel(CbGrup);
         DefaultComboBoxModel subgrupo = new DefaultComboBoxModel(listaGrupDAO.listaSubGrupo().toArray());
         cbSubGrupo.setModel(subgrupo);
+        DefaultComboBoxModel campanha = new DefaultComboBoxModel(new CampanhaDAO().retornaListaCampanhas().toArray());
+        cbCampanha.setModel(campanha);
         new CriaBtnTamanhoPizza(tabTam, 7, "Ajustar Preço","T");
-        new CriaBtnTamanhoPizza(tbItensRef, 7, "Ajustar Preço","S");
+        new CriaBtnTamanhoPizza(tbItensRef, 8, "Ajustar Preço","S");
         
         populaTabelaAdicionais();
         this.criaMenuItem();
@@ -755,26 +823,19 @@ public class CRUDCadPizza extends javax.swing.JDialog {
         cbFiltroGrupo.setModel(dcbfiltrogp);
         DefaultComboBoxModel dcbfiltrosb = new DefaultComboBoxModel(getSubGrupos(dados).toArray());
         cbFiltroSubGrupo.setModel(dcbfiltrosb);
-        
-       
-        /*TableColumn subgrupoColumn = tbItensRef.getColumnModel().getColumn(6);
-        subgrupoColumn.setCellEditor(new criaFiltroListaSuspensa(getSubGrupos(dados),tbItensRef,6));
-        TableColumn grupoColumn = tbItensRef.getColumnModel().getColumn(5);
-        grupoColumn.setCellEditor(new criaFiltroListaSuspensa(getGrupos(dados),tbItensRef,5));*/
-        
-        
-
-        
         for(Tdados_tamanho dad:dados){
+            campanha= new CampanhaDAO().retornaCampanha(dad.getIdcampanha());
             tbprod.addRow(new Object[]{
                 dad.getIdproduto(),
                 dad.getCodbarras(),
                 dad.getDescricao(),
                 dad.getUnidade(),
                 clsaux.formato(dad.getVenda()),
+                clsaux.formato(campanha.getPrecoDia()),
                 dad.getGrupo(),
                 dad.getSubgrupo(),"",
-                adc
+                adc,
+                dad.getIdcampanha()+"- "+dad.getNomecampanha()
             
             });
         }
@@ -788,6 +849,16 @@ public class CRUDCadPizza extends javax.swing.JDialog {
              String barra=tbItensRef.getValueAt(i, 1).toString();
              String tama=tabTam.getValueAt(tabTam.getSelectedRow(), 0).toString();
              dao.ajustaPrecoSabor(barra, tama, vl);
+        }
+    }
+    
+    
+    public void aplicaCampanhaTodos(int id){
+        CadPizzaDAO dao = new CadPizzaDAO();
+        for(int i=0; i<tbItensRef.getRowCount();i++){
+             String barra=tbItensRef.getValueAt(i, 1).toString();
+             String tama=tabTam.getValueAt(tabTam.getSelectedRow(), 0).toString();
+             dao.insereCampanha(barra, tama, id);
         }
     }
     
@@ -889,13 +960,16 @@ public class CRUDCadPizza extends javax.swing.JDialog {
     private javax.swing.JButton btnExcluirItem;
     private javax.swing.JButton btnFechar;
     private javax.swing.JButton btnIncluir;
+    private javax.swing.JComboBox<String> cbCampanha;
     private javax.swing.JComboBox<String> cbFiltroGrupo;
     private javax.swing.JComboBox<String> cbFiltroSubGrupo;
     private javax.swing.JComboBox<String> cbGrupo;
     private javax.swing.JComboBox<String> cbSubGrupo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     public static javax.swing.JLabel jLabel3;
@@ -907,6 +981,7 @@ public class CRUDCadPizza extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;

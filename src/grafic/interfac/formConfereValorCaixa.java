@@ -706,6 +706,9 @@ public class formConfereValorCaixa extends javax.swing.JDialog {
             for(tfechamento_cego novo:clsFechamentoCaixa.finalizadorasFechaCego){
                 if(novo.getIdfinalizadora().equals(cl.getId())){
                     cl.setVldigitado(novo.getValor());
+                    if(novo.getObs().length()>0){
+                        txtObs.setText(novo.getObs());
+                    }
                     break;
                 }
             }

@@ -562,7 +562,10 @@ public class frmPagamentosAdm extends javax.swing.JDialog {
         JOptionPane.showMessageDialog(null, "Os Finalizado com sucesso");
         int y=JOptionPane.showConfirmDialog(null, "Deseja Imprimir os O.S", "Impressao ordem",JOptionPane.YES_NO_OPTION,HEIGHT);
         if (y==JOptionPane.YES_OPTION){
-            frmSelecionaImpressaoOs.imprimirOs(pagamento.getIdos(),"A4");
+            frmSelecionaImpressaoOs.idos=pagamento.getIdos();
+            frmSelecionaImpressaoOs dialog = new frmSelecionaImpressaoOs(new javax.swing.JFrame(), true); 
+            dialog.setLocationRelativeTo(null);
+            dialog.setVisible(true);
            };
          y=JOptionPane.showConfirmDialog(null, "Deseja Gerar Uma NFe Referente a Venda?", "Gerar Nfe",JOptionPane.YES_NO_OPTION);
          if (y==JOptionPane.YES_OPTION){

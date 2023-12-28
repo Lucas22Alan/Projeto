@@ -1026,12 +1026,12 @@ public class frmCadOrcamento extends javax.swing.JDialog {
             idfina=clsaux.retornaId(tblParcelas.getValueAt(i, 2).toString());
             vlfina= clsaux.formatoNfe(clsaux.capturaValores(tblParcelas.getValueAt(i, 1).toString())-clsaux.capturaValores(tblParcelas.getValueAt(i, 4).toString()));
             String datavenc=tblParcelas.getValueAt(i, 0).toString();
-            os.inserirFinalizadora(txtIdMov.getText(), idfina, vlfina,tblParcelas.getValueAt(i, 3).toString(),datavenc);
+            os.inserirFinalizadora(txtIdMov.getText(), idfina, vlfina, clsaux.retornaId(tblParcelas.getValueAt(i, 3)),datavenc);
             System.out.println(vlfina);
             if (Integer.parseInt(idfina)<4||Integer.parseInt(idfina)>6){
                 this.gravaMovtoPagVista(vlfina, idfina,mvtogerado,txtIdMov.getText(),parceiro);
             }else if (Integer.parseInt(idfina)>3||Integer.parseInt(idfina)<7){
-                this.gravaMovtoPagPrazo(vlfina, idfina,datavenc,mvtogerado,parceiro);
+                this.gravaMovtoPagPrazo(vlfina, idfina,datavenc,mvtogerado,parceiro,tblParcelas.getValueAt(i, 3).toString());
             }
         }
         
@@ -1040,14 +1040,13 @@ public class frmCadOrcamento extends javax.swing.JDialog {
         orcamento.setEstado("2");
         os.atualizaRegistro(orcamento);
         os.inserirFinalizadoraVendaFinalizada(orcamento.getId(),mvtogerado);
-        
-        int y=JOptionPane.showConfirmDialog(null, "Deseja Gerar Uma NFe Referente a Venda?", "Gerar Nfe",JOptionPane.YES_NO_OPTION);
-        if (y==JOptionPane.YES_OPTION){
-           this.gerarNfe(mvtogerado);
-           };
-         y=JOptionPane.showConfirmDialog(null, "Deseja Imprimir o Pedido?", "Impressão Pedido",JOptionPane.YES_NO_OPTION);
+        int y=JOptionPane.showConfirmDialog(null, "Deseja Imprimir o Pedido?", "Impressão Pedido",JOptionPane.YES_NO_OPTION);
         if (y==JOptionPane.YES_OPTION){
            CRUDOrcamentos.imprimirOrcamento(orcamento.getId());
+           };
+            y=JOptionPane.showConfirmDialog(null, "Deseja Gerar Uma NFe Referente a Venda?", "Gerar Nfe",JOptionPane.YES_NO_OPTION);
+        if (y==JOptionPane.YES_OPTION){
+           this.gerarNfe(mvtogerado);
            };
     }
     
@@ -1060,7 +1059,7 @@ public class frmCadOrcamento extends javax.swing.JDialog {
        nf.setInddest("1");
        nf.setIndie("1");
        nf.setPrescomp("1");
-       nf.setConsfinal("N");
+       nf.setConsfinal("0");
        nfeDAO.gerarNfePartirVenda(nf);
        clsNfTransporte tr= new clsNfTransporte();
        tr.setIdmovimento(mvto);
@@ -1097,7 +1096,7 @@ public class frmCadOrcamento extends javax.swing.JDialog {
         
        
     }
-    public void gravaMovtoPagPrazo(String valor,String idfin, String datavencimento,String mvto,String parc){
+    public void gravaMovtoPagPrazo(String valor,String idfin, String datavencimento,String mvto,String parc,String parce){
         CadContasRecPagar cd = new CadContasRecPagar();
         ContasReceberDAO cr = new ContasReceberDAO();
         cd.setIdmovto(mvto);
@@ -1114,13 +1113,13 @@ public class frmCadOrcamento extends javax.swing.JDialog {
         cd.setIdcontrato("0");
         cd.setBanco("1");
         cd.setVendedor("0");
-        cd.setParcela("1");
+        cd.setParcela(clsaux.retornaId(parce));
         cd.setJuros("0.00");
         cd.setDesconto("0.00");
         cd.setSaldo(valor);
         cd.setTipofinanceiro(clsConfig.financeiro.getTpPedido());
         cd.setSubtipofinanceiro(clsConfig.financeiro.getSbPediso());
-        cd.setQntParcelas("1");
+        cd.setQntParcelas(clsaux.retornaAposId(parce));
         cr.inserir(cd);
     }
     public void inserirFinalizadoras(){
@@ -1129,7 +1128,7 @@ public class frmCadOrcamento extends javax.swing.JDialog {
                 orcdao.inserirFinalizadora(txtIdMov.getText(), 
                         clsaux.retornaId(tblParcelas.getValueAt(i, 2).toString()),
                         clsaux.capturaValor(tblParcelas.getValueAt(i, 1).toString()),
-                        tblParcelas.getValueAt(i, 3).toString(),
+                        clsaux.retornaId(tblParcelas.getValueAt(i, 3)),
                         tblParcelas.getValueAt(i, 0).toString());
         
         }
@@ -1297,49 +1296,55 @@ public class frmCadOrcamento extends javax.swing.JDialog {
         calculaTotais();
     }
     public void calculaValoresFinanceiro(){
-        
-        String idfinalizadora=clsaux.retornaId(CbFinalizadora.getSelectedItem().toString());
-        String nomefinalizadora=clsaux.retornaAposId(CbFinalizadora.getSelectedItem().toString());
-        int parcela=Integer.parseInt(CbParcelas.getSelectedItem().toString());
-        Double valor= clsaux.capturaValores(txtvalor.getText());
+        Double pago=calculaValorPago();
         Double totalgeral=clsaux.capturaValores(lbValorTotal.getText());
-        Double falta=clsaux.capturaValores(lbTroco.getText());
-        Double troco=0.00;
-        Double valorgeral=valor;
-        if(idfinalizadora.equals("1")||valor>falta){
-            troco=valor-falta;
-        }
-        DefaultTableModel tbl = (DefaultTableModel) tblParcelas.getModel();
-        //tbl.setNumRows(0);
-        if (parcela==1){
-            tbl.addRow(new Object[]{
-                clsaux.preencheData(),
-                clsaux.formato(valor),
-                idfinalizadora+"-"+nomefinalizadora,
-                parcela,
-                clsaux.formato(troco)
-                });
-        }else if (parcela > 1){
-           
-            valor= valor/parcela;
-            valor= clsaux.capturaValores(clsaux.formato(valor));
-            for (int i=1; i<=parcela; i++){
-                if(i==parcela){
-                    valor=valorgeral;
+        if(pago<totalgeral){
+        
+                String idfinalizadora=clsaux.retornaId(CbFinalizadora.getSelectedItem().toString());
+                String nomefinalizadora=clsaux.retornaAposId(CbFinalizadora.getSelectedItem().toString());
+                int parcela=Integer.parseInt(CbParcelas.getSelectedItem().toString());
+                Double valor= clsaux.capturaValores(txtvalor.getText());
+                Double falta=totalgeral-pago;
+                Double troco=0.00;
+                Double valorgeral=valor;
+                System.out.println(valor);
+                         System.out.println(falta);
+                if(idfinalizadora.equals("1")||valor>falta){
+                    troco=valor-(totalgeral-pago);
+                    if(troco<0)troco=0.00;
                 }
-                tbl.addRow(new Object []{
-                    clsaux.calcularDataVencimento(i*30),
-                    clsaux.formato(valor),
-                    idfinalizadora+"-"+nomefinalizadora,
-                    i,
-                    "0,00"
-                });
-                valorgeral=valorgeral-valor;
-            }
-        }
-        lbTroco.setText(clsaux.formato((totalgeral-valorgeral)));
-     
-        txtvalor.setText("");
+                DefaultTableModel tbl = (DefaultTableModel) tblParcelas.getModel();
+                //tbl.setNumRows(0);
+                if (parcela==1){
+                    tbl.addRow(new Object[]{
+                        clsaux.preencheData(),
+                        clsaux.formato(valor),
+                        idfinalizadora+"-"+nomefinalizadora,
+                        parcela+"-"+parcela,
+                        clsaux.formato(troco)
+                        });
+                }else if (parcela > 1){
+
+                    valor= valor/parcela;
+                    valor= clsaux.capturaValores(clsaux.formato(valor));
+                    for (int i=1; i<=parcela; i++){
+                        if(i==parcela){
+                            valor=valorgeral;
+                        }
+                        tbl.addRow(new Object []{
+                            clsaux.calcularDataVencimento(i*30),
+                            clsaux.formato(valor),
+                            idfinalizadora+"-"+nomefinalizadora,
+                            i+"-"+parcela,
+                            "0,00"
+                        });
+                        valorgeral=valorgeral-valor;
+                    }
+                }
+                lbTroco.setText(clsaux.formato((totalgeral-calculaValorPago())));
+
+                txtvalor.setText("");
+                }
         
     }
     public void removeValores(){
@@ -1347,8 +1352,13 @@ public class frmCadOrcamento extends javax.swing.JDialog {
         tbl.setNumRows(0);
         lbTroco.setText(lbValorTotal.getText());
         txtvalor.setText("");
-        
-    
+    }
+    public Double calculaValorPago(){
+        Double vlpago=0.00;
+        for(int i=0;i<tblParcelas.getRowCount();i++){
+            vlpago=vlpago+(clsaux.capturaValores(tblParcelas.getValueAt(i, 1).toString())-clsaux.capturaValores(tblParcelas.getValueAt(i, 4).toString()));
+        }
+        return vlpago;
     }
     /**
      * @param args the command line arguments

@@ -110,12 +110,12 @@ public class CadPizzaDAO {
         List<Tdados_tamanho> lista= new ArrayList<>();
         try {
                 String sql="select td.idtamanho,td.barrassabor,tp.id,tp.nomelongo,tp.unid_venda,td.preco,\n" +
-                        "tg.nome,ts.nome from tdados_tamanho td\n" +
+                        "tg.nome,ts.nome,td.idcampanha,tc.nome from tdados_tamanho td\n" +
                         "left join tbarras tb on tb.codigo_barras=td.barrassabor\n" +
                         "left join tprodutos tp on tb.id_produto=tp.id\n" +
                         "left join tgrupos tg on tp.id_grupo=tg.id_grupo\n" +
                         "left join tsubgrupo ts on tp.id_subgrupo=ts.idsubgrupo\n" +
-                        "where td.idtamanho=?";
+                        "left join tcad_campanha tc on td.idcampanha= tc.idcampanha where td.idtamanho=?";
                 ps=conexao.getPreparedStatement(sql);
                 ps.setString(1, idadc);
                 rs=ps.executeQuery();
@@ -129,6 +129,8 @@ public class CadPizzaDAO {
                     it.setVenda(rs.getDouble(6));
                     it.setGrupo(rs.getString(7));
                     it.setSubgrupo(rs.getString(8));
+                    it.setIdcampanha(rs.getInt(9));
+                    it.setNomecampanha(rs.getString(10));
                     lista.add(it);
                 }
                 rs.close();
@@ -242,6 +244,22 @@ public class CadPizzaDAO {
         
     }
 
+     public void insereCampanha(String barras,String tamanho,int idcampanha){
+            try {
+                String sql="update tdados_tamanho tm set tm.idcampanha=? where tm.idtamanho=? and tm.barrassabor=?";
+                ps=conexao.getPreparedStatement(sql);
+                ps.setInt(1, idcampanha);
+                ps.setString(2, tamanho);
+                ps.setString(3, barras);
+                ps.executeUpdate();
+                ps.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CadPizzaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        
+        
+    }
     public void ajustaValorTamanho(String id,Double vl){
             try {
                 String sql="update tcad_tam_pizza tp set tp.preco=? where tp.idtamanho=?";

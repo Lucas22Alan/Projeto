@@ -4,6 +4,7 @@ package grafic.interfac;
 
 import Boletos.ClsBoletoAilos;
 import DAO.AvisosDAO;
+import DAO.BaseGeralDAO;
 import DAO.lancDocumentDAO;
 import DAO.permissaoUsuarioDAO;
 import classes.ClsImportaTabelaIbpt;
@@ -51,14 +52,18 @@ import relatorios.frmRelMovOsFuncionarioAndamento;
 import relatorios.frmRelPontosTotais;
 import relatorios.frmRelVendasDocumentosFiscais;
 import relatorios.frmRelVendasGeral;
+import relatorios.frmRelVendasGeralPdv;
 import relatorios.frmRelVendasParceiro;
 import relatorios.frmRelVendasTotalDiario;
+import relatorios.frmVendaCancelada;
+import relatorios.frmVendaItensCancelados;
 import relatorios.relComprasItensFornecedor;
 import relatorios.relComprasPorFornecedor;
 import relatorios.relPosicaoEstoque;
 import relatorios.relProdutosCadastro;
 import relatorios.relResumoMovimentoFinanceiro;
 import relatorios.relTotaisFinalizdora;
+import relatorios.relVendasporProdutosCusto;
 import relatorios.relVendasporProdutosPercentual;
 
 public class formPrincipal1 extends javax.swing.JFrame {
@@ -138,6 +143,7 @@ public class formPrincipal1 extends javax.swing.JFrame {
         jMenuItem17 = new javax.swing.JMenuItem();
         jMenuItem74 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         menuConferenciaCaixa = new javax.swing.JMenuItem();
         menuMovimentacaoCaixa = new javax.swing.JMenuItem();
@@ -179,13 +185,17 @@ public class formPrincipal1 extends javax.swing.JFrame {
         MiResumoMov = new javax.swing.JMenuItem();
         MenuVendas = new javax.swing.JMenu();
         MiVenProduto = new javax.swing.JMenuItem();
+        MiVenProduto1 = new javax.swing.JMenuItem();
         MiProdMedia = new javax.swing.JMenuItem();
         MiTotalFin = new javax.swing.JMenuItem();
         MiVendasVend = new javax.swing.JMenuItem();
         MiVendGeral = new javax.swing.JMenuItem();
+        MiVendGeral1 = new javax.swing.JMenuItem();
         MiVendParc = new javax.swing.JMenuItem();
         MiVendDiario = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
+        MiVendaCancelada = new javax.swing.JMenuItem();
+        MiVendaItemCancelado = new javax.swing.JMenuItem();
         MenuProdutos = new javax.swing.JMenu();
         MiPosicaoEsto = new javax.swing.JMenuItem();
         MiApuracaoEst = new javax.swing.JMenuItem();
@@ -207,8 +217,12 @@ public class formPrincipal1 extends javax.swing.JFrame {
         jMenu11 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu15 = new javax.swing.JMenu();
-        menuSinc = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
         jMenuItem43 = new javax.swing.JMenuItem();
+        jMenuItem68 = new javax.swing.JMenuItem();
+        jMenu8 = new javax.swing.JMenu();
+        menuSinc = new javax.swing.JMenuItem();
+        jMenu9 = new javax.swing.JMenu();
         jMenuItem60 = new javax.swing.JMenuItem();
 
         jMenuItem34.setText("jMenuItem34");
@@ -870,6 +884,15 @@ public class formPrincipal1 extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem6);
 
+        jMenuItem14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cad99.png"))); // NOI18N
+        jMenuItem14.setText("Cad. Campanha");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem14);
+
         jMenuBar1.add(jMenu1);
 
         jMenu3.setText("Financeiro          ");
@@ -1207,6 +1230,15 @@ public class formPrincipal1 extends javax.swing.JFrame {
         });
         MenuVendas.add(MiVenProduto);
 
+        MiVenProduto1.setFont(new java.awt.Font("Segoe UI Semilight", 0, 12)); // NOI18N
+        MiVenProduto1.setText("Por Produto - Custo Cad Produto");
+        MiVenProduto1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MiVenProduto1ActionPerformed(evt);
+            }
+        });
+        MenuVendas.add(MiVenProduto1);
+
         MiProdMedia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         MiProdMedia.setText("Por Produto- Média de Crescimento e Redução");
         MiProdMedia.addActionListener(new java.awt.event.ActionListener() {
@@ -1242,6 +1274,14 @@ public class formPrincipal1 extends javax.swing.JFrame {
         });
         MenuVendas.add(MiVendGeral);
 
+        MiVendGeral1.setText("Vendas Geral PDV");
+        MiVendGeral1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MiVendGeral1ActionPerformed(evt);
+            }
+        });
+        MenuVendas.add(MiVendGeral1);
+
         MiVendParc.setText("Vendas Por Parceiros");
         MiVendParc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1265,6 +1305,22 @@ public class formPrincipal1 extends javax.swing.JFrame {
             }
         });
         MenuVendas.add(jMenuItem13);
+
+        MiVendaCancelada.setText("Venda Cancelada");
+        MiVendaCancelada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MiVendaCanceladaActionPerformed(evt);
+            }
+        });
+        MenuVendas.add(MiVendaCancelada);
+
+        MiVendaItemCancelado.setText("Venda Itens Cancelados");
+        MiVendaItemCancelado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MiVendaItemCanceladoActionPerformed(evt);
+            }
+        });
+        MenuVendas.add(MiVendaItemCancelado);
 
         jMenu7.add(MenuVendas);
 
@@ -1421,14 +1477,7 @@ public class formPrincipal1 extends javax.swing.JFrame {
 
         jMenu15.setText("      Diversos");
 
-        menuSinc.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        menuSinc.setText("Sincronizar Clube de Pontos");
-        menuSinc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuSincActionPerformed(evt);
-            }
-        });
-        jMenu15.add(menuSinc);
+        jMenu5.setText("Correções");
 
         jMenuItem43.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jMenuItem43.setText("Correção Descontos");
@@ -1437,7 +1486,34 @@ public class formPrincipal1 extends javax.swing.JFrame {
                 jMenuItem43ActionPerformed(evt);
             }
         });
-        jMenu15.add(jMenuItem43);
+        jMenu5.add(jMenuItem43);
+
+        jMenuItem68.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jMenuItem68.setText("Correção Custos Zerado");
+        jMenuItem68.setToolTipText("Atenção, verifique se o arquivo está na pasta c:\\esfhera\\adm\\importacao\\ibpt.xls");
+        jMenuItem68.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem68ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem68);
+
+        jMenu15.add(jMenu5);
+
+        jMenu8.setText("Sincronizações");
+
+        menuSinc.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        menuSinc.setText("Sincronizar Clube de Pontos");
+        menuSinc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSincActionPerformed(evt);
+            }
+        });
+        jMenu8.add(menuSinc);
+
+        jMenu15.add(jMenu8);
+
+        jMenu9.setText("Importações");
 
         jMenuItem60.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jMenuItem60.setText("Importar Tabela IBPT");
@@ -1447,7 +1523,9 @@ public class formPrincipal1 extends javax.swing.JFrame {
                 jMenuItem60ActionPerformed(evt);
             }
         });
-        jMenu15.add(jMenuItem60);
+        jMenu9.add(jMenuItem60);
+
+        jMenu15.add(jMenu9);
 
         jMenuBar1.add(jMenu15);
 
@@ -2056,6 +2134,41 @@ public class formPrincipal1 extends javax.swing.JFrame {
        dialog.setVisible(true);
        //teste
     }//GEN-LAST:event_MiDevo1ActionPerformed
+
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+      CRUDCampanhas dialog = new CRUDCampanhas(new javax.swing.JFrame(), true);
+      dialog.setLocationRelativeTo(null);
+      dialog.setVisible(true);
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
+
+    private void MiVenProduto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiVenProduto1ActionPerformed
+        relVendasporProdutosCusto dialog = new relVendasporProdutosCusto(new javax.swing.JFrame(), true);
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_MiVenProduto1ActionPerformed
+
+    private void MiVendaCanceladaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiVendaCanceladaActionPerformed
+     frmVendaCancelada dialog = new frmVendaCancelada(new javax.swing.JFrame(), true);
+     dialog.setLocationRelativeTo(null);
+     dialog.setVisible(true);
+    }//GEN-LAST:event_MiVendaCanceladaActionPerformed
+
+    private void MiVendaItemCanceladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiVendaItemCanceladoActionPerformed
+       frmVendaItensCancelados dialog = new frmVendaItensCancelados(new javax.swing.JFrame(), true);
+       dialog.setLocationRelativeTo(null);
+       dialog.setVisible(true);
+    }//GEN-LAST:event_MiVendaItemCanceladoActionPerformed
+
+    private void MiVendGeral1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiVendGeral1ActionPerformed
+        frmRelVendasGeralPdv dialog = new frmRelVendasGeralPdv(new javax.swing.JFrame(), true);
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_MiVendGeral1ActionPerformed
+
+    private void jMenuItem68ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem68ActionPerformed
+        new BaseGeralDAO().correcaoCustoCadastroUltimaCompra();
+        new BaseGeralDAO().correcaoCustoVendaZero();
+    }//GEN-LAST:event_jMenuItem68ActionPerformed
     
     public void abreCrudNfe(){
         CRUDNfe dialog = new CRUDNfe(new javax.swing.JFrame(), true);
@@ -2077,8 +2190,6 @@ public class formPrincipal1 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Erro ao realizar rateio \n"+ ex.getMessage());
             Logger.getLogger(formPrincipal1.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
-        
     }
     public void carregaAvisosSistema(){
         AvisosDAO aviso= new AvisosDAO();
@@ -2242,9 +2353,13 @@ public class formPrincipal1 extends javax.swing.JFrame {
     private javax.swing.JMenuItem MiTotalFin;
     private javax.swing.JMenuItem MiTotalPonto;
     private javax.swing.JMenuItem MiVenProduto;
+    private javax.swing.JMenuItem MiVenProduto1;
     private javax.swing.JMenuItem MiVendDiario;
     private javax.swing.JMenuItem MiVendGeral;
+    private javax.swing.JMenuItem MiVendGeral1;
     private javax.swing.JMenuItem MiVendParc;
+    private javax.swing.JMenuItem MiVendaCancelada;
+    private javax.swing.JMenuItem MiVendaItemCancelado;
     private javax.swing.JMenuItem MiVendasVend;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -2262,8 +2377,11 @@ public class formPrincipal1 extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     public static javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
@@ -2271,6 +2389,7 @@ public class formPrincipal1 extends javax.swing.JFrame {
     public static javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
@@ -2306,6 +2425,7 @@ public class formPrincipal1 extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem65;
     private javax.swing.JMenuItem jMenuItem66;
     private javax.swing.JMenuItem jMenuItem67;
+    private javax.swing.JMenuItem jMenuItem68;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem70;
     private javax.swing.JMenuItem jMenuItem73;

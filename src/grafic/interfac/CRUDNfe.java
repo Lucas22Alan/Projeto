@@ -274,10 +274,9 @@ public class CRUDNfe extends javax.swing.JDialog {
             }
         });
         TbLancamentos.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        TbLancamentos.setCellSelectionEnabled(false);
+        TbLancamentos.setColumnSelectionAllowed(true);
         TbLancamentos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         TbLancamentos.setRowHeight(20);
-        TbLancamentos.setRowSelectionAllowed(true);
         TbLancamentos.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(TbLancamentos);
         TbLancamentos.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -843,8 +842,12 @@ public class CRUDNfe extends javax.swing.JDialog {
     }//GEN-LAST:event_btnEnviarNfceActionPerformed
 
     private void btnInutilizarNfceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInutilizarNfceActionPerformed
-        this.inutilizarNfe();
-        this.pesquisar();
+        int yn= JOptionPane.showConfirmDialog(null, "Deseja Inutilizar Nfce", "Inutilização de registro", JOptionPane.YES_NO_OPTION);
+        if (yn== JOptionPane.YES_OPTION){
+            this.inutilizarNfe();
+           this.pesquisar();
+        }
+        
     }//GEN-LAST:event_btnInutilizarNfceActionPerformed
 
     private void btnCancelarNfceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarNfceActionPerformed
@@ -866,7 +869,12 @@ public class CRUDNfe extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void btnCancelarNfce1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarNfce1ActionPerformed
-       cancelarNfe();
+       int yn= JOptionPane.showConfirmDialog(null, "Deseja Cancelar Nfce?", "Cancelamento de registro", JOptionPane.YES_NO_OPTION);
+        if (yn== JOptionPane.YES_OPTION){
+            cancelarNfe();
+        }
+        
+        
     }//GEN-LAST:event_btnCancelarNfce1ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -1032,11 +1040,16 @@ public class CRUDNfe extends javax.swing.JDialog {
         
     }
     public void alterarReg(){
-        frmLancamentoNfe.estadoform="A";
-        frmLancamentoNfe.idmovimento=TbLancamentos.getValueAt(TbLancamentos.getSelectedRow(), 0).toString();
-        frmLancamentoNfe dialog = new frmLancamentoNfe(new javax.swing.JFrame(), true);
-        dialog.setLocationRelativeTo(null);
-        dialog.setVisible(true);
+        String cst=TbLancamentos.getValueAt(TbLancamentos.getSelectedRow(), 8).toString();
+        if (cst.equals("100")||cst.equals("150")||cst.equals("101")||cst.equals("102")){
+            JOptionPane.showMessageDialog(null, "Registro não pode ser alteraodo devido a situação");
+        }else{
+            frmLancamentoNfe.estadoform="A";
+            frmLancamentoNfe.idmovimento=TbLancamentos.getValueAt(TbLancamentos.getSelectedRow(), 0).toString();
+            frmLancamentoNfe dialog = new frmLancamentoNfe(new javax.swing.JFrame(), true);
+            dialog.setLocationRelativeTo(null);
+            dialog.setVisible(true);
+            }
     }
     
     private void enviarNfe() {
@@ -1051,7 +1064,7 @@ public class CRUDNfe extends javax.swing.JDialog {
             
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Enviando NFe!!!\n"+ex.toString());
-            
+              this.pesquisar();
             Logger.getLogger(CRUDNfe.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -1159,7 +1172,7 @@ public class CRUDNfe extends javax.swing.JDialog {
             }
             
         } catch (Exception ex) {
-            //JOptionPane.showMessageDialog(null, ex.getMessage());
+            JOptionPane.showMessageDialog(null, ex.getMessage());
             Logs.gravarLog.main(ex.getMessage());
             Logger.getLogger(CRUDNfe.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1304,6 +1317,7 @@ public class CRUDNfe extends javax.swing.JDialog {
                 }
                 nfeDAO.inserirMovimentoNfe(nf);
             }
+            new clsEnviaNfce( Long.parseLong(mov.getIdmovimento()),retorno);
             JOptionPane.showMessageDialog(null, " Status: " + retorno.getCStat() + " - " + retorno.getXMotivo());
             
         } catch (CertificadoException ex) {
@@ -1311,6 +1325,8 @@ public class CRUDNfe extends javax.swing.JDialog {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(CRUDNfe.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NfeException ex) {
+            Logger.getLogger(CRUDNfe.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
             Logger.getLogger(CRUDNfe.class.getName()).log(Level.SEVERE, null, ex);
         }
         

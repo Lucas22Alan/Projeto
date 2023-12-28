@@ -20,7 +20,17 @@ public class produtos {
     Double preco_oferta=0.00;
     String comeco,fim,datavalidade;
     String urlImagem="",enviaCardapio="N",descritivoCardapio="";
+    String observacao="";
 
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+    
+    
     public String getUrlImagem() {
         return urlImagem;
     }

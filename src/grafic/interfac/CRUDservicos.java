@@ -668,7 +668,7 @@ public class CRUDservicos extends javax.swing.JDialog {
         }
         if (tipofiltro=="Nenhum"){
         } else if (tipofiltro=="Nome"){
-            campo="and tp.razao_social like '%"+digitado+"%'";
+            campo="and (tp.razao_social like '%"+digitado+"%' or ts.placa like '%"+digitado+"%' )";
         } else if (tipofiltro=="O.S"){
             campo="and ts.id_ordem='"+digitado+"'";
         }

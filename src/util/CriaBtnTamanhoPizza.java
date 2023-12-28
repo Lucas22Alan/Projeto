@@ -90,7 +90,7 @@ public CriaBtnTamanhoPizza(JTable table, int column,String descricao,String tp)
                
         }else if (tipo.equals("S")){
                new CadPizzaDAO().ajustaPrecoSabor(table.getValueAt(table.getSelectedRow(), 1).toString(),
-                       table.getValueAt(table.getSelectedRow(), 8).toString(),
+                       table.getValueAt(table.getSelectedRow(), 9).toString(),
                        clsaux.capturaValores(table.getValueAt(table.getSelectedRow(), 4).toString()));
 
             }

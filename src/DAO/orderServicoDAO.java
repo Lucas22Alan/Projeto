@@ -424,7 +424,7 @@ public class orderServicoDAO {
                             "        tp.tipo_os,\n" +
                             "        tp.situacao_os,\n" +
                             "        tp.id_parceiro,\n" +
-                            "        tp.total,tp.obs_geral,tp.id_ordem,tc.descricao\n" +
+                            "        tp.total,tp.obs_geral,tp.id_ordem,tc.descricao,tp.placa \n" +
                             " from tordem_servico tp\n" +
                             " join testado_operacoes tc on tp.situacao_os=tc.id where tp.id_parceiro=? order by 16 desc";
             PreparedStatement ps=conexao.getPreparedStatement(sql);
@@ -445,7 +445,7 @@ public class orderServicoDAO {
                 cl.setDataent(rs.getString(9));
                 cl.setDatasai(rs.getString(10));
                 cl.setSituacao(rs.getString(17));
-                
+                cl.setPlaca(rs.getString(18));
                 lista.add(cl);
             }
                 

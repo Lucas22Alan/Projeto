@@ -347,35 +347,35 @@ ORDER BY TP.NOMELONGO]]>
 			<textField pattern="#,##0.00">
 				<reportElement x="371" y="0" width="57" height="23" uuid="c6f0c24c-770b-4bae-aa60-7f6b9b31b604"/>
 				<textElement textAlignment="Center">
-					<font fontName="Tahoma" size="14" isBold="true"/>
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new Double($P{tcusto})]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00">
 				<reportElement x="439" y="0" width="57" height="23" uuid="92f89890-4a9e-49a1-a898-8e1521faacd0"/>
 				<textElement textAlignment="Center">
-					<font fontName="Tahoma" size="14" isBold="true"/>
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new Double($P{tlucro})]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00">
 				<reportElement x="289" y="0" width="57" height="23" uuid="479831cd-6bfb-4725-bc81-0c99773a8c38"/>
 				<textElement textAlignment="Center">
-					<font fontName="Tahoma" size="14" isBold="true"/>
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new Double($P{tvenda})]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00">
 				<reportElement x="225" y="0" width="54" height="23" uuid="6791171c-54ad-4b79-aeaf-68069da35880"/>
 				<textElement textAlignment="Center">
-					<font fontName="Tahoma" size="14" isBold="true"/>
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new Double($P{qtdevendas})]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00">
 				<reportElement x="513" y="0" width="39" height="18" uuid="1372bca8-a9a4-47dc-b737-e951c3411373"/>
 				<textElement textAlignment="Center">
-					<font fontName="Tahoma" size="14" isBold="true"/>
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new Double($P{tporcent})]]></textFieldExpression>
 			</textField>

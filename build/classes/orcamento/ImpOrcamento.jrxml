@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelOs" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="49d39f48-70a9-490a-9f8a-154105a2fadf">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
@@ -405,28 +405,28 @@ AND a.cod_item='75']]>
 	<summary>
 		<band height="113">
 			<staticText>
-				<reportElement x="3" y="66" width="98" height="22" uuid="f60c996a-4ed7-4515-aef1-411a605cc103"/>
+				<reportElement positionType="Float" x="3" y="66" width="98" height="22" uuid="f60c996a-4ed7-4515-aef1-411a605cc103"/>
 				<textElement>
 					<font fontName="Arial Narrow" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[TOTAL GERAL :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="3" y="30" width="132" height="20" uuid="c3d34652-7020-4d17-9cd7-8af20f13e8db"/>
+				<reportElement positionType="Float" x="3" y="30" width="132" height="20" uuid="c3d34652-7020-4d17-9cd7-8af20f13e8db"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Forma de Pagamento :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="3" y="49" width="86" height="20" uuid="926385ae-258c-4d32-ac0b-8228e99c06fd"/>
+				<reportElement positionType="Float" x="3" y="49" width="86" height="20" uuid="926385ae-258c-4d32-ac0b-8228e99c06fd"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Vendedor:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="440" y="69" width="112" height="17" uuid="cc19fc87-0246-4f3f-a957-2b8601f867b9"/>
+				<reportElement positionType="Float" x="440" y="69" width="112" height="17" uuid="cc19fc87-0246-4f3f-a957-2b8601f867b9"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial Narrow" size="14" isBold="true"/>
 				</textElement>
@@ -439,28 +439,31 @@ AND a.cod_item='75']]>
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="157" y="29" width="395" height="23" uuid="a6e3a858-92db-434e-b410-c6b976aa4757"/>
+				<reportElement positionType="Float" x="157" y="29" width="395" height="23" uuid="a6e3a858-92db-434e-b410-c6b976aa4757"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{formapgto}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="394" y="49" width="158" height="20" uuid="a40109d0-6702-46d5-bf92-ea02a9e0ef04"/>
+				<reportElement positionType="Float" x="394" y="49" width="158" height="20" uuid="a40109d0-6702-46d5-bf92-ea02a9e0ef04"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{funcionario}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="-1" y="99" width="313" height="14" uuid="fe07492d-13e9-456b-b836-fae595464a3d"/>
+				<reportElement positionType="Float" x="-1" y="99" width="313" height="14" uuid="fe07492d-13e9-456b-b836-fae595464a3d"/>
 				<textElement>
 					<font fontName="Arial" size="8"/>
 				</textElement>
 				<text><![CDATA[MK Soluções - (42) 98885-0711]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="73" y="10" width="100" height="18" uuid="c8b28bad-1d88-4840-9cda-b4fae9ab7ca2"/>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="73" y="10" width="478" height="18" uuid="c8b28bad-1d88-4840-9cda-b4fae9ab7ca2"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{obs}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -468,7 +471,7 @@ AND a.cod_item='75']]>
 				<text><![CDATA[Observação:]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="92" width="554" height="1" uuid="8471b935-c80b-4300-9569-462cc517392c"/>
+				<reportElement positionType="Float" x="0" y="92" width="554" height="1" uuid="8471b935-c80b-4300-9569-462cc517392c"/>
 				<graphicElement>
 					<pen lineStyle="Dashed"/>
 				</graphicElement>

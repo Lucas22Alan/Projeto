@@ -94,6 +94,7 @@ public class conexao {
               amb=AmbienteEnum.PRODUCAO; 
         }
        
+       
         return ConfiguracoesNfe.criarConfiguracoes(EstadosEnum.PR, amb, cert,"C:\\esfhera\\adm\\schemas");
         
        

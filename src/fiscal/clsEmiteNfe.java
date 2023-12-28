@@ -57,6 +57,9 @@ import model.clsNfTransporte;
 import model.clsNfe;
 import classes.clsaux;
 import conexoes.conexao;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.util.Date;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import model.clsConfig;
@@ -90,7 +93,8 @@ public class clsEmiteNfe {
 		// iniciando as configurações do certificado
 
 		config = conexao.iniciaConfifNfe();
-
+                ZoneId zoneId = ZoneId.of("GMT-3");
+                config.setZoneId(zoneId);
 		// monta o objeto da nfe
 		
 
@@ -161,9 +165,16 @@ public class clsEmiteNfe {
 		numero = Integer.parseInt(movimento.getDocument());
 		tipoemissao = "1";
 		cnf = String.format("%08d", new Random().nextInt(99999999));
-		dataemissao = LocalDateTime.now();
-		
-	}
+                java.util.Date utilDate = new java.util.Date(movimento.getEmissao().getTime());
+                Instant instant =utilDate.toInstant();
+                dataemissao = LocalDateTime.ofInstant(instant, ZoneId.of("GMT-3"));
+                LocalDateTime resultado = LocalDateTime.now();
+                resultado = resultado.withYear(dataemissao.getYear())
+                                     .withMonth(dataemissao.getMonthValue())
+                                     .withDayOfMonth(dataemissao.getDayOfMonth());
+                dataemissao=resultado;
+               
+}
 
 	private void gravarArquivoXml(String xmlfinal, TRetEnviNFe retorno) throws IOException {
 		String chavenfe=clsConfig.configuracaogeral.getCaminhoxml()+"nfe\\xml\\"+retorno.getProtNFe().getInfProt().getChNFe()+".xml";
@@ -323,7 +334,7 @@ public class clsEmiteNfe {
         private TNFe.InfNFe.InfAdic montaInfAdicional(){
             TNFe.InfNFe.InfAdic adc= new TNFe.InfNFe.InfAdic();
             String obs="";
-            if(movimentonf.getObservacaoNf().length()>0){
+            if(clsaux.trataCampoNulo(movimentonf.getObservacaoNf()).length()>1){
                obs=movimentonf.getObservacaoNf()+" ";
             }
             if(referencias.size()>0){//&& movimentonf.getFinalidade().equals("4")){
@@ -754,7 +765,9 @@ public class clsEmiteNfe {
 		produto.setVUnTrib(itens.get(indiceitem).getPrecovenda());
 		produto.setIndTot("1");
                 if (clsaux.capturaValores(itens.get(indiceitem).getDesconto())>0.00) produto.setVDesc(clsaux.formatoNfe(clsaux.capturaValores(itens.get(indiceitem).getDesconto())));
-		return produto;
+		if (clsaux.capturaValores(itens.get(indiceitem).getAcrescimo())>0.00) produto.setVOutro(clsaux.formatoNfe(clsaux.capturaValores(itens.get(indiceitem).getAcrescimo())));
+		
+                return produto;
 	}
 
 	private Dest montaDestinatario() {
@@ -821,7 +834,10 @@ public class clsEmiteNfe {
 		ide.setMod(modelo);
 		ide.setSerie(String.valueOf(serie));
 		ide.setNNF(String.valueOf(numero));
+                System.out.println(dataemissao);
+                 System.out.println(XmlNfeUtil.dataNfe(dataemissao));
 		ide.setDhEmi(XmlNfeUtil.dataNfe(dataemissao));
+                 System.out.println(ide.getDhEmi());
 		ide.setTpNF("1");//define se é saida ou entrada
 		ide.setIdDest(movimentonf.getInddest());
 		ide.setCMunFG("4109401");

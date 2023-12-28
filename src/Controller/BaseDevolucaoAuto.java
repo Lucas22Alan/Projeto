@@ -33,12 +33,11 @@ public class BaseDevolucaoAuto {
         lancDocumentDAO ldDAO= new lancDocumentDAO();
         ld.setIdmovimento(idmovimentoOrigem);
         ldDAO.buscaCabecalhoDoc(ld);
-        
         List<clsLancDocument> itens = ldDAO.buscaItens(idmovimentoOrigem);
-         List<clsLancDocument> itensNovo = new ArrayList<>();
+        List<clsLancDocument> itensNovo = new ArrayList<>();
         clsNfe nf = new clsNfe();
         clientes cliente=new clientes();
-        if(ld.getTipomovimento().equals("3")){
+        if(clsaux.retornaId(ld.getTipomovimento()).equals("3")){
         // carrega classes necessarias
             String idmovNovo=new BaseGeralDAO().gerarIds("GEN_TMOVIMENTO_ID");
             String chaveCompra=ld.getChaveacesso();

@@ -31,8 +31,8 @@ public class produtoDAO {
     public String Inserir(produtos produto){
         String idproduto="0";
         String sql="insert into tprodutos(id,nomelongo, nomecurto,unid_venda, excluido,id_grupo,pontos_retira, pontos_validos,tipo_produto,imp_ficha_ind,ativo,id_subgrupo,id_setor,baixa_producao_venda,imprime_etiqueta,data_cadastro,data_alterado, "
-                + "possui_atacarejo,locacao,preco_variavel,impressora_producao,tem_adicional,tem_pizza,urlimagem,enviacardapio,descritivocardapio)"
-                + " values (gen_id(GEN_TPRODUTOS_ID,1),?,?,?,?,?,?,?,?,?,'S',?,?,?,?,current_date,current_date,?,?,?,?,?,?,?,?,?);";
+                + "possui_atacarejo,locacao,preco_variavel,impressora_producao,tem_adicional,tem_pizza,urlimagem,enviacardapio,descritivocardapio,observacao)"
+                + " values (gen_id(GEN_TPRODUTOS_ID,1),?,?,?,?,?,?,?,?,?,'S',?,?,?,?,current_date,current_date,?,?,?,?,?,?,?,?,?,?);";
         String sqlprecos="insert into tprecos(id, preco_venda, margem, preco_custo, ncm, sit_tributaria, cest, cfop,pis_entrada"
                 + ", pis_saida, aliq_icms,custo_atual,custo_medio,preco_oferta,inicio_oferta,fim_oferta)"
                 + "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";      
@@ -67,6 +67,7 @@ public class produtoDAO {
             pstcadpro.setString(20, produto.getUrlImagem());
             pstcadpro.setString(21, produto.getEnviaCardapio());
             pstcadpro.setString(22, produto.getDescritivoCardapio());
+             pstcadpro.setString(23, produto.getObservacao());
             pstcadpro.executeUpdate();
             pstcadpro.close();
             

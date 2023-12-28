@@ -304,7 +304,7 @@ public class CRUDTabelas extends javax.swing.JDialog {
            }else if (tipoform.equals("TS")){
                this.buscarInf("select * from ttipo_movimento where descricao_movimento like '%"+campo+"%';");
            }else if (tipoform.equals("BA")){
-               this.buscarInf("select tb.* from tcad_bairro tb where tb.nome like '%"+campo+"%'");
+               this.buscarInf("select tb.id, tb.nome||'   Valor : '|| tb.taxa_entrega from tcad_bairro tb where tb.nome like '%"+campo+"%'");
            }
 }
     public void buscarInf(String campo){

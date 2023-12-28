@@ -1,0 +1,6 @@
+Data: 22-11-2023 12-04-53 Erro: com.sun.org.apache.xerces.internal.impl.io.MalformedByteSequenceException: Byte inválido 1 da sequência UTF-8 do byte 1.
+----------------------------------------------------------------
+Data: 22-11-2023 12-05-36 Erro: java.io.FileNotFoundException: .\relatorios\etiqueta\teste (O sistema não pode encontrar o arquivo especificado)
+----------------------------------------------------------------
+Data: 22-11-2023 12-06-13 Erro: java.io.FileNotFoundException: .\relatorios\etiqueta\etiqueta3 (O sistema não pode encontrar o arquivo especificado)
+----------------------------------------------------------------

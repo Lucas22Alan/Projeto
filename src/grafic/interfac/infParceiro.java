@@ -16,7 +16,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.clsItemOs;
 import model.clsOrdem;
@@ -33,10 +32,10 @@ public class infParceiro extends javax.swing.JDialog {
     public infParceiro(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.carregaDados();
-        this.carregaDadosOrdens();
+        
     }
-    public static String idparceiro=null;
+     String idparceiro=null;
+      String placa=null;
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -452,6 +451,17 @@ public class infParceiro extends javax.swing.JDialog {
     private void tbMovMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbMovMouseClicked
         carregaItensOrdem(tbMov.getValueAt(tbMov.getSelectedRow(), 0).toString());
     }//GEN-LAST:event_tbMovMouseClicked
+    public void inicia(String idparceiro,String placa){
+        
+        this.idparceiro=idparceiro;
+        if(placa.length()>2){
+            this.placa=placa;
+        }else{
+           this.placa="0";
+        }
+        this.carregaDados();
+        this.carregaDadosOrdens();
+    }
     public void carregaDados(){
         
         try {
@@ -481,6 +491,7 @@ public class infParceiro extends javax.swing.JDialog {
             String dtcadastro,ultcomp,vlultcomp,vlmaiorcomp,totalvend,qntvend,tkmedio,sitcad,diasatraso=null,vltitpend=null;
             Date datatitulovencido=null;
             PreparedStatement ps= conexao.getPreparedStatementResult(sqldadosultimavenda);
+           
             ResultSet rs = ps.executeQuery();
             rs.first();
             ultcomp=clsaux.convertDataExib(rs.getString(2));
@@ -531,13 +542,27 @@ public class infParceiro extends javax.swing.JDialog {
         DefaultTableModel tb = (DefaultTableModel) tbMov.getModel();
         tb.setNumRows(0);
         for (clsOrdem ordem : ordens){
-            tb.addRow(new Object[]{
+            
+            if(placa.length()>2){
+                
+                if(placa.equals(ordem.getPlaca())){
+                 tb.addRow(new Object[]{
+                    ordem.getIdmovto(),
+                    clsaux.convertDataExib(ordem.getDataent()),
+                    clsaux.formataReais(clsaux.capturaValores(ordem.getTotal())),
+                    ordem.getSituacao()
+                });
+              }
+            }else{
+                 tb.addRow(new Object[]{
                 ordem.getIdmovto(),
                 clsaux.convertDataExib(ordem.getDataent()),
                 clsaux.formataReais(clsaux.capturaValores(ordem.getTotal())),
                 ordem.getSituacao()
                 
-            });
+             });
+            }
+           
         }
     }
     

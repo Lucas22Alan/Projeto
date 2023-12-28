@@ -14,10 +14,22 @@ import java.sql.Time;
  */
 public class clsLancDocCabecalho {
     String document,serie,baseicms,valoricms,basest,valorst,outrasdesp,desconto,totalprod,total,idmovimento,idparceiro,chaveacesso,modelo,origem,mvtoOrigem=null;
-    String tipomovimento,valor_pis,valor_cofins,valoripi,cfop=null;
+    String tipomovimento,valor_pis,valor_cofins,valoripi,cfop,numpdv=null;
     Time horafinalizado=null;
 
+    public String getNumpdv() {
+        return numpdv;
+    }
+
+    public void setNumpdv(String numpdv) {
+        this.numpdv = numpdv;
+    }
+
+    
     public String getCfop() {
+        
+        
+        
         return cfop;
     }
 
@@ -216,6 +228,11 @@ public class clsLancDocCabecalho {
 
     public String getTotal() {
         return total;
+    }
+
+    @Override
+    public String toString() {
+        return "clsLancDocCabecalho{" + "document=" + document + ", serie=" + serie + ", baseicms=" + baseicms + ", valoricms=" + valoricms + ", basest=" + basest + ", valorst=" + valorst + ", outrasdesp=" + outrasdesp + ", desconto=" + desconto + ", totalprod=" + totalprod + ", total=" + total + ", idmovimento=" + idmovimento + ", idparceiro=" + idparceiro + ", chaveacesso=" + chaveacesso + ", modelo=" + modelo + ", origem=" + origem + ", mvtoOrigem=" + mvtoOrigem + ", tipomovimento=" + tipomovimento + ", valor_pis=" + valor_pis + ", valor_cofins=" + valor_cofins + ", valoripi=" + valoripi + ", cfop=" + cfop + ", numpdv=" + numpdv + ", horafinalizado=" + horafinalizado + ", emissao=" + emissao + ", lancamento=" + lancamento + '}';
     }
 
     public void setTotal(String total) {

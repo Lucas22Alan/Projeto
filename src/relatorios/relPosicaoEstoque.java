@@ -177,22 +177,22 @@ public class relPosicaoEstoque extends javax.swing.JDialog {
          String sql2="select tp.nomelongo,\n" +
                             "                    tb.baixa_barra as codigobaixa,\n" +
                             "                    te.estoque,\n" +
-                            "                    cast ((tr.preco_custo)as numeric (5,2))as Custo,\n" +
-                            "                    cast (sum(tr.preco_custo*te.estoque)as numeric (5,2)) as TCusto,\n" +
-                            "                    cast ((tr.preco_venda)as numeric (5,2))as Venda,\n" +
-                            "                    cast (sum(tr.preco_venda*te.estoque)as numeric (5,2)) as TVenda ,\n" +
-                            "                    cast (sum(tr.preco_venda*te.estoque)-(sum(tr.preco_custo*te.estoque))as numeric (5,2)) as Lucro\n" +
+                            "                    cast ((tr.preco_custo)as numeric (10,2))as Custo,\n" +
+                            "                    cast (sum(tr.preco_custo*te.estoque)as numeric (10,2)) as TCusto,\n" +
+                            "                    cast ((tr.preco_venda)as numeric (10,2))as Venda,\n" +
+                            "                    cast (sum(tr.preco_venda*te.estoque)as numeric (10,2)) as TVenda ,\n" +
+                            "                    cast (sum(tr.preco_venda*te.estoque)-(sum(tr.preco_custo*te.estoque))as numeric (10,2)) as Lucro\n" +
                             "                    from tprodutos tp\n" +
                             "                    join tbarras tb on tp.id=tb.id_produto\n" +
                             "                    join stp_calc_estoque ((select data_inventario from tconfig),current_date) te on te.codproduto=tb.baixa_barra\n" +
                             "                    join tprecos tr on tp.id=tr.id\n" +
                             "                    where tp.excluido='N' " +comp+" \n"+
-                            "                    Group by 1,2,3,4,6";
+                            "                    Group by 1,2,3,4,6 order by 3 asc ";
                String qtdtotal2="  select\n" +
                             "                         sum (te.estoque)as qtde,\n" +
-                            "                         cast (sum(tr.preco_custo*te.estoque)as numeric (5,2)) as TCusto,\n" +
-                            "                         cast (sum(tr.preco_venda*te.estoque)as numeric (5,2)) as TVenda ,\n" +
-                            "                         cast (sum(tr.preco_venda*te.estoque)-(sum(tr.preco_custo*te.estoque))as numeric (5,2)) as Lucro\n" +
+                            "                         cast (sum(tr.preco_custo*te.estoque)as numeric (10,2)) as TCusto,\n" +
+                            "                         cast (sum(tr.preco_venda*te.estoque)as numeric (10,2)) as TVenda ,\n" +
+                            "                         cast (sum(tr.preco_venda*te.estoque)-(sum(tr.preco_custo*te.estoque))as numeric (10,2)) as Lucro\n" +
                             "                         from tprodutos tp\n" +
                             "                         join tbarras tb on tp.id=tb.id_produto\n" +
                             "                         join stp_calc_estoque ((select data_inventario from tconfig),current_date) te on te.codproduto=tb.baixa_barra\n" +

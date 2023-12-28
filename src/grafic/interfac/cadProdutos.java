@@ -65,6 +65,8 @@ public class cadProdutos extends javax.swing.JDialog {
     produtoDAO prodDAO = new produtoDAO();
     private String estoqueAntigo="0";
     produtos prod = new produtos();
+    Boolean ajustaBarra=false;
+    Boolean barrascadastrada=false;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -218,6 +220,7 @@ public class cadProdutos extends javax.swing.JDialog {
         TxtConversao = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         CbUnidade1 = new javax.swing.JComboBox<>();
+        BtnGerarCodigo1 = new javax.swing.JButton();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
@@ -551,10 +554,11 @@ public class cadProdutos extends javax.swing.JDialog {
                             .addComponent(jLabel48))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cbPesavel, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbBalanca, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbImpProd, 0, 102, Short.MAX_VALUE)
-                            .addComponent(ftValidade))
+                            .addComponent(ftValidade)
+                            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(cbPesavel, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbBalanca, javax.swing.GroupLayout.Alignment.LEADING, 0, 100, Short.MAX_VALUE)))
                         .addGap(41, 41, 41)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ckPrecoVariado)
@@ -930,7 +934,7 @@ public class cadProdutos extends javax.swing.JDialog {
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addComponent(ckCardapio)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 174, Short.MAX_VALUE)
+                        .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2))
                     .addComponent(jScrollPane3))
@@ -1673,6 +1677,14 @@ public class cadProdutos extends javax.swing.JDialog {
                 .addGap(5, 5, 5))
         );
 
+        BtnGerarCodigo1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        BtnGerarCodigo1.setText("Trocar Barras");
+        BtnGerarCodigo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnGerarCodigo1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
@@ -1700,7 +1712,10 @@ public class cadProdutos extends javax.swing.JDialog {
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TxtCodBaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(TxtCodBaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BtnGerarCodigo1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(BtnGerarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1708,17 +1723,19 @@ public class cadProdutos extends javax.swing.JDialog {
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TxtCodBarras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(TxtCodBaixa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(TxtCodBarras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7)
+                        .addComponent(jLabel8)
+                        .addComponent(TxtCodBaixa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BtnGerarCodigo1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(TxtReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnGerarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1779,7 +1796,7 @@ public class cadProdutos extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jTabbedPane1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -1804,7 +1821,12 @@ public class cadProdutos extends javax.swing.JDialog {
             TxtCodBarras.setText(validaDigitosBarras.preencheCodigo(TxtCodBarras.getText()));
             TxtPrecoVenda.requestFocus();
             TxtCodBaixa.setText(TxtCodBarras.getText());
-           // validaBarrasCadastrada();
+            if(ajustaBarra==true){
+                barrascadastrada=validaBarrasCadastrada();
+               // ajustaBarra=false;
+            }
+            
+           
         }
     }//GEN-LAST:event_TxtCodBarrasFocusLost
 
@@ -1825,8 +1847,9 @@ public class cadProdutos extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnCancelarCadastroProdutosActionPerformed
 
     private void BtnGravarCadastroProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGravarCadastroProdutosActionPerformed
-      if (TxtCodigoInternoProdutos.getText().trim().equals("")||TxtCodigoInternoProdutos.getText().trim().equals("0")){
-            validaBarrasCadastrada();
+     
+        if (TxtCodigoInternoProdutos.getText().trim().equals("")||TxtCodigoInternoProdutos.getText().trim().equals("0")){
+           barrascadastrada= validaBarrasCadastrada();
       }
         
         if (clsaux.verificaNulo(TxtCodBarras.getText())==true){
@@ -1839,7 +1862,10 @@ public class cadProdutos extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null, "Campo Ncm Invalido!!!");
             }
             else{
-                this.gravaDados();
+                if(barrascadastrada);
+                else{
+                    this.gravaDados();
+                }
             }
       
     }//GEN-LAST:event_BtnGravarCadastroProdutosActionPerformed
@@ -2094,6 +2120,13 @@ public class cadProdutos extends javax.swing.JDialog {
     private void jTabbedPane1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTabbedPane1ComponentShown
        
     }//GEN-LAST:event_jTabbedPane1ComponentShown
+
+    private void BtnGerarCodigo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGerarCodigo1ActionPerformed
+       TxtCodBarras.setEnabled(true);
+       TxtCodBaixa.setEnabled(true);
+       BtnGerarCodigo.setEnabled(true);
+       ajustaBarra=true;
+    }//GEN-LAST:event_BtnGerarCodigo1ActionPerformed
     
     public void abrirProcuraArq(){
         int retorno=flImagem.showOpenDialog(this);
@@ -2176,7 +2209,7 @@ public class cadProdutos extends javax.swing.JDialog {
         }
     
     }
-    public void validaBarrasCadastrada(){
+    public Boolean validaBarrasCadastrada(){
         String cod=TxtCodBarras.getText();
         if(produtoDAO.verificaBarrasCadastrada(cod)){
            /*int yn= JOptionPane.showConfirmDialog(null, "Codigo De barras Já Existe No Banco de Dados\nDeseja Gravar Para esse Produto?", "Conflito De Codigos", 
@@ -2188,13 +2221,12 @@ public class cadProdutos extends javax.swing.JDialog {
              }*/
            
            JOptionPane.showMessageDialog(null, "Codigo já Exsite no Banco de Dados!!!");
-            TxtCodBarras.setText("");
-            TxtCodBaixa.setText("");
+            //TxtCodBarras.setText("");
+            //TxtCodBaixa.setText("");
+            return true;
+        }else{
+            return false;
         }
-        
-        
-        
-    
     }
     
     
@@ -2245,9 +2277,9 @@ public class cadProdutos extends javax.swing.JDialog {
             clsaux.carregaComboBox(CbTipo, prod.getTipo());
             clsaux.carregaComboBox(cbImpProd, clsaux.trataCampoNuloConfig(prod.getImpressoraProducao()));
             if(prod.getId()>0){
-                //TxtCodBarras.setEnabled(false);
-                //TxtCodBaixa.setEnabled(false);
-                //BtnGerarCodigo.setEnabled(false);
+                TxtCodBarras.setEnabled(false);
+                TxtCodBaixa.setEnabled(false);
+                BtnGerarCodigo.setEnabled(false);
             }
             this.buscaInf();
             
@@ -2553,6 +2585,7 @@ public class cadProdutos extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCancelarCadastroProdutos;
     private javax.swing.JButton BtnGerarCodigo;
+    private javax.swing.JButton BtnGerarCodigo1;
     private javax.swing.JButton BtnGravarCadastroProdutos;
     private javax.swing.JComboBox<String> CbAliqIcms;
     private javax.swing.JComboBox<String> CbCEST;

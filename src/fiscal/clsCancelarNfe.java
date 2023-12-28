@@ -24,7 +24,7 @@ import model.clsDadosEmpresa;
 import model.clsNfe;
 import classes.clsaux;
 import conexoes.conexao;
-import javax.swing.JOptionPane;
+import java.time.ZoneId;
 import model.clsConfig;
 
 
@@ -38,13 +38,17 @@ public class clsCancelarNfe {
 		
 		
 		config= conexao.iniciaConfifNfe();
+                ZoneId zoneId = ZoneId.of("GMT-3");
+                config.setZoneId(zoneId);
 		dadosnf=nfeDAO.retornaDadosMovNf(movimento);
 		Evento cancelamento= new Evento();
 		
 		cancelamento.setChave(chave);
 		cancelamento.setProtocolo(dadosnf.getProtocoloaut().trim());
 		cancelamento.setCnpj(clsDadosEmpresa.getCnpj());
+                
 		cancelamento.setDataEvento(LocalDateTime.now());
+               
 		cancelamento.setMotivo("Erros nos dados da nfe");
 		
 		TEnvEvento envEvento= CancelamentoUtil.montaCancelamento(cancelamento, config);// monta e evento de cancelamento

@@ -331,6 +331,7 @@ public class lancDocumentDAO {
                 item.setValor_outras(rsi.getString(39));
                 item.setEanComer(rsi.getString(40));
                 item.setQntComercial(rsi.getString(41));
+                item.setCusto(clsaux.formato(rsi.getDouble(5)/rsi.getDouble(3)));
                 listaitens.add(item);
             }
            
