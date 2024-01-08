@@ -50,6 +50,51 @@ public class BaseLocacao {
          ret=true;
         return ret;
     }
+    public Boolean geraFaturaDadosOri(String locacao){
+        // recebe uma lista de locacao, ai pega os itens referente a todas as locacoes, depois gera a fatura com o periodo,
+        // no periodo pega a ultima data de geracao de fatura, se nao foi gerado nenhuma ele pega a data de retirada do item
+        // calculando com o tipo de locacao
+        boolean ret=false;
+        List<Titens_locacao> itens= new ArrayList<>();
+        
+        for(Titens_locacao item: dao.retornaItensLocacao(locacao)){
+               itens.add(item);
+                
+            }
+        if(itens.size()>0){
+            Double total=0.00;
+            String idFatura=new BaseGeralDAO().gerarIds("GEN_TFATURA_LOCACAO_ID");
+              for(Titens_locacao item:itens){
+                if(item.getDevolucao()==null){
+                    item.setDevolucao(item.getRetirada());
+                }
+                total=total+item.getTotal();
+                // insere registros da fatura
+                Torigem_fatura fat= new Torigem_fatura();
+                fat.setItem(item);
+                fat.setIdfatura(idFatura);
+                fat.setDatafim(item.getDevolucao());
+                fat.setDatainicio(item.getRetirada());
+                fat.setTipo(item.getTipo());
+                fat.setPeriodo(item.getQntunitaria());
+                fat.setValor(item.getValor());
+                fat.setTotal(item.getTotal());
+                dao.InserirOrigemFatura(fat);
+                dao.insereLinkFaturaLocacao(idFatura, item.getIdlocacao());
+              }
+                Tfatura_locacao fat= new Tfatura_locacao();
+                fat.setIdfatura(idFatura);
+                fat.setPago("N");
+                fat.setTotal(total);
+                dao.InsereFatura(fat);
+           JOptionPane.showMessageDialog(null, "Fatura Gerada Com Sucesso !");
+        }else{
+            JOptionPane.showMessageDialog(null, "Atenção Sem Itens Para Gerar Fatura!!!");
+           
+        }
+         ret=true;
+        return ret;
+    }
     public void verificaUltimaFaturaItem(List<Titens_locacao> itens,String dtfinal){
         // aqui verifica todos os itens do array, se ja tem fatura se nao tiver vai gerar a partir da data de retirada
         String dataFatura=null;

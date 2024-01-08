@@ -26,6 +26,7 @@ public class frmLocacaoConfereDataRetorno extends javax.swing.JDialog {
     }
     
      List<Titens_locacao> item;
+     String geraFat="N";
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -116,14 +117,17 @@ public class frmLocacaoConfereDataRetorno extends javax.swing.JDialog {
             ite.setEstado("17");
             dao.inserirItemLocacao(ite);
         }
-        new BaseLocacao().verificaUltimaFaturaItem(item, ftDataRetorno.getText());
-       
+        if(this.geraFat.equals("S")){
+            new BaseLocacao().verificaUltimaFaturaItem(item, ftDataRetorno.getText());
+        }
+        
         this.dispose();
     
     }
         
-    public void receberDados(List<Titens_locacao> it){
+    public void receberDados(List<Titens_locacao> it,String fatura){
         this.item=it;
+        this.geraFat=fatura;
         ftDataRetorno.setText(clsaux.retorDataHoraBarra());
     }
         

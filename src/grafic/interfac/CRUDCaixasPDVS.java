@@ -128,17 +128,18 @@ public class CRUDCaixasPDVS extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Número Pdv", "Id Caixa", "Data Abertura", "Hora Abertura", "Data Fechamento", "Hora Fechamento", "Operador", "Total", "Conferido"
+                "Número Pdv", "Id Caixa", "Data Abertura", "Hora Abertura", "Data Fechamento", "Hora Fechamento", "Operador", "Total Calculado", "Valor Informado", "Conferido"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        TblConfCaixa.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(TblConfCaixa);
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -291,7 +292,7 @@ public class CRUDCaixasPDVS extends javax.swing.JDialog {
          tbmovcaixa.setNumRows(0);
             while (rsmovcaixa.next()){
                 String dataaber,datafecha,idpdv,idcaixa,operador = null;
-                String valor = null,hraber,hrfecha,esta=null;
+                String valor = null,hraber,hrfecha,esta=null,informado=null;
                 idcaixa=rsmovcaixa.getString(1);
                 dataaber=clsaux.convertDataExib(rsmovcaixa.getString(3));
                 datafecha=clsaux.convertDataExib(rsmovcaixa.getString(5));
@@ -300,20 +301,20 @@ public class CRUDCaixasPDVS extends javax.swing.JDialog {
                 hrfecha=rsmovcaixa.getString(6);
                 esta=rsmovcaixa.getString(9);
                 operador=rsmovcaixa.getString("operador_nome");
+                valor= clsaux.formataReais(rsmovcaixa. getDouble("saldo"));
                 try{
-                String sqlvalorfecha="select tp.saldo from tcaixa_pdv tp where tp.id_caixa='"+idcaixa+"'";
+                String sqlvalorfecha="select sum (tf.valorinformado) from tfechamento_cego tf where tf.idcaixa='"+idcaixa+"'";
                 PreparedStatement psvalor = conexao.getPreparedStatement(sqlvalorfecha);
                 ResultSet rsvalor = psvalor.executeQuery();
                 rsvalor.next();
-                valor= this.formata(rsvalor.getDouble(1));
-                //valor=rsvalor.getDouble(1);
+                informado= clsaux.formataReais(rsvalor.getDouble(1));
                 }
                 catch(SQLException er){
                          Logger.getLogger(CRUDCaixasPDVS.class.getName()).log(Level.SEVERE, null, er);
                         
                         }
                 tbmovcaixa.addRow(new Object[]{
-                    idpdv,idcaixa,dataaber,hraber,datafecha,hrfecha,operador,valor,esta
+                    idpdv,idcaixa,dataaber,hraber,datafecha,hrfecha,operador,valor,informado,esta
                 });
                 
             }

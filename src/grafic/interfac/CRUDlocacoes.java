@@ -893,8 +893,8 @@ public class CRUDlocacoes extends javax.swing.JDialog {
     public void listaCliqDireitoMouseItens(){
        
                 JPopupMenu menu=new JPopupMenu();
-                JMenuItem retornoItem= new JMenuItem("Realizar Retorno Item");
-                JMenuItem retornoPorPagamento= new JMenuItem("Receber Valor Item");
+                JMenuItem retornoItem= new JMenuItem("Realizar Retorno Item e Gerar Fatura");
+                JMenuItem retornoItemSomente= new JMenuItem("Realizar Retorno Item");
                 JMenuItem retornoPag= new JMenuItem("Realizar Retorno Item E Receber");
                 JMenuItem imprimeSolicRetirada= new JMenuItem("Imprimir Solicitação de Devolução");
                 retornoPag.addActionListener(new java.awt.event.ActionListener(){
@@ -917,27 +917,21 @@ public class CRUDlocacoes extends javax.swing.JDialog {
                     realizaImpressaoSolicitacaoRetirada(itens.get(tbItensLocacao.getSelectedRow()).getIdlocacao(), itens.get(tbItensLocacao.getSelectedRow()).getIditem());
                 }
                 });
-                retornoPorPagamento.addActionListener(new java.awt.event.ActionListener(){
+                retornoItemSomente.addActionListener(new java.awt.event.ActionListener(){
                 public void actionPerformed(ActionEvent e ){
-                    String inf=clsaux.retornaId(tbItensLocacao.getValueAt(tbItensLocacao.getSelectedRow(), 14));
-                    if(inf.equals("2")||inf.equals("17")){
-                         realizaRetornoItemPag();
-                         tipoBaixa="1";
-                    }else{
-                        JOptionPane.showMessageDialog(null, "Item Não Pode Receber Pagamento!!!");
-                    }
+                    validaDadosItens("N");
                    
                 }
                 });
                 retornoItem.addActionListener(new java.awt.event.ActionListener(){
                 public void actionPerformed(ActionEvent e ){
-                    validaDadosItens();
+                    validaDadosItens("S");
                 }
                 });
                 menu.add(imprimeSolicRetirada);
                 menu.add(retornoItem);
                 //menu.add(retornoPag);
-                //menu.add(retornoPorPagamento);
+                menu.add(retornoItemSomente);
                 CriaMenuOpcoes.listaCliqDireitoMouse(tbItensLocacao, menu);
      }
     public void listaCliqDireitoMouseLocacao(){
@@ -945,7 +939,8 @@ public class CRUDlocacoes extends javax.swing.JDialog {
                 JMenuItem imprimeTermica= new JMenuItem("Realiza Retono Locacao");
                 JMenuItem solicitaImpressao= new JMenuItem("Imprime Solicitacao Devolucao De Toda Locação");
                 JMenuItem solicitaImpressaoFatura= new JMenuItem("Imprime Fatura");
-                JMenuItem solicitaImpressaoFaturaPeriodo= new JMenuItem("Gerar Fatura Por Periodo");
+                JMenuItem solicitaImpressaoFaturaPeriodo= new JMenuItem("Gerar Fatura Por Periodo (calcula valores pelo periodo)");
+                JMenuItem gerarFaturaOrig= new JMenuItem("Gerar Fatura Por Dados Da Locacao");
                 imprimeTermica.addActionListener(new java.awt.event.ActionListener(){
                 public void actionPerformed(ActionEvent e ){
                     if(tbLocacoes.getValueAt(tbLocacoes.getSelectedRow(), 9).toString().equals("Locado")){
@@ -973,9 +968,15 @@ public class CRUDlocacoes extends javax.swing.JDialog {
                    chamaFrmGerarFatura();
                 }
                 });
+                 gerarFaturaOrig.addActionListener(new java.awt.event.ActionListener(){
+                public void actionPerformed(ActionEvent e ){
+                   //gera fatura por periodo
+                   new BaseLocacao().geraFaturaDadosOri(tbLocacoes.getValueAt(tbLocacoes.getSelectedRow(), 1).toString());
+                }
+                });
                 menu.add(imprimeTermica);
                 menu.add(solicitaImpressao);
-                //menu.add(solicitaImpressaoFatura);
+                menu.add(gerarFaturaOrig);
                 menu.add(solicitaImpressaoFaturaPeriodo);
                 CriaMenuOpcoes.listaCliqDireitoMouse(tbLocacoes, menu);
      }
@@ -1026,17 +1027,17 @@ public class CRUDlocacoes extends javax.swing.JDialog {
      }
     
     
-    public void validaDadosItens(){
+    public void validaDadosItens(String fat){
         List<Titens_locacao> itensLoc=new ArrayList<>();
         int tam=tbItensLocacao.getRowCount();
         for(int i=0; i< tam; i++){
-            if((Boolean)tbItensLocacao.getValueAt(i, 0)&& clsaux.retornaId(tbItensLocacao.getValueAt(i, 14)).equals("19")){
+            if((Boolean)tbItensLocacao.getValueAt(i, 0) /*&& clsaux.retornaId(tbItensLocacao.getValueAt(i, 14)).equals("19")*/){
                 itensLoc.add(itens.get(i));
             }
         }
         if(itensLoc.size()>0){
              frmLocacaoConfereDataRetorno dialog = new frmLocacaoConfereDataRetorno(new javax.swing.JFrame(), true);
-                        dialog.receberDados(itensLoc);
+                        dialog.receberDados(itensLoc,fat);
                         dialog.setLocationRelativeTo(null);
                         dialog.setVisible(true);
         }
