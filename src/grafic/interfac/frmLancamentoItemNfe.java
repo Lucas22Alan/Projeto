@@ -1210,9 +1210,9 @@ public class frmLancamentoItemNfe extends javax.swing.JDialog {
         item.setTotal(txtValortotal.getText().replaceAll(",", "."));
         item.setUnidade(cbUnidvenda.getSelectedItem().toString());
         item.setNumeroitem(txtIditem.getText());
-        item.setValor_outras( txtvloutras.getText());
-        item.setValor_frete(txtvlfrete.getText());
-        item.setValor_seguro(txtvloutras.getText());
+        item.setValor_outras(clsaux.capturaValor( txtvloutras.getText()));
+        item.setValor_frete(clsaux.capturaValor(txtvlfrete.getText()));
+        item.setValor_seguro(clsaux.capturaValor(txtvloutras.getText()));
         item.setNcm(txtncm.getText());
         item.setCst(txtcst.getText());
         item.setRed_bc(clsaux.capturaValor(txtredicms.getText()));

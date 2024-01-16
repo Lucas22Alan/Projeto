@@ -365,7 +365,7 @@ public class clsEmiteNfe {
 		icmsTotal.setVFCPSTRet("0.00");
 		icmsTotal.setVFCPST("0.00");
 		icmsTotal.setVProd(clsaux.formatoNfe(Double.parseDouble(movimento.getTotalprod())));
-		icmsTotal.setVFrete("0.00");
+		icmsTotal.setVFrete(clsaux.formatoNfe(Double.parseDouble(movimento.getVlFrete())));
 		icmsTotal.setVSeg("0.00");
 		icmsTotal.setVDesc(clsaux.formatoNfe(Double.parseDouble(movimento.getDesconto())));
 		icmsTotal.setVII("0.00");
@@ -766,7 +766,8 @@ public class clsEmiteNfe {
 		produto.setIndTot("1");
                 if (clsaux.capturaValores(itens.get(indiceitem).getDesconto())>0.00) produto.setVDesc(clsaux.formatoNfe(clsaux.capturaValores(itens.get(indiceitem).getDesconto())));
 		if (clsaux.capturaValores(itens.get(indiceitem).getAcrescimo())>0.00) produto.setVOutro(clsaux.formatoNfe(clsaux.capturaValores(itens.get(indiceitem).getAcrescimo())));
-		
+                if (clsaux.capturaValores(itens.get(indiceitem).getValor_frete())>0.00) produto.setVFrete(clsaux.formatoNfe(clsaux.capturaValores(itens.get(indiceitem).getValor_frete())));
+                
                 return produto;
 	}
 
@@ -787,12 +788,9 @@ public class clsEmiteNfe {
                         }
 			
 		}else {
-			
 			dest.setCPF(cliente.getCnpj());
-			dest.setIndIEDest("2");
+			dest.setIndIEDest(movimentonf.getIndie());
 		}
-		
-		
 		TEndereco endereco = new TEndereco();
 		endereco.setXLgr(cliente.getRua());
 		endereco.setXBairro(cliente.getBairro());

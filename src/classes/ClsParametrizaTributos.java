@@ -5,6 +5,7 @@
  */
 package classes;
 
+import model.clsLancDocument;
 import model.produtos;
 
 /**
@@ -92,5 +93,49 @@ public class ClsParametrizaTributos {
             }
         }
         return cfop;
+    }
+
+    public clsLancDocument calculaValoresItem(clsLancDocument item){
+        Double qnt,preco,subtotal,tota,baseicms,basest,baseipi,aliq,aliqipi;
+        Double vlst,vlicms,vlipi,vlpis,vlcofins;
+        
+        qnt=clsaux.capturaValores(item.getQuantidade());
+        preco=clsaux.capturaValores(item.getPrecovenda());
+        subtotal=qnt*preco;
+        aliq=clsaux.capturaValores(item.getAliq_icms());
+        aliqipi=clsaux.capturaValores(item.getAliq_ipi());
+        basest=0.00;
+        vlst=0.00;
+        if(aliq>0){
+            baseicms=subtotal;
+            vlicms=baseicms*aliq/100;
+        }else{
+            baseicms=0.00;
+            vlicms=0.00;
+        }
+        if(aliqipi>0){
+            baseipi=subtotal;
+            vlipi=baseipi*aliqipi/100;
+        }else{
+            baseipi=0.00;
+            vlipi=0.00;
+        }
+        vlpis=subtotal*(clsaux.capturaValores(item.getAliq_pis()))/100;
+        vlcofins=subtotal*(clsaux.capturaValores(item.getAliq_cofins()))/100;
+        
+        tota=subtotal+vlst+vlipi;
+        
+        item.setTotal(tota.toString());
+        item.setQntComercial(item.getQuantidade());
+        item.setBase_icms(baseicms.toString());
+        item.setValor_icms(vlicms.toString());
+        item.setBase_st(basest.toString());
+        item.setValor_st(vlst.toString());
+        item.setBase_pis(subtotal.toString());
+        item.setValor_pis(vlpis.toString());
+        item.setValor_cofins(vlcofins.toString());
+        item.setBase_ipi(baseipi.toString());
+        item.setValor_ipi(vlipi.toString());
+        return item;
     }
 }

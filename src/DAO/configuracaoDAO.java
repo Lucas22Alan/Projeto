@@ -114,6 +114,10 @@ public class configuracaoDAO {
                 pdv.setTipoLeituraBalanca(rs.getString("tipo_leitura_codigo_etiqueta"));
                 pdv.setAlertaSonoro(clsaux.trataCampoNuloConfig(rs.getString("emitesom")));
                 pdv.setTemtef(clsaux.trataCampoNuloConfig(rs.getString("usa_tef")));
+                pdv.setTokenAnota(clsaux.trataCampoNuloConfig(rs.getString("tokenanotaai")));
+                pdv.setQntImprime(rs.getInt("qnt_impressao"));
+                pdv.setQuebraLinha(clsaux.trataCampoNuloConfig(rs.getString("quebralinha")));
+                pdv.setModo(clsaux.trataCampoNuloConfig(rs.getString("modo")));
                 lista.add(pdv);
            }
             rs.close();
@@ -303,8 +307,8 @@ public class configuracaoDAO {
         try {
             String sql="UPDATE OR INSERT INTO TCONFIGPDV (IDPDV, CONT_ESTOQUE_PDV, IMP_FICHA_CONSUMO, VENDE_EST0QUE_ZERADO, IMP_COZINHA, IMP_BAR, IMP_CUPOM, NUM_DIGITOS_ETIQUETA, "
                     + "GERA_MESA_AUTOMATICO, BAL_PORTA, APENAS_LANC_COMANDA, CSC, TOKEN, SERIE,titulo_ficha_consumo,solicita_impressao,gera_producao_venda,obriga_vendedor,cancelafinalizadoraaut,"
-                    + "integracao_pix,tipoimpressora,exibe_estoque_busca,rodapecupom,fechamento_cego,tipo_leitura_codigo_etiqueta,emitesom,usa_tef)\n" +
-"                          VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)\n" +
+                    + "integracao_pix,tipoimpressora,exibe_estoque_busca,rodapecupom,fechamento_cego,tipo_leitura_codigo_etiqueta,emitesom,usa_tef,tokenanotaai,quebralinha,qnt_impressao,modo)\n" +
+"                          VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)\n" +
 "                        MATCHING (IDPDV);";
             PreparedStatement ps = conexao.getPreparedStatement(sql);
             ps.setString(1, conf.getPdv());
@@ -334,6 +338,10 @@ public class configuracaoDAO {
             ps.setString(25, conf.getTipoLeituraBalanca());
             ps.setString(26, conf.getAlertaSonoro());
             ps.setString(27, conf.getTemtef());
+            ps.setString(28, conf.getTokenAnota());
+            ps.setString(29, conf.getQuebraLinha());
+            ps.setInt(30, conf.getQntImprime());
+            ps.setString(31, conf.getModo());
             ps.executeUpdate();
             ps.close();
             JOptionPane.showMessageDialog(null,"Registro Gravado Com Sucesso ");

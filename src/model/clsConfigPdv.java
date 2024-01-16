@@ -15,7 +15,41 @@ public class clsConfigPdv {
     String csc,toke,serie=null;
     String geraproducao="N",obrigavendedor="N",cancelafina="N",exibeEstoqueBusca="N",rodapecupom="",fechamentoCego="N";
     String tipoLeituraBalanca="0";
-    String alertaSonoro="N",temtef="N";
+    String alertaSonoro="N",temtef="N",quebraLinha="N";
+    int qntImprime=1;
+    String tokenAnota="",modo;
+
+    public String getModo() {
+        return modo;
+    }
+
+    public void setModo(String modo) {
+        this.modo = modo;
+    }
+
+    public String getQuebraLinha() {
+        return quebraLinha;
+    }
+
+    public void setQuebraLinha(String quebraLinha) {
+        this.quebraLinha = quebraLinha;
+    }
+
+    public int getQntImprime() {
+        return qntImprime;
+    }
+
+    public void setQntImprime(int qntImprime) {
+        this.qntImprime = qntImprime;
+    }
+
+    public String getTokenAnota() {
+        return tokenAnota;
+    }
+
+    public void setTokenAnota(String tokenAnota) {
+        this.tokenAnota = tokenAnota;
+    }
 
     public String getTemtef() {
         return temtef;

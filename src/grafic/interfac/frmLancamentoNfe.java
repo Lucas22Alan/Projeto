@@ -152,6 +152,8 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
         txtValorCofins = new javax.swing.JTextField();
         jLabel57 = new javax.swing.JLabel();
         txtvlIpi = new javax.swing.JTextField();
+        jLabel58 = new javax.swing.JLabel();
+        txtFreteTotal = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel6 = new javax.swing.JPanel();
@@ -364,7 +366,7 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
         jLabel33.setText("Cons. Final");
 
         cbConsFinal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        cbConsFinal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0- Consumo", "1- Revenda" }));
+        cbConsFinal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0- Revenda", "1- Consumo" }));
 
         cbControleInterno.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cbControleInterno.addActionListener(new java.awt.event.ActionListener() {
@@ -718,6 +720,18 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
             }
         });
 
+        jLabel58.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel58.setText("Valor Frete:");
+
+        txtFreteTotal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtFreteTotal.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtFreteTotal.setText("0,00");
+        txtFreteTotal.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtFreteTotalFocusLost(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -742,13 +756,15 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
                     .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel35, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel36, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jLabel36, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel58, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtFreteTotal)
                     .addComponent(txtValorCofins, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtValorPis, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtDescont, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtOutdesp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDescont, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                    .addComponent(txtOutdesp, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel13)
@@ -797,7 +813,10 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel57)
-                    .addComponent(txtvlIpi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtvlIpi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel58)
+                        .addComponent(txtFreteTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2005,6 +2024,10 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
        this.excluiItem();
     }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void txtFreteTotalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFreteTotalFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFreteTotalFocusLost
     public void inicializa(){
         DefaultComboBoxModel cbtip= new DefaultComboBoxModel(listaDAO.listaTipoDocumento().toArray());
         cbControleInterno.setModel(cbtip); 
@@ -2091,6 +2114,7 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
         cd.setDesconto(txtDescont.getText().replaceAll(",", "."));
         cd.setTotalprod(txtTotalprod.getText().replaceAll(",", "."));
         cd.setTotal(txtTotalgeral.getText().replaceAll(",", "."));
+        cd.setVlFrete(clsaux.capturaValor(txtFreteTotal.getText()));
         cd.setCfop(txtCfop.getText());
         cd.setChaveacesso(txtChave.getText());
         cd.setTipomovimento(clsaux.retornaId(cbControleInterno.getSelectedItem().toString()));
@@ -2164,7 +2188,8 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
         Double valor=0.00,total=0.00;
         Double desconto=0.00;
         Double acres=0.00,outrasdesp=0.00,icmsst=0.00,vlpis=0.00,vlcofins=0.00;
-        Double vlipi=0.00;
+        Double vlipi=0.00,vlfreteTotal=0.00;
+        
         for (int i=0; i<lin; i++){
             valor=valor+(clsaux.capturaValores(tbItens.getValueAt(i, 5).toString())*clsaux.capturaValores(tbItens.getValueAt(i, 3).toString()));
             desconto=desconto+clsaux.capturaValores(tbItens.getValueAt(i, 6).toString().replaceAll(",", "."));
@@ -2172,6 +2197,7 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
             vlpis=vlpis+clsaux.capturaValores(itens.get(i).getValor_pis());
             vlcofins=vlcofins+ clsaux.capturaValores(itens.get(i).getValor_cofins());
             vlipi=vlipi+clsaux.capturaValores(itens.get(i).getValor_ipi());
+            vlfreteTotal=vlfreteTotal+clsaux.capturaValores(itens.get(i).getValor_frete());
         }
         txtTotalprod.setText(clsaux.formato(valor));
         txtDescont.setText(clsaux.formato(desconto));
@@ -2179,7 +2205,8 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
         txtValorPis.setText(clsaux.formato(vlpis));
         txtValorCofins.setText(clsaux.formato(vlcofins));
         txtvlIpi.setText(clsaux.formato(vlipi));
-        total=valor+icmsst-desconto+acres+vlipi;
+        txtFreteTotal.setText(clsaux.formato(vlfreteTotal));
+        total=valor+icmsst-desconto+acres+vlipi+vlfreteTotal;
         txtTotalgeral.setText(clsaux.formato(total));
         txtValortotaldocumento.setText(clsaux.formato(total));
     }
@@ -2226,6 +2253,7 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
         txtModelo.setText(ld.getModelo());
         txtCfop.setText(ld.getCfop());
         txtvlIpi.setText(ld.getValoripi());
+        txtFreteTotal.setText(ld.getVlFrete());
         txtObservacaoNfe.setText(nf.getObservacaoNf());
         ftDatemissao.setText(clsaux.convertDataExib(ld.getEmissao().toString()));
         ftDatlancamento.setText(clsaux.convertDataExib(ld.getLancamento().toString()));
@@ -2864,6 +2892,7 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -2905,6 +2934,7 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
     private javax.swing.JTextField txtDocumento;
     private javax.swing.JTextField txtEspecie;
     private javax.swing.JTextField txtFone;
+    private static javax.swing.JTextField txtFreteTotal;
     public static javax.swing.JTextField txtIdParceiro;
     private javax.swing.JTextField txtInscricao;
     private javax.swing.JTextField txtModelo;

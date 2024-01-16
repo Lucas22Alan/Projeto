@@ -55,8 +55,8 @@ public class lancDocumentDAO {
             String sql="update or insert into tmovimento  (numero_documento,serie,data,dat_finalizacao,hora_finalizacao,\n" +
 "                                                              id_parceiro,base_icms,valor_icms,base_st,valor_st,acrescimo,desconto,\n" +
 "                                                              valor_itens,total,estado,sub_total,id_tipo,chave_acesso,valor_pis,valor_cofins,\n" +
-"                                                              id_modelo,mvto_origem,importado_origem,id_mov,valor_ipi,cfop) values(?,?,?,?,current_time,?,?,?,?,?,?,?,?,?,2,\n" +
-"                                                              ?,?,?,?,?,?,?,?,?,?,?) matching(id_mov);";
+"                                                              id_modelo,mvto_origem,importado_origem,id_mov,valor_ipi,cfop,frete) values(?,?,?,?,current_time,?,?,?,?,?,?,?,?,?,2,\n" +
+"                                                              ?,?,?,?,?,?,?,?,?,?,?,?) matching(id_mov);";
             
             PreparedStatement psin = conexao.getPreparedStatement(sql);
             psin.setString(1, ldc.getDocument());
@@ -83,6 +83,7 @@ public class lancDocumentDAO {
             psin.setString(22, ldc.getIdmovimento());
             psin.setString(23, ldc.getValoripi());
             psin.setString(24, ldc.getCfop());
+            psin.setString(25, ldc.getVlFrete());
             psin.executeUpdate();
             psin.close();
             LancamentoDocumentos.numeitem=0;
@@ -209,7 +210,7 @@ public class lancDocumentDAO {
 "                         td.descricao,"
                     + "   tm.valor_pis,"
                     + "   tm.valor_cofins,"
-                    + "   tm.chave_acesso,tm.id_modelo,tm.hora,tm.mvto_origem,tm.importado_origem,tm.valor_ipi,tm.cfop  \n" +
+                    + "   tm.chave_acesso,tm.id_modelo,tm.hora,tm.mvto_origem,tm.importado_origem,tm.valor_ipi,tm.cfop, tm.frete  \n" +
 "                    from tmovimento tm\n" +
 "                    join ttipo_documentos td on tm.id_tipo=td.id \n" +
                     "where tm.id_mov=?";
@@ -241,6 +242,7 @@ public class lancDocumentDAO {
             cld.setOrigem(rsd.getString(22));
             cld.setValoripi(rsd.getString(24));
             cld.setCfop(rsd.getString(25));
+            cld.setVlFrete(rsd.getString(26));
             rsd.close();
             psd.close();
         } catch (SQLException ex) {

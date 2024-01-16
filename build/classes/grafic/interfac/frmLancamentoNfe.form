@@ -607,8 +607,8 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="2">
-                    <StringItem index="0" value="0- Consumo"/>
-                    <StringItem index="1" value="1- Revenda"/>
+                    <StringItem index="0" value="0- Revenda"/>
+                    <StringItem index="1" value="1- Consumo"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -801,13 +801,15 @@
                           <Component id="jLabel12" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel35" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel36" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel58" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtFreteTotal" max="32767" attributes="0"/>
                           <Component id="txtValorCofins" alignment="1" max="32767" attributes="0"/>
                           <Component id="txtValorPis" alignment="1" max="32767" attributes="0"/>
-                          <Component id="txtDescont" alignment="1" min="-2" pref="59" max="-2" attributes="0"/>
-                          <Component id="txtOutdesp" alignment="1" min="-2" pref="59" max="-2" attributes="0"/>
+                          <Component id="txtDescont" alignment="0" pref="59" max="32767" attributes="0"/>
+                          <Component id="txtOutdesp" alignment="0" pref="59" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
@@ -870,6 +872,10 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel57" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtvlIpi" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                              <Component id="jLabel58" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtFreteTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -1100,6 +1106,29 @@
               </Properties>
               <Events>
                 <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtvlIpiFocusLost"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel58">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="12" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Valor Frete:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtFreteTotal">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="12" style="0"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="4"/>
+                <Property name="text" type="java.lang.String" value="0,00"/>
+              </Properties>
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtFreteTotalFocusLost"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>

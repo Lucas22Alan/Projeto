@@ -153,6 +153,13 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
         jLabel49 = new javax.swing.JLabel();
         txtTamBtn = new javax.swing.JTextField();
         ckTemTef = new javax.swing.JCheckBox();
+        jLabel53 = new javax.swing.JLabel();
+        txtAnotaAi = new javax.swing.JTextField();
+        ckQuebraLinha = new javax.swing.JCheckBox();
+        jLabel54 = new javax.swing.JLabel();
+        txtQntImprime = new javax.swing.JTextField();
+        jLabel55 = new javax.swing.JLabel();
+        cbModo = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         cbGrupo = new javax.swing.JComboBox<>();
@@ -629,7 +636,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                             .addComponent(jLabel30)
                             .addComponent(txtCaminhoServidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
                         .addComponent(btnGravaConfigGeral)
                         .addGap(25, 25, 25))))
         );
@@ -784,6 +791,22 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
             }
         });
 
+        jLabel53.setText("AnotaAi");
+
+        ckQuebraLinha.setBackground(new java.awt.Color(217, 229, 229));
+        ckQuebraLinha.setText("Quebra Linha");
+        ckQuebraLinha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckQuebraLinhaActionPerformed(evt);
+            }
+        });
+
+        jLabel54.setText("Qnt. Imp. motoboy");
+
+        jLabel55.setText("Modo Padrao");
+
+        cbModo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0- Entrega", "1- Mesa", "2- Venda" }));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -810,19 +833,17 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                     .addComponent(ckEstoqueBusca)
                     .addComponent(ckTemTef)
                     .addComponent(ckAlertaSonoro)
-                    .addComponent(ckFechamentoCego))
+                    .addComponent(ckFechamentoCego)
+                    .addComponent(ckQuebraLinha))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4)
-                        .addGap(48, 48, 48))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
-                                    .addComponent(jLabel3))
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel53))
                                 .addGap(16, 16, 16)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -831,13 +852,10 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                                         .addComponent(jLabel11)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(txtToken, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtToken, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtAnotaAi, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel34)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(cbTipoLeituraBalanca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel32)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -845,43 +863,60 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel31)
                                         .addGap(18, 18, 18)
-                                        .addComponent(cbPix, 0, 144, Short.MAX_VALUE))))
+                                        .addComponent(cbPix, 0, 135, Short.MAX_VALUE))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel34)
+                                            .addComponent(jLabel55))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cbModo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(cbTipoLeituraBalanca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel33)
+                                        .addComponent(jLabel54)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel12)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtComBal, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel13)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtDigEt, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel49)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtTamBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtImpBar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(30, 30, 30)
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtImpCoz, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(19, 19, 19)
-                                        .addComponent(jLabel10)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtImpCupom, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel17)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtTextoFicha, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(txtQntImprime, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel3Layout.createSequentialGroup()
+                                            .addComponent(jLabel33)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel3Layout.createSequentialGroup()
+                                            .addComponent(jLabel12)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(txtComBal, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jLabel13)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtDigEt, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(jLabel49)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(txtTamBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel3Layout.createSequentialGroup()
+                                            .addComponent(jLabel17)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(txtTextoFicha, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel3Layout.createSequentialGroup()
+                                            .addComponent(jLabel4)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtImpBar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(30, 30, 30)
+                                            .addComponent(jLabel7)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtImpCoz, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(19, 19, 19)
+                                            .addComponent(jLabel10)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtImpCupom, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(205, 205, 205)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -902,23 +937,31 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                     .addComponent(cbTipoImpressao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAnotaAi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel53)
                     .addComponent(jLabel34)
                     .addComponent(cbTipoLeituraBalanca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(jLabel7)
-                        .addComponent(jLabel10)
-                        .addComponent(txtImpBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtImpCoz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtImpCupom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17)
-                            .addComponent(txtTextoFicha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel55)
+                    .addComponent(cbModo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel10)
+                    .addComponent(txtImpBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtImpCoz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtImpCupom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel54)
+                    .addComponent(txtQntImprime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(txtTextoFicha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel49)
@@ -932,9 +975,9 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel33)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(41, 41, 41)
                 .addComponent(jButton4)
-                .addGap(76, 76, 76))
+                .addGap(150, 150, 150))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -963,7 +1006,9 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                 .addComponent(ckAlertaSonoro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ckTemTef)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ckQuebraLinha)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Configuração PDVs", jPanel3);
@@ -1113,7 +1158,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton7))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Permissões Grupo Usuarios", jPanel4);
@@ -1434,6 +1479,10 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                 + "copia dos seus xmls...\n Ex: c:\\\\esfhera\\\\adm\\\\xml\\\\ ou \\\\\\\\192.168.3.35\\\\c\\\\esfhera\\\\adm\\\\teste\\\\");
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void ckQuebraLinhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckQuebraLinhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ckQuebraLinhaActionPerformed
+
     public void carregaDadosConfigGeral(){
         conf=dao.buscarConfigGeral(conf);
         
@@ -1499,6 +1548,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
             if(pd.getExibeEstoqueBusca().equals("S")) ckEstoqueBusca.setSelected(true);
             if(pd.getFechamentoCego().equals("S")) ckFechamentoCego.setSelected(true);
             if(pd.getTemtef().equals("S")) ckTemTef.setSelected(true);
+            if(pd.getQuebraLinha().equals("S")) ckQuebraLinha.setSelected(true);
             txtTextoFicha.setText(pd.getTextoFicha());
             txtComBal.setText(pd.getPortaBal());
             txtDigEt.setText(pd.getDigEtiqueta());
@@ -1509,10 +1559,13 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
             txtSerie.setText(pd.getSerie());
             txtToken.setText(pd.getToke());
             txtRodape.setText(pd.getRodapecupom());
+            txtAnotaAi.setText(pd.getTokenAnota());
+            txtQntImprime.setText(String.valueOf(pd.getQntImprime()));
             
             clsaux.carregaComboBox(cbPix, pd.getIntegracaopix());
             clsaux.carregaComboBox(cbTipoImpressao, pd.getTipoimpressora());
             clsaux.carregaComboBox(cbTipoLeituraBalanca, pd.getTipoLeituraBalanca());
+            clsaux.carregaComboBox(cbModo, pd.getModo());
             
             pdv=pd;
           }
@@ -1704,9 +1757,10 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
         if(ckFechamentoCego.isSelected()) pdv.setFechamentoCego("S"); else pdv.setFechamentoCego("N");
         if(ckAlertaSonoro.isSelected()) pdv.setAlertaSonoro("S"); else pdv.setAlertaSonoro("N");
         if(ckTemTef.isSelected()) pdv.setTemtef("S"); else pdv.setTemtef("N");
+        if(ckQuebraLinha.isSelected()) pdv.setQuebraLinha("S"); else pdv.setQuebraLinha("N");
         
         
-       pdv.setPortaBal(txtComBal.getText());
+        pdv.setPortaBal(txtComBal.getText());
         pdv.setDigEtiqueta(txtDigEt.getText());
         pdv.setCsc(txtCsc.getText());
         pdv.setToke(txtToken.getText());
@@ -1719,6 +1773,9 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
         pdv.setTipoimpressora(clsaux.retornaId(cbTipoImpressao.getSelectedItem()));
         pdv.setRodapecupom(txtRodape.getText());
         pdv.setTipoLeituraBalanca(clsaux.retornaId(cbTipoLeituraBalanca.getSelectedItem()));
+        pdv.setTokenAnota(txtAnotaAi.getText());
+        pdv.setQntImprime(Integer.parseInt(txtQntImprime.getText()));
+        pdv.setModo(clsaux.retornaId(cbModo.getSelectedItem()));
         dao.inserirConfigPdv(pdv);
     }
     public void gravaParametroFinanceiro(){
@@ -1790,6 +1847,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> cbGrupo;
     private javax.swing.JComboBox<String> cbImpressoraCondicional;
     private javax.swing.JComboBox<String> cbMarcacert;
+    private javax.swing.JComboBox<String> cbModo;
     private javax.swing.JComboBox<String> cbPdv;
     private javax.swing.JComboBox<String> cbPermissao;
     private javax.swing.JComboBox<String> cbPix;
@@ -1825,6 +1883,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
     private javax.swing.JCheckBox ckObrigaVendedor;
     private javax.swing.JCheckBox ckPerguntaImpressao;
     private javax.swing.JCheckBox ckPrecCategoria;
+    private javax.swing.JCheckBox ckQuebraLinha;
     private javax.swing.JCheckBox ckTemTef;
     private javax.swing.JCheckBox ckVendeSemEst;
     private javax.swing.JCheckBox ckimpFichaCons;
@@ -1888,6 +1947,9 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1903,6 +1965,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel pnGeral;
     private javax.swing.JTable tbPermisao;
+    private javax.swing.JTextField txtAnotaAi;
     private javax.swing.JTextField txtCaminhoServidor;
     private javax.swing.JTextField txtCarencia;
     private javax.swing.JTextField txtCertificado;
@@ -1921,6 +1984,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
     private javax.swing.JTextField txtMesaIni;
     private javax.swing.JTextField txtMulta;
     private javax.swing.JTextField txtNumeroNf;
+    private javax.swing.JTextField txtQntImprime;
     private javax.swing.JTextArea txtRodape;
     private javax.swing.JTextField txtSenha;
     private javax.swing.JTextField txtSerie;

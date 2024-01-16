@@ -15,6 +15,15 @@ import java.sql.Time;
 public class clsLancDocCabecalho {
     String document,serie,baseicms,valoricms,basest,valorst,outrasdesp,desconto,totalprod,total,idmovimento,idparceiro,chaveacesso,modelo,origem,mvtoOrigem=null;
     String tipomovimento,valor_pis,valor_cofins,valoripi,cfop,numpdv=null;
+    String vlFrete="0.00";
+
+    public String getVlFrete() {
+        return vlFrete;
+    }
+
+    public void setVlFrete(String vlFrete) {
+        this.vlFrete = vlFrete;
+    }
     Time horafinalizado=null;
 
     public String getNumpdv() {

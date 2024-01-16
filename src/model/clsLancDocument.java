@@ -16,6 +16,15 @@ public class clsLancDocument {
     String base_icms,aliq_icms,valor_icms,base_st,valor_st,red_bc,
             base_pis,valor_pis,valor_cofins,aliq_pis,aliq_cofins,base_ipi,aliq_ipi,valor_ipi,valor_outras,valor_seguro,valor_frete,
             base_stretido,valor_stretido,subtotal,custo,fator="0.00";
+    boolean selecionado=false;
+
+    public boolean isSelecionado() {
+        return selecionado;
+    }
+
+    public void setSelecionado(boolean selecionado) {
+        this.selecionado = selecionado;
+    }
 
     public String getQntComercial() {
         return qntComercial;

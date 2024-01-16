@@ -542,7 +542,11 @@ public class CRUDDocumentos extends javax.swing.JDialog {
        JMenuItem gerarDev= new JMenuItem("Gerar Devolução A Partir Desse Registro");
        gerarDev.addActionListener(new java.awt.event.ActionListener(){
                 public void actionPerformed(ActionEvent e ){
-                    new BaseDevolucaoAuto().gerarDevolucaoAutomatica(TbLancamentos.getValueAt(TbLancamentos.getSelectedRow(), 0).toString());
+                    FrmConfirmaItensDevolucao dialog = new FrmConfirmaItensDevolucao(new javax.swing.JFrame(), true);
+                    dialog.setLocationRelativeTo(null);
+                    dialog.inicia(TbLancamentos.getValueAt(TbLancamentos.getSelectedRow(), 0).toString());
+                    dialog.setVisible(true);
+                   // new BaseDevolucaoAuto().gerarDevolucaoAutomatica(TbLancamentos.getValueAt(TbLancamentos.getSelectedRow(), 0).toString());
                     
                    
                 }
