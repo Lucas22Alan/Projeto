@@ -221,7 +221,7 @@ public class relVendasVendedor extends javax.swing.JDialog {
                             " join titens ti on tm.id_mov=ti.id_mov\n" +
                             " join tfuncionarios tf on tm.id_vendedor=tf.id\n" +
                             " join tprodutos tp on ti.id_prod=tp.id\n" +
-                            " where tm.dat_finalizacao between '"+dataini+"' and '"+datafim+"' and tm.estado=2 and tm.id_vendedor='"+vendedor+"'";
+                            " where tm.dat_finalizacao between '"+dataini+"' and '"+datafim+"' and tm.estado=2 and ti.estado=2 and tm.id_vendedor='"+vendedor+"' and tm.id_tipo<3";
                 String sqlvalores="select sum (ti.total) as Venda_total,\n" +
                         "    sum (ti.cust_total) as Custo_total,\n" +
                         "    sum (iif(ti.cust_total is null, ti.total,ti.total-ti.cust_total))as Lucro_bruto,\n" +
@@ -231,16 +231,16 @@ public class relVendasVendedor extends javax.swing.JDialog {
                         " join titens ti on tm.id_mov=ti.id_mov\n" +
                         " join tfuncionarios tf on tm.id_vendedor=tf.id\n" +
                         " join tprodutos tp on ti.id_prod=tp.id\n" +
-                        " where tm.dat_finalizacao between '"+dataini+"' and '"+datafim+"'  and tm.estado=2 and tm.id_vendedor='"+vendedor+"'"; 
+                        " where tm.dat_finalizacao between '"+dataini+"' and '"+datafim+"'  and tm.estado=2 and ti.estado=2 and tm.id_vendedor='"+vendedor+"' and tm.id_tipo<3"; 
                 PreparedStatement ps=conexao.getPreparedStatementResult(sql);
                 PreparedStatement pst= conexao.getPreparedStatement(sqlvalores);
                 ResultSet rs = pst.executeQuery();
                 rs.next();
-                String valorto=rs.getString(1);
-                String tocusto=rs.getString(2);
-                String tolucrobruto=rs.getString(3);
-                String valorcomissao=rs.getString(4);
-                String lucroliquido=rs.getString(5);
+                String valorto= clsaux.formataReais(rs.getDouble(1));
+                String tocusto= clsaux.formataReais(rs.getDouble(2));
+                String tolucrobruto= clsaux.formataReais(rs.getDouble(3));
+                String valorcomissao= clsaux.formataReais(rs.getDouble(4));
+                String lucroliquido= clsaux.formataReais(rs.getDouble(5));
                 String cont="proc";
                 pst.close();
                 rs=ps.executeQuery();
