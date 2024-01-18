@@ -234,6 +234,8 @@ public class relPosicaoEstoque extends javax.swing.JDialog {
                 JasperViewer jv = new JasperViewer(impre, true);
                 viewer.getContentPane().add(jv.getContentPane());
                 viewer.setVisible(true);
+                rs.close();
+                ps.close();
         } catch (JRException ex) {
             Logger.getLogger(relCReceber.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage());

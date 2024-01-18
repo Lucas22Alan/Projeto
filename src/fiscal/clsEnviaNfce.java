@@ -48,7 +48,7 @@ import model.clsLancDocument;
 import model.clsNfe;
 import classes.clsaux;
 import conexoes.conexao;
-import java.io.FileNotFoundException;
+
 import java.io.FileWriter;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRXmlDataSource;
@@ -194,14 +194,6 @@ public class clsEnviaNfce {
 		dataemissao = LocalDateTime.parse(""+movimento.getEmissao()+"T"+movimento.getHorafinalizado());
                 if(clsaux.trataCampoNulo(movimento.getChaveacesso()).length()<40){
                     cnf =String.format("%08d", new Random().nextInt(99999999));
-                    System.out.println(config.getEstado());
-                    System.out.println(cnpj);
-                    System.out.println(modelo);
-                    System.out.println(serie);
-                    System.out.println(numero);
-                      System.out.println(tipoemissao);
-                        System.out.println(cnf);
-                          System.out.println(dataemissao);
                     
                     ChaveUtil chaveutil = new ChaveUtil(config.getEstado(), cnpj, modelo, serie, numero, tipoemissao, cnf, dataemissao);
                     chave =chaveutil.getChaveNF().replace("NFe", "");
@@ -754,6 +746,7 @@ public class clsEnviaNfce {
 		produto.setVUnTrib(itens.get(indiceitem).getPrecovenda());
 		produto.setIndTot("1");
                 if(Double.parseDouble(itens.get(indiceitem).getDesconto())>0.00)produto.setVDesc(clsaux.formatoNfe(Double.parseDouble(itens.get(indiceitem).getDesconto())));
+                if(clsaux.capturaValores(itens.get(indiceitem).getAcrescimo())>0.00) produto.setVOutro(clsaux.formatoNfe(clsaux.capturaValores(itens.get(indiceitem).getAcrescimo())));
 		return produto;
 	}
 
