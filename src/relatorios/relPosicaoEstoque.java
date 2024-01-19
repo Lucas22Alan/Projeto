@@ -5,6 +5,7 @@
  */
 package relatorios;
 
+import DAO.listaGrupDAO;
 import classes.clsaux;
 import conexoes.conexao;
 import java.awt.HeadlessException;
@@ -15,6 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import model.clsDadosEmpresa;
@@ -40,6 +43,7 @@ public class relPosicaoEstoque extends javax.swing.JDialog {
     public relPosicaoEstoque(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        inicia();
     }
 
     /**
@@ -57,6 +61,9 @@ public class relPosicaoEstoque extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         cbFiltro = new javax.swing.JComboBox<>();
+        cbGrupo = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        ckTodos = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Posição De Estoque");
@@ -88,6 +95,13 @@ public class relPosicaoEstoque extends javax.swing.JDialog {
         cbFiltro.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cbFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativos +", "Todos", "Inativos", "estoque 0", "estoque positivo", "estoque negativo" }));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel3.setText("Grupo:");
+
+        ckTodos.setBackground(new java.awt.Color(255, 255, 255));
+        ckTodos.setSelected(true);
+        ckTodos.setText("Todos");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -105,9 +119,15 @@ public class relPosicaoEstoque extends javax.swing.JDialog {
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(jLabel2)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cbFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cbGrupo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbFiltro, 0, 148, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(ckTodos)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -119,7 +139,12 @@ public class relPosicaoEstoque extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(cbFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(ckTodos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -159,6 +184,10 @@ public class relPosicaoEstoque extends javax.swing.JDialog {
 
     }//GEN-LAST:event_jPanel2ComponentShown
 
+    public void inicia(){
+       DefaultComboBoxModel cb = new DefaultComboBoxModel(listaGrupDAO.listagrupo().toArray());
+        cbGrupo.setModel(cb);
+    }
     
      public void relEstoque(int selecionado) throws JRException, SQLException{
          String comp="";
@@ -174,6 +203,12 @@ public class relPosicaoEstoque extends javax.swing.JDialog {
                 case 5: comp="and te.estoque<0";
                 break;
             }
+            String compgrupo="";
+            if(ckTodos.isSelected());
+            else{
+                String grupo= clsaux.retornaId(cbGrupo.getSelectedItem());
+                compgrupo=" and tp.id_grupo="+grupo;
+            }
          String sql2="select tp.nomelongo,\n" +
                             "                    tb.baixa_barra as codigobaixa,\n" +
                             "                    te.estoque,\n" +
@@ -186,7 +221,7 @@ public class relPosicaoEstoque extends javax.swing.JDialog {
                             "                    join tbarras tb on tp.id=tb.id_produto\n" +
                             "                    join stp_calc_estoque ((select data_inventario from tconfig),current_date) te on te.codproduto=tb.baixa_barra\n" +
                             "                    join tprecos tr on tp.id=tr.id\n" +
-                            "                    where tp.excluido='N' " +comp+" \n"+
+                            "                    where tp.excluido='N' " +comp+" "+compgrupo+" \n"+
                             "                    Group by 1,2,3,4,6 order by 3 asc ";
                String qtdtotal2="  select\n" +
                             "                         sum (te.estoque)as qtde,\n" +
@@ -197,7 +232,7 @@ public class relPosicaoEstoque extends javax.swing.JDialog {
                             "                         join tbarras tb on tp.id=tb.id_produto\n" +
                             "                         join stp_calc_estoque ((select data_inventario from tconfig),current_date) te on te.codproduto=tb.baixa_barra\n" +
                             "                         join tprecos tr on tp.id=tr.id\n" +
-                            "                         where tp.excluido='N'  " +comp+" ";
+                            "                         where tp.excluido='N'  " +comp+" "+compgrupo+"";
        try {
        JDialog viewer = new JDialog(new javax.swing.JFrame(),"Visualização do Relatório", true);
                 viewer.setSize(1024,720);
@@ -289,9 +324,12 @@ public class relPosicaoEstoque extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbFiltro;
+    private javax.swing.JComboBox<String> cbGrupo;
+    private javax.swing.JCheckBox ckTodos;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables

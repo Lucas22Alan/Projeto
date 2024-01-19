@@ -311,12 +311,9 @@ public class relTotaisFinalizdora extends javax.swing.JDialog {
                             "join tfinalizadora tf on ta.id_finalizadora=tf.id_finalizdora or tp.id_finalizadora=tf.id_finalizdora\n" +
                             "where "+complementosql+" and tm.estado=2 and (ta.estado=2 or tp.estado=2) and tm.dat_finalizacao between '"+dataini+"' and '"+datafim+"' group by 1,3;";
             
-            System.out.println(sqltotal);
             PreparedStatement ps=conexao.getPreparedStatementResult(sqltotal);
-            
             PreparedStatement pss= conexao.getPreparedStatement(sql);
             ResultSet rs = ps.executeQuery();
-            //rs.first();
             Double total= 0.00;
             String finalizadora=null;
             String din = "0.00",ccredi="0.00",cdebi="0.00",prazo="0.00",ccliq="0.00",cdliq="0.00",pix="0.00";
@@ -348,8 +345,8 @@ public class relTotaisFinalizdora extends javax.swing.JDialog {
             parametros.put("UF", clsDadosEmpresa.getEstado());
             parametros.put("FONE", clsDadosEmpresa.getFone());
             parametros.put("nomeUsuario", "geral");
-            parametros.put("pDataInicial", dataini);
-            parametros.put("pDataFinal", datafim);
+            parametros.put("PDataInicial", dataini);
+            parametros.put("PDataFinal", datafim);
             parametros.put("pdinheiro", din);
             parametros.put("pcartaocredito", ccredi);
             parametros.put("pcartaodebito", cdebi);

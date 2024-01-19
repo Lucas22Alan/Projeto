@@ -1,0 +1,2 @@
+Data: 19-01-2024 15-14-45 Erro: Integer overflow.  The result of an integer operation caused the most significant bit of the result to carry. [SQLState:22003, ISC error code:335544779]
+----------------------------------------------------------------

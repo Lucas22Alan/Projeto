@@ -65,6 +65,7 @@ public class relVendasVendedor extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         btnGerar = new javax.swing.JButton();
+        ckResumido = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Relatório - Vendas Por Vendedor");
@@ -108,6 +109,9 @@ public class relVendasVendedor extends javax.swing.JDialog {
             }
         });
 
+        ckResumido.setBackground(new java.awt.Color(255, 255, 255));
+        ckResumido.setText("Resumido");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -127,7 +131,9 @@ public class relVendasVendedor extends javax.swing.JDialog {
                         .addContainerGap()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ckResumido)
+                            .addComponent(cbVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(59, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -152,7 +158,9 @@ public class relVendasVendedor extends javax.swing.JDialog {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(ckResumido)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGerar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -205,6 +213,7 @@ public class relVendasVendedor extends javax.swing.JDialog {
                 viewer.setLocationRelativeTo(null);
                 JasperDesign jd;
                 jd = JRXmlLoader.load(".\\relatorios\\relVendasVendedor.jrxml");
+                if(ckResumido.isSelected())  jd = JRXmlLoader.load(".\\relatorios\\relVendasVendedorResumido.jrxml");
                 JasperReport jr= JasperCompileManager.compileReport(jd);
                 String sql="select tp.nomelongo as Produto,\n" +
                             "       ti.total as Venda_total ,\n" +
@@ -329,6 +338,7 @@ public class relVendasVendedor extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGerar;
     private javax.swing.JComboBox<String> cbVendedor;
+    private javax.swing.JCheckBox ckResumido;
     private javax.swing.JFormattedTextField ftDatFim;
     private javax.swing.JFormattedTextField ftDatInicio;
     private javax.swing.JLabel jLabel3;

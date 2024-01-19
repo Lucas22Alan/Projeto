@@ -181,14 +181,14 @@ group by 2]]>
 				<textFieldExpression><![CDATA[$P{nomeUsuario}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="397" y="0" width="60" height="20" uuid="77f9850d-0830-446c-9627-a8510b71ec0c"/>
+				<reportElement x="373" y="0" width="60" height="20" uuid="77f9850d-0830-446c-9627-a8510b71ec0c"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Gerado em:]]></text>
 			</staticText>
 			<textField pattern="dd/MM/yyyy&apos;, às&apos; HH:mm&apos;hs&apos;">
-				<reportElement x="457" y="0" width="98" height="20" uuid="871f6575-aca4-4a2c-9748-356f676b9fe5"/>
+				<reportElement x="437" y="0" width="118" height="20" uuid="871f6575-aca4-4a2c-9748-356f676b9fe5"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="SansSerif"/>
 				</textElement>

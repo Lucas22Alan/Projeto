@@ -21,10 +21,19 @@ public class clsConfigGeral {
         Date ultima_consulta=null,ultima_verificacao=null;
         String impressaoCondicionalPadrao="";
         String chavePix,clientid,clientsecret="",iptef,codlojatef;
-        String usaLocacao="N",ambinetepix="H";
+        String usaLocacao="N",ambinetepix="H",zerarSeq="N";
+        
 
     public String getAmbinetepix() {
         return ambinetepix;
+    }
+
+    public String getZerarSeq() {
+        return zerarSeq;
+    }
+
+    public void setZerarSeq(String zerarSeq) {
+        this.zerarSeq = zerarSeq;
     }
 
     public void setAmbinetepix(String ambinetepix) {

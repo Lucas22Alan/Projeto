@@ -106,6 +106,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
         jButton9 = new javax.swing.JButton();
         jLabel52 = new javax.swing.JLabel();
         cbAmbientePix = new javax.swing.JComboBox<>();
+        ckZeraSeq = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         cbPdv = new javax.swing.JComboBox<>();
@@ -384,6 +385,14 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
 
         cbAmbientePix.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "H- Homologação", "P- Produção" }));
 
+        ckZeraSeq.setBackground(new java.awt.Color(219, 227, 227));
+        ckZeraSeq.setText("Zera Sequência Delivery Ao Fechar Caixa");
+        ckZeraSeq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckZeraSeqActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnGeralLayout = new javax.swing.GroupLayout(pnGeral);
         pnGeral.setLayout(pnGeralLayout);
         pnGeralLayout.setHorizontalGroup(
@@ -424,7 +433,8 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                                     .addComponent(txtCarencia, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtJuros, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtMulta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(ckCadAuto))
+                            .addComponent(ckCadAuto)
+                            .addComponent(ckZeraSeq))
                         .addGap(27, 27, 27)
                         .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnGeralLayout.createSequentialGroup()
@@ -569,6 +579,8 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                             .addComponent(txtMulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ckCadAuto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ckZeraSeq)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(pnGeralLayout.createSequentialGroup()
                         .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1483,6 +1495,10 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_ckQuebraLinhaActionPerformed
 
+    private void ckZeraSeqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckZeraSeqActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ckZeraSeqActionPerformed
+
     public void carregaDadosConfigGeral(){
         conf=dao.buscarConfigGeral(conf);
         
@@ -1493,6 +1509,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
         if(conf.getAtacarejo().equals("S")) ckAtacarejo.setSelected(true);
         if(conf.getContJuros().equals("S")) ckJuros.setSelected(true);
         if(conf.getCadastroProdAutomatico().equals("S")) ckCadAuto.setSelected(true);
+        if(conf.getZerarSeq().equals("S")) ckZeraSeq.setSelected(true);
         
         txtMesaIni.setText(conf.getMesaIni());
         txtMesaFim.setText(conf.getMesaFim());
@@ -1673,6 +1690,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
         if(ckAtacarejo.isSelected()) conf.setAtacarejo("S"); else conf.setAtacarejo("N");
         if(ckJuros.isSelected()) conf.setCalculajuros("S"); else conf.setCalculajuros("N");
         if(ckCadAuto.isSelected()) conf.setCadastroProdAutomatico("S"); else conf.setCadastroProdAutomatico("N");
+        if(ckZeraSeq.isSelected()) conf.setZerarSeq("S"); else conf.setZerarSeq("N");
         
         conf.setMesaIni(txtMesaIni.getText());
         conf.setMesaFim(txtMesaFim.getText());
@@ -1886,6 +1904,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
     private javax.swing.JCheckBox ckQuebraLinha;
     private javax.swing.JCheckBox ckTemTef;
     private javax.swing.JCheckBox ckVendeSemEst;
+    private javax.swing.JCheckBox ckZeraSeq;
     private javax.swing.JCheckBox ckimpFichaCons;
     private javax.swing.JFormattedTextField dtIniFidelidade;
     private javax.swing.JFormattedTextField dtIniMovConta;
