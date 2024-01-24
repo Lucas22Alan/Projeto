@@ -22,6 +22,15 @@ public class clsConfigGeral {
         String impressaoCondicionalPadrao="";
         String chavePix,clientid,clientsecret="",iptef,codlojatef;
         String usaLocacao="N",ambinetepix="H",zerarSeq="N";
+        String tipoImpOs="";
+
+    public String getTipoImpOs() {
+        return tipoImpOs;
+    }
+
+    public void setTipoImpOs(String tipoImpOs) {
+        this.tipoImpOs = tipoImpOs;
+    }
         
 
     public String getAmbinetepix() {

@@ -31,7 +31,6 @@ import javax.swing.AbstractAction;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.KeyStroke;
-import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import relatorios.frmRelLocacaoProduto;
 import relatorios.relVendasporProdutos;
@@ -308,6 +307,15 @@ public class localizaProduto extends javax.swing.JDialog {
                     " join tbarras tb on tp.id=tb.id_produto\n" +
                     " join tprecos tc on tp.id=tc.id\n" +
                     " where (tp.nomecurto like '%"+campopesquisado+"%'  or tb.codigo_barras like '%"+campopesquisado+"%') and tp.excluido='N' and tipo_produto=0 and tp.locacao='S'";
+            }else if(tipoBusca=="todos"){
+                sql="select tb.codigo_barras,\n" +
+                    "       tp.nomecurto,\n" +
+                    "       tc.preco_venda,\n" +
+                    "       tp.id\n" +
+                    " from tprodutos tp\n" +
+                    " join tbarras tb on tp.id=tb.id_produto\n" +
+                    " join tprecos tc on tp.id=tc.id\n" +
+                    " where (tp.nomecurto like '%"+campopesquisado+"%'  or tb.codigo_barras like '%"+campopesquisado+"%') and tp.excluido='N'";
             }
             PreparedStatement ps = conexao.getPreparedStatement(sql);
             ResultSet rs = ps.executeQuery();

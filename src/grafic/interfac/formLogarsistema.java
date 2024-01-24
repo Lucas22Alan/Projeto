@@ -376,6 +376,7 @@ public class formLogarsistema extends javax.swing.JFrame {
             clsConfig.configuracaogeral.setImpressaoCondicionalPadrao(rs.getString("imp_padrao_condi"));
             clsConfig.configuracaogeral.setCaminhoxml(rs.getString("caminhoxml"));
             clsConfig.configuracaogeral.setUsaLocacao(rs.getString("usa_locacao"));
+            clsConfig.configuracaogeral.setTipoImpOs("tipo_imp_os");
             if(clsConfig.configuracaogeral.getCalculajuros().equals("S")){
                 this.calculaJuros();
             }

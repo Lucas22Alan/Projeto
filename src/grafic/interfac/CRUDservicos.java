@@ -5,13 +5,9 @@
  */
 package grafic.interfac;
 
-import DAO.lancamentoTiroDAO;
 import DAO.orcamentoDAO;
-import DAO.orderServicoDAO;
 import classes.ClsCancelamentos;
-import model.clsDadosEmpresa;
 import model.clsDadosPagamentoAdm;
-import model.clsLancamentoTiro;
 import classes.clsaux;
 import conexoes.conexao;
 import java.awt.event.ActionEvent;
@@ -20,26 +16,14 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.AbstractAction;
 import javax.swing.InputMap;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import javax.swing.table.DefaultTableModel;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JRResultSetDataSource;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
-import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *

@@ -17,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import model.clsConfig;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRResultSetDataSource;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -194,7 +195,11 @@ public class frmSelecionaImpressaoOs extends javax.swing.JDialog {
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     public void inicia(){
-        btnImprimir.requestFocus();
+       String impressao=clsaux.trataCampoNuloConfig(clsConfig.configuracaogeral.getTipoImpOs());
+       if(impressao.equals("N")||impressao.equals("A4"))cbA4.setSelected(true);
+       else if(impressao.equals("A5")) cbA5.setSelected(true);
+       else if (impressao.equals("T")) cbTermica.setSelected(true);
+       btnImprimir.requestFocus();
     }
     public static void imprimirOs(String idos,String tipo){
         String modelo,marca,prob,serie,obser,totalserv,totalprod,totalgeral,desc,datain,placa,obsgeral=null;

@@ -107,6 +107,8 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
         jLabel52 = new javax.swing.JLabel();
         cbAmbientePix = new javax.swing.JComboBox<>();
         ckZeraSeq = new javax.swing.JCheckBox();
+        jLabel56 = new javax.swing.JLabel();
+        cbImpOs = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         cbPdv = new javax.swing.JComboBox<>();
@@ -393,6 +395,10 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
             }
         });
 
+        jLabel56.setText("Imp. OS");
+
+        cbImpOs.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A4 - Normal", "A5 -Normal", "T- Termica" }));
+
         javax.swing.GroupLayout pnGeralLayout = new javax.swing.GroupLayout(pnGeral);
         pnGeral.setLayout(pnGeralLayout);
         pnGeralLayout.setHorizontalGroup(
@@ -435,10 +441,10 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                                     .addComponent(txtMulta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(ckCadAuto)
                             .addComponent(ckZeraSeq))
-                        .addGap(27, 27, 27)
+                        .addGap(20, 20, 20)
                         .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnGeralLayout.createSequentialGroup()
-                                .addGap(11, 11, 11)
+                                .addGap(18, 18, 18)
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(dtIniFidelidade, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -486,17 +492,21 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnGeralLayout.createSequentialGroup()
                                 .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(pnGeralLayout.createSequentialGroup()
-                                        .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(pnGeralLayout.createSequentialGroup()
-                                                .addGap(0, 0, Short.MAX_VALUE)
-                                                .addComponent(jLabel36)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(cbAssociacao, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(pnGeralLayout.createSequentialGroup()
                                                 .addGap(18, 18, 18)
-                                                .addComponent(jLabel29)
+                                                .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(jLabel29)
+                                                    .addComponent(jLabel56))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(cbImpressoraCondicional, 0, 1, Short.MAX_VALUE)))
+                                                .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(cbImpOs, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(cbImpressoraCondicional, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                            .addGroup(pnGeralLayout.createSequentialGroup()
+                                                .addGap(0, 23, Short.MAX_VALUE)
+                                                .addComponent(jLabel36)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(cbAssociacao, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(18, 18, 18)
                                         .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnGeralLayout.createSequentialGroup()
@@ -506,7 +516,11 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnGeralLayout.createSequentialGroup()
                                                 .addComponent(jLabel23)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtchavepix, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(txtchavepix, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnGeralLayout.createSequentialGroup()
+                                                .addComponent(jLabel24)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txtClientid, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(pnGeralLayout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
                                         .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -524,10 +538,6 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                                                     .addGap(18, 18, 18)
                                                     .addComponent(cbAmbientePix, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addGroup(pnGeralLayout.createSequentialGroup()
-                                                        .addComponent(jLabel24)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(txtClientid, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                     .addGroup(pnGeralLayout.createSequentialGroup()
                                                         .addComponent(jLabel25)
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -623,12 +633,16 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                         .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtchavepix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel23)
-                            .addComponent(jLabel36)
-                            .addComponent(cbAssociacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cbImpOs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel56)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtClientid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel24))
+                            .addComponent(jLabel24)
+                            .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel36)
+                                .addComponent(cbAssociacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtClientSecret, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -875,7 +889,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel31)
                                         .addGap(18, 18, 18)
-                                        .addComponent(cbPix, 0, 135, Short.MAX_VALUE))
+                                        .addComponent(cbPix, 0, 151, Short.MAX_VALUE))
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel34)
@@ -1145,7 +1159,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jButton7)
                                 .addComponent(jButton6)))))
-                .addContainerGap(304, Short.MAX_VALUE))
+                .addContainerGap(320, Short.MAX_VALUE))
         );
 
         jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton6, jButton7});
@@ -1272,11 +1286,11 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                     .addComponent(jLabel48, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbSbCond, 0, 298, Short.MAX_VALUE)
-                    .addComponent(cbSbNfe, 0, 298, Short.MAX_VALUE)
-                    .addComponent(cbSbTaxas, 0, 298, Short.MAX_VALUE)
-                    .addComponent(cbSbOrc, 0, 298, Short.MAX_VALUE)
-                    .addComponent(cbSbConfCx, 0, 298, Short.MAX_VALUE)
+                    .addComponent(cbSbCond, 0, 314, Short.MAX_VALUE)
+                    .addComponent(cbSbNfe, 0, 314, Short.MAX_VALUE)
+                    .addComponent(cbSbTaxas, 0, 314, Short.MAX_VALUE)
+                    .addComponent(cbSbOrc, 0, 314, Short.MAX_VALUE)
+                    .addComponent(cbSbConfCx, 0, 314, Short.MAX_VALUE)
                     .addComponent(cbSbPed, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(262, 262, 262))
         );
@@ -1538,6 +1552,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
         clsaux.carregaComboBox(cbImpressoraCondicional, conf.getImpressaoCondicionalPadrao());
         clsaux.carregaComboBox(cbAssociacao, conf.getAssociacaoCompra());
         clsaux.carregaComboBox(cbAmbientePix, conf.getAmbinetepix());
+        clsaux.carregaComboBox(cbImpOs, conf.getTipoImpOs());
         txtNumeroNf.setText(dao.buscarUltimaNfe());
         conf.setUltimanfe(txtNumeroNf.getText());
      }
@@ -1717,6 +1732,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
         conf.setIptef(txtIpTef.getText());
         conf.setCodlojatef(txtCodLojaTef.getText());
         conf.setAmbinetepix(clsaux.retornaId(cbAmbientePix.getSelectedItem()));
+        conf.setTipoImpOs(clsaux.retornaId(cbImpOs.getSelectedItem()));
         dao.inserirConfigGeral(conf);
         
         if(txtNumeroNf.getText().equals(conf.getUltimanfe()));else{
@@ -1863,6 +1879,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> cbAmbientePix;
     private javax.swing.JComboBox<String> cbAssociacao;
     private javax.swing.JComboBox<String> cbGrupo;
+    private javax.swing.JComboBox<String> cbImpOs;
     private javax.swing.JComboBox<String> cbImpressoraCondicional;
     private javax.swing.JComboBox<String> cbMarcacert;
     private javax.swing.JComboBox<String> cbModo;
@@ -1969,6 +1986,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

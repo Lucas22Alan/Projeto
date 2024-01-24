@@ -64,7 +64,8 @@ public class configuracaoDAO {
             conf.setCodlojatef(rs.getString("CODLOJA_TEF"));
             conf.setCaminhoxml(rs.getString("caminhoxml"));
             conf.setAmbinetepix(rs.getString("ambientepix"));
-            conf.setAmbinetepix(rs.getString("ZERA_SEQ_DELIVERY"));
+            conf.setZerarSeq(rs.getString("ZERA_SEQ_DELIVERY"));
+            conf.setTipoImpOs(rs.getString("tipo_imp_os"));
             rs.close();
             ps.close();
         } catch (SQLException ex) {
@@ -230,8 +231,8 @@ public class configuracaoDAO {
         try {
             String sql="UPDATE OR INSERT INTO TCONFIG (FIDELIDADE, IMPRIME_CONSUMO_TIRO, DATA_INI_FIDELIDADE, UTILIZA_CREDITO_CLIENTE, DATA_INI_MOV_CONTA, USA_PREC_CAT_TIRO, MESAINICIO, MESAFIM,id,ambiente,nfe_serie,tipo_certificado"
                     + ",marca_a3,dll_a3,caminho_certificado,senha_certificado,controla_juros,perc_juros,perc_multa,carencia,imp_padrao_condi,client_id,client_secret,chave,utiliza_atacarejo,CADASTRAITEMAUTCOMPRA,tipo_associacao_compra,"
-                    + " ip_servidor_tef,codloja_tef,caminhoxml,ambientepix,ZERA_SEQ_DELIVERY)\n" +
-                    "                       VALUES (?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)  MATCHING (ID) \n" +
+                    + " ip_servidor_tef,codloja_tef,caminhoxml,ambientepix,ZERA_SEQ_DELIVERY,tipo_imp_os)\n" +
+                    "                       VALUES (?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)  MATCHING (ID) \n" +
                     "                     ";
             PreparedStatement ps = conexao.getPreparedStatement(sql);
             ps.setString(1, conf.getFidelidade());
@@ -266,6 +267,7 @@ public class configuracaoDAO {
             ps.setString(30, conf.getCaminhoxml());
             ps.setString(31, conf.getAmbinetepix());
             ps.setString(32, conf.getZerarSeq());
+            ps.setString(33, conf.getTipoImpOs());
             ps.executeUpdate();
             ps.close();
             JOptionPane.showMessageDialog(null,"Registro Gravado Com Sucesso ");

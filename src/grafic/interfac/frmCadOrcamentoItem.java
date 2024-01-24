@@ -469,7 +469,7 @@ public class frmCadOrcamentoItem extends javax.swing.JDialog {
     private void btnPesqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqActionPerformed
        localizaProduto dialog = new localizaProduto(new javax.swing.JFrame(), true); 
                 localizaProduto.idchamado="6";
-                localizaProduto.tipoBusca="produto";
+                localizaProduto.tipoBusca="todos";
                 dialog.setVisible(true);
     }//GEN-LAST:event_btnPesqActionPerformed
 
@@ -503,7 +503,7 @@ public class frmCadOrcamentoItem extends javax.swing.JDialog {
             public void actionPerformed(ActionEvent ev){
                 localizaProduto dialog = new localizaProduto(new javax.swing.JFrame(), true); 
                 localizaProduto.idchamado="6";
-                localizaProduto.tipoBusca="produto";
+                localizaProduto.tipoBusca="todos";
                 dialog.setVisible(true);
             }
         });
