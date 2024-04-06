@@ -21,9 +21,9 @@ public class EmailDAO {
     
     public void inserirAtualizar(Tconfig_email mail){
         try {
-            String sql="UPDATE OR INSERT INTO TCONFIG_EMAILL (EMAIL, SENHA, PORTA, SMTP, TLS, AUTH)\n" +
-                    "                              VALUES (?,?,?,?,?,?)\n" +
-                    "                            MATCHING (EMAIL);";
+            String sql="UPDATE OR INSERT INTO TCONFIG_EMAILL (EMAIL, SENHA, PORTA, SMTP, TLS, AUTH,id)\n" +
+                    "                              VALUES (?,?,?,?,?,?,1)\n" +
+                    "                            MATCHING (id);";
             
             PreparedStatement ps = conexao.getPreparedStatement(sql);
             ps.setString(1, mail.getEmail());
@@ -42,7 +42,7 @@ public class EmailDAO {
     }
     public static Tconfig_email buscar(Tconfig_email mail){
         try {
-            String sql="select first 1 * from tconfig_emaill";
+            String sql="select * from tconfig_emaill where id=1";
             PreparedStatement ps = conexao.getPreparedStatementResult(sql);
             ResultSet rs = ps.executeQuery();
             rs.first();

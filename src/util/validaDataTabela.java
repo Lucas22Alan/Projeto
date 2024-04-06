@@ -41,6 +41,26 @@ public class validaDataTabela {
           return cellEditor;
      }
      
+      public static DefaultCellEditor validaHora(){
+          SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+          DefaultCellEditor cellEditor= new DefaultCellEditor(new JTextField()){
+              @Override
+              public boolean stopCellEditing(){
+                  String valor=(String)super.getCellEditorValue();
+                  try{
+                      dateFormat.parse(valor);
+                      return super.stopCellEditing();
+                  }catch(ParseException e){
+                      JOptionPane.showMessageDialog(null, "Hora inválida!!!");
+                        return false;
+                  }
+              }
+          };
+          return cellEditor;
+     }
+     
+ 
+     
  
      public static void adicionaBotao(JTable table, int column) {
         //this.table = table;

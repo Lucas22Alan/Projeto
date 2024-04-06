@@ -700,7 +700,7 @@ public class CRUDCondicional extends javax.swing.JDialog {
                     "from tpre_venda tv\n" +
                     "join tparceiros tp on tp.idparceiro=tv.idcliente\n" +
                     "join testado_operacoes tr on tr.id=tv.estado\n" +
-                    "where tv.data_lancamento between ? and ? and tv.estado="+tipo;
+                    "where tv.data_lancamento between ? and ? and tv.idcliente<>'' and tv.estado="+tipo;
            
             PreparedStatement ps = conexao.getPreparedStatement(sql);
             ps.setDate(1, clsaux.retornaData(dtini));

@@ -1,0 +1,4 @@
+Data: 22-02-2024 18-55-39 Erro: Send failure (javax.mail.MessagingException: Could not convert socket to TLS (javax.net.ssl.SSLHandshakeException: Remote host closed connection during handshake))
+----------------------------------------------------------------
+Data: 22-02-2024 18-58-21 Erro: Send failure (javax.mail.MessagingException: Could not convert socket to TLS (javax.net.ssl.SSLHandshakeException: Remote host closed connection during handshake))
+----------------------------------------------------------------

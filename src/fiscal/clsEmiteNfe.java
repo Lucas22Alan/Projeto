@@ -1,5 +1,6 @@
 package fiscal;
 
+import DAO.PagamentosAdmDAO;
 import DAO.clienteDAO;
 import DAO.lancDocumentDAO;
 import DAO.nfeDAO;
@@ -63,6 +64,7 @@ import java.util.Date;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import model.clsConfig;
+import model.clsPagamentos;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.view.JasperViewer;
 
@@ -84,6 +86,8 @@ public class clsEmiteNfe {
 	private static clsNfTransporte trans=new clsNfTransporte();
 	private static List<clsLancDocument> itens=new ArrayList();
         private static List<String> referencias= new ArrayList<>();
+        private static List<clsPagamentos> pagamentos= new ArrayList<>();
+        
 
 	public clsEmiteNfe(Long idmovimento) throws Exception {
 		// inicia dados da nf
@@ -158,6 +162,7 @@ public class clsEmiteNfe {
 		itens=lancDocumentDAO.buscaItens(idmovimento.toString());
                 trans.setIdmovimento(idmovimento.toString());
 		trans=nfeDAO.retornaDadosTransporte(trans);
+                pagamentos=new PagamentosAdmDAO().retornaPagamentos(movimento.getIdmovimento());
                 referencias=nfeDAO.retornaInfReferencia(idmovimento.toString());
 		cnpj = clsDadosEmpresa.getCnpj();
 		modelo = "55";
@@ -321,10 +326,14 @@ public class clsEmiteNfe {
 
 		infnfe.getDet().addAll(montaDet());
 		infnfe.setTransp(montaTranspotadora());
-		infnfe.setPag(montaPagamento());
+                infnfe.setPag(montaPagamento());
 		infnfe.setInfAdic(montaInfAdicional());
 		infnfe.setInfRespTec(montaResponsavel());
 		infnfe.setTotal(montaTotal());
+                if(pagamentos.size()==0);
+                else{
+                    infnfe.setCobr(montaCobranca());
+                }
                 
 
 		return infnfe;
@@ -369,13 +378,21 @@ public class clsEmiteNfe {
 		icmsTotal.setVSeg("0.00");
 		icmsTotal.setVDesc(clsaux.formatoNfe(Double.parseDouble(movimento.getDesconto())));
 		icmsTotal.setVII("0.00");
-		icmsTotal.setVIPI("0.00");
-		icmsTotal.setVIPIDevol(clsaux.formatoNfe(Double.parseDouble(movimento.getValoripi())));
+                
+		
 		icmsTotal.setVPIS(clsaux.formatoNfe(Double.parseDouble(movimento.getValor_pis())));
 		icmsTotal.setVCOFINS(clsaux.formatoNfe(Double.parseDouble(movimento.getValor_cofins())));
 		icmsTotal.setVOutro(clsaux.formatoNfe(Double.parseDouble(movimento.getOutrasdesp())));
 		icmsTotal.setVNF(clsaux.formatoNfe(Double.parseDouble(movimento.getTotal())));
-		total.setICMSTot(icmsTotal );
+		if(movimentonf.getFinalidade().equals("4")){
+                    icmsTotal.setVIPI("0.00");
+                    icmsTotal.setVIPIDevol(clsaux.formatoNfe(Double.parseDouble(movimento.getValoripi())));
+                }else{
+                    icmsTotal.setVIPI(clsaux.formatoNfe(Double.parseDouble(movimento.getValoripi())));
+                    icmsTotal.setVIPIDevol("0.00");
+                }
+                
+                total.setICMSTot(icmsTotal );
 		
 		return total;
 	}
@@ -398,6 +415,7 @@ public class clsEmiteNfe {
                     detPag.setTPag("90");
                     
                 }else{
+                    
                     detPag.setVPag(clsaux.formatoNfe(Double.parseDouble(movimento.getTotal())));
                     detPag.setTPag("01");
                 }
@@ -406,10 +424,47 @@ public class clsEmiteNfe {
 		return pag;
 	}
 
+        private TNFe.InfNFe.Cobr montaCobranca(){
+            TNFe.InfNFe.Cobr cob= new TNFe.InfNFe.Cobr();
+            TNFe.InfNFe.Cobr.Fat fat= new TNFe.InfNFe.Cobr.Fat();
+            
+            fat.setNFat(movimento.getDocument());
+            fat.setVOrig(clsaux.formatoNfe(Double.parseDouble(movimento.getTotal())));
+            fat.setVLiq(clsaux.formatoNfe(Double.parseDouble(movimento.getTotal())));
+            cob.setFat(fat);
+            
+            for(clsPagamentos pg :pagamentos){
+                if(pg.getIdfinalizadora().equals("4")){
+                     TNFe.InfNFe.Cobr.Dup dp= new TNFe.InfNFe.Cobr.Dup();
+                     dp.setNDup(String.format("%03d", Integer.parseInt(pg.getParcela())));
+                     dp.setVDup(clsaux.formatoNfe(Double.parseDouble(pg.getValor())));
+                     dp.setDVenc(pg.getDatavencimento());
+                     cob.getDup().add(dp);
+                }
+            }
+            return cob;
+        }
+        
 	private TNFe.InfNFe.Transp montaTranspotadora() {
 		TNFe.InfNFe.Transp transp = new TNFe.InfNFe.Transp();
-
-		transp.setModFrete(trans.getModfrete().trim());
+                transp.setModFrete(trans.getModfrete().trim());
+                if(trans.getModfrete().equals("9"));
+                else{
+                   TNFe.InfNFe.Transp.Transporta tr= new TNFe.InfNFe.Transp.Transporta();
+                   tr.setCNPJ(trans.getCnpj());
+                   tr.setXNome(trans.getRazao());
+                   tr.setUF(TUf.valueOf(trans.getUf()));
+                   tr.setXEnder(trans.getEndereco());
+                   tr.setXMun(trans.getCidade());
+                   transp.setTransporta(tr);
+                   TNFe.InfNFe.Transp.Vol vl= new TNFe.InfNFe.Transp.Vol();
+                   vl.setEsp(trans.getEspecie());
+                   vl.setNVol(String.valueOf(clsaux.capturaValores(trans.getNumero()).intValue()));
+                   vl.setPesoB(clsaux.formatoNfe3(clsaux.capturaValores(trans.getPesobruto())));
+                   vl.setPesoL(clsaux.formatoNfe3(clsaux.capturaValores(trans.getPesoliq())));
+                   vl.setQVol(String.valueOf(clsaux.capturaValores(trans.getVolumes()).intValue()));
+                   transp.getVol().add(vl);
+                }
 
 		return transp;
 	}
@@ -461,6 +516,7 @@ public class clsEmiteNfe {
             imposto.setIPI(ipi);
            
         }
+        
 
 	private void criaImpostoPis(TNFe.InfNFe.Det.Imposto imposto) {
 		TNFe.InfNFe.Det.Imposto.PIS pis = new TNFe.InfNFe.Det.Imposto.PIS();

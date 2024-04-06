@@ -16,6 +16,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.clientes;
 import model.clsLancDocCabecalho;
@@ -249,7 +250,7 @@ public class FrmConfirmaItensDevolucao extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      gerarRegistro();
+     gerarRegistro();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     List<clsLancDocument> itens= new ArrayList<>();
@@ -305,6 +306,8 @@ public class FrmConfirmaItensDevolucao extends javax.swing.JDialog {
         lbTotal.setText(clsaux.formato(selecionado));
     }
     
+    
+   
     public void gerarRegistro(){
         BaseDevolucaoAuto basedev= new BaseDevolucaoAuto();
         List<clsLancDocument> itensnovo= new ArrayList<>();
@@ -317,17 +320,22 @@ public class FrmConfirmaItensDevolucao extends javax.swing.JDialog {
                 }
          }
         
-        String idmovNovo=new BaseGeralDAO().gerarIds("GEN_TMOVIMENTO_ID");
-        String chaveCompra=ld.getChaveacesso();
-        ld.setIdmovimento(idmovNovo);
-        nf=basedev.gerarInfNfe(nf, ld,parceiro);
-            ld=basedev.limparDadosReg(ld);
-            ldDAO.atualizaRegistroMovto(ld);
-            recalculaValoresCabecalho(itensnovo, idmovNovo);
-            ldDAO.atualizaRegistroMovto(ld);
-           nfeDAO.inserirMovimentoNfe(nf);
-           nfeDAO.gravaInfReferencia(idmovNovo, chaveCompra);
-           this.dispose();
+        if(itensnovo.size()>0){
+        
+            String idmovNovo=new BaseGeralDAO().gerarIds("GEN_TMOVIMENTO_ID");
+            String chaveCompra=ld.getChaveacesso();
+            ld.setIdmovimento(idmovNovo);
+            nf=basedev.gerarInfNfe(nf, ld,parceiro);
+                ld=basedev.limparDadosReg(ld);
+                ldDAO.atualizaRegistroMovto(ld);
+                recalculaValoresCabecalho(itensnovo, idmovNovo);
+                ldDAO.atualizaRegistroMovto(ld);
+               nfeDAO.inserirMovimentoNfe(nf);
+               nfeDAO.gravaInfReferencia(idmovNovo, chaveCompra);
+               this.dispose();
+            }else{
+            JOptionPane.showMessageDialog(null, "Nenhum Item Marcado!");
+        }
     }
     
     public void recalculaValoresCabecalho(List<clsLancDocument> dados,String mvto){

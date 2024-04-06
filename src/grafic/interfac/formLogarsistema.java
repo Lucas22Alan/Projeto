@@ -294,7 +294,7 @@ public class formLogarsistema extends javax.swing.JFrame {
             p.setString(3, senhaUsuario.getText());
             ResultSet re = p.executeQuery();
             if (re.next()){
-             clsConfig.usuarioLogado = re.getString(1) + "-" + login.getText();
+             clsConfig.usuarioLogado = re.getString(1) + "-" +re.getString(2);
              nomeUsuarioLogado = re.getString(2);
              BtnLogar.setEnabled(false);
              this.verificaversao();
@@ -464,6 +464,10 @@ public class formLogarsistema extends javax.swing.JFrame {
         if(permissaoUsuarioDAO.verificaPermissaoUsuConectado("110"));else {
             formPrincipal1.lbFluxo.setVisible(false);
             formPrincipal1.jMenuItem9.setEnabled(false);
+        }
+        if(permissaoUsuarioDAO.verificaPermissaoUsuConectado("120"));else {
+            formPrincipal1.lbContrato.setVisible(false);
+            formPrincipal1.jMenuItem55.setEnabled(false);
         }
         if(clsDadosEmpresa.clube.equals("N")){
             formPrincipal1.MenuContrato.setVisible(false);

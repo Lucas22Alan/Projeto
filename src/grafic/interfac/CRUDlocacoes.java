@@ -1420,7 +1420,7 @@ public class CRUDlocacoes extends javax.swing.JDialog {
             String sqlitens="select  tp.codigoitem as codigo,\n" +
 "                                    tp.descricao as nomelongo,\n" +
 "                                    tp.valor as vl_unit,\n" +
-"                                    tp.qnt_unitaria as qnt,\n" +
+"                                    tp.qnt_pecas as qnt,\n" +
 "                                    tp.total as total,tipolocacao\n" +
 "                             from titens_locacao tp\n" +
 "                            where tp.idlocacao='"+indice+"' and tp.estado<>'3'";

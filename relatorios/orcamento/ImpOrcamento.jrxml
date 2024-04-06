@@ -46,6 +46,7 @@ AND a.cod_item='75']]>
 	<field name="QNT" class="java.math.BigDecimal"/>
 	<field name="TOTAL" class="java.math.BigDecimal"/>
 	<field name="CODIGO" class="java.lang.String"/>
+	<field name="observacao" class="java.lang.String"/>
 	<title>
 		<band height="96" splitType="Stretch">
 			<rectangle>
@@ -357,7 +358,7 @@ AND a.cod_item='75']]>
 		</band>
 	</pageHeader>
 	<detail>
-		<band height="29" splitType="Stretch">
+		<band height="44" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField>
 				<reportElement x="88" y="2" width="197" height="20" uuid="241cf4d9-4c91-4c4e-a88d-5d835ef006ff"/>
@@ -388,7 +389,7 @@ AND a.cod_item='75']]>
 				<textFieldExpression><![CDATA[$F{TOTAL}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="23" width="552" height="1" uuid="77a65e7a-35e6-43fe-920e-c5add599679c"/>
+				<reportElement positionType="Float" x="0" y="39" width="552" height="1" uuid="77a65e7a-35e6-43fe-920e-c5add599679c"/>
 			</line>
 			<textField>
 				<reportElement x="1" y="2" width="88" height="20" uuid="9273860a-2bb8-4a3e-830d-07785fb299e2">
@@ -399,6 +400,13 @@ AND a.cod_item='75']]>
 					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{CODIGO}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="2" y="16" width="549" height="20" isRemoveLineWhenBlank="true" uuid="a7513291-f56a-4330-94eb-a0d8277689a2"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{observacao}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

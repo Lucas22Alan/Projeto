@@ -66,6 +66,7 @@ public class configuracaoDAO {
             conf.setAmbinetepix(rs.getString("ambientepix"));
             conf.setZerarSeq(rs.getString("ZERA_SEQ_DELIVERY"));
             conf.setTipoImpOs(rs.getString("tipo_imp_os"));
+            conf.setCaixaAgrupado(clsaux.trataCampoNuloConfig(rs.getString("caixa_agrupado")));
             rs.close();
             ps.close();
         } catch (SQLException ex) {
@@ -120,6 +121,7 @@ public class configuracaoDAO {
                 pdv.setQntImprime(rs.getInt("qnt_impressao"));
                 pdv.setQuebraLinha(clsaux.trataCampoNuloConfig(rs.getString("quebralinha")));
                 pdv.setModo(clsaux.trataCampoNuloConfig(rs.getString("modo")));
+                pdv.setReduzido(clsaux.trataCampoNuloConfig(rs.getString("PDV_RESUMIDO")));
                 lista.add(pdv);
            }
             rs.close();
@@ -231,8 +233,8 @@ public class configuracaoDAO {
         try {
             String sql="UPDATE OR INSERT INTO TCONFIG (FIDELIDADE, IMPRIME_CONSUMO_TIRO, DATA_INI_FIDELIDADE, UTILIZA_CREDITO_CLIENTE, DATA_INI_MOV_CONTA, USA_PREC_CAT_TIRO, MESAINICIO, MESAFIM,id,ambiente,nfe_serie,tipo_certificado"
                     + ",marca_a3,dll_a3,caminho_certificado,senha_certificado,controla_juros,perc_juros,perc_multa,carencia,imp_padrao_condi,client_id,client_secret,chave,utiliza_atacarejo,CADASTRAITEMAUTCOMPRA,tipo_associacao_compra,"
-                    + " ip_servidor_tef,codloja_tef,caminhoxml,ambientepix,ZERA_SEQ_DELIVERY,tipo_imp_os)\n" +
-                    "                       VALUES (?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)  MATCHING (ID) \n" +
+                    + " ip_servidor_tef,codloja_tef,caminhoxml,ambientepix,ZERA_SEQ_DELIVERY,tipo_imp_os,caixa_agrupado)\n" +
+                    "                       VALUES (?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)  MATCHING (ID) \n" +
                     "                     ";
             PreparedStatement ps = conexao.getPreparedStatement(sql);
             ps.setString(1, conf.getFidelidade());
@@ -268,6 +270,7 @@ public class configuracaoDAO {
             ps.setString(31, conf.getAmbinetepix());
             ps.setString(32, conf.getZerarSeq());
             ps.setString(33, conf.getTipoImpOs());
+            ps.setString(34, conf.getCaixaAgrupado());
             ps.executeUpdate();
             ps.close();
             JOptionPane.showMessageDialog(null,"Registro Gravado Com Sucesso ");
@@ -311,8 +314,8 @@ public class configuracaoDAO {
         try {
             String sql="UPDATE OR INSERT INTO TCONFIGPDV (IDPDV, CONT_ESTOQUE_PDV, IMP_FICHA_CONSUMO, VENDE_EST0QUE_ZERADO, IMP_COZINHA, IMP_BAR, IMP_CUPOM, NUM_DIGITOS_ETIQUETA, "
                     + "GERA_MESA_AUTOMATICO, BAL_PORTA, APENAS_LANC_COMANDA, CSC, TOKEN, SERIE,titulo_ficha_consumo,solicita_impressao,gera_producao_venda,obriga_vendedor,cancelafinalizadoraaut,"
-                    + "integracao_pix,tipoimpressora,exibe_estoque_busca,rodapecupom,fechamento_cego,tipo_leitura_codigo_etiqueta,emitesom,usa_tef,tokenanotaai,quebralinha,qnt_impressao,modo)\n" +
-"                          VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)\n" +
+                    + "integracao_pix,tipoimpressora,exibe_estoque_busca,rodapecupom,fechamento_cego,tipo_leitura_codigo_etiqueta,emitesom,usa_tef,tokenanotaai,quebralinha,qnt_impressao,modo,PDV_RESUMIDO)\n" +
+"                          VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)\n" +
 "                        MATCHING (IDPDV);";
             PreparedStatement ps = conexao.getPreparedStatement(sql);
             ps.setString(1, conf.getPdv());
@@ -346,6 +349,7 @@ public class configuracaoDAO {
             ps.setString(29, conf.getQuebraLinha());
             ps.setInt(30, conf.getQntImprime());
             ps.setString(31, conf.getModo());
+            ps.setString(32, conf.getReduzido());
             ps.executeUpdate();
             ps.close();
             JOptionPane.showMessageDialog(null,"Registro Gravado Com Sucesso ");

@@ -37,14 +37,14 @@ public class BaseLancamentoDocumento {
         prod.setPreco_venda("0.00");
         prod.setFator("1");
         prod.setReferencia("");
-        prod.setEstminimo("0");
+        prod.setEstoque_minimo("0");
         prod.setUnid_venda("Un");
-        prod.setSittributaria(pro.getCst());
+        prod.setSit_tributaria(pro.getCst());
         prod.setAliq_icms("0");
         prod.setPis_ent(pro.getPis_cofins());
         prod.setPis_sai(pro.getPis_cofins());
-        prod.setPtsvale("0");
-        prod.setPtsretira("0");
+        //prod.setp("0");
+        //prod.setPtsretira("0");
         prod.setTipo("0");
         prod.setPreco_oferta(0.00);
         prod.setComeco(null);
@@ -66,11 +66,11 @@ public class BaseLancamentoDocumento {
         if(pro.getBarras().equals("Sem Gtin")||pro.getBarras().equals("SEM GTIN")||pro.getBarras().equals("00000000000000")){
             // deve gerar um codigo de barras para o item
             String cod=validaDigitosBarras.preencheCodigo(produtoDAO.PegaIdCodBarra());
-            prod.setCodigo(cod);
-            prod.setBaixa(cod);
+            prod.setCodi_barra(cod);
+            prod.setBaixa_barra(cod);
         }else{
-            prod.setCodigo(pro.getBarras());
-            prod.setBaixa(pro.getBarras());   
+            prod.setCodi_barra(pro.getBarras());
+            prod.setBaixa_barra(pro.getBarras());   
         }
         ClsParametrizaTributos parametriza=new ClsParametrizaTributos();
         prod=parametriza.parmetrizaCstSimplesNacional(prod);

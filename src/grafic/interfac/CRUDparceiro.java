@@ -471,7 +471,7 @@ public class CRUDparceiro extends javax.swing.JDialog {
                                   + "e.cidade,p.tipo_parceiro,p.fantasia \n" +
                                 "from tparceiros p\n" +
                                 "join tenderecos  e on p.idparceiro=e.id_parceiro"
-                    + " where p.excluido='N' and (p.razao_social like '%"+text+"%' or p.cnpj like'%"+text+"%' or p.fantasia like'%"+text+"%')";
+                    + " where p.excluido='N' and (p.razao_social like '%"+text+"%' or p.cnpj like'%"+text+"%' or p.fantasia like'%"+text+"%' or p.fone like'%"+text+"%')";
             PreparedStatement psPesqCliente = conexao.getPreparedStatement(sqlpesqclientes);
             try{
             ResultSet rsPesqCliente = psPesqCliente.executeQuery();

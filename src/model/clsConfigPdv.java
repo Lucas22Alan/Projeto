@@ -16,9 +16,20 @@ public class clsConfigPdv {
     String geraproducao="N",obrigavendedor="N",cancelafina="N",exibeEstoqueBusca="N",rodapecupom="",fechamentoCego="N";
     String tipoLeituraBalanca="0";
     String alertaSonoro="N",temtef="N",quebraLinha="N";
+    String reduzido="N";
     int qntImprime=1;
     String tokenAnota="",modo;
 
+    public String getReduzido() {
+        return reduzido;
+    }
+
+    public void setReduzido(String reduzido) {
+        this.reduzido = reduzido;
+    }
+
+    
+    
     public String getModo() {
         return modo;
     }

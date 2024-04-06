@@ -16,37 +16,41 @@ public class ClsParametrizaTributos {
     
     public produtos parmetrizaCstSimplesNacional(produtos prod){
         
-        switch (prod.getSittributaria()){
-            case "" : prod.setSittributaria("102");
+        if(prod.getSit_tributaria()!=null){
+        switch (prod.getSit_tributaria()){
+            case "" : prod.setSit_tributaria("102");
             break;
-            case "00" : prod.setSittributaria("102");
+            case "00" : prod.setSit_tributaria("102");
             break;
-            case "10" : prod.setSittributaria("500");
+            case "10" : prod.setSit_tributaria("500");
             break;
-            case "20" : prod.setSittributaria("102");
+            case "20" : prod.setSit_tributaria("102");
             break;
-            case "40" : prod.setSittributaria("102");
+            case "40" : prod.setSit_tributaria("102");
             break;
-            case "41" : prod.setSittributaria("102");
+            case "41" : prod.setSit_tributaria("102");
             break;
-            case "51" : prod.setSittributaria("102");
+            case "51" : prod.setSit_tributaria("102");
             break;
-            case "60" : prod.setSittributaria("500");
+            case "60" : prod.setSit_tributaria("500");
             break;
-            case "70" : prod.setSittributaria("102");
+            case "70" : prod.setSit_tributaria("500");
             break;
-            case "102" : prod.setSittributaria("102");
+            case "102" : prod.setSit_tributaria("102");
             break;
-            case "101" : prod.setSittributaria("102");
+            case "101" : prod.setSit_tributaria("102");
             break;
-            case "103" : prod.setSittributaria("102");
+            case "103" : prod.setSit_tributaria("102");
             break;
-            case "400" : prod.setSittributaria("102");
+            case "400" : prod.setSit_tributaria("102");
             break;
-            case "500" : prod.setSittributaria("500");
+            case "500" : prod.setSit_tributaria("500");
             break;
-            case "900" : prod.setSittributaria("102");
+            case "900" : prod.setSit_tributaria("102");
             break;
+            }
+        }else{
+            prod.setSit_tributaria("102");
         }
         return prod;
     }

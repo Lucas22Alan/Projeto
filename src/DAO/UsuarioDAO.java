@@ -70,14 +70,15 @@ public class UsuarioDAO {
     }
     public void inserirAlterar(Tusuarios use){
         try {
-            String sql="UPDATE OR INSERT INTO TUSUARIOS (IDUSUARIO, NOME_USUARIO, SENHA, GRUPO_USUARIO,excluido)\n" +
-                    "                         VALUES (?,?,?,?,'N')\n" +
+            String sql="UPDATE OR INSERT INTO TUSUARIOS (IDUSUARIO, NOME_USUARIO, SENHA, GRUPO_USUARIO,excluido,perc_desconto)\n" +
+                    "                         VALUES (?,?,?,?,'N',?)\n" +
                     "                       MATCHING (IDUSUARIO);";
             PreparedStatement ps = conexao.getPreparedStatement(sql);
             ps.setString(1, use.getIdusuario());
             ps.setString(2, use.getNome());
             ps.setString(3, use.getSenha());
             ps.setString(4, use.getGrupo());
+            ps.setDouble(5, use.getPercDesc());
             ps.executeUpdate();
             ps.close();
         } catch (SQLException ex) {
@@ -98,7 +99,8 @@ public class UsuarioDAO {
                 usu.setIdusuario(rs.getString(1));
                 usu.setNome(rs.getString(2));
                 usu.setSenha(rs.getString(3));
-                usu.setGrupo(rs.getString(4)+"- "+rs.getString(6));
+                usu.setGrupo(rs.getString(4)+"- "+rs.getString(7));
+                usu.setPercDesc(rs.getDouble(6));
                 lista.add(usu);
             } 
             rs.close();

@@ -22,8 +22,18 @@ public class clsConfigGeral {
         String impressaoCondicionalPadrao="";
         String chavePix,clientid,clientsecret="",iptef,codlojatef;
         String usaLocacao="N",ambinetepix="H",zerarSeq="N";
-        String tipoImpOs="";
+        String tipoImpOs="",caixaAgrupado;
 
+    public String getCaixaAgrupado() {
+        return caixaAgrupado;
+    }
+
+    public void setCaixaAgrupado(String caixaAgrupado) {
+        this.caixaAgrupado = caixaAgrupado;
+    }
+
+        
+        
     public String getTipoImpOs() {
         return tipoImpOs;
     }

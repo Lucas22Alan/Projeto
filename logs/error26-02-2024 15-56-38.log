@@ -1,0 +1,3 @@
+Data: 26-02-2024 15-56-40 Erro: ALTER TABLE TPAGAMENTOS_PDV ADD TEF_AUT S1;
+unsuccessful metadata update; STORE RDB$RELATION_FIELDS failed; attempt to store duplicate value (visible to active transactions) in unique index "RDB$INDEX_15"; Problematic key value is ("RDB$FIELD_NAME" = 'TEF_AUT', "RDB$RELATION_NAME" = 'TPAGAMENTOS_PDV') [SQLState:42000, ISC error code:335544351]
+----------------------------------------------------------------

@@ -15,9 +15,19 @@ public class clsLancDocument {
     String cfop,cst,modbc,pis_cofins,cstipi=null;
     String base_icms,aliq_icms,valor_icms,base_st,valor_st,red_bc,
             base_pis,valor_pis,valor_cofins,aliq_pis,aliq_cofins,base_ipi,aliq_ipi,valor_ipi,valor_outras,valor_seguro,valor_frete,
-            base_stretido,valor_stretido,subtotal,custo,fator="0.00";
+            base_stretido,valor_stretido,valor_fcp,subtotal,custo,fator="0.00";
     boolean selecionado=false;
 
+    public String getValor_fcp() {
+        return valor_fcp;
+    }
+
+    public void setValor_fcp(String valor_fcp) {
+        this.valor_fcp = valor_fcp;
+    }
+
+    
+    
     public boolean isSelecionado() {
         return selecionado;
     }

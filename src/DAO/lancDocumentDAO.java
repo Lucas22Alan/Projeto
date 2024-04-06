@@ -55,8 +55,8 @@ public class lancDocumentDAO {
             String sql="update or insert into tmovimento  (numero_documento,serie,data,dat_finalizacao,hora_finalizacao,\n" +
 "                                                              id_parceiro,base_icms,valor_icms,base_st,valor_st,acrescimo,desconto,\n" +
 "                                                              valor_itens,total,estado,sub_total,id_tipo,chave_acesso,valor_pis,valor_cofins,\n" +
-"                                                              id_modelo,mvto_origem,importado_origem,id_mov,valor_ipi,cfop,frete) values(?,?,?,?,current_time,?,?,?,?,?,?,?,?,?,2,\n" +
-"                                                              ?,?,?,?,?,?,?,?,?,?,?,?) matching(id_mov);";
+"                                                              id_modelo,mvto_origem,importado_origem,id_mov,valor_ipi,cfop,frete,vl_fcp) values(?,?,?,?,current_time,?,?,?,?,?,?,?,?,?,2,\n" +
+"                                                              ?,?,?,?,?,?,?,?,?,?,?,?,?) matching(id_mov);";
             
             PreparedStatement psin = conexao.getPreparedStatement(sql);
             psin.setString(1, ldc.getDocument());
@@ -84,6 +84,7 @@ public class lancDocumentDAO {
             psin.setString(23, ldc.getValoripi());
             psin.setString(24, ldc.getCfop());
             psin.setString(25, ldc.getVlFrete());
+            psin.setString(26, ldc.getVlfcp());
             psin.executeUpdate();
             psin.close();
             LancamentoDocumentos.numeitem=0;
@@ -97,9 +98,9 @@ public class lancDocumentDAO {
         try {
             String sqlinsert="update or insert into  titens (id,id_mov,id_prod,quantidade,prec_venda,total,desconto,acrescimo,estado,num_item,unidade,codi_barra,codigo_baixa,fator,"
                     + "     cfop,cst,base_icms,aliq_icms,valor_icms,base_st,valor_st,modbc,red_bc,pis_cofins,base_pis,valor_pis,valor_cofins,aliq_pis,aliq_cofins,cst_ipi,base_ipi,aliq_ipi,valor_ipi,"
-                    + "     desc_fornecedor,cod_fornecedor,ncm,origem_prod,sub_total,cust_unitario,imp,cust_total,vl_frete,vl_seguro,vl_outras,barra_comercial,qnt_comercial)\n" +
+                    + "     desc_fornecedor,cod_fornecedor,ncm,origem_prod,sub_total,cust_unitario,imp,cust_total,vl_frete,vl_seguro,vl_outras,barra_comercial,qnt_comercial,vl_fcp)\n" +
                     "values (gen_id(gen_titens_id,1),?,?,?,?,?,?,?,2,?,?,?,(select baixa_barra from tbarras where codigo_barras=?),?,"
-                    + "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) matching (id_mov, num_item) ;";
+                    + "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) matching (id_mov, num_item) ;";
             PreparedStatement psi=conexao.getPreparedStatement(sqlinsert);
             psi.setString(1, ld.getIdmovto());
             psi.setString(2, ld.getIdproduto());
@@ -147,6 +148,7 @@ public class lancDocumentDAO {
             psi.setString(42, clsaux.trataCampoNulo(ld.getValor_outras()));
             psi.setString(43, ld.getEanComer());
             psi.setString(44, ld.getQntComercial());
+            psi.setString(45, clsaux.trataCampoNulo(ld.getValor_fcp()));
             psi.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(lancDocumentDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -210,7 +212,7 @@ public class lancDocumentDAO {
 "                         td.descricao,"
                     + "   tm.valor_pis,"
                     + "   tm.valor_cofins,"
-                    + "   tm.chave_acesso,tm.id_modelo,tm.hora,tm.mvto_origem,tm.importado_origem,tm.valor_ipi,tm.cfop, tm.frete  \n" +
+                    + "   tm.chave_acesso,tm.id_modelo,tm.hora,tm.mvto_origem,tm.importado_origem,tm.valor_ipi,tm.cfop, tm.frete,tm.vl_fcp  \n" +
 "                    from tmovimento tm\n" +
 "                    join ttipo_documentos td on tm.id_tipo=td.id \n" +
                     "where tm.id_mov=?";
@@ -243,6 +245,7 @@ public class lancDocumentDAO {
             cld.setValoripi(rsd.getString(24));
             cld.setCfop(rsd.getString(25));
             cld.setVlFrete(rsd.getString(26));
+            cld.setVlfcp(rsd.getString(27));
             rsd.close();
             psd.close();
         } catch (SQLException ex) {
@@ -284,7 +287,7 @@ public class lancDocumentDAO {
                     + "ti.aliq_ipi,"
                     + "ti.valor_ipi,"
                     + "ti.desc_fornecedor,"
-                    + "ti.cod_fornecedor,ti.ncm,ti.origem_prod,ti.imp,ti.sub_total,ti.fator,vl_frete,vl_seguro,vl_outras,ti.barra_comercial,ti.qnt_comercial    \n  " +
+                    + "ti.cod_fornecedor,ti.ncm,ti.origem_prod,ti.imp,ti.sub_total,ti.fator,vl_frete,vl_seguro,vl_outras,ti.barra_comercial,ti.qnt_comercial,ti.vl_fcp    \n  " +
                     "from titens ti\n" +
                     "left join tprodutos tp on ti.id_prod=tp.id\n" +
                     "where ti.id_mov=? and ti.estado=2 order by 1 asc";
@@ -333,6 +336,7 @@ public class lancDocumentDAO {
                 item.setValor_outras(rsi.getString(39));
                 item.setEanComer(rsi.getString(40));
                 item.setQntComercial(rsi.getString(41));
+                item.setValor_fcp(rsi.getString(42));
                 item.setCusto(clsaux.formato(rsi.getDouble(5)/rsi.getDouble(3)));
                 listaitens.add(item);
             }

@@ -21,6 +21,7 @@ public class gravarLog {
     private static final String LOG_FILE = "logs/error"+clsaux.retorDataHora()+".log";
     private static final String LOG_FILESEM = "logs/errorSemMensagem"+clsaux.retorDataHora()+".log";
     public static void main (String args){
+        JOptionPane.showMessageDialog(null, args);
          try (BufferedWriter writer = new BufferedWriter(new FileWriter(LOG_FILE, true))) {
             writer.write("Data: "+clsaux.retorDataHora()+" Erro: "+args);
             writer.newLine();

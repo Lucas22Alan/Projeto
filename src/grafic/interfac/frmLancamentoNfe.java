@@ -43,6 +43,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import javax.swing.table.DefaultTableModel;
+import model.clsDadosEmpresa;
 import model.clsOrcamento;
 import model.clsOrdem;
 import model.tnf_infimportacao;
@@ -199,6 +200,8 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
         txtEspecie = new javax.swing.JTextField();
         jLabel47 = new javax.swing.JLabel();
         txtnumeros = new javax.swing.JTextField();
+        jLabel59 = new javax.swing.JLabel();
+        txtEndTransportadora = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         txtChaveAcessoRef = new javax.swing.JTextField();
         jLabel48 = new javax.swing.JLabel();
@@ -369,6 +372,7 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
         cbConsFinal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0- Revenda", "1- Consumo" }));
 
         cbControleInterno.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cbControleInterno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2- Vendas Adm", "3- Compras", "10- Devolução Venda", "11- Devolução Compra", "12- Outras Saidas" }));
         cbControleInterno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbControleInternoActionPerformed(evt);
@@ -811,12 +815,13 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
                         .addComponent(jLabel10)
                         .addComponent(txtValorst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel57)
-                    .addComponent(txtvlIpi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel58)
-                        .addComponent(txtFreteTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtFreteTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel57)
+                        .addComponent(txtvlIpi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1230,6 +1235,17 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
             }
         });
 
+        jLabel59.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel59.setText("End:");
+
+        txtEndTransportadora.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtEndTransportadora.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtEndTransportadora.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEndTransportadoraFocusLost(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -1237,33 +1253,6 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(jLabel37)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtidTransportadora, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel38)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCnpjTransportadora, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel39))
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(jLabel40)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtUfTransportador, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel41)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtCidadeTRansportador)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtRazaoTransportador, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(jLabel42)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbModFrete, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
@@ -1286,8 +1275,38 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
                                 .addComponent(jLabel45)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtVolume, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtnumeros, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(524, Short.MAX_VALUE))
+                            .addComponent(txtnumeros, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel37)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtidTransportadora, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel38)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtCnpjTransportadora, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel39)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtRazaoTransportador, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel59, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtEndTransportadora, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel40)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtUfTransportador, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel41)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtCidadeTRansportador, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel42)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbModFrete, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(298, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1299,15 +1318,17 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
                     .addComponent(jLabel38)
                     .addComponent(jLabel39)
                     .addComponent(txtRazaoTransportador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCnpjTransportadora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCnpjTransportadora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel42)
+                    .addComponent(cbModFrete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel40)
                     .addComponent(txtUfTransportador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel41)
                     .addComponent(txtCidadeTRansportador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel42)
-                    .addComponent(cbModFrete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel59)
+                    .addComponent(txtEndTransportadora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel43)
@@ -1500,14 +1521,14 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
 
             },
             new String [] {
-                "[ X ]", "Mvto", "Valor", "Data", "Parceiro", "Chave"
+                "[ X ]", "Mvto", "Nº", "Serie", "Valor", "Data", "Parceiro", "Chave"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, false
+                true, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1520,20 +1541,21 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
         });
         tbAnexos.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         tbAnexos.setRowHeight(20);
+        tbAnexos.getTableHeader().setReorderingAllowed(false);
         jScrollPane4.setViewportView(tbAnexos);
         if (tbAnexos.getColumnModel().getColumnCount() > 0) {
             tbAnexos.getColumnModel().getColumn(0).setResizable(false);
             tbAnexos.getColumnModel().getColumn(0).setPreferredWidth(30);
             tbAnexos.getColumnModel().getColumn(1).setResizable(false);
             tbAnexos.getColumnModel().getColumn(1).setPreferredWidth(100);
-            tbAnexos.getColumnModel().getColumn(2).setResizable(false);
-            tbAnexos.getColumnModel().getColumn(2).setPreferredWidth(150);
-            tbAnexos.getColumnModel().getColumn(3).setResizable(false);
-            tbAnexos.getColumnModel().getColumn(3).setPreferredWidth(80);
             tbAnexos.getColumnModel().getColumn(4).setResizable(false);
-            tbAnexos.getColumnModel().getColumn(4).setPreferredWidth(200);
+            tbAnexos.getColumnModel().getColumn(4).setPreferredWidth(150);
             tbAnexos.getColumnModel().getColumn(5).setResizable(false);
-            tbAnexos.getColumnModel().getColumn(5).setPreferredWidth(200);
+            tbAnexos.getColumnModel().getColumn(5).setPreferredWidth(80);
+            tbAnexos.getColumnModel().getColumn(6).setResizable(false);
+            tbAnexos.getColumnModel().getColumn(6).setPreferredWidth(200);
+            tbAnexos.getColumnModel().getColumn(7).setResizable(false);
+            tbAnexos.getColumnModel().getColumn(7).setPreferredWidth(200);
         }
 
         try {
@@ -1792,7 +1814,7 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
         this.calculaValoresFinanceiro();
-        this.insereFinalizadora(txtMovto.getText());
+        //this.insereFinalizadora(txtMovto.getText());
     }//GEN-LAST:event_btnOkActionPerformed
 
     private void CbFinalizadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbFinalizadoraActionPerformed
@@ -2028,9 +2050,13 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
     private void txtFreteTotalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFreteTotalFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFreteTotalFocusLost
+
+    private void txtEndTransportadoraFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEndTransportadoraFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEndTransportadoraFocusLost
     public void inicializa(){
-        DefaultComboBoxModel cbtip= new DefaultComboBoxModel(listaDAO.listaTipoDocumento().toArray());
-        cbControleInterno.setModel(cbtip); 
+        //DefaultComboBoxModel cbtip= new DefaultComboBoxModel(listaDAO.listaTipoDocumento().toArray());
+        //cbControleInterno.setModel(cbtip); 
         InputMap imp= this.getRootPane().getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
         imp.put(KeyStroke.getKeyStroke(KeyEvent.VK_F10,0),"busca");
         imp.put(KeyStroke.getKeyStroke(KeyEvent.VK_F1,0) , "NovoItem");
@@ -2073,9 +2099,10 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
                     "        tp.cnpj,\n" +
                     "        tp.razao_social,\n" +
                     "        tp.inscricao_estadual,\n" +
-                    "        tp.fone from\n" +
-                    " tparceiros tp where tp.idparceiro=?";
+                    "        tp.fone,td.estado from\n" +
+                    " tparceiros tp  left join tenderecos td on td.id_parceiro=tp.idparceiro where tp.idparceiro=?";
         PreparedStatement ps = conexao.getPreparedStatementResult(sql);
+        String estado="";
         try {
             ps.setString(1, id);
             ResultSet rs = ps.executeQuery();
@@ -2084,6 +2111,7 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
             txtCnpj.setText(rs.getString(2));
             txtInscricao.setText(rs.getString(4));
             txtFone.setText(rs.getString(5));
+            estado=rs.getString(6);
             rs.close();
             ps.close();
         } catch (SQLException ex) {
@@ -2096,6 +2124,31 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
            txtCnpj.setEditable(true);
        }
         
+       if(txtCnpj.getText().length()<14){
+           txtInscricao.setText("Isento");
+           cbIe.setSelectedIndex(1);
+           cbConsFinal.setSelectedIndex(1);
+       }
+       if(estado!=null){
+           if(estado.equals(clsDadosEmpresa.getEstado()));
+           else{
+               cbIndDest.setSelectedIndex(1);
+               if(cbControleInterno.getSelectedIndex()==0){
+                   txtCfop.setText("6102");
+               }else if(cbControleInterno.getSelectedIndex()==1){
+                   txtCfop.setText("2102");
+               }else if(cbControleInterno.getSelectedIndex()==2){
+                   txtCfop.setText("2202");
+               }
+               else if(cbControleInterno.getSelectedIndex()==3){
+                   txtCfop.setText("6202");
+               }
+               else if(cbControleInterno.getSelectedIndex()==4){
+                   txtCfop.setText("6949");
+               }
+               
+           }
+       }
     }
     public void gravaRegistro(){
         clsLancDocCabecalho cd= new clsLancDocCabecalho();
@@ -2126,10 +2179,13 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
         
         this.gravarItens();
         this.gravarNfe();
-        this.gravarTransportadora();
-        this.gravarInfReferencia();
+        if(txtModelo.getText().equals("55")){
+            this.gravarTransportadora();
+            this.gravarInfReferencia();
+        }
+        this.gravaFinanceiro(cd.getIdmovimento());
         this.limpaDados();
-        CRUDNfe.JcbEstado.setSelectedIndex(4);
+        //CRUDNfe.JcbEstado.setSelectedIndex(4);
         CRUDNfe.btnPesquisa.requestFocus();
        
         this.dispose();
@@ -2157,6 +2213,7 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
        nfdao.inserirMovimentoNfe(nf);
     }
     public void gravarTransportadora(){
+        if(txtModelo.getText().equals("55")){
         transporte.setIdmovimento(idmovimento);
         transporte.setCidade(txtCidadeTRansportador.getText());
         transporte.setCnpj(txtCnpjTransportadora.getText());
@@ -2169,7 +2226,9 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
         transporte.setRazao(txtRazaoTransportador.getText());
         transporte.setUf(txtUfTransportador.getText());
         transporte.setVolumes(txtVolume.getText());
-        nfeDAO.inserirAtualizaTransporteNf(transporte);
+        transporte.setEndereco(txtEndTransportadora.getText());
+         nfeDAO.inserirAtualizaTransporteNf(transporte);
+        }
    }
     public void gravarInfReferencia(){
         for(int i=0; i<tbInfRef.getRowCount(); i++){
@@ -2191,8 +2250,9 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
         Double vlipi=0.00,vlfreteTotal=0.00;
         
         for (int i=0; i<lin; i++){
-            valor=valor+(clsaux.capturaValores(tbItens.getValueAt(i, 5).toString())*clsaux.capturaValores(tbItens.getValueAt(i, 3).toString()));
-            desconto=desconto+clsaux.capturaValores(tbItens.getValueAt(i, 6).toString().replaceAll(",", "."));
+            valor=valor+ clsaux.capturaValores(clsaux.formato3(clsaux.capturaValores(tbItens.getValueAt(i, 5).toString())*clsaux.capturaValores(tbItens.getValueAt(i, 3).toString())));
+           //valor=valor+ clsaux.capturaValores(tbItens.getValueAt(i, 8).toString());
+           desconto=desconto+clsaux.capturaValores(tbItens.getValueAt(i, 6).toString().replaceAll(",", "."));
             acres=acres+clsaux.capturaValores(tbItens.getValueAt(i, 7).toString().replaceAll(",", "."));
             vlpis=vlpis+clsaux.capturaValores(itens.get(i).getValor_pis());
             vlcofins=vlcofins+ clsaux.capturaValores(itens.get(i).getValor_cofins());
@@ -2268,8 +2328,30 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
         this.carregaInfReferencia();
         this.carregaDadosFinanceiro(idmovimento);
         this.preencheDadosParceiro(ld.getIdparceiro());
+        if(ld.getModelo().equals("55"))this.carregaDadosTransportadora(idmovimento);
+        
      }
     
+    
+    public void carregaDadosTransportadora(String mv){
+       transporte.setIdmovimento(mv);
+       transporte= nfeDAO.retornaDadosTransporte(transporte);
+       
+       txtCnpjTransportadora.setText(transporte.getCnpj());
+       txtRazaoTransportador.setText(transporte.getRazao());
+       txtEndTransportadora.setText(transporte.getEndereco());
+       txtUfTransportador.setText(transporte.getUf());
+       txtCidadeTRansportador.setText(transporte.getCidade());
+       
+       txtPesoLiq.setText(transporte.getPesoliq());
+       txtPesoBruto.setText(transporte.getPesobruto());
+       txtVolume.setText(transporte.getVolumes());
+       txtEspecie.setText(transporte.getEspecie());
+       txtnumeros.setText(transporte.getNumero());
+       clsaux.carregaComboBox(cbModFrete, transporte.getModfrete());
+       
+        
+    }
     public void carregaInfReferencia( ){
         List<String> ret=nfeDAO.retornaInfReferencia(idmovimento);
         DefaultTableModel tb = (DefaultTableModel) tbInfRef.getModel();
@@ -2328,6 +2410,8 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
         parceiro=txtIdParceiro.getText();
        if(doc.equals("")||ser.equals("")||doc.equals("0")||parceiro.equals("")||parceiro.isEmpty()==true){
            JOptionPane.showMessageDialog(null, "Falta preencher os campos Documento ou Serie ou Parceiro!!!");
+       }else if(itens.size()==0){
+            JOptionPane.showMessageDialog(null, "Falta Lançar Os Itens !!!");
        }else {
            this.gravaRegistro();
        }
@@ -2413,7 +2497,7 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
             });
         }else if (parcela > 1){
             valor= valor/parcela;
-            for (int i=0; i<parcela; i++){
+            for (int i=1; i<=parcela; i++){
                 tbl.addRow(new Object []{
                     clsaux.preencheData(),
                     clsaux.formato(valor),
@@ -2470,7 +2554,7 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
                 cr.setNumero(txtDocumento.getText());
                 cr.setParceiro(txtIdParceiro.getText());
                 cr.setSaldo(valor);
-                cr.setTipo("3");
+                cr.setTipo("2");
                 cr.setTipo_pag(String.valueOf(fin));
                 cr.setValor(valor);
                 cr.setVendedor("1");
@@ -2660,7 +2744,9 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
                tb.addRow(new Object[]{
                     new Boolean(false),
                     reg.getIdmovimento(),
-                    reg.getTotal(),
+                    reg.getDocument(),
+                    reg.getSerie(),
+                    clsaux.formato(clsaux.capturaValores(reg.getTotal())),
                     clsaux.convertDataExib(reg.getLancamento().toString()),
                     "",
                     reg.getChaveacesso()
@@ -2718,7 +2804,7 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
                     tbAnexos.getValueAt(i, 1),
                     clsaux.retornaId(cbOrigem.getSelectedItem()),
                     txtPercentualImporta.getText(),
-                    tbAnexos.getValueAt(i, 5)
+                    tbAnexos.getValueAt(i, 7)
                 });
                 
             }
@@ -2893,6 +2979,7 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -2932,6 +3019,7 @@ public class frmLancamentoNfe extends javax.swing.JDialog {
     private javax.swing.JTextField txtCnpjTransportadora;
     private static javax.swing.JTextField txtDescont;
     private javax.swing.JTextField txtDocumento;
+    private javax.swing.JTextField txtEndTransportadora;
     private javax.swing.JTextField txtEspecie;
     private javax.swing.JTextField txtFone;
     private static javax.swing.JTextField txtFreteTotal;

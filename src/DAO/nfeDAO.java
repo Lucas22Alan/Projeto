@@ -165,8 +165,8 @@ public class nfeDAO {
     }
     public static void inserirAtualizaTransporteNf(clsNfTransporte nf){
         try {
-            String sql="UPDATE OR INSERT INTO TNF_TRANSPORTADORA (ID_MOVIMENTO, ID_TRANSPORTADORA, CNPJ, RAZAO, UF, CIDADE, MODALIDADE_FRETE, PESO_LIQ, PESO_BRUTO, VOLUMES, ESPECIE, NUMEROS)\n" +
-                    "                                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)\n" +
+            String sql="UPDATE OR INSERT INTO TNF_TRANSPORTADORA (ID_MOVIMENTO, ID_TRANSPORTADORA, CNPJ, RAZAO, UF, CIDADE, MODALIDADE_FRETE, PESO_LIQ, PESO_BRUTO, VOLUMES, ESPECIE, NUMEROS, ENDERECO)\n" +
+                    "                                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)\n" +
                     "                                MATCHING (ID_MOVIMENTO);";
             
             PreparedStatement ps = conexao.getPreparedStatement(sql);
@@ -182,6 +182,7 @@ public class nfeDAO {
             ps.setString(10, nf.getVolumes());
             ps.setString(11, nf.getEspecie());
             ps.setString(12, nf.getNumero());
+            ps.setString(13, nf.getEndereco());
             ps.executeUpdate();
             ps.close();
         } catch (SQLException ex) {
@@ -210,6 +211,7 @@ public class nfeDAO {
             mov.setVolumes(rs.getString(10));
             mov.setEspecie(rs.getString(11));
             mov.setNumero(rs.getString(12));
+            mov.setEndereco(rs.getString("ENDERECO"));
             rs.close();
             ps.close();
         } catch (SQLException ex) {

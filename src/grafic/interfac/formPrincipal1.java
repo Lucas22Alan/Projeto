@@ -41,6 +41,8 @@ import jxl.read.biff.BiffException;
 import model.CadContasRecPagar;
 import relatorios.FrmMovOs;
 import relatorios.FrmRelDreResumido;
+import relatorios.FrmRelatorioSangrias;
+import relatorios.frmRelDelivery;
 import relatorios.frmRelDevolucao;
 import relatorios.frmRelLocacao;
 import relatorios.frmRelLocacaoItens;
@@ -55,6 +57,7 @@ import relatorios.frmRelVendasGeral;
 import relatorios.frmRelVendasGeralPdv;
 import relatorios.frmRelVendasParceiro;
 import relatorios.frmRelVendasTotalDiario;
+import relatorios.frmRenVendasPizza;
 import relatorios.frmVendaCancelada;
 import relatorios.frmVendaItensCancelados;
 import relatorios.relComprasItensFornecedor;
@@ -144,6 +147,7 @@ public class formPrincipal1 extends javax.swing.JFrame {
         jMenuItem74 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem16 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         menuConferenciaCaixa = new javax.swing.JMenuItem();
         menuMovimentacaoCaixa = new javax.swing.JMenuItem();
@@ -183,6 +187,7 @@ public class formPrincipal1 extends javax.swing.JFrame {
         MiMovTipo = new javax.swing.JMenuItem();
         MiFluxo = new javax.swing.JMenuItem();
         MiResumoMov = new javax.swing.JMenuItem();
+        MiResumoMov1 = new javax.swing.JMenuItem();
         MenuVendas = new javax.swing.JMenu();
         MiVenProduto = new javax.swing.JMenuItem();
         MiVenProduto1 = new javax.swing.JMenuItem();
@@ -214,6 +219,14 @@ public class formPrincipal1 extends javax.swing.JFrame {
         MiLocItens = new javax.swing.JMenuItem();
         MiLocProd = new javax.swing.JMenuItem();
         jMenuItem73 = new javax.swing.JMenuItem();
+        MenuPizzaria = new javax.swing.JMenu();
+        MiVendaTamanho = new javax.swing.JMenuItem();
+        MiVendaSabor = new javax.swing.JMenuItem();
+        MiVendaSabor1 = new javax.swing.JMenuItem();
+        MenuPizzaria1 = new javax.swing.JMenu();
+        MiVendaTamanho1 = new javax.swing.JMenuItem();
+        MiVendaSabor2 = new javax.swing.JMenuItem();
+        MiVendaSabor3 = new javax.swing.JMenuItem();
         jMenu11 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu15 = new javax.swing.JMenu();
@@ -893,6 +906,15 @@ public class formPrincipal1 extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem14);
 
+        jMenuItem16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cad99.png"))); // NOI18N
+        jMenuItem16.setText("Cad. Horarios Funcionamento");
+        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem16ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem16);
+
         jMenuBar1.add(jMenu1);
 
         jMenu3.setText("Financeiro          ");
@@ -1215,6 +1237,14 @@ public class formPrincipal1 extends javax.swing.JFrame {
         });
         MenuFinanceiro.add(MiResumoMov);
 
+        MiResumoMov1.setText("Sangrias/ Suprimento PDV");
+        MiResumoMov1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MiResumoMov1ActionPerformed(evt);
+            }
+        });
+        MenuFinanceiro.add(MiResumoMov1);
+
         jMenu7.add(MenuFinanceiro);
 
         MenuVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/relvend99.png"))); // NOI18N
@@ -1459,6 +1489,62 @@ public class formPrincipal1 extends javax.swing.JFrame {
         MenuLocacao.add(jMenuItem73);
 
         jMenu7.add(MenuLocacao);
+
+        MenuPizzaria.setText("Pizzaria");
+
+        MiVendaTamanho.setText("Vendas Por Tamanho");
+        MiVendaTamanho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MiVendaTamanhoActionPerformed(evt);
+            }
+        });
+        MenuPizzaria.add(MiVendaTamanho);
+
+        MiVendaSabor.setText("Vendas Por Sabor");
+        MiVendaSabor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MiVendaSaborActionPerformed(evt);
+            }
+        });
+        MenuPizzaria.add(MiVendaSabor);
+
+        MiVendaSabor1.setText("Vendas Adicionais/Bordas ");
+        MiVendaSabor1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MiVendaSabor1ActionPerformed(evt);
+            }
+        });
+        MenuPizzaria.add(MiVendaSabor1);
+
+        jMenu7.add(MenuPizzaria);
+
+        MenuPizzaria1.setText("Delivery");
+
+        MiVendaTamanho1.setText("Entregas Por Bairro");
+        MiVendaTamanho1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MiVendaTamanho1ActionPerformed(evt);
+            }
+        });
+        MenuPizzaria1.add(MiVendaTamanho1);
+
+        MiVendaSabor2.setText("Entregas Por Motoboy");
+        MiVendaSabor2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MiVendaSabor2ActionPerformed(evt);
+            }
+        });
+        MenuPizzaria1.add(MiVendaSabor2);
+
+        MiVendaSabor3.setText("Ranking Clientes");
+        MiVendaSabor3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MiVendaSabor3ActionPerformed(evt);
+            }
+        });
+        MenuPizzaria1.add(MiVendaSabor3);
+
+        jMenu7.add(MenuPizzaria1);
 
         jMenuBar1.add(jMenu7);
 
@@ -2169,6 +2255,54 @@ public class formPrincipal1 extends javax.swing.JFrame {
         new BaseGeralDAO().correcaoCustoCadastroUltimaCompra();
         new BaseGeralDAO().correcaoCustoVendaZero();
     }//GEN-LAST:event_jMenuItem68ActionPerformed
+
+    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
+      CRUDhorarios dialog = new CRUDhorarios(new javax.swing.JFrame(), true);
+      dialog.setLocationRelativeTo(null);
+      dialog.setVisible(true);
+    }//GEN-LAST:event_jMenuItem16ActionPerformed
+
+    private void MiVendaTamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiVendaTamanhoActionPerformed
+       frmRenVendasPizza dialog = new frmRenVendasPizza(new javax.swing.JFrame(), true);
+       dialog.setLocationRelativeTo(null);
+       dialog.inicia(0);
+       dialog.setVisible(true);
+       
+    }//GEN-LAST:event_MiVendaTamanhoActionPerformed
+
+    private void MiVendaSaborActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiVendaSaborActionPerformed
+      frmRenVendasPizza dialog = new frmRenVendasPizza(new javax.swing.JFrame(), true);
+       dialog.setLocationRelativeTo(null);
+       dialog.inicia(1);
+       dialog.setVisible(true);
+    }//GEN-LAST:event_MiVendaSaborActionPerformed
+
+    private void MiVendaSabor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiVendaSabor1ActionPerformed
+        frmRenVendasPizza dialog = new frmRenVendasPizza(new javax.swing.JFrame(), true);
+       dialog.setLocationRelativeTo(null);
+       dialog.inicia(2);
+       dialog.setVisible(true);
+    }//GEN-LAST:event_MiVendaSabor1ActionPerformed
+
+    private void MiVendaTamanho1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiVendaTamanho1ActionPerformed
+        frmRelDelivery dialog = new frmRelDelivery(new javax.swing.JFrame(), true);
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_MiVendaTamanho1ActionPerformed
+
+    private void MiVendaSabor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiVendaSabor2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MiVendaSabor2ActionPerformed
+
+    private void MiVendaSabor3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiVendaSabor3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MiVendaSabor3ActionPerformed
+
+    private void MiResumoMov1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiResumoMov1ActionPerformed
+       FrmRelatorioSangrias dialog = new FrmRelatorioSangrias(new javax.swing.JFrame(), true);
+       dialog.setLocationRelativeTo(null);
+       dialog.setVisible(true);
+    }//GEN-LAST:event_MiResumoMov1ActionPerformed
     
     public void abreCrudNfe(){
         CRUDNfe dialog = new CRUDNfe(new javax.swing.JFrame(), true);
@@ -2325,6 +2459,8 @@ public class formPrincipal1 extends javax.swing.JFrame {
     private javax.swing.JMenu MenuFinanceiro;
     private javax.swing.JMenu MenuLocacao;
     private javax.swing.JMenu MenuOs;
+    private javax.swing.JMenu MenuPizzaria;
+    private javax.swing.JMenu MenuPizzaria1;
     private javax.swing.JMenu MenuProdutos;
     private javax.swing.JMenu MenuVendas;
     private javax.swing.JMenuItem MiAniver;
@@ -2350,6 +2486,7 @@ public class formPrincipal1 extends javax.swing.JFrame {
     private javax.swing.JMenuItem MiProdMedia;
     private javax.swing.JMenuItem MiRank;
     private javax.swing.JMenuItem MiResumoMov;
+    private javax.swing.JMenuItem MiResumoMov1;
     private javax.swing.JMenuItem MiTotalFin;
     private javax.swing.JMenuItem MiTotalPonto;
     private javax.swing.JMenuItem MiVenProduto;
@@ -2360,6 +2497,12 @@ public class formPrincipal1 extends javax.swing.JFrame {
     private javax.swing.JMenuItem MiVendParc;
     private javax.swing.JMenuItem MiVendaCancelada;
     private javax.swing.JMenuItem MiVendaItemCancelado;
+    private javax.swing.JMenuItem MiVendaSabor;
+    private javax.swing.JMenuItem MiVendaSabor1;
+    private javax.swing.JMenuItem MiVendaSabor2;
+    private javax.swing.JMenuItem MiVendaSabor3;
+    private javax.swing.JMenuItem MiVendaTamanho;
+    private javax.swing.JMenuItem MiVendaTamanho1;
     private javax.swing.JMenuItem MiVendasVend;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -2391,6 +2534,7 @@ public class formPrincipal1 extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem19;
@@ -2412,7 +2556,7 @@ public class formPrincipal1 extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem52;
     private javax.swing.JMenuItem jMenuItem53;
     private javax.swing.JMenuItem jMenuItem54;
-    private javax.swing.JMenuItem jMenuItem55;
+    public static javax.swing.JMenuItem jMenuItem55;
     private javax.swing.JMenuItem jMenuItem56;
     private javax.swing.JMenuItem jMenuItem57;
     private javax.swing.JMenuItem jMenuItem58;
@@ -2441,7 +2585,7 @@ public class formPrincipal1 extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator1;
     public static javax.swing.JLabel labelEmpresa;
     public static javax.swing.JLabel lbCondicional;
-    private javax.swing.JLabel lbContrato;
+    public static javax.swing.JLabel lbContrato;
     private javax.swing.JLabel lbContrato1;
     public javax.swing.JLabel lbDiasRestante;
     private javax.swing.JLabel lbDocumentos;

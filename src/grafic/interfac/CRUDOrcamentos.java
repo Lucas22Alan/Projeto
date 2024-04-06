@@ -13,7 +13,6 @@ import model.clsOrcamento;
 import model.clsPagamentos;
 import classes.clsaux;
 import conexoes.conexao;
-import static grafic.interfac.CRUDprodutos.jTable1;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -37,12 +36,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRResultSetDataSource;
-import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 /**
@@ -708,7 +703,7 @@ public class CRUDOrcamentos extends javax.swing.JDialog {
 "                                    tp.descricao,\n" +
 "                                    tp.unitario as vl_unit,\n" +
 "                                    tp.qnt,\n" +
-"                                    tp.total as total\n" +
+"                                    tp.total as total,tp.observacao \n" +
 "                             from torcamento_itens tp\n" +
 "                             where tp.id_orcamento='"+indice+"' and tp.estado=2";
             String sqldadoscond=" select tv.total,\n" +

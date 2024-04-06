@@ -6,6 +6,7 @@
 package grafic.interfac;
 
 import DAO.MovimentacaoEstoqueDAO;
+import DAO.TauditDAO;
 import classes.clsMovimentoEstoque;
 import classes.clsaux;
 import java.awt.event.MouseAdapter;
@@ -17,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import model.Taudit_prod;
 
 /**
  *
@@ -64,6 +66,9 @@ public class FrmMovimentacaoEstoque extends javax.swing.JDialog {
         jPanel5 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbTodos = new javax.swing.JTable();
+        jPanel6 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tbauditoria = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -343,6 +348,38 @@ public class FrmMovimentacaoEstoque extends javax.swing.JDialog {
 
         jTabbedPane1.addTab("Todos", jPanel5);
 
+        tbauditoria.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Usuario", "Preço Antigo", "Preço Novo", "Data", "Obs"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbauditoria.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setViewportView(tbauditoria);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 812, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Alterações De Preços", jPanel6);
+
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Total Entrada:");
 
@@ -467,6 +504,23 @@ public class FrmMovimentacaoEstoque extends javax.swing.JDialog {
           
         }); 
     }
+    
+    public void buscaHistoricoAuditoria(String idprod){
+        List<Taudit_prod> auds = new TauditDAO().retornaRegistros(idprod);
+        DefaultTableModel tbau= (DefaultTableModel) tbauditoria.getModel();
+        tbau.setNumRows(0);
+        for (Taudit_prod aud:auds){
+           tbau.addRow( new Object[]{
+               aud.getId(),
+               aud.getUsuario(),
+               clsaux.formato(aud.getValorant()),
+               clsaux.formato(aud.getValornovo()),
+               clsaux.convertDataHoraExib(aud.getDataoperacao())
+        });
+       }
+        jTabbedPane1.setSelectedIndex(3);
+    }
+    
     public void busca(){
         try {
             MovimentacaoEstoqueDAO dao = new MovimentacaoEstoqueDAO();
@@ -638,9 +692,11 @@ public class FrmMovimentacaoEstoque extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lbQntEntrada;
     private javax.swing.JLabel lbQntSaida;
@@ -650,5 +706,6 @@ public class FrmMovimentacaoEstoque extends javax.swing.JDialog {
     private javax.swing.JTable tbEntradas;
     private javax.swing.JTable tbSaidas;
     private javax.swing.JTable tbTodos;
+    private javax.swing.JTable tbauditoria;
     // End of variables declaration//GEN-END:variables
 }

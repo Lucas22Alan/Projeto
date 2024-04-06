@@ -67,10 +67,11 @@ public class ClsEnvioEmail {
             
             Address [] dest= InternetAddress.parse(destinatario);
             
-            message.setRecipients(Message.RecipientType.TO, dest);
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(destinatario));
             message.setSubject("E-mail Sistema Esfhera Light");//aqui vem o assunto do email
             message.setText(texto);
-             Transport.send(message);
+           
+            Transport.send(message);
             JOptionPane.showMessageDialog(null,"E-mail Enviado Com Sucesso!!!");
             
             
@@ -92,12 +93,12 @@ public class ClsEnvioEmail {
         try {
             Properties pro=new Properties();
             pro.put("mail.smtp.host", tconfig_email.getSmtp());
-            pro.put("mail.smtp.socketFactory.port", tconfig_email.getPorta());
+            //pro.put("mail.smtp.socketFactory.port", "587");
             pro.put("mail.smtp.socketFactory.class",
                     "javax.net.ssl.SSLSocketFactory");
-            pro.setProperty("mail.smtp.starttls.enable", tconfig_email.getTls());
-            pro.put("mail.smtp.auth", tconfig_email.getAut());
-            pro.put("mail.smtp.port", tconfig_email.getPorta());
+            pro.setProperty("mail.smtp.starttls.enable", "true");
+            pro.put("mail.smtp.auth", "false");
+            pro.put("mail.smtp.port", "587");
             
             
             Session ses=Session.getDefaultInstance(pro, new javax.mail.Authenticator(){

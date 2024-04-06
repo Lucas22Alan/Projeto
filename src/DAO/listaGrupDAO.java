@@ -78,4 +78,19 @@ public class listaGrupDAO {
         }
         return listagrup;
     }
+    public static List listaImgPadrao(){
+        List <String> listagrup= new ArrayList<String>();
+        try{
+           
+        String Sqlpegagrupo="select * from TLINK_IMGCARDAPIO order by 1";
+        PreparedStatement psgrup= conexao.getPreparedStatement(Sqlpegagrupo);
+        ResultSet rsgrup = psgrup.executeQuery();
+        while(rsgrup.next()){
+            listagrup.add(rsgrup.getString(1)+" -"+rsgrup.getString(2));
+        }
+        }catch (SQLException er){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar grupos "+er);
+        }
+        return listagrup;
+    }
 }

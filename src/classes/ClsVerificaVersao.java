@@ -6,10 +6,14 @@
 package classes;
 
 import DAO.AtualizaDAO;
+import Logs.gravarLog;
+import conexoes.conexao;
 import java.io.BufferedReader;
+import java.io.File;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -21,7 +25,7 @@ import javax.swing.JOptionPane;
  * @author Mk Solucoes
  */
 public class ClsVerificaVersao {
-    public static final String versaoCompilada="1.056";
+    public static final String versaoCompilada="1.075";
     public static String versaosis="";
     
     public static Boolean verificaAtualizaVersao(){
@@ -48,6 +52,7 @@ public class ClsVerificaVersao {
         int versis=Integer.parseInt(versaosis.replaceAll("\\.", ""));
         if(vercomp<versis){
             JOptionPane.showMessageDialog(null, "Atenção Sistema Desatualizado!!!");
+            copiaVersaoServidor();
             System.exit(0);
         }
         for(int i=versis+1; i<=vercomp; i++){
@@ -85,5 +90,20 @@ public class ClsVerificaVersao {
             e.printStackTrace();
         }
         return comando;
+    }
+    private static void copiaVersaoServidor(){
+        try {
+            String caminhoexec= "\\\\"+conexao.ip+"\\c\\esfhera\\adm\\projeto.jar";
+            String destinoexec="c:\\esfhera\\adm\\temp.jar";
+           
+            File origem=new File(caminhoexec);
+            File camfim=new File(destinoexec);;
+            Files.copy(origem.toPath(), camfim.toPath());
+            Runtime.getRuntime().exec("cmd.exe /c start c:\\esfhera\\adm\\att.bat");
+            
+        } catch (Exception ex) {
+            Logger.getLogger(ClsVerificaVersao.class.getName()).log(Level.SEVERE, null, ex);
+            gravarLog.main("Falha ao executar atualização automatica! \n"+ex.getMessage());
+        }
     }
 }

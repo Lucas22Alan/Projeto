@@ -11,6 +11,17 @@ package model;
  */
 public class Tusuarios {
     String idusuario,nome,senha,grupo=null;
+    Double percDesc;
+
+    public Double getPercDesc() {
+        return percDesc;
+    }
+
+    public void setPercDesc(Double percDesc) {
+        this.percDesc = percDesc;
+    }
+    
+    
 
     public String getIdusuario() {
         return idusuario;

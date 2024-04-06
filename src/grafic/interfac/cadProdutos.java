@@ -151,6 +151,10 @@ public class cadProdutos extends javax.swing.JDialog {
         jButton2 = new javax.swing.JButton();
         jPanel19 = new javax.swing.JPanel();
         lbImagem = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel49 = new javax.swing.JLabel();
+        cbImagemPadraoCardapio = new javax.swing.JComboBox<>();
+        ckAtivocardapioOnline = new javax.swing.JCheckBox();
         jPanel10 = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
         jPanel17 = new javax.swing.JPanel();
@@ -297,8 +301,8 @@ public class cadProdutos extends javax.swing.JDialog {
                 .addGap(4, 4, 4)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(TxtCodigoInternoProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(361, 361, 361)
+                        .addComponent(TxtCodigoInternoProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(305, 305, 305)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(CkBoxInativo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -556,9 +560,8 @@ public class cadProdutos extends javax.swing.JDialog {
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cbImpProd, 0, 102, Short.MAX_VALUE)
                             .addComponent(ftValidade)
-                            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(cbPesavel, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cbBalanca, javax.swing.GroupLayout.Alignment.LEADING, 0, 100, Short.MAX_VALUE)))
+                            .addComponent(cbPesavel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbBalanca, 0, 102, Short.MAX_VALUE))
                         .addGap(41, 41, 41)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ckPrecoVariado)
@@ -887,6 +890,7 @@ public class cadProdutos extends javax.swing.JDialog {
         jScrollPane3.setViewportView(txtDescritivo);
 
         jButton2.setText("Procurar Imagem");
+        jButton2.setEnabled(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -941,6 +945,17 @@ public class cadProdutos extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
+        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        jLabel49.setText("Imagem Padrão:");
+
+        ckAtivocardapioOnline.setText("Ativo Para Venda Cardapio Online");
+        ckAtivocardapioOnline.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckAtivocardapioOnlineActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -951,6 +966,15 @@ public class cadProdutos extends javax.swing.JDialog {
                     .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel49)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbImagemPadraoCardapio, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ckAtivocardapioOnline))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -959,9 +983,20 @@ public class cadProdutos extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel49)
+                            .addComponent(cbImagemPadraoCardapio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(ckAtivocardapioOnline)))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Clube / Cardapio", jPanel2);
@@ -2007,7 +2042,7 @@ public class cadProdutos extends javax.swing.JDialog {
     }//GEN-LAST:event_txtCodigoActionPerformed
 
     private void jPanel2ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel2ComponentShown
-
+        carregaImgPadrao();
     }//GEN-LAST:event_jPanel2ComponentShown
 
     private void CbPisCofinsSaidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CbPisCofinsSaidaMouseClicked
@@ -2127,6 +2162,12 @@ public class cadProdutos extends javax.swing.JDialog {
        BtnGerarCodigo.setEnabled(true);
        ajustaBarra=true;
     }//GEN-LAST:event_BtnGerarCodigo1ActionPerformed
+
+    private void ckAtivocardapioOnlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckAtivocardapioOnlineActionPerformed
+        if(ckAtivocardapioOnline.isSelected()){
+            ckCardapio.setSelected(true);
+        }
+    }//GEN-LAST:event_ckAtivocardapioOnlineActionPerformed
     
     public void abrirProcuraArq(){
         int retorno=flImagem.showOpenDialog(this);
@@ -2155,6 +2196,16 @@ public class cadProdutos extends javax.swing.JDialog {
              gravarLog.gravaSemMensagem(ex.toString());
             Logger.getLogger(FormEmpresa.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void carregaImgPadrao(){
+        DefaultComboBoxModel CbGrup = new DefaultComboBoxModel(listaGrupDAO.listaImgPadrao().toArray());
+        cbImagemPadraoCardapio.setModel(CbGrup);
+        if(prod.getIdimagem()!=null){
+            clsaux.carregaComboBox(cbImagemPadraoCardapio, prod.getIdimagem());
+        }
+        if(clsaux.trataCampoNuloConfig(prod.getAtivoCardapio()).equals("S")) ckAtivocardapioOnline.setSelected(true); else ckAtivocardapioOnline.setSelected(false);
+       
     }
     public void incluirNovoGrupo(){
         frmCadTabelas.tipo="G";
@@ -2232,14 +2283,14 @@ public class cadProdutos extends javax.swing.JDialog {
     
     public void telaalterar(produtos prod, Unidades unid){
             this.prod=prod;
-            TxtCodigoInternoProdutos.setText(Integer.toString(prod.getid()));
+            TxtCodigoInternoProdutos.setText(Integer.toString(prod.getId()));
             TxtDescricao.setText(prod.getNomecurto());
             TxtResumida.setText(prod.getNomelongo());
             TxtNcm.setText(prod.getNcm());
             TxtReferencia.setText(prod.getReferencia());
-            TxtCodBarras.setText(prod.getCodigo());
-            TxtCodBaixa.setText(prod.getBaixa());
-            TxtEstoqueMinimo.setText(prod.getEstminimo());
+            TxtCodBarras.setText(prod.getCodi_barra());
+            TxtCodBaixa.setText(prod.getBaixa_barra());
+            TxtEstoqueMinimo.setText(prod.getEstoque_minimo());
             TxtConversao.setText(prod.getFator());
             TxtPrecoCompra.setText(clsaux.formato(Double.parseDouble(prod.getPreco_custo())));
             txtCustoAtual.setText(clsaux.formato(Double.parseDouble(prod.getCusto_atual())));
@@ -2251,13 +2302,13 @@ public class cadProdutos extends javax.swing.JDialog {
             CbAliqIcms.addItem(prod.getAliq_icms());
             CbPIsCofinsEntrada.addItem(prod.getPis_ent());
             CbPisCofinsSaida.addItem(prod.getPis_sai());
-            CbCst.setSelectedItem(prod.getSittributaria());
+            CbCst.setSelectedItem(prod.getSit_tributaria());
             clsDadosEstoque estoque=produtoDAO.retornaValorEstoque(prod.getCodi_barra());
             TxtEstoque.setText(clsaux.formato3(estoque.getEstoque()));
             estoqueAntigo=TxtEstoque.getText();
             txtCustoMedio.setText(clsaux.formato(estoque.getCustomedio()));
-            txtPtsVale.setText(prod.getPtsvale());
-            txtPtsRetira.setText(prod.getPtsretira());
+            txtPtsVale.setText("0");
+            txtPtsRetira.setText("0");
             cbBalanca.setSelectedIndex(Integer.parseInt(prod.getBalanca()));
             cbPesavel.setSelectedItem(prod.getPesavel());
             txtPrecoOferta.setText(clsaux.formato(prod.getPreco_oferta()));
@@ -2349,19 +2400,24 @@ public class cadProdutos extends javax.swing.JDialog {
         prod.setCusto_atual(TxtPrecoCompra.getText().replace(",", "."));
         prod.setCusto_medio(TxtPrecoCompra.getText().replace(",", "."));
         prod.setMargem(TxtMargem.getText().replaceAll(",", "."));
+        if(clsaux.capturaValores(TxtPrecoVenda.getText()).compareTo(clsaux.capturaValores(prod.getPreco_venda()))==0){
+        }else{
+            prod.setPrecoold(prod.getPreco_venda());
+            prod.setPreconovo(true);
+        }
         prod.setPreco_venda(TxtPrecoVenda.getText().replace(",", "."));
-        prod.setCodigo(TxtCodBarras.getText());
-        prod.setBaixa(TxtCodBaixa.getText());
+        prod.setCodi_barra(TxtCodBarras.getText());
+        prod.setBaixa_barra(TxtCodBaixa.getText());
         prod.setFator(TxtConversao.getText());
         prod.setReferencia(TxtReferencia.getText());
-        prod.setEstminimo(TxtEstoqueMinimo.getText());
+        prod.setEstoque_minimo(TxtEstoqueMinimo.getText());
         prod.setUnid_venda(CbUnidade.getSelectedItem().toString());
-        prod.setSittributaria(CbCst.getSelectedItem().toString());
+        prod.setSit_tributaria(CbCst.getSelectedItem().toString());
         prod.setAliq_icms(CbAliqIcms.getSelectedItem().toString());
         prod.setPis_ent(CbPIsCofinsEntrada.getSelectedItem().toString());
         prod.setPis_sai(CbPisCofinsSaida.getSelectedItem().toString());
-        prod.setPtsvale(txtPtsVale.getText());
-        prod.setPtsretira(txtPtsRetira.getText());
+        //prod.setPtsvale(txtPtsVale.getText());
+        //prod.setPtsretira(txtPtsRetira.getText());
         prod.setTipo(clsaux.retornaId(CbTipo.getSelectedItem()));
         prod.setPreco_oferta(clsaux.capturaValores(txtPrecoOferta.getText()));
         prod.setDescritivoCardapio(txtDescritivo.getText());
@@ -2386,12 +2442,14 @@ public class cadProdutos extends javax.swing.JDialog {
         if(ckLocacao.isSelected())prod.setTemLocacao("S"); else prod.setTemLocacao("N");
         if(ckPrecoVariado.isSelected()) prod.setPrecoVariado("S"); else prod.setPrecoVariado("N");
         if (ckCardapio.isSelected()) prod.setEnviaCardapio("S"); else prod.setEnviaCardapio("N");
+        if(ckAtivocardapioOnline.isSelected()) prod.setAtivoCardapio("S"); else prod.setAtivoCardapio("N");
         prod.setPesavel(cbPesavel.getSelectedItem().toString());
         prod.setBalanca(clsaux.retornaId(cbBalanca.getSelectedItem().toString()));
         prod.setImpressoraProducao(clsaux.retornaId(cbImpProd.getSelectedItem()));
         prod.setGrupo(clsaux.retornaId(CbGrupo.getSelectedItem()).trim());
         prod.setSubgrupo(clsaux.retornaId(CbSubGrupo.getSelectedItem()).trim());
         prod.setSetor(clsaux.retornaId(CbSetor.getSelectedItem()).trim());
+        prod.setIdimagem(clsaux.retornaId(cbImagemPadraoCardapio.getSelectedItem()).trim());
         try{
             String a=CbCEST.getSelectedItem().toString();
             prod.setCest(a);
@@ -2402,7 +2460,7 @@ public class cadProdutos extends javax.swing.JDialog {
             prodDAO.Inserir(prod);
             JOptionPane.showMessageDialog(null, "Registro Gravado Com Sucesso");
         }else {
-            prod.setid(Integer.parseInt(TxtCodigoInternoProdutos.getText().trim()));
+            prod.setId(Integer.parseInt(TxtCodigoInternoProdutos.getText().trim()));
             prodDAO.Alterar(prod);
         }
         this.inserirItemComposicao();
@@ -2619,8 +2677,10 @@ public class cadProdutos extends javax.swing.JDialog {
     private javax.swing.JButton btnPesq;
     private javax.swing.JButton btnincluirSetor;
     private javax.swing.JComboBox<String> cbBalanca;
+    private javax.swing.JComboBox<String> cbImagemPadraoCardapio;
     private javax.swing.JComboBox<String> cbImpProd;
     private javax.swing.JComboBox<String> cbPesavel;
+    private javax.swing.JCheckBox ckAtivocardapioOnline;
     private javax.swing.JCheckBox ckCardapio;
     private javax.swing.JCheckBox ckFichaConsumo;
     private javax.swing.JCheckBox ckImprimeEtiqueta;
@@ -2679,6 +2739,7 @@ public class cadProdutos extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -2708,6 +2769,7 @@ public class cadProdutos extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lbBtnPesquisa;
     private javax.swing.JLabel lbCodigoComp;

@@ -1,6 +1,7 @@
 
 package grafic.interfac;
 
+import DAO.TarmasDAO;
 import DAO.clienteDAO;
 import DAO.listaInfAdcDAO;
 import DAO.pesqestadoDAO;
@@ -30,6 +31,8 @@ import javax.swing.InputMap;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
+import javax.swing.table.DefaultTableModel;
+import model.Tcad_armas;
 import util.ConsultaCepCorreio;
 import util.OrdemFoco;
 
@@ -47,6 +50,8 @@ public class Cadclientes extends javax.swing.JDialog {
         this.atalhos();
     }
     public static String Origem="";
+    public static String Origem1="";
+    List<Tcad_armas> armas = new ArrayList<>();
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -116,11 +121,10 @@ public class Cadclientes extends javax.swing.JDialog {
         jLabel21 = new javax.swing.JLabel();
         txtCr = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel22 = new javax.swing.JLabel();
+        tbarma = new javax.swing.JTable();
         jLabel23 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
         ftDataFiliacao = new javax.swing.JFormattedTextField();
+        btnIncluirArma = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         btnCancelar = new javax.swing.JButton();
         btnGravar = new javax.swing.JButton();
@@ -309,6 +313,9 @@ public class Cadclientes extends javax.swing.JDialog {
 
         txtCpfCnpj.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtCpfCnpj.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCpfCnpjFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtCpfCnpjFocusLost(evt);
             }
@@ -611,31 +618,47 @@ public class Cadclientes extends javax.swing.JDialog {
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setEnabled(false);
+        jPanel7.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPanel7FocusGained(evt);
+            }
+        });
+        jPanel7.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanel7ComponentShown(evt);
+            }
+        });
 
         jLabel21.setText("CR :");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbarma.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Nomenclatura", "Calibre", "Número de Série"
+                "Especie", "Marca", "Modelo", "Calibre", "Sigma", "Nº Serie"
             }
-        ));
-        jScrollPane2.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
 
-        jLabel22.setFont(new java.awt.Font("Segoe UI Semilight", 1, 12)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(0, 153, 51));
-        jLabel22.setText("Incluir Registro");
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbarma.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tbarma.setColumnSelectionAllowed(true);
+        tbarma.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(tbarma);
+        tbarma.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (tbarma.getColumnModel().getColumnCount() > 0) {
+            tbarma.getColumnModel().getColumn(0).setPreferredWidth(100);
+            tbarma.getColumnModel().getColumn(5).setPreferredWidth(150);
+        }
 
         jLabel23.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel23.setText("Data de Filiação :");
-
-        jLabel25.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel25.setText("Vencimento Contrato :");
 
         try {
             ftDataFiliacao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -644,6 +667,14 @@ public class Cadclientes extends javax.swing.JDialog {
         }
         ftDataFiliacao.setText("01/01/2000");
 
+        btnIncluirArma.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnIncluirArma.setText("Incluir Arma");
+        btnIncluirArma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIncluirArmaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -651,41 +682,35 @@ public class Cadclientes extends javax.swing.JDialog {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel25)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel23)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                        .addComponent(ftDataFiliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel21)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCr, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(55, 55, 55)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel22))
+                        .addComponent(txtCr, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnIncluirArma)
+                    .addComponent(jLabel23)
+                    .addComponent(ftDataFiliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtCr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel21))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel23)
-                            .addComponent(ftDataFiliacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel23)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel25))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel22)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addComponent(ftDataFiliacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addComponent(btnIncluirArma)
+                        .addGap(0, 17, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Registro", jPanel7);
@@ -1017,6 +1042,28 @@ public class Cadclientes extends javax.swing.JDialog {
               txtCpfCnpj.setText(clsaux.adcMascaraCpf(txtCpfCnpj.getText()));
         }
     }//GEN-LAST:event_txtCpfCnpjFocusLost
+
+    private void btnIncluirArmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirArmaActionPerformed
+        abreRegistroArma();
+    }//GEN-LAST:event_btnIncluirArmaActionPerformed
+
+    private void jPanel7ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel7ComponentShown
+       armas= new TarmasDAO().retornaListaArmas(clsaux.remMascaraNumeros(txtCpfCnpj.getText()));
+       preecheTabela();
+    }//GEN-LAST:event_jPanel7ComponentShown
+
+    private void jPanel7FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel7FocusGained
+        
+    }//GEN-LAST:event_jPanel7FocusGained
+
+    private void txtCpfCnpjFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCpfCnpjFocusGained
+       if(Origem1.equals("A")){
+          btnIncluirArma.requestFocus();
+          Origem1="N";
+           armas= new TarmasDAO().retornaListaArmas(clsaux.remMascaraNumeros(txtCpfCnpj.getText()));
+           preecheTabela();
+       }
+    }//GEN-LAST:event_txtCpfCnpjFocusGained
     public void preencheCbox(){
         DefaultComboBoxModel cbxuf= new DefaultComboBoxModel(pesqestadoDAO.pegaestado().toArray());
         cbUf.setModel(cbxuf);
@@ -1029,15 +1076,38 @@ public class Cadclientes extends javax.swing.JDialog {
         cbcat.setModel(cbplan);
         if(clsDadosEmpresa.getClube().equals("N")){
             jPanel7.setVisible(false);
-            jTable1.setVisible(false);
+            tbarma.setVisible(false);
             txtCr.setVisible(false);
             jScrollPane2.setVisible(false);
             jLabel21.setVisible(false);
-            jLabel22.setVisible(false);
-            jLabel25.setVisible(false);
+            btnIncluirArma.setVisible(false);
+            //jLabel25.setVisible(false);
             ftDataFiliacao.setVisible(false);
-            jLabel22.setVisible(false);
             jLabel23.setVisible(false);
+        }
+    }
+    public void abreRegistroArma(){
+        if(txtCpfCnpj.getText().length()<10){
+            JOptionPane.showMessageDialog(null, "Campo Documento Invalido!");
+        }else{
+            FrmCadArmaAtirador dialog = new FrmCadArmaAtirador(new javax.swing.JFrame(), true);
+            dialog.setLocationRelativeTo(null);
+            dialog.inicia(new Tcad_armas(Integer.parseInt(txtInterno.getText()), clsaux.remMascaraNumeros(txtCpfCnpj.getText())));
+            dialog.setVisible(true);
+            }
+    }
+    public void preecheTabela(){
+        DefaultTableModel tb = (DefaultTableModel) tbarma.getModel();
+        tb.setNumRows(0);
+        for(Tcad_armas am:armas){
+            tb.addRow(new Object[]{
+                am.getEspecie(),
+                am.getMarca(),
+                am.getModelo(),
+                am.getCalibre(),
+                am.getSigma(),
+                am.getRegistro()
+            });
         }
     }
     public void atalhos(){
@@ -1275,6 +1345,7 @@ public class Cadclientes extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGravar;
+    private javax.swing.JButton btnIncluirArma;
     private javax.swing.JComboBox<String> cbCidade;
     private javax.swing.JComboBox<String> cbEstadoCad;
     private javax.swing.JComboBox<String> cbEstcivil;
@@ -1302,10 +1373,8 @@ public class Cadclientes extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
@@ -1333,7 +1402,6 @@ public class Cadclientes extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
@@ -1341,6 +1409,7 @@ public class Cadclientes extends javax.swing.JDialog {
     private javax.swing.JCheckBox jcFornecedor;
     private javax.swing.JCheckBox jcOutros;
     private javax.swing.JTextArea taObs;
+    private javax.swing.JTable tbarma;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtCelular;
     public static javax.swing.JTextField txtCpfCnpj;

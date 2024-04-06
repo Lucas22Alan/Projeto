@@ -59,7 +59,7 @@ public class frmEnvioCargaBalanca extends javax.swing.JDialog {
     }
     public void buscaItensExportar(){
         try {
-            String sql="select cast ((tp.nomecurto) as varchar(25)),\n" +
+            String sql="select iif(char_length(tp.nomecurto)>25, substring(tp.nomecurto from 1 for 24), cast ((tp.nomecurto) as varchar(25))), \n" +
                     "        tb.codigo_barras,\n" +
                     "        tb.dias_validade,\n" +
                     "        tb.pesavel,\n" +

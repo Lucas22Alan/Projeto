@@ -157,6 +157,8 @@ public class clsaux {
             valorcerto = valorseparar[1];
         } catch (NullPointerException nu){
             valorcerto="0";
+        }catch(ArrayIndexOutOfBoundsException ar){
+            valorcerto=valorseparar[0];
         }
         return valorcerto;
     }

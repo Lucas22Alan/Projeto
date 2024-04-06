@@ -18,6 +18,8 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Tcat_precos;
+import model.Tprecos;
+import model.clsConfig;
 import model.clsDadosEstoque;
 import model.clsLancDocument;
 import model.tprecos_atacarejo;
@@ -31,8 +33,8 @@ public class produtoDAO {
     public String Inserir(produtos produto){
         String idproduto="0";
         String sql="insert into tprodutos(id,nomelongo, nomecurto,unid_venda, excluido,id_grupo,pontos_retira, pontos_validos,tipo_produto,imp_ficha_ind,ativo,id_subgrupo,id_setor,baixa_producao_venda,imprime_etiqueta,data_cadastro,data_alterado, "
-                + "possui_atacarejo,locacao,preco_variavel,impressora_producao,tem_adicional,tem_pizza,urlimagem,enviacardapio,descritivocardapio,observacao)"
-                + " values (gen_id(GEN_TPRODUTOS_ID,1),?,?,?,?,?,?,?,?,?,'S',?,?,?,?,current_date,current_date,?,?,?,?,?,?,?,?,?,?);";
+                + "possui_atacarejo,locacao,preco_variavel,impressora_producao,tem_adicional,tem_pizza,urlimagem,enviacardapio,descritivocardapio,observacao,linkimg,ativocardapio)"
+                + " values (gen_id(GEN_TPRODUTOS_ID,1),?,?,?,?,?,?,?,?,?,'S',?,?,?,?,current_date,current_date,?,?,?,?,?,?,?,?,?,?,?,?);";
         String sqlprecos="insert into tprecos(id, preco_venda, margem, preco_custo, ncm, sit_tributaria, cest, cfop,pis_entrada"
                 + ", pis_saida, aliq_icms,custo_atual,custo_medio,preco_oferta,inicio_oferta,fim_oferta)"
                 + "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";      
@@ -50,8 +52,8 @@ public class produtoDAO {
             pstcadpro.setString(3, produto.getUnid_venda());
             pstcadpro.setString(4, "N");
             pstcadpro.setString(5, produto.getGrupo());
-            pstcadpro.setString(6, produto.getPtsretira());
-            pstcadpro.setString(7, produto.getPtsvale());
+            pstcadpro.setString(6, "0");
+            pstcadpro.setString(7, "0");
             pstcadpro.setString(8, produto.getTipo());
             pstcadpro.setString(9, produto.getImp_ficha());
             pstcadpro.setString(10, produto.getSubgrupo());
@@ -67,7 +69,9 @@ public class produtoDAO {
             pstcadpro.setString(20, produto.getUrlImagem());
             pstcadpro.setString(21, produto.getEnviaCardapio());
             pstcadpro.setString(22, produto.getDescritivoCardapio());
-             pstcadpro.setString(23, produto.getObservacao());
+            pstcadpro.setString(23, produto.getObservacao());
+            pstcadpro.setString(24, produto.getIdimagem());
+            pstcadpro.setString(25, produto.getAtivoCardapio());
             pstcadpro.executeUpdate();
             pstcadpro.close();
             
@@ -86,11 +90,11 @@ public class produtoDAO {
             pstcadprecos.setString(3,produto.getMargem());
             pstcadprecos.setString(4, produto.getPreco_custo());
             pstcadprecos.setString(5, produto.getNcm());
-            pstcadprecos.setString(6, produto.getSittributaria());
+            pstcadprecos.setString(6, produto.getSit_tributaria());
             System.out.println(produto.getCest());
             pstcadprecos.setString(7, produto.getCest());
             System.out.println(produto.getCest());
-            if(produto.getSittributaria().equals("500")){
+            if(produto.getSit_tributaria().equals("500")){
                  pstcadprecos.setString(8, "5405");
             }else pstcadprecos.setString(8, "5102");
             pstcadprecos.setString(9, produto.getPis_ent());
@@ -104,11 +108,11 @@ public class produtoDAO {
             pstcadprecos.executeUpdate();
             pstcadprecos.close();
             PreparedStatement psbarras= conexao.getPreparedStatement(sqlbarras);
-            psbarras.setInt(1, produto.getid());
-            psbarras.setString(2, produto.getCodigo());
-            psbarras.setString(3, produto.getBaixa());
+            psbarras.setInt(1, produto.getId());
+            psbarras.setString(2, produto.getCodi_barra());
+            psbarras.setString(3, produto.getBaixa_barra());
             psbarras.setString(4, produto.getFator());
-            psbarras.setString(5, produto.getEstminimo());
+            psbarras.setString(5, produto.getEstoque_minimo());
             psbarras.setString(6, produto.getReferencia());
             psbarras.setString(7, produto.getPesavel());
             psbarras.setString(8, produto.getBalanca());
@@ -126,9 +130,13 @@ public class produtoDAO {
         
     }
     public void Alterar (produtos produto){
+        if (produto.isPreconovo()){
+            ajustaAuditProd(produto.getId());
+            new TauditDAO().inserir(String.valueOf(produto.getId()), clsaux.capturaValores(produto.getPrecoold()), clsaux.capturaValores(produto.getPreco_venda()));
+        }
         String sql="update tprodutos set nomelongo=?, nomecurto=?, unid_venda=?, id_grupo=?, pontos_retira=?, pontos_validos=?,tipo_produto=?,imp_ficha_ind=?,"
                 + "ativo=?,id_subgrupo=?,id_setor=?,baixa_producao_venda=?,imprime_etiqueta=?,data_alterado=current_date,possui_atacarejo=?,locacao=?,preco_variavel=?,impressora_producao=? "
-                + ", urlimagem=?, enviacardapio=?,descritivocardapio=?  where id=?;";
+                + ", urlimagem=?, enviacardapio=?,descritivocardapio=?,linkimg=?,ativocardapio=?  where id=?;";
         String sqlprecos="update tprecos set preco_venda=?, margem=?, preco_custo=?, ncm =?, sit_tributaria=?, cest=?, cfop=?"
                 + ",pis_entrada=?, pis_saida=?, aliq_icms=?,preco_oferta=?,inicio_oferta=?,fim_oferta=? where id=?";      
         String sqlbarras="update tbarras set baixa_barra=?, fator=?, estoque_minimo=?, referencia=?,pesavel=?,id_balanca=?,leitura_aut_pdv=?,data_validade=?,codigo_barras=? where id_produto=?";
@@ -140,8 +148,8 @@ public class produtoDAO {
             pstcadpro.setString(2, produto.getNomecurto());
             pstcadpro.setString(3, produto.getUnid_venda());
             pstcadpro.setString(4, produto.getGrupo());
-            pstcadpro.setString(5, produto.getPtsretira());
-            pstcadpro.setString(6, produto.getPtsvale());
+            pstcadpro.setString(5, "0");
+            pstcadpro.setString(6, "0");
             pstcadpro.setString(7, produto.getTipo());
             pstcadpro.setString(8, produto.getImp_ficha());
             pstcadpro.setString(9, produto.getAtivo());
@@ -156,7 +164,9 @@ public class produtoDAO {
             pstcadpro.setString(18, produto.getUrlImagem());
             pstcadpro.setString(19, produto.getEnviaCardapio());
             pstcadpro.setString(20, produto.getDescritivoCardapio());
-            pstcadpro.setInt(21, produto.getid());
+            pstcadpro.setString(21, produto.getIdimagem());
+            pstcadpro.setString(22, produto.getAtivoCardapio());
+            pstcadpro.setInt(23, produto.getId());
             pstcadpro.executeUpdate();
             pstcadpro.close();
             PreparedStatement pstcadprecos= conexao.getPreparedStatement(sqlprecos);
@@ -164,7 +174,7 @@ public class produtoDAO {
             pstcadprecos.setString(2, produto.getMargem());
             pstcadprecos.setString(3, produto.getPreco_custo());
             pstcadprecos.setString(4, produto.getNcm());
-            pstcadprecos.setString(5, produto.getSittributaria());
+            pstcadprecos.setString(5, produto.getSit_tributaria());
             pstcadprecos.setString(6, produto.getCest());
             pstcadprecos.setString(7, "5405");
             pstcadprecos.setString(8, produto.getPis_ent());
@@ -173,20 +183,20 @@ public class produtoDAO {
             pstcadprecos.setDouble(11, produto.getPreco_oferta());
             pstcadprecos.setDate(12, clsaux.retornaData(produto.getComeco()));
             pstcadprecos.setDate(13, clsaux.retornaData(produto.getFim()));
-            pstcadprecos.setInt(14, produto.getid());
+            pstcadprecos.setInt(14, produto.getId());
             pstcadprecos.executeUpdate();
             pstcadprecos.close();
             PreparedStatement psbarras= conexao.getPreparedStatement(sqlbarras);
-            psbarras.setString(1, produto.getBaixa());
+            psbarras.setString(1, produto.getBaixa_barra());
             psbarras.setString(2, produto.getFator());
-            psbarras.setString(3, produto.getEstminimo());
+            psbarras.setString(3, produto.getEstoque_minimo());
             psbarras.setString(4, produto.getReferencia());
             psbarras.setString(5, produto.getPesavel());
             psbarras.setString(6, produto.getBalanca());
             psbarras.setString(7, produto.getPesagem_aut());
             psbarras.setDate(8,  clsaux.retornaData(produto.getDatavalidade()));
-            psbarras.setString(9, produto.getCodigo());
-            psbarras.setInt(10, produto.getid());
+            psbarras.setString(9, produto.getCodi_barra());
+            psbarras.setInt(10, produto.getId());
             psbarras.executeUpdate();
             psbarras.close();
             JOptionPane.showMessageDialog(null, "Registro gravado com sucesso!!!");
@@ -212,6 +222,23 @@ public class produtoDAO {
     }catch (SQLException e){
             JOptionPane.showMessageDialog(null, e);
      }}
+    public void ajustaAuditProd(int id){
+        try {
+            String sql="update tprecos tc set tc.prec_venda_ant=tc.preco_venda, tc.ncm_ant=tc.ncm, tc.cst_ant=tc.sit_tributaria,\n" +
+                    "tc.alteracao=current_timestamp, tc.us_alteracao=?, tc.origem_alteracao=? where tc.id=?";
+            PreparedStatement ps= conexao.getPreparedStatement(sql);
+            ps.setString(1, clsConfig.usuarioLogado);
+            ps.setString(2, "Alterado Via Cadastro Produtos");
+            ps.setInt(3, id);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(produtoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+                
+                
+    }
     public void PesqItemAlterar (String id, produtos prodd, Unidades unid){
                String sql1="select tp.*, tg.nome from tprodutos tp left join tgrupos tg on tp.id_grupo=tg.id_grupo where id="+id+"";
                String sql2="select * from tbarras where id_produto="+id+"";
@@ -220,13 +247,13 @@ public class produtoDAO {
                try {
                ResultSet rspesqitem = pspesqitem.executeQuery();
                    rspesqitem.next();
-                   prodd.setid(rspesqitem.getInt(1));
+                   prodd.setId(rspesqitem.getInt(1));
                    prodd.setNomecurto(rspesqitem.getString(2));
                    prodd.setNomelongo(rspesqitem.getString(3));
                    prodd.setUnid_venda(rspesqitem.getString(6));
                    prodd.setGrupo(rspesqitem.getString(9).trim()+" -"+rspesqitem.getString(14));
-                   prodd.setPtsretira(rspesqitem.getString(10));
-                   prodd.setPtsvale(rspesqitem.getString(11));
+                  // prodd.setPtsretira(rspesqitem.getString(10));
+                   //prodd.setPtsvale(rspesqitem.getString(11));
                    prodd.setImp_ficha(rspesqitem.getString("imp_ficha_ind"));
                    prodd.setAtivo(rspesqitem.getString("ativo"));
                    prodd.setSubgrupo(rspesqitem.getString("id_subgrupo"));
@@ -241,15 +268,17 @@ public class produtoDAO {
                    prodd.setEnviaCardapio(rspesqitem.getString("enviacardapio"));
                    prodd.setUrlImagem(rspesqitem.getString("urlimagem"));
                    prodd.setDescritivoCardapio(rspesqitem.getString("descritivocardapio"));
+                   prodd.setIdimagem(rspesqitem.getString("linkimg"));
+                   prodd.setAtivoCardapio(rspesqitem.getString("ativocardapio"));
                    rspesqitem.close();
                    pspesqitem.close();
                    PreparedStatement pssql2 = conexao.getPreparedStatement(sql2);
                    ResultSet rssql2 = pssql2.executeQuery();
                    rssql2.next();
-                   prodd.setBaixa(rssql2.getString(3));
-                   prodd.setCodigo(rssql2.getString(2));
+                   prodd.setBaixa_barra(rssql2.getString(3));
+                   prodd.setCodi_barra(rssql2.getString(2));
                    prodd.setFator(rssql2.getString(4));
-                   prodd.setEstminimo(rssql2.getString(5));
+                   prodd.setEstoque_minimo(rssql2.getString(5));
                    prodd.setReferencia(rssql2.getString(6));
                    prodd.setBalanca(rssql2.getString("id_balanca"));
                    prodd.setPesavel(rssql2.getString("pesavel"));
@@ -272,7 +301,7 @@ public class produtoDAO {
                    prodd.setPreco_oferta(rssql3.getDouble("preco_oferta"));
                    prodd.setComeco(rssql3.getString("inicio_oferta"));
                    prodd.setFim(rssql3.getString("fim_oferta"));
-                   prodd.setSittributaria(rssql3.getString("SIT_tributaria"));
+                   prodd.setSit_tributaria(rssql3.getString("SIT_tributaria"));
                    rssql3.close();
                    pssql3.close();
                }catch (SQLException er){
@@ -382,7 +411,40 @@ public class produtoDAO {
         }
         
     }
-    
+    public Tprecos retornaAuditoriaProduto(String id){
+        Tprecos aud= new Tprecos();
+        try {
+            String sql="select tc.*,tp.data_cadastro,tp.data_alterado from tprecos tc join tprodutos tp on tc.id=tp.id\n" +
+"where tc.id=?";
+            PreparedStatement ps = conexao.getPreparedStatement(sql);
+            ps.setString(1, id);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                aud.setAlteracao(rs.getString("alteracao"));
+                aud.setCfop(rs.getString("cfop"));
+                aud.setCstantigo(rs.getString("cst_ant"));
+                aud.setCusto(rs.getDouble("preco_custo"));
+                aud.setCustoatual(rs.getDouble("custo_atual"));
+                aud.setId(rs.getString("id"));
+                aud.setMargem(rs.getDouble("margem"));
+                aud.setNcm(rs.getString("ncm"));
+                aud.setNcmantigo(rs.getString("ncm_ant"));
+                aud.setOrigemalt(rs.getString("origem_alteracao"));
+                aud.setPreco(rs.getDouble("preco_venda"));
+                aud.setPrecoantigo(rs.getDouble("prec_venda_ant"));
+                aud.setSittributaria(rs.getString("sit_tributaria"));
+                aud.setUsuarioalt(rs.getString("us_alteracao"));
+                aud.setDatcad(rs.getString("data_cadastro"));
+                aud.setAltcad(rs.getString("data_alterado"));
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(produtoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return aud;
+        
+    }
     public List<Tcat_precos> RetornaPrecoCategoriaPorProduto(String barras){
        List<Tcat_precos> lista= new ArrayList<>();
         try {
@@ -501,7 +563,7 @@ public class produtoDAO {
                     " from tprodutos tp\n" +
                     "join tbarras tb on tp.id=tb.id_produto\n" +
                     "join tprecos tc on tc.id=tp.id\n" +
-                    "where tb.codigo_barras=?";
+                    "where tb.codigo_barras=? and tp.excluido='N'";
             PreparedStatement ps = conexao.getPreparedStatementResult(sql);
             ps.setString(1, lp.getCodibarra());
             ResultSet rs = ps.executeQuery();

@@ -227,12 +227,12 @@ public class frmRelVendasGeralPdv extends javax.swing.JDialog {
 "                        cast (tm.total as numeric(10,2)) as total,\n" +
 "                        tf.descricao as fin,\n" +
 "                       cast (tp.valor-tp.troco as numeric(10,2)) as vl_fin,\n" +
-"                        cast ((tp.valor-tp.valor)*tf.taxa_adm/100 as numeric (10,2)) as vl_taxa,\n" +
-"                        cast (tp.valor -((tp.valor-tp.valor)*tf.taxa_adm/100) as numeric (10,2)) as saldo\n" +
+"                        cast ((tp.valor-tp.troco)*tf.taxa_adm/100 as numeric (10,2)) as vl_taxa,\n" +
+"                        cast (tp.valor -tp.troco -((tp.valor-tp.valor)*tf.taxa_adm/100) as numeric (10,2)) as saldo\n" +
 "                from tmovimento tm\n" +
 "                left join tpagamentos_pdv tp on tm.id_mov=tp.id_movimento \n" +
 "                join tfinalizadora tf on tp.id_finalizadora=tf.id_finalizdora\n" +
-"                where tm.dat_finalizacao between '"+dataini+"' and '"+datafim+"' and tm.id_tipo=1 and tm.estado=2";
+"                where tm.dat_finalizacao between '"+dataini+"' and '"+datafim+"' and tm.id_tipo=1 and tm.estado=2 and tp.estado=2" ;
              sqltotal="select  Sum(tm.sub_total),\n" +
                             "        sum(tm.desconto),\n" +
                             "        sum(tm.acrescimo),\n" +
@@ -240,14 +240,14 @@ public class frmRelVendasGeralPdv extends javax.swing.JDialog {
                             "        from tmovimento tm\n" +
                             "where tm.dat_finalizacao between '"+dataini+"' and '"+datafim+"' and tm.id_tipo=1 and tm.estado=2;";
              sqltaxas=" select sum(tp.valor-tp.valor) as total,\n" +
-                    "        cast(sum(tp.valor -((tp.valor-tp.valor)*tf.taxa_adm/100)) as numeric (10,2)) as saldo ,\n" +
-                    "        cast (sum((tp.valor-tp.valor)*tf.taxa_adm/100) as numeric (10,2)) as vl_taxa\n" +
+                    "        cast(sum(tp.valor-tp.troco -((tp.valor-tp.troco)*tf.taxa_adm/100)) as numeric (10,2)) as saldo ,\n" +
+                    "        cast (sum((tp.valor-tp.troco)*tf.taxa_adm/100) as numeric (10,2)) as vl_taxa\n" +
                     "  from\n" +
                     " tpagamentos_pdv tp\n" +
                     " join tmovimento tm on tp.id_movimento=tm.id_mov\n" +
                     " join tfinalizadora tf on tp.id_finalizadora=tf.id_finalizdora\n" +
                     " where tm.dat_finalizacao between '"+dataini+"' and '"+datafim+"' and\n" +
-                    " tm.id_tipo=1  and tm.estado=2";
+                    " tm.id_tipo=1  and tm.estado=2 and tp.estado=2";
             }else {
                 String fin= clsaux.retornaId(cbFin.getSelectedItem().toString());
                 sql="select  tm.id_mov as venda,\n" +
@@ -257,12 +257,12 @@ public class frmRelVendasGeralPdv extends javax.swing.JDialog {
 "                        cast (tm.total as numeric(10,2)) as total,\n" +
 "                        tf.descricao as fin,\n" +
 "                        cast (tp.valor-tp.troco as numeric(10,2)) as vl_fin,\n" +
-"                        cast ((tp.valor-tp.valor)*tf.taxa_adm/100 as numeric (10,2)) as vl_taxa,\n" +
-"                        cast (tp.valor -((tp.valor-tp.valor)*tf.taxa_adm/100) as numeric (10,2)) as saldo\n" +
+"                        cast ((tp.valor-tp.troco)*tf.taxa_adm/100 as numeric (10,2)) as vl_taxa,\n" +
+"                        cast (tp.valor -tp.troco -((tp.valor-tp.troco)*tf.taxa_adm/100) as numeric (10,2)) as saldo\n" +
 "                from tmovimento tm\n" +
 "                left join tpagamentos_pdv tp on tm.id_mov=tp.id_movimento \n" +
 "                join tfinalizadora tf on tp.id_finalizadora=tf.id_finalizdora\n" +
-"                where tm.dat_finalizacao between '"+dataini+"' and '"+datafim+"' and tm.id_tipo=1 and tp.id_finalizadora="+fin+" and tm.estado=2;";
+"                where tm.dat_finalizacao between '"+dataini+"' and '"+datafim+"' and tm.id_tipo=1 and tp.id_finalizadora="+fin+" and tm.estado=2 and tp.estado=2";
              sqltotal="select  Sum(tm.sub_total),\n" +
                             "        sum(tm.desconto),\n" +
                             "        sum(tm.acrescimo),\n" +
@@ -271,14 +271,14 @@ public class frmRelVendasGeralPdv extends javax.swing.JDialog {
                             "where tm.dat_finalizacao between '"+dataini+"' and '"+datafim+"' and tm.id_tipo=1  and tm.estado=2 \n"
                      + "    and tm.id_mov in (select td.id_movimento from tpagamentos_pdv td where td.id_finalizadora='"+fin+"' )";
             sqltaxas=" select sum(tp.valor-tp.valor) as total,\n" +
-                    "        cast(sum(tp.valor -((tp.valor-tp.valor)*tf.taxa_adm/100)) as numeric (10,2)) as saldo ,\n" +
-                    "        cast (sum((tp.valor-tp.valor)*tf.taxa_adm/100) as numeric (10,2)) as vl_taxa\n" +
+                    "        cast(sum(tp.valor-tp.troco -((tp.valor-tp.troco)*tf.taxa_adm/100)) as numeric (10,2)) as saldo ,\n" +
+                    "        cast (sum((tp.valor-tp.troco)*tf.taxa_adm/100) as numeric (10,2)) as vl_taxa\n" +
                     "  from\n" +
                     " tpagamentos_pdv tp\n" +
                     " join tmovimento tm on tp.id_movimento=tm.id_mov\n" +
                     " join tfinalizadora tf on tp.id_finalizadora=tf.id_finalizdora\n" +
                     " where tm.dat_finalizacao between '"+dataini+"' and '"+datafim+"' and\n" +
-                    " tm.id_tipo=1 and tp.id_finalizadora='"+fin+"' and tm.estado=2";
+                    " tm.id_tipo=1 and tp.id_finalizadora='"+fin+"' and tm.estado=2 and tp.estado=2";
             }
             PreparedStatement ps=conexao.getPreparedStatementResult(sqltotal);
             PreparedStatement pst=conexao.getPreparedStatementResult(sqltaxas);

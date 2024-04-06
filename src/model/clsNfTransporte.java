@@ -12,7 +12,17 @@ package model;
 public class clsNfTransporte {
     
     String idmovimento,idtranspprtadora,cnpj,razao,uf,cidade,modfrete,pesoliq,pesobruto,volumes,especie,numero=null;
+    String endereco;
 
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+    
+    
     public String getIdmovimento() {
         return idmovimento;
     }

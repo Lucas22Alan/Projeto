@@ -115,7 +115,6 @@ public class Tcad_campanha {
     
     public Double getPrecoDia(){
        String dia=clsaux.retornaDiaDaSemana();
-        System.out.println(clsaux.retornaDiaDaSemana());
         Double vl=0.00;
        switch(dia){
            case "Terça-feira": vl=ter;
@@ -128,12 +127,10 @@ public class Tcad_campanha {
            break;
            case "Sexta-feira": vl=sex;
            break;
-           case "Sabado": vl=sab;
+           case "Sábado": vl=sab;
            break;
            case "Domingo":vl=dom;
            break;
-           
-           
        }
        return vl;
     }

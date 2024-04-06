@@ -107,6 +107,12 @@ public class frmImportarItensFora extends javax.swing.JDialog {
         txtUf = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         txtemail = new javax.swing.JTextField();
+        jLabel26 = new javax.swing.JLabel();
+        txtFone = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        txtCelular = new javax.swing.JTextField();
+        jLabel28 = new javax.swing.JLabel();
+        txtComp = new javax.swing.JTextField();
         cbtipoImp = new javax.swing.JComboBox<>();
         jLabel25 = new javax.swing.JLabel();
         txtcst = new javax.swing.JTextField();
@@ -219,13 +225,19 @@ public class frmImportarItensFora extends javax.swing.JDialog {
 
         jLabel24.setText("email");
 
+        jLabel26.setText("Fone");
+
+        jLabel27.setText("Celular");
+
+        jLabel28.setText("Comp");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(45, 45, 45)
@@ -253,9 +265,26 @@ public class frmImportarItensFora extends javax.swing.JDialog {
                             .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtIe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtRazao)
-                            .addComponent(txtFantasia))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtRazao)
+                                    .addComponent(txtFantasia)
+                                    .addComponent(txtIe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(jLabel28)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(txtComp, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(jLabel26)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(txtFone, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel27)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addContainerGap(77, Short.MAX_VALUE))
         );
 
@@ -275,15 +304,25 @@ public class frmImportarItensFora extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel15)
-                            .addComponent(txtRazao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtRazao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel26)
+                            .addComponent(txtFone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel16)
-                            .addComponent(txtFantasia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel27)
+                                .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel16)
+                                .addComponent(txtFantasia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17)
-                            .addComponent(txtIe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel28)
+                                .addComponent(txtComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel17)
+                                .addComponent(txtIe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel18))
                     .addComponent(txtRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -571,6 +610,9 @@ public class frmImportarItensFora extends javax.swing.JDialog {
              Cell cidade=sheet.getCell(Integer.parseInt(txtCidade.getText()),i);
              Cell uf=sheet.getCell(Integer.parseInt(txtUf.getText()),i);
              Cell mail=sheet.getCell(Integer.parseInt(txtemail.getText()),i);
+             Cell fone=sheet.getCell(Integer.parseInt(txtFone.getText()),i);
+             Cell celular=sheet.getCell(Integer.parseInt(txtCelular.getText()),i);
+             Cell complemento=sheet.getCell(Integer.parseInt(txtComp.getText()),i);
              criaParceiro(cnpj.getContents(),
                             razao.getContents(),
                             fantasia.getContents(),
@@ -581,7 +623,10 @@ public class frmImportarItensFora extends javax.swing.JDialog {
                             cep.getContents(),
                             cidade.getContents(),
                             uf.getContents(),
-                            mail.getContents()
+                            mail.getContents(),
+                            fone.getContents(),
+                            celular.getContents(),
+                            complemento.getContents()
                             );
            
          }
@@ -621,18 +666,18 @@ public class frmImportarItensFora extends javax.swing.JDialog {
         prod.setCusto_medio(custo);
         prod.setMargem(clsaux.capturaValor(margem));
         prod.setPreco_venda(preco);
-        prod.setCodigo(barra);
-        prod.setBaixa(barra);
+        prod.setCodi_barra(barra);
+        prod.setBaixa_barra(barra);
         prod.setFator("1");
         prod.setReferencia("");
-        prod.setEstminimo("0");
+        prod.setEstoque_minimo("0");
         prod.setUnid_venda(unid);
-        prod.setSittributaria(cst);
+        prod.setSit_tributaria(cst);
         prod.setAliq_icms("0");
         prod.setPis_ent("70");
         prod.setPis_sai("07");
-        prod.setPtsvale("0");
-        prod.setPtsretira("0");
+        //prod.setPtsvale("0");
+        //prod.setPtsretira("0");
         prod.setTipo("00");
         prod.setPesagem_aut("Nao");
         prod.setImp_ficha("N");
@@ -649,14 +694,15 @@ public class frmImportarItensFora extends javax.swing.JDialog {
        prodDAO.Inserir(prod);
      }
      
-     public void criaParceiro(String cnpj, String razao,String fantasia,String ie,String rua,String bairro,String numero,String cep,String cidade,String uf,String email){
+     public void criaParceiro(String cnpj, String razao,String fantasia,String ie,String rua,String bairro,String numero,String cep,
+             String cidade,String uf,String email,String fone,String cel, String comp){
        clientes cs = new clientes();
        cs.setCnpj(cnpj);
        cs.setInscricaoEstadual(ie);
        cs.setRazaoSocial(razao);
        cs.setFantasia(fantasia);
-       cs.setFone("");
-       cs.setCelular("");
+       cs.setFone(fone);
+       cs.setCelular(cel);
        cs.setEmail(email);
        cs.setProfissao("");
        cs.setEstado_civil("Solteiro (a)");
@@ -666,7 +712,7 @@ public class frmImportarItensFora extends javax.swing.JDialog {
        cs.setNumero(numero);
        cs.setEstado(uf);
        cs.setCidade(cidade);
-       cs.setComplemento("");
+       cs.setComplemento(comp);
        cs.setSexo("Masculino");
        cs.setTipopessoa("Fisico");
        cs.setEstadocadastro("Normal");
@@ -769,6 +815,9 @@ public class frmImportarItensFora extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -780,9 +829,12 @@ public class frmImportarItensFora extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtCaminhoArquivo;
+    private javax.swing.JTextField txtCelular;
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtCnpj;
+    private javax.swing.JTextField txtComp;
     private javax.swing.JTextField txtFantasia;
+    private javax.swing.JTextField txtFone;
     private javax.swing.JTextField txtIe;
     private javax.swing.JTextField txtNumero;
     private javax.swing.JTextField txtPag;

@@ -1021,7 +1021,8 @@ public class frmLancamentoItemNfe extends javax.swing.JDialog {
     }//GEN-LAST:event_txtCodBarrasActionPerformed
 
     private void btnGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarActionPerformed
-       this.gravaItem();
+      this.calculaTotal();
+      this.gravaItem();
     }//GEN-LAST:event_btnGravarActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown

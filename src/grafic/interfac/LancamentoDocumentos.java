@@ -141,6 +141,8 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
         txtTotalgeral = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         txtVlIpi = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        txtVlFcpSt = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel6 = new javax.swing.JPanel();
@@ -552,6 +554,19 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
             }
         });
 
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel17.setText("Valor FCP ST:");
+
+        txtVlFcpSt.setEditable(false);
+        txtVlFcpSt.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtVlFcpSt.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtVlFcpSt.setText("0,00");
+        txtVlFcpSt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtVlFcpStFocusLost(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -570,20 +585,25 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
                     .addComponent(txtBasest, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtValorst, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel16)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtVlIpi, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                            .addComponent(jLabel12)
+                            .addComponent(jLabel16)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(txtDescont, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addComponent(jLabel11)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtOutdesp, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtVlIpi, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtDescont, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtOutdesp, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtVlFcpSt, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel13)
@@ -622,9 +642,13 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
                         .addComponent(jLabel9)
                         .addComponent(txtBasest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(txtValorst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel10)
+                        .addComponent(txtValorst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel17)
+                        .addComponent(txtVlFcpSt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1081,6 +1105,10 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
     private void txtDescontActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescontActionPerformed
        rateiaDescontoAcrescimoItens();
     }//GEN-LAST:event_txtDescontActionPerformed
+
+    private void txtVlFcpStFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtVlFcpStFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtVlFcpStFocusLost
     public void inicializa(){
         DefaultComboBoxModel cbtip= new DefaultComboBoxModel(listaDAO.listaTipoDocumento().toArray());
         cbTipodoc.setModel(cbtip); 
@@ -1181,6 +1209,7 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
         cd.setValoripi(clsaux.capturaValor(txtVlIpi.getText()));
         cd.setChaveacesso(txtChave.getText());
         cd.setTipomovimento(clsaux.retornaId(cbTipodoc.getSelectedItem().toString()));
+        cd.setVlfcp(clsaux.capturaValor(txtVlFcpSt.getText()));
         ldDAO.atualizaRegistroMovto(cd);
         this.gravarItens();
         this.gravaFinanceiro(idmovimento);
@@ -1205,7 +1234,7 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
         int lin=tbItens.getRowCount();
         Double valor=0.00,total=0.00;
         Double desconto=0.00;
-        Double acres=0.00,outrasdesp=0.00,icmsst=0.00,vlpis=0.00,vlcofins=0.00,seguro=0.00,frete=0.00,ipi=0.00;
+        Double acres=0.00,outrasdesp=0.00,icmsst=0.00,vlpis=0.00,vlcofins=0.00,seguro=0.00,frete=0.00,ipi=0.00,fcp=0.00;
        /* for (int i=0; i<lin; i++){
             valor=valor+Double.parseDouble(tbItens.getValueAt(i, 9).toString().replaceAll(",","."));
             desconto=desconto+Double.parseDouble(tbItens.getValueAt(i, 7).toString().replaceAll(",", "."));
@@ -1221,6 +1250,7 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
              seguro=seguro+clsaux.capturaValores(tempo.getValor_seguro());
              frete=frete+clsaux.capturaValores(tempo.getValor_frete());
              ipi=ipi+clsaux.capturaValores(tempo.getValor_ipi());
+             fcp=fcp+clsaux.capturaValores(tempo.getValor_fcp());
              total=total+clsaux.capturaValores(tempo.getTotal());
         }
         acres=acres+outrasdesp+seguro+frete;
@@ -1228,6 +1258,7 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
         txtDescont.setText(clsaux.formato(desconto));
         txtOutdesp.setText(clsaux.formato(acres));
         txtVlIpi.setText(clsaux.formato(ipi));
+        txtVlFcpSt.setText(clsaux.formato(fcp));
         
         //desconto=Double.parseDouble(txtDescont.getText().replaceAll(",", "."));
         //acres=Double.parseDouble(txtOutdesp.getText().replaceAll(",", "."));
@@ -1296,6 +1327,7 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
         txtVlIpi.setText(clsaux.formato(clsaux.capturaValores(ld.getValoripi())));
         ftDatemissao.setText(clsaux.convertDataExib(ld.getEmissao().toString()));
         ftDatlancamento.setText(clsaux.convertDataExib(ld.getLancamento().toString()));
+        txtVlFcpSt.setText(clsaux.formato(clsaux.capturaValores(ld.getVlfcp())));
         cbTipodoc.setSelectedItem(ld.getTipomovimento());
         txtChave.setText(ld.getChaveacesso());
         itens=ldDAO.buscaItens(idmovimento);
@@ -1449,6 +1481,7 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
             novo.setValor_ipi("0,00");
             novo.setCstipi("99");
             novo.setFator("1,00");
+            novo.setValor_fcp("0.00");
         return novo;
     } 
     
@@ -1532,7 +1565,6 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
                 
                 mDAO.inserirAlterar(cd);
             }else if (fin>3){
-                
                 cr.setBanco("1");
                 cr.setConta("1");
                 cr.setDesconto("0.00");
@@ -1592,6 +1624,7 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
         txtTotalprod.setText(inf.getTotal().getICMSTot().getVProd());
         txtTotalgeral.setText(inf.getTotal().getICMSTot().getVNF());
         txtVlIpi.setText(inf.getTotal().getICMSTot().getVIPI());
+        txtVlFcpSt.setText(inf.getTotal().getICMSTot().getVFCPST());
         ftDatemissao.setText(clsaux.retornaDataUTC(inf.getIde().getDhEmi()));
         ftDatlancamento.setText(clsaux.preencheData());
         
@@ -1622,7 +1655,7 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
             //ite.setTotal(det.get(i).getProd().getVProd());
             ite.setUnidade(det.get(i).getProd().getUTrib());
             ite.setIdproduto(verificaItemCadastrado(validaDigitosBarras.preencheCodigo(det.get(i).getProd().getCEANTrib())));
-            ite.setValor_outras(clsaux.trataCampoNulo(det.get(i).getProd().getVOutro()));
+            ite.setValor_outras("0.00");
             ite.setValor_seguro(clsaux.trataCampoNulo(det.get(i).getProd().getVSeg()));
             ite.setValor_frete(clsaux.trataCampoNulo(det.get(i).getProd().getVFrete()));
             ite.setNcm(det.get(i).getProd().getNCM());
@@ -1652,14 +1685,12 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
                 }else if (campo.equals("IPI")){
                     ipi= ((TIpi)imposto.getContent().get(l).getValue());
                 }
-                    
-                
             }
             ite=validaImpostoIcmsCompra(icms, ite);//chama funcao que valida o cst que ta vindo e aplica o metodo correto para coletar informacoes 
             ite=validaImpostoIpiCompra(ipi, ite);
             ite=validaImpostoPisCofinsCompra(pis, cofins, ite);
             Double to=0.00;
-            to=clsaux.capturaValores(ite.getSubtotal())+clsaux.capturaValores(ite.getValor_st())+clsaux.capturaValores(ite.getValor_ipi())+
+            to=clsaux.capturaValores(ite.getSubtotal())+clsaux.capturaValores(ite.getValor_st())+clsaux.capturaValores(ite.getValor_ipi())+clsaux.capturaValores(ite.getValor_fcp())+
                     clsaux.capturaValores(ite.getValor_outras())+clsaux.capturaValores(ite.getValor_frete())-clsaux.capturaValores(ite.getDesconto())+clsaux.capturaValores(ite.getAcrescimo());
             ite.setTotal(clsaux.formato4(to));
             ite.setValor_st(clsaux.trataCampoNulo(ite.getValor_st()));
@@ -1732,7 +1763,6 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
     public clsLancDocument validaImpostoIcmsCompra(TNFe.InfNFe.Det.Imposto.ICMS icms, clsLancDocument imp ){
         
         if(icms.getICMS00()!=null){
-            
             imp.setCst(icms.getICMS00().getCST());
             imp.setOrigem_produto(icms.getICMS00().getOrig());
             imp.setModbc(icms.getICMS00().getModBC());
@@ -1741,7 +1771,6 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
             imp.setValor_icms(icms.getICMS00().getVICMS());
             
         }else if(icms.getICMS10()!=null){
-            
             imp.setCst(icms.getICMS10().getCST());
             imp.setOrigem_produto(icms.getICMS10().getOrig());
             imp.setModbc(icms.getICMS10().getModBC());
@@ -1750,6 +1779,7 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
             imp.setValor_icms(icms.getICMS10().getVICMS());
             imp.setValor_st(icms.getICMS10().getVICMSST());
             imp.setBase_st(icms.getICMS10().getVBCST());
+            imp.setValor_fcp(clsaux.capturaValor(icms.getICMS10().getVFCPST()));
         }else if(icms.getICMS20()!=null){
             
             imp.setCst(icms.getICMS20().getCST());
@@ -1783,13 +1813,21 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
             imp.setRed_bc(icms.getICMS51().getPRedBC());
             
         }else if(icms.getICMS60()!=null){
-           imp.setCst(icms.getICMS60().getCST());
+            imp.setCst(icms.getICMS60().getCST());
             imp.setOrigem_produto(icms.getICMS60().getOrig());
             imp.setBase_stretido(icms.getICMS60().getVBCSTRet());
             imp.setValor_stretido(icms.getICMS60().getVICMSSTRet());
             
         }else if(icms.getICMS70()!=null){
-           
+           imp.setCst(icms.getICMS70().getCST());
+           imp.setOrigem_produto(icms.getICMS70().getOrig());
+            imp.setModbc(icms.getICMS70().getModBC());
+            imp.setBase_icms(icms.getICMS70().getVBC());
+            imp.setAliq_icms(icms.getICMS70().getPICMS());
+            imp.setValor_icms(icms.getICMS70().getVICMS());
+            imp.setValor_st(icms.getICMS70().getVICMSST());
+            imp.setBase_st(icms.getICMS70().getVBCST());
+            imp.setValor_fcp(clsaux.capturaValor(icms.getICMS70().getVFCPST()));
         }
         else if(icms.getICMS90()!=null){
             imp.setCst(icms.getICMS90().getCST());
@@ -1800,7 +1838,12 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
             imp.setValor_icms(icms.getICMS90().getVICMS());
             imp.setValor_st(icms.getICMS90().getVICMSST());
             imp.setBase_st(icms.getICMS90().getVBCST());
-            
+        }
+        else if(icms.getICMSST()!=null){
+            imp.setCst(icms.getICMSST().getCST());
+            imp.setOrigem_produto(icms.getICMSST().getOrig());
+            imp.setBase_stretido(icms.getICMSST().getVBCSTRet());
+            imp.setValor_stretido(icms.getICMSST().getVICMSSTRet());
         }
         else if(icms.getICMSSN101()!=null){
            
@@ -1842,12 +1885,13 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
         TNFe.InfNFe.Pag pagamento= inf.getPag();
         DefaultTableModel tbl = (DefaultTableModel) tblParcelas.getModel();
         if(cobranca!=null){
-            for (int i=0;i<cobranca.getDup().size();i++){
+            int parcelas=cobranca.getDup().size();
+            for (int i=0;i<parcelas;i++){
                     tbl.addRow(new Object[]{
                     clsaux.preencheData(),
                         "5",
                         "BOLETO",
-                         cobranca.getDup().get(i).getNDup(),
+                         cobranca.getDup().get(i).getNDup()+"-"+parcelas,
                     cobranca.getDup().get(i).getVDup(),
                     clsaux.convertDataExib(cobranca.getDup().get(i).getDVenc())
             });
@@ -1962,6 +2006,7 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -2010,6 +2055,7 @@ public class LancamentoDocumentos extends javax.swing.JDialog {
     private javax.swing.JTextField txtValorrecebido;
     private javax.swing.JTextField txtValorst;
     public static javax.swing.JLabel txtValortotaldocumento;
+    private static javax.swing.JTextField txtVlFcpSt;
     private static javax.swing.JTextField txtVlIpi;
     // End of variables declaration//GEN-END:variables
 
