@@ -18,6 +18,7 @@ import classes.clsaux;
 import com.sun.glass.events.KeyEvent;
 import model.produtos;
 import conexoes.conexao;
+import grafic.interfac.pesquisa.FrmPesquisaNcm;
 import grafic.interfac.pesquisa.localizaProduto;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -271,6 +272,11 @@ public class cadProdutos extends javax.swing.JDialog {
                 TxtDescricaoActionPerformed(evt);
             }
         });
+        TxtDescricao.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TxtDescricaoKeyReleased(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Resumida :");
@@ -279,6 +285,11 @@ public class cadProdutos extends javax.swing.JDialog {
         TxtResumida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxtResumidaActionPerformed(evt);
+            }
+        });
+        TxtResumida.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TxtResumidaKeyReleased(evt);
             }
         });
 
@@ -2125,7 +2136,9 @@ public class cadProdutos extends javax.swing.JDialog {
     }//GEN-LAST:event_TxtNcmFocusLost
 
     private void btnPesqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqActionPerformed
-        
+       FrmPesquisaNcm dialog = new FrmPesquisaNcm(new javax.swing.JFrame(), true);
+       dialog.setLocationRelativeTo(null);
+       dialog.setVisible(true);
     }//GEN-LAST:event_btnPesqActionPerformed
 
     private void btnIncluiAtacarejoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluiAtacarejoActionPerformed
@@ -2168,6 +2181,18 @@ public class cadProdutos extends javax.swing.JDialog {
             ckCardapio.setSelected(true);
         }
     }//GEN-LAST:event_ckAtivocardapioOnlineActionPerformed
+
+    private void TxtDescricaoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtDescricaoKeyReleased
+       if(TxtDescricao.getText().length()>59){
+           TxtDescricao.setText(TxtDescricao.getText().substring(0, 59));
+       }
+    }//GEN-LAST:event_TxtDescricaoKeyReleased
+
+    private void TxtResumidaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtResumidaKeyReleased
+       if(TxtResumida.getText().length()>59){
+           TxtResumida.setText(TxtResumida.getText().substring(0, 59));
+       }
+    }//GEN-LAST:event_TxtResumidaKeyReleased
     
     public void abrirProcuraArq(){
         int retorno=flImagem.showOpenDialog(this);
@@ -2665,7 +2690,7 @@ public class cadProdutos extends javax.swing.JDialog {
     private javax.swing.JTextField TxtEstoque;
     private javax.swing.JTextField TxtEstoqueMinimo;
     private javax.swing.JTextField TxtMargem;
-    private javax.swing.JTextField TxtNcm;
+    public static javax.swing.JTextField TxtNcm;
     private javax.swing.JTextField TxtPrecoCompra;
     private javax.swing.JTextField TxtPrecoVenda;
     private javax.swing.JTextField TxtReferencia;

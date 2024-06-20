@@ -30,6 +30,8 @@ import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -1197,13 +1199,15 @@ public class CRUDNfe extends javax.swing.JDialog {
     
     public void enviarTodasNfceOffline(){
         int tamanho= TbLancamentos.getRowCount();
+        List <String> notas= new ArrayList<>();
         for(int i=0; i<tamanho; i++){
              String mvto=TbLancamentos.getValueAt(i, 0).toString();
              String situacao=TbLancamentos.getValueAt(i, 8).toString();
             try {
              if(situacao.equals("100")||situacao.equals("150")){
              }else{
-                new clsEnviaNfce(Long.parseLong(mvto));
+                 notas.add(mvto);
+                //new clsEnviaNfce(Long.parseLong(mvto));
             }
             
         } catch (Exception ex) {
@@ -1211,7 +1215,14 @@ public class CRUDNfe extends javax.swing.JDialog {
             Logger.getLogger(CRUDNfe.class.getName()).log(Level.SEVERE, null, ex);
         }
      }
+        if(notas.size()>0){
+            FrmEnviaNfceOffline dialog = new FrmEnviaNfceOffline(new javax.swing.JFrame(), true);
+            dialog.iniciaEnvio(notas);
+            dialog.setLocationRelativeTo(null);
+            dialog.setVisible(true);
+        }
     }
+    
     public void inutilizarTodos(){
         clsLancDocCabecalho mov= new clsLancDocCabecalho();
         

@@ -48,6 +48,7 @@ public class ClsParametrizaTributos {
             break;
             case "900" : prod.setSit_tributaria("102");
             break;
+            default: prod.setSit_tributaria("102");
             }
         }else{
             prod.setSit_tributaria("102");
@@ -99,6 +100,45 @@ public class ClsParametrizaTributos {
         return cfop;
     }
 
+    public String parametrizaCfopConformeCfopCabecalho(String cst,String cfopbase){
+        String cfop=cfopbase;
+        if(cst.equals("102")||cst.equals("101")||cst.equals("103")||cst.equals("400")||cst.equals("900")){
+            if(cfopbase.equals("5102")){
+                cfop="5102";
+            }else if(cfopbase.equals("6102")){
+                cfop="6102";
+            }else if(cfopbase.equals("6202")){
+                cfop="6202";
+            }else if(cfopbase.equals("5202")){
+                cfop="5202";
+            }else if(cfopbase.equals("5102")){
+                cfop="5102";
+            }else if(cfopbase.equals("1102")){
+                cfop="1102";
+            }else if(cfopbase.equals("2102")){
+                cfop="6102";
+            }else if(cfopbase.equals("2102")){
+                cfop="2102";
+            }
+        
+        }else if(cst.equals("500")){
+        
+           if(cfopbase.equals("5102")){
+                cfop="5405";
+            }else if(cfopbase.equals("6102")){
+                cfop="6404";
+            }else if(cfopbase.equals("6202")){
+                cfop="6411";
+            }else if(cfopbase.equals("5202")){
+                cfop="5411";
+            }else if(cfopbase.equals("1102")){
+                cfop="1403";
+            }else if(cfopbase.equals("2102")){
+                cfop="2411";
+            }
+        }
+        return cfop;
+    }
     public clsLancDocument calculaValoresItem(clsLancDocument item){
         Double qnt,preco,subtotal,tota,baseicms,basest,baseipi,aliq,aliqipi;
         Double vlst,vlicms,vlipi,vlpis,vlcofins;
@@ -124,6 +164,9 @@ public class ClsParametrizaTributos {
             baseipi=0.00;
             vlipi=0.00;
         }
+        
+        basest=clsaux.capturaValores(item.getBase_st());
+        vlst=clsaux.capturaValores(item.getValor_st());
         vlpis=subtotal*(clsaux.capturaValores(item.getAliq_pis()))/100;
         vlcofins=subtotal*(clsaux.capturaValores(item.getAliq_cofins()))/100;
         

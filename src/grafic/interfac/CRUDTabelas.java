@@ -347,6 +347,7 @@ public class CRUDTabelas extends javax.swing.JDialog {
                 String nome,idretorno,pdv=null;
                 String card="Nao";
                 nome=rs.getString(2);
+                Double comissao=rs.getDouble("comissao");
                 idretorno=rs.getString(1);
                 if(tipoform.equals("G")){
                      if(clsaux.trataCampoNuloConfig(rs.getString(3)).equals("N")){
@@ -368,6 +369,7 @@ public class CRUDTabelas extends javax.swing.JDialog {
                 frmCadTabelas dialog = new frmCadTabelas(new javax.swing.JFrame(), true);
                 frmCadTabelas.txtNome.setText(nome);
                 frmCadTabelas.txtId.setText(id);
+                frmCadTabelas.txtComissao.setText(clsaux.formato(comissao));
                 clsaux.carregaComboBox(frmCadTabelas.cbPdv, pdv);
                 clsaux.carregaComboBox(frmCadTabelas.cbCardapio, card);
                 dialog.setLocationRelativeTo(null);

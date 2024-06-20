@@ -1153,6 +1153,7 @@ public class frmLancamentoItemNfe extends javax.swing.JDialog {
             rsp.close();
             psp.close();
             this.carregaTributos();
+            validaDevolucao();
             txtQnt.requestFocus();
         } catch (SQLException ex) {
             Logger.getLogger(frmLancamentoItemNfe.class.getName()).log(Level.SEVERE, null, ex);
@@ -1169,9 +1170,23 @@ public class frmLancamentoItemNfe extends javax.swing.JDialog {
             this.direcao="S";
         }
     }
+    public void validaDevolucao(){
+        if(nf.getFinalidade().equals("4")){
+            FrmLocalizaDadosNFeEntrada dialog = new FrmLocalizaDadosNFeEntrada(new javax.swing.JFrame(), true);
+            dialog.setLocationRelativeTo(null);
+            dialog.inicia(txtCodBarras.getText());
+            dialog.setVisible(true);
+            
+            if(frmLancamentoNfe.dadosDev==null);
+            else{
+                txtQnt.setText(frmLancamentoNfe.dadosDev.getQuantidade());
+                txtValorunitario.setText(frmLancamentoNfe.dadosDev.getPreco());
+            }
+        }
+    }
     public void carregaTributos(){
         String cst=txtcst.getText().trim();
-        txtcfop.setText(new ClsParametrizaTributos().parametricaCfopConformeCstNfe(cst, nf.getFinalidade(), direcao, nf.getInddest()));
+        txtcfop.setText(new ClsParametrizaTributos().parametrizaCfopConformeCfopCabecalho(cst, frmLancamentoNfe.txtCfop.getText()));
         clsPisCofins pis=listaInfAdcDAO.retornaPis(txtcstpis.getText());
         txtdescpis.setText(pis.getDescricao());
         txtaliqpis.setText(pis.getAliq_pis());
@@ -1192,13 +1207,13 @@ public class frmLancamentoItemNfe extends javax.swing.JDialog {
         vlst=clsaux.capturaValores(txtvlst.getText());
         vlicms=clsaux.capturaValores(txtvlicms.getText());
         vtotal=qnt*vuni-desc+acres+outras+seguro+frete+vlipi;
-        if(txtcst.getText().equals("10")){
+        if(txtcst.getText().equals("10")||txtcst.getText().equals("70")||txtcst.getText().equals("900")||txtcst.getText().equals("90")){
             vtotal=vtotal+vlst;
         }
         txtValortotal.setText(clsaux.formato(vtotal));
     }
     public void gravaItem(){
-        
+        Double subtotal=clsaux.capturaValores(txtQnt.getText()) * clsaux.capturaValores(txtValorunitario.getText());
         lancDocumentDAO ldDAO= new lancDocumentDAO();
         item.setIdmovto(frmLancamentoNfe.idmovimento);
         item.setIdproduto(iditem);
@@ -1208,6 +1223,7 @@ public class frmLancamentoItemNfe extends javax.swing.JDialog {
         item.setPrecovenda(txtValorunitario.getText().replaceAll(",", "."));
         item.setAcrescimo(txtAcresc.getText().replaceAll(",", "."));
         item.setDesconto(txtDesconto.getText().replaceAll(",", "."));
+        item.setSubtotal(clsaux.formatoNfe(subtotal));
         item.setTotal(txtValortotal.getText().replaceAll(",", "."));
         item.setUnidade(cbUnidvenda.getSelectedItem().toString());
         item.setNumeroitem(txtIditem.getText());
@@ -1240,6 +1256,7 @@ public class frmLancamentoItemNfe extends javax.swing.JDialog {
            frmLancamentoNfe.itens.add(item);
         }
         iditem=null;
+        frmLancamentoNfe.dadosDev=null;
         frmLancamentoNfe.numeitem++;
         frmLancamentoNfe.populaTabelaItens();
         frmLancamentoNfe.calculaTotalDoc();

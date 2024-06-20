@@ -13,7 +13,6 @@ import br.com.caelum.stella.boleto.Datas;
 import br.com.caelum.stella.boleto.Endereco;
 import br.com.caelum.stella.boleto.Pagador;
 import br.com.caelum.stella.boleto.bancos.BancoDoBrasil;
-import br.com.caelum.stella.boleto.bancos.Bancos;
 import br.com.caelum.stella.boleto.bancos.Bradesco;
 import br.com.caelum.stella.boleto.transformer.GeradorDeBoleto;
 import classes.ClsDadosBoleto;
@@ -39,6 +38,7 @@ public class GeraBoletos {
         
         BoletoDAO bdao= new BoletoDAO();
         ClsDadosBoleto dado= bdao.buscaDadosBoleto(idtitulo);
+        System.out.println(dado.toString());
         Datas dat= Datas.novasDatas().comDocumento(dado.getDatDocumento()).comProcessamento(dado.getDatProcessamento()).comVencimento(dado.getDatVencimento());
         Endereco endBeneficiario=Endereco.novoEndereco().comLogradouro(clsDadosEmpresa.getRua()+", "+clsDadosEmpresa.getNumero()).
                 comBairro(clsDadosEmpresa.getBairro()).comCep(clsDadosEmpresa.getCep()).comCidade(clsDadosEmpresa.getCidade()).comUf(clsDadosEmpresa.getEstado());

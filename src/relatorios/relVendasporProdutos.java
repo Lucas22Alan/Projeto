@@ -405,7 +405,7 @@ public class relVendasporProdutos extends javax.swing.JDialog {
                          
                                          sql="select tb.codigo_barras,\n" +
 "                                         tp.nomelongo,\n" +
-"                                         cast (sum (ti.quantidade)as numeric(5)) as Quantidade,\n" +
+"                                         cast (sum (ti.quantidade)as numeric(5,2)) as Quantidade,\n" +
 "                                         cast (sum (ti.total)as numeric (5,2))as Total,\n" +
 "                                         cast (sum((ti.quantidade)*ti.cust_unitario)as numeric (5,2)) as Custo,\n" +
 "                                         cast (sum (ti.total )- sum((ti.quantidade)*ti.cust_unitario)as numeric (5,2)) as Lucro,\n" +
@@ -421,7 +421,7 @@ public class relVendasporProdutos extends javax.swing.JDialog {
 "                                         and ti.codi_barra in ("+dados+")\n" +
 "                                         GROUP BY 1,2 "+ordem;
                                  qtdtotal="select\n" +
-                                          "cast (sum (ti.quantidade)as numeric(5)) as Quantidade,\n" +
+                                          "cast (sum (ti.quantidade)as numeric(5,2)) as Quantidade,\n" +
                                           "cast (sum (ti.total)as numeric (5,2))as Total,\n" +
                                           "cast (sum((ti.quantidade)*ti.cust_unitario)as numeric (5,2)) as Custo,\n" +
                                          "cast (sum (ti.total )- sum((ti.quantidade)*ti.cust_unitario)as numeric (5,2)) as Lucro,\n"
@@ -440,7 +440,7 @@ public class relVendasporProdutos extends javax.swing.JDialog {
                            //filtrar por grupo apenas
                            sql="select tb.codigo_barras,\n" +
                                          "tp.nomelongo,\n" +
-                                         "cast (sum (ti.quantidade)as numeric(5)) as Quantidade,\n" +
+                                         "cast (sum (ti.quantidade)as numeric(5,2)) as Quantidade,\n" +
                                          "cast (sum (ti.total)as numeric (5,2))as Total,\n" +
                                          "cast (sum((ti.quantidade)*ti.cust_unitario)as numeric (5,2)) as Custo,\n" +
                                          "cast (sum (ti.total )- sum((ti.quantidade)*ti.cust_unitario)as numeric (5,2)) as Lucro, \n"
@@ -466,7 +466,7 @@ public class relVendasporProdutos extends javax.swing.JDialog {
                                          "and ti.estado='2'" +     
                                          "GROUP BY 1,2 "+ordem;
                                  qtdtotal="select\n" +
-                                          "cast (sum (ti.quantidade)as numeric(5)) as Quantidade,\n" +
+                                          "cast (sum (ti.quantidade)as numeric(5,2)) as Quantidade,\n" +
                                           "cast (sum (ti.total)as numeric (5,2))as Total,\n" +
                                           "cast (sum((ti.quantidade)*ti.cust_unitario)as numeric (5,2)) as Custo,\n" +
                                          "cast (sum (ti.total )- sum((ti.quantidade)*ti.cust_unitario)as numeric (5,2)) as Lucro,\n"
@@ -495,7 +495,7 @@ public class relVendasporProdutos extends javax.swing.JDialog {
                      //System.out.println("Filtro nao foi selecionado");
                   sql="select tb.codigo_barras,\n" +
                       "tp.nomelongo,\n" +
-                      "cast (sum (ti.quantidade)as numeric(5)) as Quantidade,\n" +
+                      "cast (sum (ti.quantidade)as numeric(5,2)) as Quantidade,\n" +
                       "cast (sum (ti.total)as numeric (5,2))as Total,\n" +
                       "cast (sum((ti.quantidade)*ti.cust_unitario)as numeric (5,2)) as Custo,\n" +
                       "cast (sum (ti.total )- sum((ti.quantidade)*ti.cust_unitario)as numeric (5,2)) as Lucro,\n"
@@ -515,7 +515,7 @@ public class relVendasporProdutos extends javax.swing.JDialog {
                       "and tm.id_tipo='5' and tm.estado='2' and ti.estado='2'\n"+    
                       "GROUP BY 1,2 "+ordem;
                   qtdtotal="select\n" +
-                           "cast (sum (ti.quantidade)as numeric(5)) as Quantidade,\n" +
+                           "cast (sum (ti.quantidade)as numeric(5,2)) as Quantidade,\n" +
                            "cast (sum (ti.total)as numeric (5,2))as Total,\n" +
                            "cast (sum((ti.quantidade)*ti.cust_unitario)as numeric (5,2)) as Custo,\n" +
                            "cast (sum (ti.total )- sum((ti.quantidade)*ti.cust_unitario)as numeric (5,2)) as Lucro,\n"

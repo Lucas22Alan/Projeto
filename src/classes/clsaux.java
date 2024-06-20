@@ -7,9 +7,7 @@ import java.text.DecimalFormat;
 import titulos.FormContasPagarReceber;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.TextStyle;
 import java.util.Calendar;
 import java.util.Date;
@@ -35,9 +33,25 @@ public class clsaux {
 		}
     	return retorno;
     }
+    public static int convertStringInt(String dado){
+        int retorno=0;
+        try{
+            retorno=Integer.parseInt(dado);
+        }catch(Exception e){
+            retorno=0;
+        }
+        return retorno;
+        
+        
+    }
     public static String formataReais(Double f){
-        String valorformatado= new DecimalFormat("#,##0.00").format(f);
-        return valorformatado;
+        try{
+            String valorformatado= new DecimalFormat("#,##0.00").format(f);
+
+            return valorformatado;
+        }catch(Exception e){
+            return "0,00";
+        }
     }
     public static String capturaValor(String dados) {
     	String inter=null;

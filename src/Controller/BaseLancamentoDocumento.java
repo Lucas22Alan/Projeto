@@ -41,8 +41,8 @@ public class BaseLancamentoDocumento {
         prod.setUnid_venda("Un");
         prod.setSit_tributaria(pro.getCst());
         prod.setAliq_icms("0");
-        prod.setPis_ent(pro.getPis_cofins());
-        prod.setPis_sai(pro.getPis_cofins());
+        prod.setPis_ent("70");
+        prod.setPis_sai("07");
         //prod.setp("0");
         //prod.setPtsretira("0");
         prod.setTipo("0");

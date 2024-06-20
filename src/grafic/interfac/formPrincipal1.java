@@ -39,6 +39,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import jxl.read.biff.BiffException;
 import model.CadContasRecPagar;
+import relatorios.FrmDashboardPizzas;
 import relatorios.FrmMovOs;
 import relatorios.FrmRelDreResumido;
 import relatorios.FrmRelatorioSangrias;
@@ -125,6 +126,7 @@ public class formPrincipal1 extends javax.swing.JFrame {
         jMenuItem49 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
+        MnContagemEstoque = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem42 = new javax.swing.JMenuItem();
@@ -174,6 +176,7 @@ public class formPrincipal1 extends javax.swing.JFrame {
         MenuContrato = new javax.swing.JMenu();
         ContratoArma = new javax.swing.JMenuItem();
         jMenuItem22 = new javax.swing.JMenuItem();
+        jMenuItem23 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         MenuAtirado = new javax.swing.JMenu();
         MiAniver = new javax.swing.JMenuItem();
@@ -223,6 +226,7 @@ public class formPrincipal1 extends javax.swing.JFrame {
         MiVendaTamanho = new javax.swing.JMenuItem();
         MiVendaSabor = new javax.swing.JMenuItem();
         MiVendaSabor1 = new javax.swing.JMenuItem();
+        MiVendaSabor4 = new javax.swing.JMenuItem();
         MenuPizzaria1 = new javax.swing.JMenu();
         MiVendaTamanho1 = new javax.swing.JMenuItem();
         MiVendaSabor2 = new javax.swing.JMenuItem();
@@ -708,6 +712,15 @@ public class formPrincipal1 extends javax.swing.JFrame {
         });
         jMenu17.add(jMenuItem7);
 
+        MnContagemEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/produtos99.png"))); // NOI18N
+        MnContagemEstoque.setText("Inventario De Estoque");
+        MnContagemEstoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnContagemEstoqueActionPerformed(evt);
+            }
+        });
+        jMenu17.add(MnContagemEstoque);
+
         MenuArquivos.add(jMenu17);
         MenuArquivos.add(jSeparator1);
 
@@ -1133,6 +1146,15 @@ public class formPrincipal1 extends javax.swing.JFrame {
         });
         MenuContrato.add(jMenuItem22);
 
+        jMenuItem23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cad99.png"))); // NOI18N
+        jMenuItem23.setText("Cad. Calibres");
+        jMenuItem23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem23ActionPerformed(evt);
+            }
+        });
+        MenuContrato.add(jMenuItem23);
+
         jMenuBar1.add(MenuContrato);
 
         jMenu7.setText("Relatórios     ");
@@ -1515,6 +1537,14 @@ public class formPrincipal1 extends javax.swing.JFrame {
             }
         });
         MenuPizzaria.add(MiVendaSabor1);
+
+        MiVendaSabor4.setText("Dashboard");
+        MiVendaSabor4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MiVendaSabor4ActionPerformed(evt);
+            }
+        });
+        MenuPizzaria.add(MiVendaSabor4);
 
         jMenu7.add(MenuPizzaria);
 
@@ -2303,6 +2333,24 @@ public class formPrincipal1 extends javax.swing.JFrame {
        dialog.setLocationRelativeTo(null);
        dialog.setVisible(true);
     }//GEN-LAST:event_MiResumoMov1ActionPerformed
+
+    private void MiVendaSabor4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiVendaSabor4ActionPerformed
+      FrmDashboardPizzas dialog = new FrmDashboardPizzas(new javax.swing.JFrame(), true);
+      dialog.setLocationRelativeTo(null);
+      dialog.setVisible(true);
+    }//GEN-LAST:event_MiVendaSabor4ActionPerformed
+
+    private void MnContagemEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnContagemEstoqueActionPerformed
+       CRUDInventario dialog = new CRUDInventario(new javax.swing.JFrame(), true);
+       dialog.setLocationRelativeTo(null);
+       dialog.setVisible(true);
+    }//GEN-LAST:event_MnContagemEstoqueActionPerformed
+
+    private void jMenuItem23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem23ActionPerformed
+       CRUDCalibres dialog = new CRUDCalibres(new javax.swing.JFrame(), true);
+       dialog.setLocationRelativeTo(null);
+       dialog.setVisible(true);
+    }//GEN-LAST:event_jMenuItem23ActionPerformed
     
     public void abreCrudNfe(){
         CRUDNfe dialog = new CRUDNfe(new javax.swing.JFrame(), true);
@@ -2501,9 +2549,11 @@ public class formPrincipal1 extends javax.swing.JFrame {
     private javax.swing.JMenuItem MiVendaSabor1;
     private javax.swing.JMenuItem MiVendaSabor2;
     private javax.swing.JMenuItem MiVendaSabor3;
+    private javax.swing.JMenuItem MiVendaSabor4;
     private javax.swing.JMenuItem MiVendaTamanho;
     private javax.swing.JMenuItem MiVendaTamanho1;
     private javax.swing.JMenuItem MiVendasVend;
+    private javax.swing.JMenuItem MnContagemEstoque;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
@@ -2542,6 +2592,7 @@ public class formPrincipal1 extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem21;
     private javax.swing.JMenuItem jMenuItem22;
+    private javax.swing.JMenuItem jMenuItem23;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem34;
     private javax.swing.JMenuItem jMenuItem35;

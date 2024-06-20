@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 import model.clientes;
 import model.clsLancDocCabecalho;
 import model.clsLancDocument;
+import model.clsNfTransporte;
 import model.clsNfe;
 
 /**
@@ -311,17 +312,16 @@ public class FrmConfirmaItensDevolucao extends javax.swing.JDialog {
     public void gerarRegistro(){
         BaseDevolucaoAuto basedev= new BaseDevolucaoAuto();
         List<clsLancDocument> itensnovo= new ArrayList<>();
-        
         for (int i=0; i<tbItens.getRowCount(); i++){
                if((Boolean)tbItens.getValueAt(i, 0)==true){
                    Double qnt= clsaux.capturaValores(tbItens.getValueAt(i, 2).toString());
                    itens.get(i).setQuantidade(qnt.toString());
                    itensnovo.add(itens.get(i));
+                   System.out.println(itens.toString());
                 }
          }
         
         if(itensnovo.size()>0){
-        
             String idmovNovo=new BaseGeralDAO().gerarIds("GEN_TMOVIMENTO_ID");
             String chaveCompra=ld.getChaveacesso();
             ld.setIdmovimento(idmovNovo);
@@ -332,6 +332,10 @@ public class FrmConfirmaItensDevolucao extends javax.swing.JDialog {
                 ldDAO.atualizaRegistroMovto(ld);
                nfeDAO.inserirMovimentoNfe(nf);
                nfeDAO.gravaInfReferencia(idmovNovo, chaveCompra);
+               clsNfTransporte tr= new clsNfTransporte();
+               tr.setIdmovimento(idmovNovo);
+               tr.setModfrete("9");
+               nfeDAO.inserirAtualizaTransporteNf(tr);
                this.dispose();
             }else{
             JOptionPane.showMessageDialog(null, "Nenhum Item Marcado!");

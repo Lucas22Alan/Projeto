@@ -7,6 +7,7 @@ import classes.ClsVerificaVersao;
 import model.clsConfig;
 import model.clsDadosEmpresa;
 import classes.clsaux;
+import com.mksolucoes.validarlicenca.ClsConsulta;
 import conexoes.conexao;
 import java.awt.Toolkit;
 import java.io.IOException;
@@ -256,7 +257,7 @@ public class formLogarsistema extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLogarActionPerformed
-       this.logarsistema();
+      this.logarsistema();
       /*  this.carregaConfiguraao();
       this.carregaParametrosFinanceiro();
       this.logarsistema();
@@ -421,8 +422,8 @@ public class formLogarsistema extends javax.swing.JFrame {
             if(empresaDAO.verificaTetativas()<6){
                 try {
                     ValidaLicencaServidorOnline val= new ValidaLicencaServidorOnline();
-                    val.consultarLicencaValidaCnpj(clsDadosEmpresa.cnpj);
-                } catch (IOException ex) {
+                    val.conultarLicencaFirebase(clsDadosEmpresa.cnpj);
+                } catch (Exception ex) {
                     Logs.gravarLog.gravaSemMensagem(ex.getMessage());
                     Logger.getLogger(formLogarsistema.class.getName()).log(Level.SEVERE, null, ex);
                     empresaDAO.increntaTentativa(empresaDAO.verificaTetativas()+1);

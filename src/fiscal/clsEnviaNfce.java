@@ -116,31 +116,38 @@ public class clsEnviaNfce {
                 tenvnfe.getNFe().get(0).setInfNFeSupl(infNFeSupl);
                 
                         
+                try{
                 
 		// envio nfe para sefaz
-		TRetEnviNFe retorno = Nfe.enviarNfe(config, tenvnfe, DocumentoEnum.NFCE);
-		String xmlfinal=null;
-		//faz verificacao retono e faz consulta do status do lote com recibo
-               gravarArquivoXmlEnvio(XmlNfeUtil.objectToXml(tenvnfe),chave);
-               if(RetornoUtil.isRetornoAssincrono(retorno)) {
-			br.com.swconsultoria.nfe.schema_4.retConsReciNFe.TRetConsReciNFe tRetConsReciNFe=verificaEnvioAssincrono(retorno);
-			RetornoUtil.validaAssincrono(tRetConsReciNFe);
-			xmlfinal=XmlNfeUtil.criaNfeProc(tenvnfe, tRetConsReciNFe.getProtNFe().get(0));
-			System.out.println("Retorno assincrono xmlfinal: " + xmlfinal);
-			atualizaDadosNfe(retorno);
-			gravarArquivoXml(xmlfinal,chave.replace("NFe", ""));
-			atualizaDadosNfe(retorno);
-                        
-			///throw new NfeException(retorno.getProtNFe().getInfProt().getXMotivo()); 
-		}else {
-			RetornoUtil.validaSincrono(retorno);
-			xmlfinal=XmlNfeUtil.criaNfeProc(tenvnfe, retorno.getProtNFe());
-			System.out.println("Retorno sincrono xmlfinal: " + xmlfinal);
-			atualizaDadosNfe(retorno);
-			gravarArquivoXml(xmlfinal,chave.replace("NFe", ""));
-			//throw new NfeException(retorno.getProtNFe().getInfProt().getXMotivo()); 
-			
-		}
+                    TRetEnviNFe retorno = Nfe.enviarNfe(config, tenvnfe, DocumentoEnum.NFCE);
+                    movimentonf.setMotivo(retorno.getXMotivo());
+                    movimentonf.setCstat(retorno.getCStat());
+                    String xmlfinal=null;
+                    //faz verificacao retono e faz consulta do status do lote com recibo
+                   gravarArquivoXmlEnvio(XmlNfeUtil.objectToXml(tenvnfe),chave);
+                   if(RetornoUtil.isRetornoAssincrono(retorno)) {
+                            br.com.swconsultoria.nfe.schema_4.retConsReciNFe.TRetConsReciNFe tRetConsReciNFe=verificaEnvioAssincrono(retorno);
+                            RetornoUtil.validaAssincrono(tRetConsReciNFe);
+                            xmlfinal=XmlNfeUtil.criaNfeProc(tenvnfe, tRetConsReciNFe.getProtNFe().get(0));
+                            System.out.println("Retorno assincrono xmlfinal: " + xmlfinal);
+                            atualizaDadosNfe(retorno);
+                            gravarArquivoXml(xmlfinal,chave.replace("NFe", ""));
+                            atualizaDadosNfe(retorno);
+
+                            ///throw new NfeException(retorno.getProtNFe().getInfProt().getXMotivo()); 
+                    }else {
+                            RetornoUtil.validaSincrono(retorno);
+                            xmlfinal=XmlNfeUtil.criaNfeProc(tenvnfe, retorno.getProtNFe());
+                            System.out.println("Retorno sincrono xmlfinal: " + xmlfinal);
+                            atualizaDadosNfe(retorno);
+                            gravarArquivoXml(xmlfinal,chave.replace("NFe", ""));
+                            //throw new NfeException(retorno.getProtNFe().getInfProt().getXMotivo()); 
+
+                    }
+                }catch(NfeException e){
+                    // deve atualizar o motivo no cadastro da nfce
+                    nfeDAO.inserirMovimentoNfe(movimentonf);
+                }
         }
 
     

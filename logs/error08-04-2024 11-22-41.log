@@ -1,0 +1,6 @@
+Data: 08-04-2024 11-22-42 Erro: ALTER TABLE TCAD_EMPRESA ADD CR S30;
+unsuccessful metadata update; STORE RDB$RELATION_FIELDS failed; attempt to store duplicate value (visible to active transactions) in unique index "RDB$INDEX_15"; Problematic key value is ("RDB$FIELD_NAME" = 'CR', "RDB$RELATION_NAME" = 'TCAD_EMPRESA') [SQLState:42000, ISC error code:335544351]
+----------------------------------------------------------------
+Data: 08-04-2024 11-23-03 Erro: ALTER TABLE THABITUALIDADE ADD CONTROLE S30;
+unsuccessful metadata update; STORE RDB$RELATION_FIELDS failed; attempt to store duplicate value (visible to active transactions) in unique index "RDB$INDEX_15"; Problematic key value is ("RDB$FIELD_NAME" = 'CONTROLE', "RDB$RELATION_NAME" = 'THABITUALIDADE') [SQLState:42000, ISC error code:335544351]
+----------------------------------------------------------------

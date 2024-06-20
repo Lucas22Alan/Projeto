@@ -88,7 +88,7 @@ AND a.cod_item='75']]>
 			</rectangle>
 			<image>
 				<reportElement x="12" y="7" width="88" height="88" uuid="3760817c-9580-408d-abbd-51f30f9681a3"/>
-				<imageExpression><![CDATA["C:\\esfhera\\adm\\imagens\\logo.png"]]></imageExpression>
+				<imageExpression><![CDATA["C:\\esfhera\\adm\\imagens\\logo1.png"]]></imageExpression>
 			</image>
 			<textField>
 				<reportElement x="138" y="4" width="275" height="20" uuid="1b5dd83e-89b9-43d2-841f-36c064c50f57">
@@ -331,8 +331,11 @@ AND a.cod_item='75']]>
 				</textElement>
 				<text><![CDATA[Responsavel:]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="120" y="231" width="180" height="20" uuid="68aa577c-4925-4e90-b297-933b39f024fb"/>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="120" y="231" width="215" height="20" uuid="68aa577c-4925-4e90-b297-933b39f024fb">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<textElement>
 					<font fontName="Tahoma" size="12"/>
 				</textElement>

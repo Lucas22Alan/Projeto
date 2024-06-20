@@ -237,7 +237,7 @@ public class frmRelVendasDocumentosFiscais extends javax.swing.JDialog {
             if(ckTodos.isSelected()==true){
                 sql="select tm.id_mov, tm.numero_documento,tm.serie,tm.id_modelo, tm.dat_finalizacao,tm.total,tm.chave_acesso,tn.cstat,tn.nfce_identificada  from tmovimento tm\n" +
                         "left join tnota_fiscal tn on tm.id_mov=tn.id_movimento\n" +
-                        "where tm.dat_finalizacao between ? and ? and tm.estado='2' and (tm.id_tipo=1 or tm.id_tipo=2)";
+                        "where tm.dat_finalizacao between ? and ? and tm.estado='2' and (tm.id_tipo=1 or tm.id_tipo=2) and (tm.id_modelo=55 or tm.id_modelo=65)";
             }
             
             PreparedStatement pss= conexao.getPreparedStatement(sql);

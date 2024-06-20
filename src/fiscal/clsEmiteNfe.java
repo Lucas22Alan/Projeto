@@ -60,7 +60,6 @@ import classes.clsaux;
 import conexoes.conexao;
 import java.time.Instant;
 import java.time.ZoneId;
-import java.util.Date;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import model.clsConfig;
@@ -888,11 +887,8 @@ public class clsEmiteNfe {
 		ide.setMod(modelo);
 		ide.setSerie(String.valueOf(serie));
 		ide.setNNF(String.valueOf(numero));
-                System.out.println(dataemissao);
-                 System.out.println(XmlNfeUtil.dataNfe(dataemissao));
-		ide.setDhEmi(XmlNfeUtil.dataNfe(dataemissao));
-                 System.out.println(ide.getDhEmi());
-		ide.setTpNF("1");//define se é saida ou entrada
+                ide.setDhEmi(XmlNfeUtil.dataNfe(dataemissao));
+                //ide.setTpNF("1");//define se é saida ou entrada
 		ide.setIdDest(movimentonf.getInddest());
 		ide.setCMunFG("4109401");
 		ide.setTpImp("1");
@@ -905,7 +901,17 @@ public class clsEmiteNfe {
 		ide.setProcEmi("0");
 		ide.setVerProc("Esfhera Light 1.0.1");
                  
+                switch (clsaux.retornaId(movimento.getTipomovimento())){
+                    case "3" : ide.setTpNF("0");
+                    break;
+                    case "10" : ide.setTpNF("0");
+                    break;
+                    
+                    default: ide.setTpNF("1");
                 
+                }
+                
+                //JOptionPane.showMessageDialog(null, movimento.getTipomovimento()+"-"+ide.getTpNF());
                 for(String novo:referencias){
                    TNFe.InfNFe.Ide.NFref ref= new Ide.NFref();
                         ref.setRefNFe(novo);
@@ -918,7 +924,6 @@ public class clsEmiteNfe {
         private String validaCfop(String cfop){
             String ret="Venda Mercadoria";
             switch (cfop){
-                
                 case "5202": ret="Devolucao De Compra";
                 break;
                 case "6202": ret="Devolucao De Compra";
@@ -926,6 +931,12 @@ public class clsEmiteNfe {
                 case "6411": ret="Devolucao De Mercadoria";
                 break;
                 case "5411": ret="Devolucao De Mercadoria";
+                break;
+                case "5917": ret="Remessa Em Consignacao";
+                break;
+                case "1411": ret="Devolucao de Venda";
+                break;
+                case "1202": ret="Devolucao de Venda";
                 break;
              }
             return ret;

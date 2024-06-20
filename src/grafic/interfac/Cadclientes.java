@@ -2,6 +2,7 @@
 package grafic.interfac;
 
 import DAO.TarmasDAO;
+import DAO.baseSincronizacaoDAO;
 import DAO.clienteDAO;
 import DAO.listaInfAdcDAO;
 import DAO.pesqestadoDAO;
@@ -125,6 +126,7 @@ public class Cadclientes extends javax.swing.JDialog {
         jLabel23 = new javax.swing.JLabel();
         ftDataFiliacao = new javax.swing.JFormattedTextField();
         btnIncluirArma = new javax.swing.JButton();
+        btnIncluirArma1 = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         btnCancelar = new javax.swing.JButton();
         btnGravar = new javax.swing.JButton();
@@ -675,6 +677,14 @@ public class Cadclientes extends javax.swing.JDialog {
             }
         });
 
+        btnIncluirArma1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnIncluirArma1.setText("Rem. Arma");
+        btnIncluirArma1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIncluirArma1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -686,9 +696,11 @@ public class Cadclientes extends javax.swing.JDialog {
                         .addComponent(jLabel21)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCr, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnIncluirArma)
                     .addComponent(jLabel23)
-                    .addComponent(ftDataFiliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ftDataFiliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btnIncluirArma1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnIncluirArma, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE)
                 .addContainerGap())
@@ -706,9 +718,11 @@ public class Cadclientes extends javax.swing.JDialog {
                         .addComponent(jLabel23)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ftDataFiliacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnIncluirArma)
-                        .addGap(0, 17, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnIncluirArma1)
+                        .addGap(0, 16, Short.MAX_VALUE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -1064,6 +1078,10 @@ public class Cadclientes extends javax.swing.JDialog {
            preecheTabela();
        }
     }//GEN-LAST:event_txtCpfCnpjFocusGained
+
+    private void btnIncluirArma1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirArma1ActionPerformed
+        removeArma();
+    }//GEN-LAST:event_btnIncluirArma1ActionPerformed
     public void preencheCbox(){
         DefaultComboBoxModel cbxuf= new DefaultComboBoxModel(pesqestadoDAO.pegaestado().toArray());
         cbUf.setModel(cbxuf);
@@ -1095,6 +1113,16 @@ public class Cadclientes extends javax.swing.JDialog {
             dialog.inicia(new Tcad_armas(Integer.parseInt(txtInterno.getText()), clsaux.remMascaraNumeros(txtCpfCnpj.getText())));
             dialog.setVisible(true);
             }
+    }
+    
+    public void removeArma(){
+        String idpar=txtInterno.getText();
+        String serie=tbarma.getValueAt(tbarma.getSelectedRow(), 5).toString();
+        new TarmasDAO().removeArma(idpar, serie);
+        armas= new TarmasDAO().retornaListaArmas(clsaux.remMascaraNumeros(txtCpfCnpj.getText()));
+        preecheTabela();
+        new baseSincronizacaoDAO().removeInfArma(101, serie);
+        new baseSincronizacaoDAO().criaInfSinc(103, serie);
     }
     public void preecheTabela(){
         DefaultTableModel tb = (DefaultTableModel) tbarma.getModel();
@@ -1196,6 +1224,8 @@ public class Cadclientes extends javax.swing.JDialog {
            cs.setid(Integer.parseInt(idparce));
            csDAO.atualizarCadastro(cs);
        }
+       new baseSincronizacaoDAO().criaInfSinc(100, cs.getCnpj());
+       new baseSincronizacaoDAO().criaInfSinc(102, cs.getCnpj());
        
        this.dispose();
        if(Origem.equals("Pedido")){
@@ -1346,6 +1376,7 @@ public class Cadclientes extends javax.swing.JDialog {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGravar;
     private javax.swing.JButton btnIncluirArma;
+    private javax.swing.JButton btnIncluirArma1;
     private javax.swing.JComboBox<String> cbCidade;
     private javax.swing.JComboBox<String> cbEstadoCad;
     private javax.swing.JComboBox<String> cbEstcivil;

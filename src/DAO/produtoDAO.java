@@ -6,8 +6,6 @@ import classes.clsLocalizaProduto;
 import classes.clsaux;
 import model.produtos;
 import conexoes.conexao;
-import grafic.interfac.CRUDprodutos;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
@@ -16,7 +14,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import model.Tcat_precos;
 import model.Tprecos;
 import model.clsConfig;
@@ -31,6 +28,11 @@ public class produtoDAO {
     
     
     public String Inserir(produtos produto){
+        if(produto.getCodi_barra().equals("00000000000000")){
+            JOptionPane.showMessageDialog(null, "Atenção produto com codigo de barras invalido, registro não será gravado!");
+            return "0";
+        }else{
+        
         String idproduto="0";
         String sql="insert into tprodutos(id,nomelongo, nomecurto,unid_venda, excluido,id_grupo,pontos_retira, pontos_validos,tipo_produto,imp_ficha_ind,ativo,id_subgrupo,id_setor,baixa_producao_venda,imprime_etiqueta,data_cadastro,data_alterado, "
                 + "possui_atacarejo,locacao,preco_variavel,impressora_producao,tem_adicional,tem_pizza,urlimagem,enviacardapio,descritivocardapio,observacao,linkimg,ativocardapio)"
@@ -121,12 +123,13 @@ public class produtoDAO {
             psbarras.executeUpdate();
             psbarras.close();
             
-        }catch (SQLException ee){
-            Logger.getLogger(produtoDAO.class.getName()).log(Level.SEVERE, null, ee);
-            //JOptionPane.showMessageDialog(null, ee);
-            Logs.gravarLog.gravaSemMensagem("Erro para cadastrar produto"+ee.getMessage());
+            }catch (SQLException ee){
+                Logger.getLogger(produtoDAO.class.getName()).log(Level.SEVERE, null, ee);
+                //JOptionPane.showMessageDialog(null, ee);
+                Logs.gravarLog.gravaSemMensagem("Erro para cadastrar produto"+ee.getMessage());
+            }
+          return idproduto;
         }
-        return idproduto;
         
     }
     public void Alterar (produtos produto){
@@ -553,13 +556,12 @@ public class produtoDAO {
         
     }
     public static void buscaProduto(clsLocalizaProduto lp) throws SQLException{
-        
-            String sql="select tb.codigo_barras,\n" +
+           String sql="select tb.codigo_barras,\n" +
                     "        tp.nomecurto,\n" +
                     "        tc.preco_venda,\n" +
                     "        tb.baixa_barra,\n" +
                     "        tb.fator,\n" +
-                    "        tc.custo_atual, tp.id,tp.unid_venda,tc.preco_oferta\n" +
+                    "        tc.custo_atual, tp.id,tp.unid_venda,tc.preco_oferta,tb.referencia\n" +
                     " from tprodutos tp\n" +
                     "join tbarras tb on tp.id=tb.id_produto\n" +
                     "join tprecos tc on tc.id=tp.id\n" +
@@ -577,6 +579,7 @@ public class produtoDAO {
             lp.setIdproduto(rs.getString(7));
             lp.setUnidade(rs.getString(8));
             lp.setOferta(rs.getDouble(9));
+            lp.setReferencia(rs.getString(10));
             rs.close();
             ps.close();
     }
@@ -666,7 +669,7 @@ public class produtoDAO {
                     "        tc.preco_venda,\n" +
                     "        tb.baixa_barra,\n" +
                     "        tb.fator,\n" +
-                    "        tc.custo_atual, tp.id,tp.unid_venda\n" +
+                    "        tc.custo_atual, tp.id,tp.unid_venda,tb.referencia\n" +
                     " from tprodutos tp\n" +
                     "join tbarras tb on tp.id=tb.id_produto\n" +
                     "join tprecos tc on tc.id=tp.id\n" +
@@ -683,6 +686,7 @@ public class produtoDAO {
                 lp.setPreccusto(rs.getDouble(6));
                 lp.setIdproduto(rs.getString(7));
                 lp.setUnidade(rs.getString(8));
+                lp.setReferencia(rs.getString(9));
                 lista.add(lp);
             }
             rs.close();
@@ -703,7 +707,7 @@ public class produtoDAO {
                     "        tc.preco_venda,\n" +
                     "        tb.baixa_barra,\n" +
                     "        tb.fator,\n" +
-                    "        tc.custo_atual, tp.id,tp.unid_venda\n" +
+                    "        tc.custo_atual, tp.id,tp.unid_venda,tb.referencia\n" +
                     " from tprodutos tp\n" +
                     "join tbarras tb on tp.id=tb.id_produto\n" +
                     "join tprecos tc on tc.id=tp.id\n" +
@@ -722,6 +726,7 @@ public class produtoDAO {
                 lp.setPreccusto(rs.getDouble(6));
                 lp.setIdproduto(rs.getString(7));
                 lp.setUnidade(rs.getString(8));
+                lp.setReferencia(rs.getString(9));
                 lista.add(lp);
             }
             rs.close();

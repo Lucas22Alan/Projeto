@@ -92,4 +92,18 @@ public class custosDAO {
             Logs.gravarLog.main(ex.getMessage());
         }
     }
+    public  void atualizaReferenciaNfeCompra(String descr,String id){
+     try {
+           String sql="update tbarras tp set tp.referencia=? where id_produto=?";
+            PreparedStatement ps = conexao.getPreparedStatement(sql);
+            if(descr.length()>19)descr=descr.substring(0, 19);
+            ps.setString(1, descr);
+            ps.setString(2, id);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(custosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logs.gravarLog.main(ex.getMessage());
+        }
+    }
 }

@@ -19,6 +19,15 @@ public class clsConfigPdv {
     String reduzido="N";
     int qntImprime=1;
     String tokenAnota="",modo;
+    String cupomTroca="N";
+
+    public String getCupomTroca() {
+        return cupomTroca;
+    }
+
+    public void setCupomTroca(String cupomTroca) {
+        this.cupomTroca = cupomTroca;
+    }
 
     public String getReduzido() {
         return reduzido;

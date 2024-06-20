@@ -6,6 +6,7 @@
 package DAO;
 
 import Logs.gravarLog;
+import classes.ClsDadosInventario;
 import model.clsLancDocCabecalho;
 import model.clsLancDocument;
 import classes.clsaux;
@@ -254,6 +255,70 @@ public class lancDocumentDAO {
         }
         return cld;
     }
+    public static clsLancDocCabecalho buscaCabecalhoDocPorSerie(clsLancDocCabecalho cld){
+        try {
+            String sql="select tm.id_mov,\n" +
+"                           tm.numero_documento,\n" +
+"                           tm.serie,\n" +
+"                           tm.data,\n" +
+"                           tm.dat_finalizacao,\n" +
+"                           tm.id_parceiro,\n" +
+"                           tm.base_icms,\n" +
+"                           tm.valor_icms,\n" +
+"                           tm.base_st,\n" +
+"                           tm.valor_st,\n" +
+"                           tm.acrescimo,\n" +
+"                           tm.desconto,\n" +
+"                           tm.sub_total,\n" +
+"                           tm.total,\n" +
+"                         tm.id_tipo,\n" +
+"                         td.descricao,"
+                    + "   tm.valor_pis,"
+                    + "   tm.valor_cofins,"
+                    + "   tm.chave_acesso,tm.id_modelo,tm.hora,tm.mvto_origem,tm.importado_origem,tm.valor_ipi,tm.cfop, tm.frete,tm.vl_fcp  \n" +
+"                    from tmovimento tm\n" +
+"                    join ttipo_documentos td on tm.id_tipo=td.id \n" +
+                    "where tm.numero_documento=? and serie=? ";
+            PreparedStatement psd= conexao.getPreparedStatementResult(sql);
+            psd.setString(1, cld.getDocument());
+            psd.setString(2, cld.getSerie());
+            ResultSet rsd= psd.executeQuery();
+            rsd.first();
+            cld.setIdmovimento(rsd.getString(1));
+            cld.setDocument(rsd.getString(2));
+            cld.setSerie(rsd.getString(3));
+            cld.setEmissao(rsd.getDate(4));
+            cld.setLancamento(rsd.getDate(5));
+            cld.setIdparceiro(rsd.getString(6));
+            cld.setBaseicms(rsd.getString(7));
+            cld.setValoricms(rsd.getString(8));
+            cld.setBasest(rsd.getString(9));
+            cld.setValorst(rsd.getString(10));
+            cld.setOutrasdesp(rsd.getString(11));
+            cld.setDesconto(rsd.getString(12));
+            cld.setTotalprod(rsd.getString(13));
+            cld.setTotal(rsd.getString(14));
+            cld.setTipomovimento(rsd.getString(15)+"- "+rsd.getString(16));
+            cld.setValor_pis(rsd.getString(17));
+            cld.setValor_cofins(rsd.getString(18));
+            cld.setChaveacesso(rsd.getString(19));
+            cld.setModelo(rsd.getString(20));
+            cld.setHorafinalizado(rsd.getTime(21));
+            cld.setMvtoOrigem(rsd.getString(23));
+            cld.setOrigem(rsd.getString(22));
+            cld.setValoripi(rsd.getString(24));
+            cld.setCfop(rsd.getString(25));
+            cld.setVlFrete(rsd.getString(26));
+            cld.setVlfcp(rsd.getString(27));
+            rsd.close();
+            psd.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(lancDocumentDAO.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Documento Não Localizado!!!");
+        }
+        return cld;
+    }
+    
     public static List<clsLancDocument> buscaItens(String idmovimento){
         List<clsLancDocument> listaitens= new ArrayList();
         try {
@@ -508,6 +573,64 @@ public class lancDocumentDAO {
         }
         return lista;
     }
+    public List<clsLancDocCabecalho> buscarListaMovimentosTipo(String tipo){
+         List<clsLancDocCabecalho> lista= new ArrayList<>();
+        try {
+           
+            String sql="select tm.id_mov,\n" +
+"                           tm.numero_documento,\n" +
+"                           tm.serie,\n" +
+"                           tm.data,\n" +
+"                           tm.dat_finalizacao,\n" +
+"                           tm.id_parceiro,\n" +
+"                           tm.base_icms,\n" +
+"                           tm.valor_icms,\n" +
+"                           tm.base_st,\n" +
+"                           tm.valor_st,\n" +
+"                           tm.acrescimo,\n" +
+"                           tm.desconto,\n" +
+"                           tm.sub_total,\n" +
+"                           tm.total,\n" +
+"                         tm.id_tipo,\n" +
+"                         td.descricao,"
+                    + "   tm.valor_pis,"
+                    + "   tm.valor_cofins,"
+                    + "     tm.chave_acesso,tm.id_modelo,tm.hora  \n" +
+"                    from tmovimento tm\n" +
+"                    join ttipo_documentos td on tm.id_tipo=td.id \n" +
+                    "where tm.estado='2' and tm.id_tipo=?";
+            PreparedStatement ps = conexao.getPreparedStatementResult(sql);
+            ps.setString(1, tipo);
+            ResultSet rsd = ps.executeQuery();
+            while (rsd.next()){
+                clsLancDocCabecalho cld= new clsLancDocCabecalho();
+                cld.setIdmovimento(rsd.getString(1));
+                cld.setDocument(rsd.getString(2));
+                cld.setSerie(rsd.getString(3));
+                cld.setEmissao(rsd.getDate(4));
+                cld.setLancamento(rsd.getDate(5));
+                cld.setIdparceiro(rsd.getString(6));
+                cld.setBaseicms(rsd.getString(7));
+                cld.setValoricms(rsd.getString(8));
+                cld.setBasest(rsd.getString(9));
+                cld.setValorst(rsd.getString(10));
+                cld.setOutrasdesp(rsd.getString(11));
+                cld.setDesconto(rsd.getString(12));
+                cld.setTotalprod(rsd.getString(13));
+                cld.setTotal(rsd.getString(14));
+                cld.setTipomovimento(rsd.getString(15)+"- "+rsd.getString(16));
+                cld.setValor_pis(rsd.getString(17));
+                cld.setValor_cofins(rsd.getString(18));
+                cld.setChaveacesso(rsd.getString(19));
+                cld.setModelo(rsd.getString(20));
+                cld.setHorafinalizado(rsd.getTime(21));
+                lista.add(cld);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(lancDocumentDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lista;
+    }
     
     
     
@@ -671,7 +794,7 @@ public class lancDocumentDAO {
                 sql="select tc.id,tm.codi_barra as codibarra,  tp.nomecurto,\n" +
 "                        tm.quantidade as qnt ,tm.prec_venda as unitario,tm.acrescimo,tm.desconto,tm.total as total,\n" +
 "                        tm.unidade as unidade,tm.num_item,tc.ncm,tc.sit_tributaria,tc.cfop,\n" +
-"                        tc.aliq_icms,tpc.aliq_pis,tpc.aliq_cofins,tc.pis_saida,tc.preco_custo\n" +
+"                        tc.aliq_icms,tpc.aliq_pis,tpc.aliq_cofins,tc.pis_saida,tc.preco_custo \n" +
 "                     from titens tm\n" +
 "                     left join tbarras tb on tm.codi_barra =tb.codigo_barras\n" +
 "                     left join tprecos tc on tb.id_produto=tc.id\n" +
@@ -693,6 +816,7 @@ public class lancDocumentDAO {
                 item.setPrecovenda(rs.getString("unitario"));
                 item.setAcrescimo(rs.getString("acrescimo"));
                 item.setDesconto(rs.getString("desconto"));
+                item.setSubtotal(rs.getString("total"));
                 item.setTotal(rs.getString("total"));
                 item.setUnidade(rs.getString("unidade"));
                 item.setValor_outras("0.00");
@@ -750,5 +874,50 @@ public class lancDocumentDAO {
         }
         
      }
+    
+    public int retornaUltimaIdItem(String idmovimento){
+        int retorno=0;
+        try {
+            String sql="select first 1 ti.num_item from titens ti\n" +
+                    "where ti.id_mov=? order by ti.num_item desc";
+            PreparedStatement ps = conexao.getPreparedStatement(sql);
+            ps.setString(1, idmovimento);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                retorno=rs.getInt(1);
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(lancDocumentDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return retorno;
+    }
+    
+    public List<ClsDadosInventario>  retornaItensInventario(){
+        List<ClsDadosInventario> lista= new ArrayList<>();
+        try {
+            String sql="select tp.*,tpp.nomelongo,tc.custo_atual from stp_calc_estoque((select data_inventario from tconfig),current_date) tp\n" +
+                    "join tbarras tb on tb.codigo_barras= tp.codproduto\n" +
+                    "join tprodutos tpp on tb.id_produto=tpp.id\n" +
+                    "join tprecos tc on tpp.id=tc.id";
+            
+            PreparedStatement ps = conexao.getPreparedStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                ClsDadosInventario cls= new ClsDadosInventario(
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getDouble(4),
+                        rs.getDouble(1)
+                );
+                lista.add(cls);
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(lancDocumentDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lista;
+    }
 
 }

@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import model.Tcad_armas;
+import model.Thab_itens;
 
 /**
  *
@@ -419,5 +421,58 @@ public class lancamentoTiroDAO {
     
     }
     
+     
+    public List<Thab_itens> retornaListaItensHab(String idhab){
+        List<Thab_itens> itens= new ArrayList<>();
+        try {
+            String sql="select * from thab_itens where idhab=?";
+            PreparedStatement ps = conexao.getPreparedStatement(sql);
+            ps.setString(1, idhab);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Thab_itens item= new Thab_itens();
+                item.setCalibre(rs.getString("calibre"));
+                item.setEspecie(rs.getString("especie"));
+                item.setIdhab(rs.getInt("idhab"));
+                item.setMarca(rs.getString("marca"));
+                item.setModelo(rs.getString("modelo"));
+                item.setQnt(rs.getInt("qnt"));
+                item.setSerie(rs.getString("serie"));
+                item.setSigma(rs.getString("sigma"));
+                itens.add(item);
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(lancamentoTiroDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return itens;
+        
+    } 
     
+    
+    public void inserirItensHabtialidade(List<Tcad_armas> armas, String idhab){
+        try {
+        String sql="INSERT INTO THAB_ITENS (IDHAB, SERIE, MARCA, MODELO, ESPECIE, CALIBRE, SIGMA, QNT)\n" +
+"                VALUES (?,?,?,?,?,?,?,?);";
+        PreparedStatement ps = conexao.getPreparedStatement(sql);
+        for(Tcad_armas arma:armas){
+            ps.setString(1, idhab);
+            ps.setString(2, arma.getRegistro());
+            ps.setString(3, arma.getMarca());
+            ps.setString(4, arma.getModelo());
+            ps.setString(5, arma.getEspecie());
+            ps.setString(6, arma.getCalibre());
+            ps.setString(7, arma.getSigma());
+            ps.setInt(8, arma.getQnt());
+            ps.executeUpdate();
+            ps.clearParameters();
+        }
+        ps.close();
+        
+         } catch (SQLException ex) {
+                Logger.getLogger(lancamentoTiroDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+    }
 }

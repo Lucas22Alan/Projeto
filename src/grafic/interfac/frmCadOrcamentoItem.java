@@ -436,7 +436,8 @@ public class frmCadOrcamentoItem extends javax.swing.JDialog {
     }//GEN-LAST:event_txtQtdeFocusLost
 
     private void txtDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescricaoActionPerformed
-       this.preencheDados();
+        System.out.println(txtBarra.getText());
+        this.preencheDados();
        txtQtde.requestFocus();
               
     }//GEN-LAST:event_txtDescricaoActionPerformed
@@ -482,9 +483,8 @@ public class frmCadOrcamentoItem extends javax.swing.JDialog {
     }//GEN-LAST:event_txtBarraKeyPressed
 
     private void txtDescricaoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescricaoKeyReleased
-        if(txtDescricao.getText().length()>2){
+       if(txtDescricao.getText().length()>2){
            if(evt.getKeyCode()==KeyEvent.VK_ENTER|| evt.getKeyCode()==KeyEvent.VK_BACKSPACE){
-              
            }else{
                aut="S";
                abrirBuscaAutomatica();
@@ -556,7 +556,7 @@ public class frmCadOrcamentoItem extends javax.swing.JDialog {
          txtDescricao.addKeyListener(new java.awt.event.KeyAdapter(){
             public void keyPressed(java.awt.event.KeyEvent evt){
                 if (evt.getKeyCode()==KeyEvent.VK_ENTER){
-                    txtBarra.setText(clsaux.retornaAposId(txtDescricao.getText()));
+                    //txtBarra.setText(clsaux.retornaAposId(txtDescricao.getText()));
                    
                 }
             }
@@ -574,6 +574,7 @@ public class frmCadOrcamentoItem extends javax.swing.JDialog {
     }
     public void preencheDados(){
         if(txtBarra.getText().length()>0){
+            System.out.println(txtBarra.getText());
         txtBarra.setText(validaDigitosBarras.preencheCodigo(txtBarra.getText())); 
         String codigobarra=txtBarra.getText();
         String sqlitem="select tp.id,\n" +

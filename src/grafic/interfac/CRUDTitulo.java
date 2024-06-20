@@ -368,6 +368,11 @@ public class CRUDTitulo extends javax.swing.JDialog {
         jButton13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Cancela.png"))); // NOI18N
         jButton13.setText("      Anular Titulos");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
 
         jButton14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Confirma.png"))); // NOI18N
@@ -644,7 +649,7 @@ public class CRUDTitulo extends javax.swing.JDialog {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         Object[] opcoes = {"Sim", "Não"};
-        int opc = JOptionPane.showOptionDialog(null, "Deseja realmente cancelar o Titulo?", "Cancelamento De Titulos...", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,null, opcoes,opcoes[1]);
+        int opc = JOptionPane.showOptionDialog(null, "Deseja realmente cancelar os titulos marcados?", "Cancelamento De Titulos...", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,null, opcoes,opcoes[1]);
         if(opc==0){
             this.acaoBtnExcluir();           
         }
@@ -689,6 +694,10 @@ public class CRUDTitulo extends javax.swing.JDialog {
             Logger.getLogger(CRUDTitulo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton13ActionPerformed
     
     public void validaCamposUsuario(){
         if(permissaoUsuarioDAO.verificaPermissaoUsuConectado("107"));else {
@@ -1050,9 +1059,13 @@ public class CRUDTitulo extends javax.swing.JDialog {
     }
     public void acaoBtnExcluir(){
         ContasReceberDAO crDAO= new ContasReceberDAO();
-        String idtitulo =TbTitulos.getValueAt(TbTitulos.getSelectedRow(), 1).toString();
-        crDAO.excluir(idtitulo);
-    
+        int cont=TbTitulos.getRowCount();
+        for (int i=0; i<cont; i++){
+               if((Boolean)TbTitulos.getValueAt(i, 0)==true){
+                    String idtitulo =TbTitulos.getValueAt(TbTitulos.getSelectedRow(), 1).toString();
+                    crDAO.excluir(idtitulo);
+               }
+           }
     }
     public void acaoBtnItensReferente(){
         List<String> id= new ArrayList();

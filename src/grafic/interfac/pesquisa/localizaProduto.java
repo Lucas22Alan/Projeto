@@ -9,6 +9,7 @@ import classes.clsaux;
 import conexoes.conexao;
 import grafic.interfac.CRUDCadPizza;
 import grafic.interfac.FrmCadAdicional;
+import grafic.interfac.FrmCadInventario;
 import grafic.interfac.FrmCadTamPizza;
 import grafic.interfac.LancamentoItemDocumento;
 import grafic.interfac.OsItem;
@@ -33,7 +34,9 @@ import javax.swing.JTable;
 import javax.swing.KeyStroke;
 import javax.swing.table.DefaultTableModel;
 import relatorios.frmRelLocacaoProduto;
+import relatorios.relVendasVendedor;
 import relatorios.relVendasporProdutos;
+import relatorios.relVendasporProdutosCusto;
 
 /**
  *
@@ -168,14 +171,14 @@ public class localizaProduto extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Barras", "Descrição", "Preço Venda", "id Produto", "X"
+                "Barras", "Descrição", "Preço Venda", "id Produto", "Referencia", "X"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -187,14 +190,16 @@ public class localizaProduto extends javax.swing.JDialog {
             }
         });
         tbProdPesq.setRowHeight(24);
+        tbProdPesq.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tbProdPesq);
         if (tbProdPesq.getColumnModel().getColumnCount() > 0) {
-            tbProdPesq.getColumnModel().getColumn(0).setPreferredWidth(10);
+            tbProdPesq.getColumnModel().getColumn(0).setPreferredWidth(100);
             tbProdPesq.getColumnModel().getColumn(1).setPreferredWidth(180);
             tbProdPesq.getColumnModel().getColumn(2).setPreferredWidth(10);
             tbProdPesq.getColumnModel().getColumn(3).setPreferredWidth(5);
-            tbProdPesq.getColumnModel().getColumn(4).setResizable(false);
-            tbProdPesq.getColumnModel().getColumn(4).setPreferredWidth(30);
+            tbProdPesq.getColumnModel().getColumn(4).setPreferredWidth(120);
+            tbProdPesq.getColumnModel().getColumn(5).setResizable(false);
+            tbProdPesq.getColumnModel().getColumn(5).setPreferredWidth(30);
         }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -284,16 +289,16 @@ public class localizaProduto extends javax.swing.JDialog {
             String sql="select tb.codigo_barras,\n" +
                     "       tp.nomecurto,\n" +
                     "       tc.preco_venda,\n" +
-                    "       tp.id\n" +
+                    "       tp.id,tb.referencia \n" +
                     " from tprodutos tp\n" +
                     " join tbarras tb on tp.id=tb.id_produto\n" +
                     " join tprecos tc on tp.id=tc.id\n" +
-                    " where (tp.nomecurto like '%"+campopesquisado+"%'  or tb.codigo_barras like '%"+campopesquisado+"%') and tp.excluido='N' and tipo_produto=0;";
+                    " where (tp.nomecurto like '%"+campopesquisado+"%'  or tb.codigo_barras like '%"+campopesquisado+"%' or tb.referencia like '%"+campopesquisado+"%') and tp.excluido='N' and tipo_produto=0;";
             if (tipoBusca=="servicos"){
                 sql="select tb.codigo_barras,\n" +
                     "       tp.nomecurto,\n" +
                     "       tc.preco_venda,\n" +
-                    "       tp.id\n" +
+                    "       tp.id,tb.referencia \n" +
                     " from tprodutos tp\n" +
                     " join tbarras tb on tp.id=tb.id_produto\n" +
                     " join tprecos tc on tp.id=tc.id\n" +
@@ -302,7 +307,7 @@ public class localizaProduto extends javax.swing.JDialog {
                  sql="select tb.codigo_barras,\n" +
                     "       tp.nomecurto,\n" +
                     "       tc.preco_venda,\n" +
-                    "       tp.id\n" +
+                    "       tp.id,tb.referencia \n" +
                     " from tprodutos tp\n" +
                     " join tbarras tb on tp.id=tb.id_produto\n" +
                     " join tprecos tc on tp.id=tc.id\n" +
@@ -311,11 +316,13 @@ public class localizaProduto extends javax.swing.JDialog {
                 sql="select tb.codigo_barras,\n" +
                     "       tp.nomecurto,\n" +
                     "       tc.preco_venda,\n" +
-                    "       tp.id\n" +
+                    "       tp.id,tb.referencia \n" +
                     " from tprodutos tp\n" +
                     " join tbarras tb on tp.id=tb.id_produto\n" +
                     " join tprecos tc on tp.id=tc.id\n" +
-                    " where (tp.nomecurto like '%"+campopesquisado+"%'  or tb.codigo_barras like '%"+campopesquisado+"%') and tp.excluido='N'";
+                    " where (tp.nomecurto like '%"+campopesquisado+"%'  or tb.codigo_barras like '%"+campopesquisado+"%'  or tb.referencia like '%"+campopesquisado+"%') and tp.excluido='N'";
+            }else if(tipoBusca=="grupos"){
+                sql="select tg.id_grupo, tg.nome, tg.comissao,tg.id_grupo from tgrupos tg";
             }
             PreparedStatement ps = conexao.getPreparedStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -327,6 +334,7 @@ public class localizaProduto extends javax.swing.JDialog {
                     rs.getString(2),
                     clsaux.formato(rs.getDouble(3)),
                     rs.getString(4),
+                    rs.getString(5),
                     new Boolean(false)
                 });
             }
@@ -385,6 +393,12 @@ public class localizaProduto extends javax.swing.JDialog {
          }else if(idchamado=="15"){
              CRUDCadPizza.txtCodInserir.setText(codBarra);
              CRUDCadPizza.txtCodInserir.requestFocus();
+         }else if(idchamado=="16"){
+             buscaTodosSelecionados1();
+         }else if(idchamado=="17"){
+             FrmCadInventario.txtcodigo.setText(codBarra);
+         }else if(idchamado=="18"){
+             buscaTodosSelecionados2();
          }
          localizaProduto.tipoBusca="normal";
          this.dispose();
@@ -403,13 +417,35 @@ public class localizaProduto extends javax.swing.JDialog {
     
     public void buscaTodosSelecionados(){
         int tamanho=tbProdPesq.getRowCount();
-         relVendasporProdutos.ProdutosSelecionados.clear();
+        relVendasporProdutos.ProdutosSelecionados.clear();
         for(int i=0; i<tamanho; i++){
             if((Boolean) tbProdPesq.getValueAt(i, 4)==true){
                 relVendasporProdutos.ProdutosSelecionados.add(tbProdPesq.getValueAt(i, 0).toString());
             }
         }
+        
+        
          relVendasporProdutos.txtProduto.requestFocus();
+    }
+    public void buscaTodosSelecionados1(){
+        int tamanho=tbProdPesq.getRowCount();
+         relVendasporProdutosCusto.ProdutosSelecionados.clear();
+        for(int i=0; i<tamanho; i++){
+            if((Boolean) tbProdPesq.getValueAt(i, 5)==true){
+                relVendasporProdutosCusto.ProdutosSelecionados.add(tbProdPesq.getValueAt(i, 0).toString());
+            }
+        }
+         relVendasporProdutosCusto.txtProduto.requestFocus();
+    }
+     public void buscaTodosSelecionados2(){
+        int tamanho=tbProdPesq.getRowCount();
+         relVendasVendedor.gruposSelecionados.clear();
+        for(int i=0; i<tamanho; i++){
+            if((Boolean) tbProdPesq.getValueAt(i, 5)==true){
+                relVendasVendedor.gruposSelecionados.add(tbProdPesq.getValueAt(i, 0).toString());
+            }
+        }
+         relVendasVendedor.txtGrupos.requestFocus();
     }
     private void entertable(final JTable tbl){
         tbl.getInputMap(tbl.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke("ENTER"), "enterAction");

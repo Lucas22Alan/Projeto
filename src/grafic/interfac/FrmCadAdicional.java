@@ -185,7 +185,7 @@ public class FrmCadAdicional extends javax.swing.JDialog {
         });
 
         cbtipo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        cbtipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Adicional", "Borda" }));
+        cbtipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Adicional", "Borda", "Observacao" }));
         cbtipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbtipoActionPerformed(evt);
@@ -205,7 +205,7 @@ public class FrmCadAdicional extends javax.swing.JDialog {
                                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(35, 35, 35))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -291,7 +291,7 @@ public class FrmCadAdicional extends javax.swing.JDialog {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(382, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCancelarOs)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnGravarOs)
@@ -317,9 +317,7 @@ public class FrmCadAdicional extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -370,7 +368,6 @@ public class FrmCadAdicional extends javax.swing.JDialog {
 
     private void btnGravarOsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarOsActionPerformed
          this.acaoBtnGravar();
-        
         
     }//GEN-LAST:event_btnGravarOsActionPerformed
 
@@ -488,8 +485,10 @@ public class FrmCadAdicional extends javax.swing.JDialog {
         cad.setDescricao_base(txtDescBase.getText());
         if(cbtipo.getSelectedIndex()==0){
             cad.setTipo("A");
-        }else{
+        }else if (cbtipo.getSelectedIndex()==1){
             cad.setTipo("B");
+        }else if (cbtipo.getSelectedIndex()==2){
+            cad.setTipo("O");
         }
         if(new AdicionalDAO().inserirAdicional(cad)){
             JOptionPane.showMessageDialog(null, "Gravado Com Sucesso");

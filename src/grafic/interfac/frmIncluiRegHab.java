@@ -5,14 +5,22 @@
  */
 package grafic.interfac;
 
+import DAO.BaseGeralDAO;
+import DAO.TcadCalibreDAO;
+import DAO.lancamentoTiroDAO;
 import classes.clsaux;
 import conexoes.conexao;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.Tcad_armas;
+
 
 /**
  *
@@ -26,8 +34,12 @@ public class frmIncluiRegHab extends javax.swing.JDialog {
     public frmIncluiRegHab(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        inicia();
     }
+    
+    public static List<Tcad_armas> armas=new ArrayList<>();
     public static String idcliente=null;
+    public static String cpf=null;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,9 +54,13 @@ public class frmIncluiRegHab extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         btnGravar = new javax.swing.JButton();
         ftData = new javax.swing.JFormattedTextField();
-        txtTipo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtLocal = new javax.swing.JTextField();
+        cbEvento = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbArmas = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Data Visita");
@@ -76,6 +92,53 @@ public class frmIncluiRegHab extends javax.swing.JDialog {
 
         jLabel3.setText("Local:");
 
+        tbArmas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Especie", "Modelo", "Calibre", "Sigma", "Registro", "Qnt. Utilizada"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbArmas.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tbArmas.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tbArmas);
+        if (tbArmas.getColumnModel().getColumnCount() > 0) {
+            tbArmas.getColumnModel().getColumn(0).setPreferredWidth(100);
+            tbArmas.getColumnModel().getColumn(1).setPreferredWidth(100);
+            tbArmas.getColumnModel().getColumn(2).setPreferredWidth(100);
+            tbArmas.getColumnModel().getColumn(3).setPreferredWidth(100);
+            tbArmas.getColumnModel().getColumn(4).setPreferredWidth(100);
+            tbArmas.getColumnModel().getColumn(5).setPreferredWidth(100);
+        }
+
+        jButton1.setText("Incluir Arma");
+        jButton1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jButton1FocusGained(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Excluir Arma");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -83,24 +146,34 @@ public class frmIncluiRegHab extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ftData, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cbEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtLocal))
+                                .addComponent(txtLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ftData, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
+                                .addContainerGap()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnGravar)))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,27 +181,27 @@ public class frmIncluiRegHab extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(ftData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ftData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(txtLocal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGap(13, 13, 13)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnGravar)
-                .addContainerGap())
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,27 +223,80 @@ public class frmIncluiRegHab extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_ftDataActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        FrmIncluiArmaHab dialog = new FrmIncluiArmaHab(new javax.swing.JFrame(), true);
+        dialog.setLocationRelativeTo(null);
+        dialog.inicia(cpf);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jButton1FocusGained
+        carregaArmas();
+    }//GEN-LAST:event_jButton1FocusGained
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        removeArmaLista();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    public void inicia(){
+         TcadCalibreDAO cab= new TcadCalibreDAO();
+         DefaultComboBoxModel<String> eventos = new DefaultComboBoxModel(cab.retornaListaEventos().toArray());
+         cbEvento.setModel(eventos);
+    
+    }
+    
+    public void removeArmaLista(){
+         int yn= JOptionPane.showConfirmDialog(null, "Deseja Remover O Item", "REMOVER ITEM", JOptionPane.YES_NO_OPTION);
+            if (yn== JOptionPane.YES_OPTION){
+                armas.remove(tbArmas.getSelectedRow());
+                carregaArmas();
+                
+            }
+    }
+    public void carregaArmas(){
+        DefaultTableModel tb = (DefaultTableModel) tbArmas.getModel();
+        tb.setNumRows(0);
+        for(Tcad_armas arma:armas){
+            tb.addRow(new Object[]{
+                arma.getEspecie(),
+                arma.getModelo(),
+                arma.getCalibre(),
+                arma.getSigma(),
+                arma.getRegistro(),
+                arma.getQnt()
+            
+            });
+        }
+    }
     public void gravarData(){
         try {
             String data=ftData.getText();
-            String tipo= txtTipo.getText();
+            String tipo= cbEvento.getSelectedItem().toString();
             String local=txtLocal.getText();
-            String sql="insert into thabitualidade (id,id_parceiro,data,tipo,local)\n" +
-                    " values (gen_id(gen_thabitualidade_id,1),?,?,?,?)";
+            String idhab= new BaseGeralDAO().gerarIds("gen_thabitualidade_id");
+            String sql="insert into thabitualidade (id,id_parceiro,data,tipo,local,cpf)\n" +
+                    " values (?,?,?,?,?,?)";
             PreparedStatement ps = conexao.getPreparedStatement(sql);
-            ps.setString(1,idcliente);
-            ps.setDate(2, clsaux.retornaData(data));
-            ps.setString(3, tipo);
-            ps.setString(4, local);
+            ps.setString(1, idhab);
+            ps.setString(2,idcliente);
+            ps.setDate(3, clsaux.retornaData(data));
+            ps.setString(4, tipo);
+            ps.setString(5, local);
+            ps.setString(6, cpf);
             ps.executeUpdate();
             ps.close();
+            new lancamentoTiroDAO().inserirItensHabtialidade(armas, idhab);
             this.dispose();
             frmHabitualidade.tbLanc.requestFocus();
+            armas.clear();
+            idcliente=null;
+            cpf=null;
         } catch (SQLException ex) {
             Logger.getLogger(frmIncluiRegHab.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-    } 
+    }
+    
+   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -212,12 +338,16 @@ public class frmIncluiRegHab extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGravar;
+    private javax.swing.JComboBox<String> cbEvento;
     private javax.swing.JFormattedTextField ftData;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tbArmas;
     private javax.swing.JTextField txtLocal;
-    private javax.swing.JTextField txtTipo;
     // End of variables declaration//GEN-END:variables
 }

@@ -360,7 +360,7 @@ public class relVendasporProdutosCusto extends javax.swing.JDialog {
        this.getRootPane().setInputMap(jPanel1.WHEN_IN_FOCUSED_WINDOW, im);
        this.getRootPane().getActionMap().put("BUSCA", new AbstractAction(){
                 public void actionPerformed(ActionEvent e){
-                    localizaProduto.idchamado="14";
+                    localizaProduto.idchamado="16";
                     localizaProduto.tipoBusca="normal";
                    localizaProduto dialog = new localizaProduto(new javax.swing.JFrame(), true);
                    dialog.setLocationRelativeTo(null);

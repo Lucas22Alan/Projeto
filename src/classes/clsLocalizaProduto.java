@@ -12,6 +12,17 @@ package classes;
 public class clsLocalizaProduto {
     String codibarra,codibaixa, descricao, unidade,fator,idproduto=null; 
     Double preccusto,precvenda=0.00,oferta=0.00;
+    String referencia;
+
+    public String getReferencia() {
+        return referencia;
+    }
+
+    public void setReferencia(String referencia) {
+        this.referencia = referencia;
+    }
+    
+    
 
     public Double getOferta() {
         return oferta;

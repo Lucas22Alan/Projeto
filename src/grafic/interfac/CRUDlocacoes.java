@@ -1421,7 +1421,7 @@ public class CRUDlocacoes extends javax.swing.JDialog {
 "                                    tp.descricao as nomelongo,\n" +
 "                                    tp.valor as vl_unit,\n" +
 "                                    tp.qnt_pecas as qnt,\n" +
-"                                    tp.total as total,tipolocacao\n" +
+"                                    tp.total as total,tipolocacao,obs\n" +
 "                             from titens_locacao tp\n" +
 "                            where tp.idlocacao='"+indice+"' and tp.estado<>'3'";
             String sqldadoscond="    select tv.total,\n" +
@@ -1466,6 +1466,7 @@ public class CRUDlocacoes extends javax.swing.JDialog {
             parametros.put("CIDADE", clsDadosEmpresa.getCidade());
             parametros.put("UF", clsDadosEmpresa.getEstado());
             parametros.put("FONE", clsDadosEmpresa.getFone());
+            parametros.put("cnpj", clsDadosEmpresa.getCnpj());
             rs.close();
             rs = pst.executeQuery();
             JRResultSetDataSource jrds= new JRResultSetDataSource(rs);
@@ -1501,7 +1502,7 @@ public class CRUDlocacoes extends javax.swing.JDialog {
 "                                    tp.total as total,tp.tipolocacao  as tipo, tp.qnt_pecas as pecas,\n"
                     + "              tp.data_retirada as dataretirada, tp.data_devolucao as datadev  \n" +
 "                             from titens_locacao tp\n" +
-"                            where tp.idlocacao='"+indice+"' and tp.estado='19'";
+"                            where tp.idlocacao='"+indice+"'";
             }else{
                 sqlitens="select  tp.codigoitem as codigo,\n" +
 "                                    tp.descricao as nomelongo,\n" +

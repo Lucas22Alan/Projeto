@@ -16,8 +16,6 @@ import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -70,17 +68,17 @@ public class frmEnvioCargaBalanca extends javax.swing.JDialog {
                     " where tb.id_balanca>0";
             PreparedStatement ps = conexao.getPreparedStatement(sql);
             ResultSet rs = ps.executeQuery();
-            
             while(rs.next()){
-                this.montaLinhaProduto(rs.getInt(2), rs.getString(1), rs.getString(5), rs.getInt(3), rs.getString(4));
-            
+                int codigo=clsaux.convertStringInt(rs.getString(2));
+                if(codigo==0);
+                else{
+                    this.montaLinhaProduto(codigo, rs.getString(1), rs.getString(5), rs.getInt(3), rs.getString(4));
+                }
             }
             gravarArquivo();
         } catch (SQLException ex) {
             Logger.getLogger(frmEnvioCargaBalanca.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-    
     }
     
     public void montaLinhaProduto(int codigo,String descricao,String preco,int diasvalidade,String pesavel){
@@ -99,10 +97,7 @@ public class frmEnvioCargaBalanca extends javax.swing.JDialog {
         String descritivo4=StringUtils.leftPad("", 35, "");        
         prod="01"+pesavel+codig+ prec+val+descricao+descritivo2+"0000000000000000110000000000000000000000000000000000000000000000000000000000000000000000|01|"+descritivo3
                 +descritivo4+"000000000000000000"+prec+"0||0|| \n";
-        
-        //produto.add(prod);
         produtos=produtos+prod;
-    
     }
     
     public void gravarArquivo(){

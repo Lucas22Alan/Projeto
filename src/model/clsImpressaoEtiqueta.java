@@ -11,9 +11,19 @@ package model;
  */
 public class clsImpressaoEtiqueta {
     String descricao,codigo,rodape,mensagem,vlpromocional,prec=null;
+    String referencia=null;
     
     Double preco=0.00;
 
+    public String getReferencia() {
+        return referencia;
+    }
+
+    public void setReferencia(String referencia) {
+        this.referencia = referencia;
+    }
+
+    
     public String getPrec() {
         return prec;
     }

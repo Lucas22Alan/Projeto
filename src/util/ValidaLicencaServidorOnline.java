@@ -8,6 +8,8 @@ package util;
 import DAO.empresaDAO;
 import classes.ClsRetornoLicenca;
 import com.google.gson.Gson;
+import com.mksolucoes.validarlicenca.ClsConsulta;
+import com.mksolucoes.validarlicenca.ConsultaModel;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -72,5 +74,35 @@ public class ValidaLicencaServidorOnline {
             
         }
     }
+ 
+    public void conultarLicencaFirebase(String cnpj) throws Exception{
+       
+            ClsConsulta con= new ClsConsulta();
+            ConsultaModel retorno = con.consultaDadosFirebase(cnpj);
+            System.out.println(retorno);
+            if(retorno==null){
+                 dao.increntaTentativa(empresaDAO.verificaTetativas()+1);
+                Logs.gravarLog.gravaSemMensagem("sem retorno firebase");
+                JOptionPane.showMessageDialog(null,"Falha Para Validar Licença");
+                
+            }else{
+                
+                    if(retorno.getSituacao()==1){// estados da licenca, 1- normal, 2-Inativo,3- bloqueado
+                        dao.atualizaVencimentoSistema(retorno.getDiasliberar());
+                        dao.increntaTentativa(0);
+                    }else if(retorno.getSituacao()==2){
+                        JOptionPane.showMessageDialog(null,"Sistema Inativo Para Esse CNPJ!!!");
+                        System.exit(0);
+                    }else if (retorno.getSituacao()==3){
+                        JOptionPane.showMessageDialog(null,"Seu Sistema Está Bloqueado\nEntre em Contato Com o Suporte!!! ");
+                        System.exit(0);
+                    }else if (retorno.getSituacao()==0){
+                        JOptionPane.showMessageDialog(null,"Sistema Não Cadastrado Para Esse CNPJ !");
+                        System.exit(0);
+                    }
+                    }
+             
+    }
+    
     
 }

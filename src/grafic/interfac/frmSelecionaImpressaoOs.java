@@ -202,9 +202,10 @@ public class frmSelecionaImpressaoOs extends javax.swing.JDialog {
        btnImprimir.requestFocus();
     }
     public static void imprimirOs(String idos,String tipo){
-        String modelo,marca,prob,serie,obser,totalserv,totalprod,totalgeral,desc,datain,placa,obsgeral=null;
+        String modelo,marca,prob,serie,obser,desc,datain,placa,obsgeral=null;
         String rsocial,fantasia,cnpj,fone,celular,estado=null;
         String tipoImpressao;
+        Double totalserv,totalprod,totalgeral=0.00;
         if(tipo.equals("A4")){
             tipoImpressao="RelOs.jrxml";
         }else if(tipo.equals("A5")){
@@ -232,7 +233,7 @@ public class frmSelecionaImpressaoOs extends javax.swing.JDialog {
                     + "   join tbarras tb on tp.cod_item=tb.codigo_barras \n " +
                         "join tprodutos tr on tb.id_produto=tr.id\n" +
                         " where id_os=? and tp.estado='2'\n" +
-                        "order by 8 desc";
+                        "order by 8 desc, 10 asc ";
             String sql2="select tp.marca,\n" +
                         "        tp.modelo,\n" +
                         "        tp.serie,\n" +
@@ -261,10 +262,10 @@ public class frmSelecionaImpressaoOs extends javax.swing.JDialog {
             serie=rs.getString(3);
             prob=rs.getString(4);
             obser=rs.getString(5);
-            totalserv=clsaux.formato(rs.getDouble(6));
-            totalprod=clsaux.formato(rs.getDouble(7));
+            totalserv=rs.getDouble(6);
+            totalprod=rs.getDouble(7);
             desc=clsaux.formato(rs.getDouble(8));
-            totalgeral=clsaux.formato(rs.getDouble(9));
+            totalgeral=rs.getDouble(9);
             datain=clsaux.convertDataExib(rs.getString(10));
             estado=rs.getString(11);
             placa=rs.getString(12);

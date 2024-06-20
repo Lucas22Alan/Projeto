@@ -17,13 +17,31 @@ public class clsConfigGeral {
         String certificado,senha,hamb,serienfe,tipoCertificado,caminhodll,marca,ultimanfe,cadastroProdAutomatico,caminhoxml=null;
         String calculajuros=null,associacaoCompra;
         Double percMulta,percJuros=0.00;
-        int carencia=0;
+        int carencia=0,tipoPrecoPizza=0;
         Date ultima_consulta=null,ultima_verificacao=null;
         String impressaoCondicionalPadrao="";
         String chavePix,clientid,clientsecret="",iptef,codlojatef;
         String usaLocacao="N",ambinetepix="H",zerarSeq="N";
-        String tipoImpOs="",caixaAgrupado;
+        String tipoImpOs="",caixaAgrupado,catPreco;
 
+    public String getCatPreco() {
+        return catPreco;
+    }
+
+    public void setCatPreco(String catPreco) {
+        this.catPreco = catPreco;
+    }
+
+        
+    public int getTipoPrecoPizza() {
+        return tipoPrecoPizza;
+    }
+
+    public void setTipoPrecoPizza(int tipoPrecoPizza) {
+        this.tipoPrecoPizza = tipoPrecoPizza;
+    }
+
+        
     public String getCaixaAgrupado() {
         return caixaAgrupado;
     }

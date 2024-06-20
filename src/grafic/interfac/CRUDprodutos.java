@@ -820,7 +820,7 @@ public class CRUDprodutos extends javax.swing.JDialog {
         if(cbEstado.getSelectedIndex()==2) excluido="S";
         if(cbEstado.getSelectedItem().toString().equals("Inativo")) ativo="N";
         try{
-        String sqlpesquisa="select first 100 a.codigo_barras,\n" +
+        String sqlpesquisa="select first 1000 a.codigo_barras,\n" +
                 "        b.nomelongo,\n" +
                 "        b.unid_venda,\n" +
                 "        c.preco_venda,\n" +
@@ -838,7 +838,7 @@ public class CRUDprodutos extends javax.swing.JDialog {
                 + "or a.referencia like '%"+conteudoCampo+"%' or b.id like '%"+conteudoCampo+"%' ) and b.excluido='"+excluido+"' and b.ativo=? ";
         
         if(cbEstado.getSelectedIndex()==3){
-            sqlpesquisa="select first 100 a.codigo_barras,\n" +
+            sqlpesquisa="select first 1000 a.codigo_barras,\n" +
                 "        b.nomelongo,\n" +
                 "        b.unid_venda,\n" +
                 "        c.preco_venda,\n" +
@@ -919,6 +919,8 @@ public class CRUDprodutos extends javax.swing.JDialog {
         pro.setId(0);
         pro.setCodi_barra("");
         pro.setBaixa_barra("");
+        pro.setPreco_venda("0.00");
+        pro.setPreco_custo("0.00");
         frmcadpro.telaalterar(pro,unid);
         frmcadpro.setVisible(true);
     }

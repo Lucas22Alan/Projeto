@@ -7,8 +7,10 @@
 package grafic.interfac;
 
 import DAO.TarmasDAO;
-import DAO.funcionarioDAO;
+import DAO.TcadCalibreDAO;
+import DAO.baseSincronizacaoDAO;
 import classes.clsaux;
+import javax.swing.DefaultComboBoxModel;
 import model.Tcad_armas;
 
 /**
@@ -21,6 +23,7 @@ public class FrmCadArmaAtirador extends javax.swing.JDialog {
     public FrmCadArmaAtirador(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        carregacombobox();
     }
 
     /** This method is called from within the constructor to
@@ -46,11 +49,11 @@ public class FrmCadArmaAtirador extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         txtModelo = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtCalibre = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtSigma = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         txtRegistro = new javax.swing.JTextField();
+        cbCalibre = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Armas");
@@ -97,8 +100,6 @@ public class FrmCadArmaAtirador extends javax.swing.JDialog {
         txtModelo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel7.setText("Calibre:");
-
-        txtCalibre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel8.setText("Sigma:");
 
@@ -162,12 +163,9 @@ public class FrmCadArmaAtirador extends javax.swing.JDialog {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                                    .addComponent(txtCalibre, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(cbCalibre, 0, 182, Short.MAX_VALUE))))
                         .addContainerGap())))
         );
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtCalibre, txtMarca});
-
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -187,8 +185,8 @@ public class FrmCadArmaAtirador extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(txtCalibre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel7)
+                    .addComponent(cbCalibre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSigma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -229,11 +227,15 @@ public class FrmCadArmaAtirador extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_btnCancActionPerformed
 
+    public void carregacombobox(){
+         DefaultComboBoxModel<String> tbcalibre = new DefaultComboBoxModel( new TcadCalibreDAO().retornaListaTipos().toArray());
+         cbCalibre.setModel(tbcalibre);
+    }
     public void inicia(Tcad_armas arma){
         this.arma=arma;
         txtId.setText(String.valueOf(arma.getIdparceiro()));
         txtCpf.setText(arma.getCpf());
-        txtCalibre.setText(arma.getCalibre());
+        clsaux.carregaComboBox(cbCalibre, arma.getCalibre());
         txtEspecie.setText(arma.getEspecie());
         txtMarca.setText(arma.getMarca());
         txtModelo.setText(arma.getModelo());
@@ -243,7 +245,7 @@ public class FrmCadArmaAtirador extends javax.swing.JDialog {
     
     
     public void gravar(){
-        arma.setCalibre(txtCalibre.getText());
+        arma.setCalibre(cbCalibre.getSelectedItem().toString());
         arma.setEspecie(txtEspecie.getText());
         arma.setMarca(txtMarca.getText());
         arma.setModelo(txtModelo.getText());
@@ -252,6 +254,7 @@ public class FrmCadArmaAtirador extends javax.swing.JDialog {
         new TarmasDAO().incluirAtualizar(arma);
         Cadclientes.Origem1="A";
         Cadclientes.txtCpfCnpj.requestFocus();
+        new baseSincronizacaoDAO().criaInfSinc(101, arma.getRegistro());
      dispose();
     }
    
@@ -301,6 +304,7 @@ public class FrmCadArmaAtirador extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCanc;
     private javax.swing.JButton btnGravar;
+    private javax.swing.JComboBox<String> cbCalibre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -310,7 +314,6 @@ public class FrmCadArmaAtirador extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtCalibre;
     private javax.swing.JTextField txtCpf;
     private javax.swing.JTextField txtEspecie;
     private javax.swing.JTextField txtId;

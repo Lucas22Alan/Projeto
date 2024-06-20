@@ -13,12 +13,32 @@ public class Tcad_armas {
     
     int idparceiro;
     String cpf,especie,marca,modelo,calibre,sigma,registro;
+    
+    int qnt;
 
     public Tcad_armas(int idparceiro, String cpf) {
         this.idparceiro = idparceiro;
         this.cpf = cpf;
     }
 
+    @Override
+    public String toString() {
+        return registro;
+    }
+
+    public int getQnt() {
+        return qnt;
+    }
+
+    public void setQnt(int qnt) {
+        this.qnt = qnt;
+    }
+
+   
+    
+
+    
+    
     public Tcad_armas() {
     }
 

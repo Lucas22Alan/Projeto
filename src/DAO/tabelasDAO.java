@@ -19,9 +19,9 @@ import model.ttipo_movimento;
  * @author Lucas
  */
 public class tabelasDAO {
-    public void inserirGrupo(String nomegrupo,String exibe,String tipo,String card){
+    public void inserirGrupo(String nomegrupo,String exibe,String tipo,String card,Double comissao){
         try {
-            String sql="insert into tgrupos (id_grupo, nome,exibe_pdv,enviacardapio) values (gen_id(gen_tgrupos_id,1),?,?,'"+card+"');";
+            String sql="insert into tgrupos (id_grupo, nome,exibe_pdv,enviacardapio,comissao) values (gen_id(gen_tgrupos_id,1),?,?,'"+card+"',"+comissao+");";
             if (tipo.equals("SG")) sql="insert into tsubgrupo (idsubgrupo, nome,exibepdv) values (gen_id(gen_tSUBGRUPO_id,1),?,?);";
             if (tipo.equals("S")) sql="insert into TSETORES (idsetor, nome,exibepdv) values (gen_id(gen_tsetores_id,1),?,?);";
             PreparedStatement ps = conexao.getPreparedStatement(sql);
@@ -36,14 +36,15 @@ public class tabelasDAO {
         
     
     }
-    public void alterarGrupo(String id, String nome,String pdv,String card){
+    public void alterarGrupo(String id, String nome,String pdv,String card,Double comissao){
         try {
-            String sql="update tgrupos set nome=?,exibe_pdv=?,enviacardapio=? where id_grupo=?;";
+            String sql="update tgrupos set nome=?,exibe_pdv=?,enviacardapio=?,comissao=? where id_grupo=?;";
             PreparedStatement psu= conexao.getPreparedStatement(sql);
             psu.setString(1, nome);
             psu.setString(2, pdv);
             psu.setString(3, card);
-            psu.setString(4, id);
+            psu.setDouble(4, comissao);
+            psu.setString(5, id);
             psu.executeUpdate();
             psu.close();
         } catch (SQLException ex) {

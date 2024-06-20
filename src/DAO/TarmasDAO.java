@@ -46,6 +46,19 @@ public class TarmasDAO {
         
     }
     
+    public void removeArma(String idparceiro,String registro){
+        try {
+            String sql="delete from TCAD_ARMAS where IDPARCEIRO=? and serie=?";
+            ps=conexao.getPreparedStatement(sql);
+            ps.setString(1, idparceiro);
+            ps.setString(2, registro);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(TarmasDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public List<Tcad_armas>  retornaListaArmas(String cpf){
         List<Tcad_armas> lista= new ArrayList<>();
         try {

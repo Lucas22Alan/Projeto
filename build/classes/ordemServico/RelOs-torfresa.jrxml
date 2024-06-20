@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelOs01" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="afe50066-33c6-4929-b22e-e9e90c838f21">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
@@ -17,10 +17,10 @@
 	<parameter name="observacao" class="java.lang.String"/>
 	<parameter name="serie" class="java.lang.String"/>
 	<parameter name="problema" class="java.lang.String"/>
-	<parameter name="serv" class="java.lang.String"/>
-	<parameter name="prod" class="java.lang.String"/>
+	<parameter name="serv" class="java.lang.Double"/>
+	<parameter name="prod" class="java.lang.Double"/>
 	<parameter name="desc" class="java.lang.String"/>
-	<parameter name="total" class="java.lang.String"/>
+	<parameter name="total" class="java.lang.Double"/>
 	<parameter name="razaosocialcli" class="java.lang.String"/>
 	<parameter name="cnpjcli" class="java.lang.String"/>
 	<parameter name="fantasiacli" class="java.lang.String"/>
@@ -41,13 +41,13 @@ join tos_item c on a.id_ordem=c.id_os
 join tbarras d on c.cod_item=d.codigo_barras
 join tprodutos e on d.id_produto=e.id]]>
 	</queryString>
-	<field name="QNT" class="java.math.BigDecimal"/>
-	<field name="VL_UNIT" class="java.math.BigDecimal"/>
+	<field name="QNT" class="java.lang.Double"/>
+	<field name="VL_UNIT" class="java.lang.Double"/>
 	<field name="FUNCIONARIO" class="java.lang.String"/>
 	<field name="OBS_ITEM" class="java.lang.String"/>
 	<field name="NOMELONGO" class="java.lang.String"/>
 	<field name="UNID_VENDA" class="java.lang.String"/>
-	<field name="TOTAL" class="java.lang.String"/>
+	<field name="TOTAL" class="java.lang.Double"/>
 	<field name="desconto" class="java.lang.String"/>
 	<title>
 		<band height="100" splitType="Stretch">
@@ -372,14 +372,14 @@ join tprodutos e on d.id_produto=e.id]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{NOMELONGO}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="#,##0.00">
 				<reportElement x="282" y="0" width="60" height="20" uuid="2010ddab-d911-4ce2-88eb-77d21dfd373c"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial Narrow" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{VL_UNIT}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="#,##0.00">
 				<reportElement x="360" y="0" width="44" height="20" uuid="bd662976-e1a3-4e98-a83e-1a5d358fe422"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial Narrow" size="12"/>
@@ -393,7 +393,7 @@ join tprodutos e on d.id_produto=e.id]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{UNID_VENDA}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="#,##0.00">
 				<reportElement x="487" y="0" width="57" height="20" uuid="5450f0c0-56a0-46f7-a9c4-21d8985865cd"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial Narrow" size="12"/>
@@ -463,28 +463,28 @@ join tprodutos e on d.id_produto=e.id]]>
 				</textElement>
 				<text><![CDATA[Totais Serviços :]]></text>
 			</staticText>
-			<textField>
+			<textField pattern="#,##0.00">
 				<reportElement x="480" y="52" width="59" height="20" uuid="f2c5f919-99c8-4381-8081-661ea1a7643e"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial Narrow" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{desc}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="#,##0.00">
 				<reportElement x="480" y="30" width="59" height="20" uuid="5201d0d4-78be-438a-903c-3017a45ea6c4"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial Narrow" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{prod}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="#,##0.00">
 				<reportElement x="482" y="8" width="57" height="20" uuid="9e917b0e-3e78-4c17-be2d-7304ce8c229b"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial Narrow" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{serv}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="#,##0.00">
 				<reportElement x="482" y="73" width="57" height="20" uuid="bfa62c16-581d-4558-96e0-23edaa59c988"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial Narrow" size="14" isBold="true"/>

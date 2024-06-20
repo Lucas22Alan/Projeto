@@ -50,6 +50,7 @@ public class LancamentoItemDocumento extends javax.swing.JDialog {
     }
      String iditem=null;
      String precAntigo,cstAntigo,ncmAntigo="";
+     String refAntigo="";
      public static String estadoform="O";
      public static int linha=-1;
      public static clsLancDocument item= new clsLancDocument();
@@ -1611,7 +1612,8 @@ public class LancamentoItemDocumento extends javax.swing.JDialog {
     }//GEN-LAST:event_txtQntActionPerformed
 
     private void txtValorunitarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorunitarioActionPerformed
-      txtvloutras.requestFocus();
+      //txtvloutras.requestFocus();
+      txtPrecVenda.requestFocus();
     }//GEN-LAST:event_txtValorunitarioActionPerformed
 
     private void txtQntFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtQntFocusGained
@@ -1829,6 +1831,7 @@ public class LancamentoItemDocumento extends javax.swing.JDialog {
 
     private void txtPrecVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecVendaActionPerformed
        calculaMargemAplicada();
+       btnGravar.requestFocus();
     }//GEN-LAST:event_txtPrecVendaActionPerformed
     public void calculaPrecoVenda(){
         Double margem=clsaux.capturaValores(txtMargem.getText());
@@ -1883,13 +1886,14 @@ public class LancamentoItemDocumento extends javax.swing.JDialog {
             precAntigo=rsp.getString(7);
             cstAntigo=rsp.getString(9);
             ncmAntigo=rsp.getString(8);
+            refAntigo=rsp.getString(5);
             rsp.close();
             psp.close();
             txtQnt.requestFocus();
         } catch (SQLException ex) {
             Logger.getLogger(LancamentoItemDocumento.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Produto Não Encontrado!!!");
-            if(clsConfig.configuracaogeral.getCadastroProdAutomatico().equals("S")&& item.getIdproduto().equals("0")){
+            if(clsConfig.configuracaogeral.getCadastroProdAutomatico().equals("S")/*&& item.getIdproduto().equals("0")*/){
                 int yn= JOptionPane.showConfirmDialog(null, "Deseja Cadastrar O Produto Automatico", "Cadastro Automatizado.", JOptionPane.YES_NO_OPTION);
                 if (yn== JOptionPane.YES_OPTION){
                     item.setBarras(codigobarra);
@@ -1918,7 +1922,7 @@ public class LancamentoItemDocumento extends javax.swing.JDialog {
         vlfcp=clsaux.capturaValores(txtVlFcp.getText());
         vtotal=(qnt*fator)*vuni-desc+acres+outras+seguro+frete+vlipi;
         subtotal=(qnt*fator)*vuni;
-        if(txtcst.getText().equals("10")||txtcst.getText().equals("70")){
+        if(txtcst.getText().equals("10")||txtcst.getText().equals("70")||txtcst.getText().equals("90")||txtcst.getText().equals("30")){
             vtotal=vtotal+vlst+vlfcp;
         }
         custo=vtotal/(qnt*fator);
@@ -1988,6 +1992,10 @@ public class LancamentoItemDocumento extends javax.swing.JDialog {
                     custosDAO.atualizaCustoCstNcmNfEntrada(txtNcm.getText(), txtCst.getText(), pre.toString(), item.getIdproduto());
                     new TauditDAO().inserir(item.getIdproduto(), clsaux.capturaValores(precAntigo), pre);
                 }
+            }
+            if(txtReferencia.getText()!=refAntigo){
+                // atualiza o campo referencia
+                new custosDAO().atualizaReferenciaNfeCompra(txtReferencia.getText(), item.getIdproduto());
             }
             if(ckEtiqueta.isSelected()){
                 produtoDAO.marcaItemImpressaoEtiquera(item.getIdproduto());

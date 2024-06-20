@@ -93,14 +93,14 @@ public class frmRenVendasPizza extends javax.swing.JDialog {
         jLabel3.setText("Inicial :");
 
         try {
-            ftFinal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            ftFinal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/#### ##:##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
         ftFinal.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
 
         try {
-            ftInicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            ftInicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/#### ##:##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -113,38 +113,43 @@ public class frmRenVendasPizza extends javax.swing.JDialog {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 42, Short.MAX_VALUE))
+                .addGap(40, 40, 40))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(50, 50, 50)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ftInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ftFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(17, 17, 17)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(ftFinal, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                            .addComponent(ftInicial)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(ftInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ftInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(ftFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(19, 19, 19)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -153,7 +158,9 @@ public class frmRenVendasPizza extends javax.swing.JDialog {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,8 +214,8 @@ public class frmRenVendasPizza extends javax.swing.JDialog {
     public void gerarRelatorioTamanho(){
         try {
             Date dataini,datafim=null;
-            dataini=clsaux.retornaData(ftInicial.getText());
-            datafim=clsaux.retornaData(ftFinal.getText());
+            dataini=clsaux.retornaDataHora(ftInicial.getText());
+            datafim=clsaux.retornaDataHora(ftFinal.getText());
             JDialog viewer = new JDialog(new javax.swing.JFrame(),"Visualização do Relatório", true);
             viewer.setSize(1024,720);
             viewer.setLocationRelativeTo(null);
@@ -218,22 +225,25 @@ public class frmRenVendasPizza extends javax.swing.JDialog {
             String sql=null;
             if(tipo==0){
                 sql="select ti.codi_barra as CODIGO_BARRAS, tp.descricao as NOMELONGO,sum(ti.quantidade) AS QUANTIDADE,sum(ti.total) AS TOTAL from titens ti\n" +
-                        "join tmovimento tm on ti.id_mov=tm.id_mov\n" +
-                        "join tcad_tam_pizza tp on ti.codi_barra= tp.barrasorig\n" +
-                        "where tm.dat_finalizacao between '"+dataini+"'and '"+datafim+"'\n" +
-                        "and tm.estado=2 and ti.estado=2\n" +
-                        "group by 1,2";
+"                        join tmovimento tm on ti.id_mov=tm.id_mov\n" +
+"                        join tcad_tam_pizza tp on ti.codi_barra= tp.barrasorig\n" +
+"                        join tdelivery tv on tv.id= tm.mvto_origem\n" +
+"                        where tv.data_pedido between '"+dataini+"'and '"+datafim+"' \n" +
+"                        and tm.estado=2 and ti.estado=2 and tm.id_tipo=1 and tv.estado_sistema=2\n" +
+"                        group by 1,2";
             }else if(tipo==1){
                 sql="select ti.barrassabor as CODIGO_BARRAS, ti.descricao_sabor as NOMELONGO,count(ti.idmvto) AS QUANTIDADE,sum(ti.valor) AS TOTAL from titens_sabores_pizza ti\n" +
                     "join tmovimento tm on ti.idmvto=tm.id_mov\n" +
-                    "where tm.dat_finalizacao between '"+dataini+"'and '"+datafim+"'\n" +
+                    "join tdelivery tv on tv.id= tm.mvto_origem"
+                        + " where tv.data_pedido between '"+dataini+"'and '"+datafim+"'\n" +
                     "and tm.estado=2 and  ti.idmvto<>''\n" +
                     "group by 1,2 order by 3 desc";
                           
              }else if(tipo==2){
                 sql="select ti.barras_orig as CODIGO_BARRAS, ti.descricao_adicional as NOMELONGO,sum(ti.qnt_adc) AS QUANTIDADE,sum(ti.valor) AS TOTAL from titens_adicionais ti\n" +
                     "join tmovimento tm on ti.id_mvto=tm.id_mov\n" +
-                    "where tm.dat_finalizacao between  '"+dataini+"'and '"+datafim+"'\n" +
+                    " join tdelivery tv on tv.id= tm.mvto_origem\n" +
+"                    where tv.data_pedido between  '"+dataini+"'and '"+datafim+"'\n" +
                     "and tm.estado=2 and  ti.id_mvto<>''\n" +
                     "group by 1,2 order by 3 desc";
              }

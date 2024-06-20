@@ -94,7 +94,7 @@ AND a.cod_item='75']]>
 			</rectangle>
 			<image>
 				<reportElement x="12" y="7" width="88" height="88" uuid="3760817c-9580-408d-abbd-51f30f9681a3"/>
-				<imageExpression><![CDATA["C:\\esfhera\\adm\\imagens\\logo.png"]]></imageExpression>
+				<imageExpression><![CDATA["C:\\esfhera\\adm\\imagens\\logo1.png"]]></imageExpression>
 			</image>
 			<textField>
 				<reportElement x="138" y="4" width="275" height="20" uuid="1b5dd83e-89b9-43d2-841f-36c064c50f57">

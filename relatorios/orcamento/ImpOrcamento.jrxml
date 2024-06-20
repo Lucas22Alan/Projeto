@@ -57,14 +57,14 @@ AND a.cod_item='75']]>
 				<imageExpression><![CDATA["C:\\Esfhera\\adm\\imagens\\logo.png"]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement x="140" y="4" width="275" height="20" uuid="1b5dd83e-89b9-43d2-841f-36c064c50f57"/>
+				<reportElement x="140" y="4" width="350" height="20" uuid="1b5dd83e-89b9-43d2-841f-36c064c50f57"/>
 				<textElement textAlignment="Left">
-					<font fontName="Arial" size="12" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{RAZAO_SOCIAL}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="191" y="22" width="139" height="20" uuid="84537acf-cf97-4a1f-8d67-5854b52c29d7">
+				<reportElement x="191" y="22" width="169" height="20" uuid="84537acf-cf97-4a1f-8d67-5854b52c29d7">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left">

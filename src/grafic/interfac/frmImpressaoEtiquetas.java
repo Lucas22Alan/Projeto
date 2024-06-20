@@ -124,14 +124,14 @@ public class frmImpressaoEtiquetas extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Codigo", "Descricao", "Preço", "Quantidade Imprimir", "Oferta"
+                "Codigo", "Descricao", "Preço", "Quantidade Imprimir", "Oferta", "Referencia"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, false
+                false, false, false, true, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -143,6 +143,7 @@ public class frmImpressaoEtiquetas extends javax.swing.JDialog {
             }
         });
         TbLancamentos.setRowHeight(20);
+        TbLancamentos.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(TbLancamentos);
         if (TbLancamentos.getColumnModel().getColumnCount() > 0) {
             TbLancamentos.getColumnModel().getColumn(0).setResizable(false);
@@ -537,7 +538,7 @@ public class frmImpressaoEtiquetas extends javax.swing.JDialog {
             clsLocalizaProduto prod= new clsLocalizaProduto();
             prod.setCodibarra(campo);
             produtoDAO.buscaProduto(prod);
-            preencherTabela(prod.getCodibarra(), prod.getDescricao(),"1", prod.getPrecvenda(),prod.getOferta());
+            preencherTabela(prod.getCodibarra(), prod.getDescricao(),"1", prod.getPrecvenda(),prod.getOferta(),prod.getReferencia());
             txtCampoPesquisado.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(frmImpressaoEtiquetas.class.getName()).log(Level.SEVERE, null, ex);
@@ -549,10 +550,10 @@ public class frmImpressaoEtiquetas extends javax.swing.JDialog {
         List<clsLocalizaProduto> lista= dao.retornaListaProdutosMarcados();
         for(clsLocalizaProduto novo: lista){
             if(clsaux.retornaId(cbQnt.getSelectedItem()).equals("1")){
-                preencherTabela(novo.getCodibarra(), novo.getDescricao(),"1", novo.getPrecvenda(),novo.getOferta());
+                preencherTabela(novo.getCodibarra(), novo.getDescricao(),"1", novo.getPrecvenda(),novo.getOferta(),novo.getReferencia());
             }else{
                 clsDadosEstoque estoque=produtoDAO.retornaValorEstoque(novo.getCodibarra());
-                preencherTabela(novo.getCodibarra(), novo.getDescricao(),estoque.getEstoquedisponivel().toString(), novo.getPrecvenda(),novo.getOferta());
+                preencherTabela(novo.getCodibarra(), novo.getDescricao(),estoque.getEstoquedisponivel().toString(), novo.getPrecvenda(),novo.getOferta(),novo.getReferencia());
             }
             
         }
@@ -562,10 +563,10 @@ public class frmImpressaoEtiquetas extends javax.swing.JDialog {
         List<clsLocalizaProduto> lista= dao.retornaListaPodutosPorData(ftInicio.getText(), ftFim.getText());
         for(clsLocalizaProduto novo: lista){
             if(clsaux.retornaId(cbQnt.getSelectedItem()).equals("1")){
-                preencherTabela(novo.getCodibarra(), novo.getDescricao(),"1", novo.getPrecvenda(),novo.getOferta());
+                preencherTabela(novo.getCodibarra(), novo.getDescricao(),"1", novo.getPrecvenda(),novo.getOferta(),novo.getReferencia());
             }else{
                 clsDadosEstoque estoque=produtoDAO.retornaValorEstoque(novo.getCodibarra());
-                preencherTabela(novo.getCodibarra(), novo.getDescricao(),estoque.getEstoquedisponivel().toString(), novo.getPrecvenda(),novo.getOferta());
+                preencherTabela(novo.getCodibarra(), novo.getDescricao(),estoque.getEstoquedisponivel().toString(), novo.getPrecvenda(),novo.getOferta(),novo.getReferencia());
             }
             
         }
@@ -573,7 +574,7 @@ public class frmImpressaoEtiquetas extends javax.swing.JDialog {
     
     
     }
-    public void preencherTabela(String cod,String nome,String qnt,Double prec,Double oferta){
+    public void preencherTabela(String cod,String nome,String qnt,Double prec,Double oferta,String referencia){
         DefaultTableModel tb=(DefaultTableModel) TbLancamentos.getModel();
         TbLancamentos.setRowSorter(new TableRowSorter(tb));
         tb.addRow(new Object[]{
@@ -581,7 +582,8 @@ public class frmImpressaoEtiquetas extends javax.swing.JDialog {
             nome,
             clsaux.formato(prec),
             qnt,
-            clsaux.formato(oferta)
+            clsaux.formato(oferta),
+            referencia
         });
     }
    
@@ -600,6 +602,7 @@ public class frmImpressaoEtiquetas extends javax.swing.JDialog {
                     eti.setPreco(clsaux.capturaValores(TbLancamentos.getValueAt(i, 2).toString()));
                     eti.setRodape(etiqueta.getImprodape());
                     eti.setVlpromocional(clsaux.capturaValor(TbLancamentos.getValueAt(i, 4).toString()));
+                    eti.setReferencia(clsaux.trataCampoNulo(TbLancamentos.getValueAt(i, 5)));
                     lista.add(eti);
                 }
                 dao.limpaMarcados(TbLancamentos.getValueAt(i, 0).toString());

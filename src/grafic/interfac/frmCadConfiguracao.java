@@ -114,6 +114,9 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
         jLabel56 = new javax.swing.JLabel();
         cbImpOs = new javax.swing.JComboBox<>();
         ckCaixaAgrupado = new javax.swing.JCheckBox();
+        jLabel65 = new javax.swing.JLabel();
+        cbTipoPreco = new javax.swing.JComboBox<>();
+        ckCategoriaPreco = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         cbPdv = new javax.swing.JComboBox<>();
@@ -169,6 +172,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
         jLabel55 = new javax.swing.JLabel();
         cbModo = new javax.swing.JComboBox<>();
         ckPdvResuzido = new javax.swing.JCheckBox();
+        ckCupomTroca = new javax.swing.JCheckBox();
         jPanel4 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         cbGrupo = new javax.swing.JComboBox<>();
@@ -432,6 +436,18 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
             }
         });
 
+        jLabel65.setText("Preço Pizza");
+
+        cbTipoPreco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Media Sabor", "Maior Valor" }));
+
+        ckCategoriaPreco.setBackground(new java.awt.Color(219, 227, 227));
+        ckCategoriaPreco.setText("Usa Categoria Preco");
+        ckCategoriaPreco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckCategoriaPrecoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnGeralLayout = new javax.swing.GroupLayout(pnGeral);
         pnGeral.setLayout(pnGeralLayout);
         pnGeralLayout.setHorizontalGroup(
@@ -472,7 +488,8 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                             .addComponent(txtMulta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(ckCadAuto)
                     .addComponent(ckZeraSeq)
-                    .addComponent(ckCaixaAgrupado))
+                    .addComponent(ckCaixaAgrupado)
+                    .addComponent(ckCategoriaPreco))
                 .addGap(20, 20, 20)
                 .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnGeralLayout.createSequentialGroup()
@@ -569,17 +586,20 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                                             .addComponent(jLabel52)
                                             .addGap(18, 18, 18)
                                             .addComponent(cbAmbientePix, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(pnGeralLayout.createSequentialGroup()
-                                                .addComponent(jLabel25)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtClientSecret, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(pnGeralLayout.createSequentialGroup()
-                                                .addComponent(jLabel30)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(txtCaminhoServidor, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jButton9)))))))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnGeralLayout.createSequentialGroup()
+                                            .addComponent(jLabel30)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(txtCaminhoServidor, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jButton9)))
+                                    .addGroup(pnGeralLayout.createSequentialGroup()
+                                        .addComponent(jLabel65, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cbTipoPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel25)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtClientSecret, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(33, 33, 33))))
             .addGroup(pnGeralLayout.createSequentialGroup()
                 .addGap(407, 407, 407)
@@ -624,7 +644,9 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(ckZeraSeq)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ckCaixaAgrupado))
+                        .addComponent(ckCaixaAgrupado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ckCategoriaPreco))
                     .addGroup(pnGeralLayout.createSequentialGroup()
                         .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -679,9 +701,13 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                                 .addComponent(txtClientid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel24)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtClientSecret, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel25))
+                        .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel65)
+                                .addComponent(cbTipoPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtClientSecret, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel25)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbAmbientePix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -876,6 +902,14 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
             }
         });
 
+        ckCupomTroca.setBackground(new java.awt.Color(217, 229, 229));
+        ckCupomTroca.setText("Imprime Cupom Troca");
+        ckCupomTroca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckCupomTrocaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -904,7 +938,8 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                     .addComponent(ckAlertaSonoro)
                     .addComponent(ckFechamentoCego)
                     .addComponent(ckQuebraLinha)
-                    .addComponent(ckPdvResuzido))
+                    .addComponent(ckPdvResuzido)
+                    .addComponent(ckCupomTroca))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -1080,6 +1115,8 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
                 .addComponent(ckQuebraLinha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ckPdvResuzido)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ckCupomTroca)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1749,6 +1786,14 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_ckPdvResuzidoActionPerformed
 
+    private void ckCupomTrocaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckCupomTrocaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ckCupomTrocaActionPerformed
+
+    private void ckCategoriaPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckCategoriaPrecoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ckCategoriaPrecoActionPerformed
+
     public void carregaDadosConfigGeral(){
         conf=dao.buscarConfigGeral(conf);
         
@@ -1790,6 +1835,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
         clsaux.carregaComboBox(cbAssociacao, conf.getAssociacaoCompra());
         clsaux.carregaComboBox(cbAmbientePix, conf.getAmbinetepix());
         clsaux.carregaComboBox(cbImpOs, conf.getTipoImpOs());
+        cbTipoPreco.setSelectedIndex(conf.getTipoPrecoPizza());
         txtNumeroNf.setText(dao.buscarUltimaNfe());
         conf.setUltimanfe(txtNumeroNf.getText());
      }
@@ -1819,6 +1865,8 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
             if(pd.getTemtef().equals("S")) ckTemTef.setSelected(true);
             if(pd.getQuebraLinha().equals("S")) ckQuebraLinha.setSelected(true);
             if(pd.getReduzido().equals("S")) ckPdvResuzido.setSelected(true);
+            if(pd.getCupomTroca().equals("S")) ckCupomTroca.setSelected(true);
+            
             txtTextoFicha.setText(pd.getTextoFicha());
             txtComBal.setText(pd.getPortaBal());
             txtDigEt.setText(pd.getDigEtiqueta());
@@ -1970,6 +2018,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
         if(ckCadAuto.isSelected()) conf.setCadastroProdAutomatico("S"); else conf.setCadastroProdAutomatico("N");
         if(ckZeraSeq.isSelected()) conf.setZerarSeq("S"); else conf.setZerarSeq("N");
         if(ckCaixaAgrupado.isSelected()) conf.setCaixaAgrupado("S"); else conf.setCaixaAgrupado("N");
+        if(ckCategoriaPreco.isSelected()) conf.setCatPreco("S"); else conf.setCatPreco("N");
         
         conf.setMesaIni(txtMesaIni.getText());
         conf.setMesaFim(txtMesaFim.getText());
@@ -1997,6 +2046,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
         conf.setCodlojatef(txtCodLojaTef.getText());
         conf.setAmbinetepix(clsaux.retornaId(cbAmbientePix.getSelectedItem()));
         conf.setTipoImpOs(clsaux.retornaId(cbImpOs.getSelectedItem()));
+        conf.setTipoPrecoPizza(cbTipoPreco.getSelectedIndex());
         dao.inserirConfigGeral(conf);
         
         if(txtNumeroNf.getText().equals(conf.getUltimanfe()));else{
@@ -2057,6 +2107,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
         if(ckTemTef.isSelected()) pdv.setTemtef("S"); else pdv.setTemtef("N");
         if(ckQuebraLinha.isSelected()) pdv.setQuebraLinha("S"); else pdv.setQuebraLinha("N");
         if(ckPdvResuzido.isSelected()) pdv.setReduzido("S"); else pdv.setReduzido("N");
+        if(ckCupomTroca.isSelected()) pdv.setCupomTroca("S"); else pdv.setCupomTroca("N");
         
         pdv.setPortaBal(txtComBal.getText());
         pdv.setDigEtiqueta(txtDigEt.getText());
@@ -2178,6 +2229,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> cbTipoCert;
     private javax.swing.JComboBox<String> cbTipoImpressao;
     private javax.swing.JComboBox<String> cbTipoLeituraBalanca;
+    private javax.swing.JComboBox<String> cbTipoPreco;
     private javax.swing.JComboBox<String> cbTpCond;
     private javax.swing.JComboBox<String> cbTpConfCx;
     private javax.swing.JComboBox<String> cbTpNfEnd;
@@ -2190,8 +2242,10 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
     private javax.swing.JCheckBox ckCadAuto;
     private javax.swing.JCheckBox ckCaixaAgrupado;
     private javax.swing.JCheckBox ckCancelaFinalizadora;
+    private javax.swing.JCheckBox ckCategoriaPreco;
     private javax.swing.JCheckBox ckControlaEstoquepdv;
     private javax.swing.JCheckBox ckCreditoCliente;
+    private javax.swing.JCheckBox ckCupomTroca;
     private javax.swing.JCheckBox ckEstoqueBusca;
     private javax.swing.JCheckBox ckFechamentoCego;
     private javax.swing.JCheckBox ckFidelidade;
@@ -2281,6 +2335,7 @@ public class frmCadConfiguracao extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
